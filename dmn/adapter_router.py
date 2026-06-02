@@ -1,0 +1,215 @@
+"""
+RoboticsAdapterRouter — System 1 + System 2 two-pass inference.
+===============================================================
+Implements the identification / correction trust asymmetry formalised in
+"Architecture Is All You Need" (Sajeev 2026), §3.4 Remark (Temporal Decay
+and Synaptic Depression):
+
+  System 1 — Identification (trust-invariant)
+  --------------------------------------------
+  Centroid matching on the divergence vector fingerprint. The geometric
+  signature of a sensor failure class (e.g., ice_slip, motor_degradation)
+  is durable — the physics of ice does not change with time. System 1
+  fires regardless of adapter age and correctly names the failure class
+  even when System 2 is fully stale.
+
+  System 2 — Correction (perishable)
+  ------------------------------------
+  LoRA weights (.pt) encode a learned correction derived from a specific
+  sensor generation and hardware variant. A delta trained on a 2024 IMU
+  variant may be wrong in sign for a 2027 model. System 2 is therefore
+  gated by W = exp(-λ · Δt); adapters below min_trust are refused.
+
+  Degradation path
+  ----------------
+  When System 2 is refused, System 1 still identifies the failure and
+  returns COMMIT_TRAJECTORY. The audit note records both the identification
+  event and the stale-adapter refusal. This is the intended behaviour:
+  identify correctly, correct conservatively.
+
+Temporal decay constants (config.json["temporal_decay"]):
+  environmental_transient  λ=0.50  ice, glare — fast decay
+  hardware_structural      λ=0.02  motor wear — slow decay
+  sensor_drift             λ=0.20  calibration error — medium decay
+"""
+
+from __future__ import annotations
+
+import json
+import math
+import datetime
+import glob
+import os
+from pathlib import Path
+from typing import Optional
+
+import numpy as np
+
+import sys, os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+from core.types import RouteDecision
+
+
+def _cos(a, b) -> float:
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    na, nb = np.linalg.norm(a), np.linalg.norm(b)
+    return float(a @ b / (na * nb)) if na and nb else 0.0
+
+
+# ── Temporal decay (identical formula to Snath Aviation / Basis / Locus) ─────
+_LAMBDA: dict = {
+    "environmental_transient": 0.50,
+    "hardware_structural":     0.02,
+    "sensor_drift":            0.20,
+    "default":                 0.10,
+}
+
+
+def _decay_weight(created_at_iso: str | None, failure_class: str = "default") -> float:
+    """W = exp(-λ · Δt). Returns 1.0 if no timestamp."""
+    if not created_at_iso:
+        return 1.0
+    try:
+        created = datetime.datetime.fromisoformat(
+            created_at_iso.replace("Z", "+00:00")
+        )
+        now         = datetime.datetime.now(datetime.timezone.utc)
+        delta_years = (now - created).total_seconds() / (365.25 * 24 * 3600)
+        lam         = _LAMBDA.get(failure_class, _LAMBDA["default"])
+        return math.exp(-lam * max(0.0, delta_years))
+    except Exception:
+        return 1.0
+
+
+class RoboticsAdapterRouter:
+    """
+    Two-pass adapter router for Snath Robotics.
+
+    Args:
+        adapter_dir: Directory containing .json centroid caches and .pt LoRA files.
+        tau_sim:     Cosine similarity threshold for System 1 centroid match.
+        min_trust:   Temporal trust floor for System 2 LoRA injection.
+        verbose:     Print debug info on load errors.
+    """
+
+    def __init__(
+        self,
+        adapter_dir: str   = "models/adapters",
+        tau_sim:     float = 0.90,
+        min_trust:   float = 0.40,
+        verbose:     bool  = False,
+    ):
+        self.adapter_dir = Path(adapter_dir)
+        self.tau_sim     = tau_sim
+        self.min_trust   = min_trust
+        self.verbose     = verbose
+        self._centroids: list[dict] = []
+        self._load_all()
+
+    def _load_all(self) -> None:
+        self._centroids = []
+        for fp in glob.glob(str(self.adapter_dir / "*.json")):
+            try:
+                data = json.loads(Path(fp).read_text())
+                self._centroids.append(data)
+            except Exception as e:
+                if self.verbose:
+                    print(f"[RoboticsAdapterRouter] load error {fp}: {e}")
+
+    def refresh(self) -> None:
+        self._load_all()
+
+    def available(self) -> list[str]:
+        return [c.get("failure_class", "?") for c in self._centroids]
+
+    def _nearest(self, delta: np.ndarray) -> Optional[dict]:
+        """
+        System 1 — trust-invariant centroid match.
+        No temporal gate. The geometric fingerprint of a failure class is
+        durable — identification fires regardless of adapter age.
+        """
+        best, best_s = None, self.tau_sim
+        for c in self._centroids:
+            centroid = c.get("centroid_vision") or c.get("centroid_proprio")
+            if centroid is None:
+                continue
+            # Use the delta vector (z_vision - z_proprio) centroid
+            delta_centroid = np.array(c.get("centroid_vision", centroid)) - \
+                             np.array(c.get("centroid_proprio", centroid))
+            s = _cos(delta, delta_centroid)
+            if s >= best_s:
+                best, best_s = c, s
+        return best
+
+    def resolve(
+        self,
+        z_vision:   np.ndarray,
+        z_proprio:  np.ndarray,
+        base_decision: RouteDecision,
+        conf_vision:   float,
+        conf_proprio:  float,
+        enc_vision:  object = None,
+        enc_proprio: object = None,
+    ) -> tuple[RouteDecision, str]:
+        """
+        System 1 + System 2 combined inference.
+
+        Args:
+            z_vision / z_proprio: Latent vectors from the two encoders.
+            base_decision:        The decision from DivergenceRouter.
+            conf_vision / conf_proprio: Encoder confidence scalars.
+            enc_vision / enc_proprio:   Live encoder objects (optional).
+                Pass to enable System 2 LoRA injection inside resolve().
+                When omitted, only System 1 decision override is applied.
+        Returns:
+            (decision, audit_note)
+        """
+        if base_decision != RouteDecision.TRIGGER_REPLAN:
+            return base_decision, "base decision accepted — no divergence to resolve"
+
+        z_a = np.asarray(z_vision,  float)
+        z_b = np.asarray(z_proprio, float)
+        delta = z_a - z_b
+
+        # ── SYSTEM 1: Fast centroid match (trust-invariant) ───────────────
+        match = self._nearest(delta)
+        if match is None:
+            return base_decision, "no matching memory — flag for investigation"
+
+        failure_class = match.get("failure_class", "unknown")
+        winner        = match.get("winner", "unknown")
+        win_rate      = match.get("win_rate", 0.0)
+        n_events      = match.get("n_events", 0)
+
+        decision = RouteDecision.COMMIT_TRAJECTORY
+        note = (f"[System 1] memory [{failure_class}] n={n_events} "
+                f"winner={winner} win_rate={win_rate:.0%}")
+
+        # ── SYSTEM 2: LoRA injection (perishable, trust-gated) ───────────
+        target_enc_name = winner
+        target_enc_obj  = enc_vision if winner == "vision" else enc_proprio
+        pt_path         = self.adapter_dir / f"{failure_class}.pt"
+
+        if pt_path.exists() and target_enc_obj is not None:
+            try:
+                import torch as _torch
+                meta = _torch.load(str(pt_path), map_location="cpu",
+                                   weights_only=False)
+                W = _decay_weight(meta.get("created_at"),
+                                  meta.get("failure_class", "default"))
+                if W >= self.min_trust:
+                    if hasattr(target_enc_obj, "load_lora"):
+                        target_enc_obj.load_lora(str(pt_path))
+                        note += (f" | [System 2] LoRA → '{target_enc_name}' "
+                                 f"encoder (W={W:.2f}, injected)")
+                    else:
+                        note += f" | [System 2] W={W:.2f} — encoder has no load_lora"
+                else:
+                    note += (f" | [System 2] STALE adapter refused "
+                             f"(W={W:.2f} < {self.min_trust}) — System 1 only")
+            except Exception as exc:
+                note += f" | [System 2] load error: {exc}"
+        elif self.verbose:
+            print(f"[RoboticsAdapterRouter] no .pt at {pt_path} — System 1 only")
+
+        return decision, note

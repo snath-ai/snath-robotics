@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+*.pt
+*.pth
+*.ckpt
+*.bin
+models/adapters/*.pt
+d_hard.jsonl
+*.log
+.DS_Store
+graphify-out/
