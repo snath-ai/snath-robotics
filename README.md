@@ -1,6 +1,6 @@
 # Snath Robotics
 
-**Humanoid sensor fusion via cognitive divergence routing.**
+**Humanoid cognitive routing across independent sensor streams.**
 
 ---
 
@@ -119,8 +119,8 @@ Snath Robotics is the fourth instantiation of the V1–V6 routing contract, prov
 | Repo | Domain | Stream A | Stream B | Failure class |
 |---|---|---|---|---|
 | [Snath Basis](https://github.com/snath-ai/snath-basis) | Quantitative finance | Fundamental analysis | Market signals | `market_regime` / `structural` |
-| [Snath Aviation](https://github.com/snath-ai/snath-aviation) | Aviation sensor fusion | Radar | Pitot tube | `weather_induced` / `hardware_struct` |
-| **Snath Robotics** | Humanoid sensor fusion | Vision | Proprioception | `environmental_transient` / `hardware_structural` |
+| [Snath Aviation](https://github.com/snath-ai/snath-aviation) | Aviation sensor routing | Radar | Pitot tube | `weather_induced` / `hardware_struct` |
+| **Snath Robotics** | Humanoid sensor routing | Vision | Proprioception | `environmental_transient` / `hardware_structural` |
 
 The temporal decay formula W = exp(−λ · Δt), the identification/correction trust asymmetry, and the System 1/System 2 pipeline are **identical across all instantiations**. The λ constants and failure-class labels are the only domain-specific parameters.
 
