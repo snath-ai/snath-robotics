@@ -149,9 +149,10 @@ python test_temporal_decay.py
 
 ## Research
 
-- Sajeev, A.V. (2026). *Universal Cognitive Routing.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
-- Sajeev, A.V. (2026). *Divergence Is Not Noise.* [doi.org/10.5281/zenodo.20278781](https://doi.org/10.5281/zenodo.20278781)
-- Sajeev, A.V. (2026). *Architecture Is All You Need.* [doi.org/10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)
+- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Ten-Abstract-Base-Class Specification for Domain-Agnostic Agent Execution.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
+- Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20278781](https://doi.org/10.5281/zenodo.20278781)
+- Sajeev, A.V. (2026). *Architecture Is All You Need: Pre-Registration and Protocol for Empirical Validation of the Lár Training Loop.* [doi.org/10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)
+- Sajeev, A.V. (2026). *Snath Robotics: Multi-Stream Divergence Routing for Humanoid Robotics.* [doi.org/10.5281/zenodo.20517446](https://doi.org/10.5281/zenodo.20517446)
 
 ---
 
