@@ -26,7 +26,7 @@ Divergence metric
     D   = ||Δ||₁ / √G             # total variation / √dims
 
 Division by √G normalises for embedding dimension so τ_high/τ_low are
-comparable across domains (identical to Snath Locus / Basis / Aviation).
+comparable across domains (identical to Basis / Aviation / Research).
 """
 
 import math

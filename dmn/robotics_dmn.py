@@ -12,7 +12,7 @@ by morning the adapters are distributed to the fleet.
 
 System 1 (fast JSON centroid cache) and System 2 (LoRA .pt file) are
 both generated here, following the identical pattern as Snath Aviation,
-Snath Basis, and Snath Locus.
+Snath Basis, and Snath Research.
 
 SIGReg — Sketched Isotropic Gaussian Regularisation
 ----------------------------------------------------

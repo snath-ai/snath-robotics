@@ -98,15 +98,48 @@ LoRA weights encode a correction derived from a specific sensor generation and h
 
 ---
 
+## JEPA world model — annotation-free learning
+
+In physical domains, the V1–V6 routing contract closes into a fully annotation-free loop. Physics provides the supervision signal — no human labels required.
+
+A `JEPAPredictor` module `f_θ: z_vision → ẑ_proprio` learns to predict what the body should feel given what the camera sees:
+
+```
+D_pred = 1 − cos(f_θ(z_vision), z_proprio)    # prediction error (stop-gradient on target)
+```
+
+When `D_pred` is high, the robot's physical experience did not match what the visual scene implied. That discrepancy is the learning signal. The predictor fires before the divergence router — giving one extra inference step to replan before the slip becomes a fall.
+
+**Auto-winner determination (self-supervised, no human labels):**
+
+| D_pred | D | conf_vision | Winner | Failure class |
+|---|---|---|---|---|
+| high | high | low | proprio | `hardware_structural` |
+| high | high | normal | proprio | `environmental_transient` |
+| high | low | — | vision | `sensor_drift` |
+
+The world annotates. Contact physics, joint torque, friction — these are objective facts. The system determines which stream was wrong from prediction geometry alone.
+
+**Structured proof (held-out test set):**
+
+| Phase | AUROC |
+|---|---|
+| Untrained predictor — random baseline | 0.5382 |
+| Trained on normal pairs only, no labels | **0.9365** |
+
+AUROC gain of +0.40 with zero human annotation. This is LeCun's JEPA claim applied concretely. See §8.5 of *Architecture Is All You Need* ([doi:10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)) for the formal annotation burden theorem.
+
+---
+
 ## The DMN overnight cycle
 
-Every TRIGGER_REPLAN and STRUCTURAL_IMPASSE event is HMAC-signed and written to the D_hard queue. When a human operator (or ground-truth sensor log) labels which stream was correct, the event becomes training data.
+Every TRIGGER_REPLAN and STRUCTURAL_IMPASSE event is HMAC-signed and written to the D_hard queue. Winner determination is automatic — derived from prediction geometry (see JEPA section above). No human label is required.
 
 ```
-D_hard = { i : Δᵢ ≥ δ  and  rᵢ = TRIGGER_REPLAN }
+D_hard = { i : D_pred_i > threshold  or  Δᵢ ≥ δ  and  rᵢ = TRIGGER_REPLAN }
 ```
 
-During the overnight consolidation cycle, `RoboticsDMN` clusters events by failure class, generates a System 1 JSON centroid cache and a System 2 signed LoRA `.pt` file, and saves both to `models/adapters/`. The fleet picks up the new adapters on its next `adapter_router.refresh()` call.
+During the consolidation cycle, `RoboticsDMN` clusters events by failure class, generates a System 1 JSON centroid cache and a System 2 signed LoRA `.pt` file, and saves both to `models/adapters/`. The predictor is retrained on the accumulated buffer each cycle, improving anomaly detection in the next pass. The fleet picks up new adapters on its next `adapter_router.refresh()` call.
 
 SIGReg (Sketched Isotropic Gaussian Regularisation, AIA §SIGReg) is wired into the training loop with `lambda_iso=0.0` by default — inert until AIA Experiment 3 calibrates the optimal weight.
 
@@ -121,8 +154,9 @@ Snath Robotics is the fourth instantiation of the V1–V6 routing contract, prov
 | [Snath Basis](https://github.com/snath-ai/snath-basis) | Quantitative finance | Fundamental analysis | Market signals | `market_regime` / `structural` |
 | [Snath Aviation](https://github.com/snath-ai/snath-aviation) | Aviation sensor routing | Radar | Pitot tube | `weather_induced` / `hardware_struct` |
 | **Snath Robotics** | Humanoid sensor routing | Vision | Proprioception | `environmental_transient` / `hardware_structural` |
+| [Snath Research](https://github.com/snath-ai/snath-research) | Scientific claim verification | Paper claims | Peer reviews | `scope_overclaim` / `methodology_gap` |
 
-The temporal decay formula W = exp(−λ · Δt), the identification/correction trust asymmetry, and the System 1/System 2 pipeline are **identical across all instantiations**. The λ constants and failure-class labels are the only domain-specific parameters.
+The temporal decay formula `W = exp(−λ · Δt)`, the identification/correction trust asymmetry, and the System 1/System 2 pipeline are **identical across all instantiations**. The λ constants and failure-class labels are the only domain-specific parameters. Snath Robotics is the only instantiation where the V1–V6 loop closes without any human annotation — physics provides the winner signal directly.
 
 ---
 
@@ -137,6 +171,15 @@ python robotics_graph.py --scenario ice_slip
 
 # Motor degradation only
 python robotics_graph.py --scenario motor_deg
+
+# Train JEPA predictor on scenario pairs (label-free)
+python robotics_graph.py --train-predictor
+
+# Full annotation-free self-learning loop (40 steps, no human labels)
+python robotics_graph.py --end-to-end
+
+# Structured AUROC proof: 0.54 → 0.94 with zero labels
+python experiments/prove_learning.py
 
 # Run overnight DMN consolidation
 python robotics_graph.py --dmn-cycle
