@@ -36,6 +36,7 @@ from divergence_router import DivergenceRouter
 from dmn.adapter_router import RoboticsAdapterRouter
 from dhard import DHardQueue
 from models.jepa_predictor import JEPAPredictor, train_predictor
+from models.jepa_loop      import JEPALearningLoop
 
 
 # ── Load config ───────────────────────────────────────────────────────────────
@@ -191,6 +192,131 @@ def scenario_motor_degradation() -> dict:
     )
 
 
+# ── End-to-end self-learning demo ─────────────────────────────────────────────
+
+def run_end_to_end(n_steps: int = 40) -> None:
+    """
+    Prove the closed annotation-free learning loop end-to-end.
+
+    Generates synthetic robot experience: normal walking interspersed with
+    ice-slip and motor-degradation events. The JEPALearningLoop:
+      - Detects anomalies via D_pred (no routing threshold needed)
+      - Auto-assigns winner from prediction geometry (no human labels)
+      - Logs to DHardQueue → DMN consolidates → LoRA adapters built
+      - Retrains predictor on accumulated buffer each cycle
+
+    No annotations. No consensus. No human in the loop.
+    """
+    from dmn.robotics_dmn import RoboticsDMN
+
+    print("=" * 60)
+    print("  JEPA SELF-LEARNING LOOP — END TO END")
+    print("  No annotations. No labels. No human.")
+    print("=" * 60)
+
+    # Fresh queue so the demo is reproducible
+    import os
+    demo_queue_path = os.path.join(_HERE, "demo_d_hard.jsonl")
+    if os.path.exists(demo_queue_path):
+        os.remove(demo_queue_path)
+
+    from dhard import DHardQueue
+    demo_queue = DHardQueue(demo_queue_path)
+    demo_dmn   = RoboticsDMN(queue_path=demo_queue_path,
+                              adapter_dir=os.path.join(_HERE, "models", "demo_adapters"))
+    demo_pred  = JEPAPredictor(embed_dim=_ENC["vision_dim"])
+    loop       = JEPALearningLoop(
+        predictor         = demo_pred,
+        queue             = demo_queue,
+        dmn               = demo_dmn,
+        consolidate_every = 16,
+        retrain_epochs    = 100,
+    )
+
+    torch.manual_seed(0)
+    scenario_schedule = (
+        ["normal_walk"] * 6 +
+        ["ice_slip"]    * 4 +     # 10
+        ["normal_walk"] * 6 +
+        ["motor_deg"]   * 4 +     # 20 — first consolidation at step 16
+        ["normal_walk"] * 6 +
+        ["ice_slip"]    * 4 +     # 30
+        ["normal_walk"] * 6 +
+        ["motor_deg"]   * 4       # 40 — second consolidation at step 32
+    )
+
+    d_pred_by_scenario: dict = {}
+
+    for step_i, scenario in enumerate(scenario_schedule[:n_steps]):
+        if scenario == "ice_slip":
+            vision_raw  = torch.randn(1, 2048) * 0.5 + 1.0
+            imu_raw     = torch.zeros(1, _ENC["imu_raw_dim"])
+            imu_raw[0, :6] = torch.tensor([0.0, 0.0, 9.8, 0.8, 0.1, 0.0])
+            tactile_raw = torch.zeros(1, _ENC["tactile_raw_dim"])
+            tactile_raw[0, 0] = 0.01
+        elif scenario == "motor_deg":
+            vision_raw  = torch.randn(1, 2048)
+            imu_raw     = torch.randn(1, _ENC["imu_raw_dim"])
+            imu_raw[0, 12] = -3.5
+            imu_raw[0, 13] =  0.1
+            tactile_raw = torch.randn(1, _ENC["tactile_raw_dim"]) * 0.3
+        else:
+            vision_raw  = torch.randn(1, 2048) * 0.3
+            imu_raw     = torch.randn(1, _ENC["imu_raw_dim"]) * 0.1
+            tactile_raw = torch.randn(1, _ENC["tactile_raw_dim"]) * 0.2
+
+        with torch.no_grad():
+            z_vision  = vision_enc(vision_raw).squeeze(0)
+            z_proprio = proprio_enc(imu_raw, tactile_raw).squeeze(0)
+
+        result = router.route(z_vision=z_vision, z_proprio=z_proprio,
+                              scenario_id=scenario)
+
+        d_pred = loop.step(
+            z_vision, z_proprio,
+            d            = result.divergence,
+            conf_vision  = result.conf_vision,
+            conf_proprio = result.conf_proprio,
+            scenario_id  = scenario,
+        )
+
+        # Track D_pred per scenario to show learning
+        d_pred_by_scenario.setdefault(scenario, []).append(d_pred)
+
+        flag = "⚠" if d_pred > 0.30 else "·"
+        consolidation_marker = " ◀ DMN cycle" if (step_i + 1) % 16 == 0 else ""
+        print(f"  step {step_i+1:2d} [{scenario:<12}]  "
+              f"D_pred={d_pred:.3f} {flag}  "
+              f"D={result.divergence:.3f}  "
+              f"→ {result.decision.value}{consolidation_marker}")
+
+    # Final forced consolidation
+    loop.force_consolidate()
+
+    # Summary
+    stats = loop.stats()
+    print(f"\n{'='*60}")
+    print("  LEARNING SUMMARY")
+    print(f"{'='*60}")
+    print(f"  Total steps:        {stats['steps']}")
+    print(f"  D_hard logged:      {stats['dhard_total']}")
+    print(f"  Auto-resolved:      {stats['dhard_resolved']}  (winner set by predictor, no human)")
+    print(f"  By failure class:")
+    for cls, cnt in stats["by_class"].items():
+        print(f"    {cls:<30} {cnt}")
+
+    # Show whether D_pred changes over scenario repetitions (early vs late)
+    print(f"\n  D_pred first vs last encounter (learning signal):")
+    for sc, errs in sorted(d_pred_by_scenario.items()):
+        if len(errs) >= 2:
+            print(f"    {sc:<14} first={errs[0]:.3f}  last={errs[-1]:.3f}  "
+                  f"{'↓ learned' if errs[-1] < errs[0] - 0.05 else '~ stable'}")
+
+    q_stats = demo_queue.stats()
+    print(f"\n  D_hard queue: {q_stats['path']}")
+    print(f"  Adapters:     models/demo_adapters/")
+
+
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 def main():
@@ -203,9 +329,15 @@ def main():
                         help="Run overnight DMN consolidation cycle")
     parser.add_argument("--train-predictor", action="store_true",
                         help="Train JEPA predictor on both scenarios (label-free)")
+    parser.add_argument("--end-to-end", action="store_true",
+                        help="Run full annotation-free self-learning loop (40 steps)")
     parser.add_argument("--lambda-iso", type=float, default=0.0,
                         help="SIGReg λ_iso for DMN cycle (0.0 = disabled)")
     args = parser.parse_args()
+
+    if args.end_to_end:
+        run_end_to_end()
+        return
 
     if args.dmn_cycle:
         from dmn.robotics_dmn import RoboticsDMN
