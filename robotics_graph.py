@@ -35,6 +35,7 @@ from encoders.proprio_encoder import ProprioceptiveEncoder
 from divergence_router import DivergenceRouter
 from dmn.adapter_router import RoboticsAdapterRouter
 from dhard import DHardQueue
+from models.jepa_predictor import JEPAPredictor, train_predictor
 
 
 # ── Load config ───────────────────────────────────────────────────────────────
@@ -55,6 +56,7 @@ proprio_enc = ProprioceptiveEncoder(
 )
 
 dhard_queue    = DHardQueue(os.path.join(_HERE, "d_hard.jsonl"))
+predictor      = JEPAPredictor(embed_dim=_ENC["vision_dim"])  # z_vision → ẑ_proprio
 router         = DivergenceRouter(
     tau_high=_ROUTING["tau_high"],
     tau_low =_ROUTING["tau_low"],
@@ -85,6 +87,10 @@ def _run_scenario(
         z_vision  = vision_enc(vision_raw)
         z_proprio = proprio_enc(imu_raw, tactile_raw)
 
+    # JEPA prediction error: does the body feel what the scene implied?
+    # Fires before the divergence router — gives one extra inference step to replan.
+    d_pred = float(predictor.prediction_error(z_vision, z_proprio).item())
+
     result = router.route(
         z_vision=z_vision.squeeze(0),
         z_proprio=z_proprio.squeeze(0),
@@ -94,6 +100,7 @@ def _run_scenario(
     decision_str  = result.decision.value
     icon          = "✓" if result.decision == expected else "✗"
 
+    print(f"  D_pred (JEPA)      : {d_pred:.4f}  {'⚠ anomaly' if d_pred > 0.5 else '✓ consistent'}")
     print(f"  D (divergence)     : {result.divergence:.4f}")
     print(f"  conf_vision        : {result.conf_vision:.3f}")
     print(f"  conf_proprio       : {result.conf_proprio:.3f}")
@@ -117,8 +124,14 @@ def _run_scenario(
         decision_str = new_decision.value
 
     print(f"\n  {icon} expected={expected.value}  got={decision_str}")
-    return {"scenario": name, "decision": decision_str,
-            "divergence": round(result.divergence, 4)}
+    return {
+        "scenario":   name,
+        "decision":   decision_str,
+        "divergence": round(result.divergence, 4),
+        "d_pred":     round(d_pred, 4),
+        "z_vision":   z_vision.squeeze(0).detach(),
+        "z_proprio":  z_proprio.squeeze(0).detach(),
+    }
 
 
 # ── Scenario A: Ice slip ──────────────────────────────────────────────────────
@@ -188,6 +201,8 @@ def main():
                         default="all")
     parser.add_argument("--dmn-cycle", action="store_true",
                         help="Run overnight DMN consolidation cycle")
+    parser.add_argument("--train-predictor", action="store_true",
+                        help="Train JEPA predictor on both scenarios (label-free)")
     parser.add_argument("--lambda-iso", type=float, default=0.0,
                         help="SIGReg λ_iso for DMN cycle (0.0 = disabled)")
     args = parser.parse_args()
@@ -202,7 +217,7 @@ def main():
         return
 
     print("=" * 60)
-    print("  SNATH ROBOTICS — V1-V6 SENSOR FUSION PIPELINE")
+    print("  SNATH ROBOTICS — V1-V6 SENSOR FUSION + JEPA WORLD MODEL")
     print("=" * 60)
 
     results = []
@@ -211,11 +226,24 @@ def main():
     if args.scenario in ("motor_deg", "all"):
         results.append(scenario_motor_degradation())
 
+    # Train predictor on accumulated scenario pairs (label-free)
+    if args.train_predictor and results:
+        print(f"\n{'='*60}")
+        print("  JEPA PREDICTOR TRAINING (label-free)")
+        print(f"{'='*60}")
+        z_vis_all = torch.stack([r["z_vision"]  for r in results])
+        z_prp_all = torch.stack([r["z_proprio"] for r in results])
+        stats = train_predictor(predictor, z_vis_all, z_prp_all, n_epochs=200)
+        print(f"  error before: {stats['error_before']:.4f}")
+        print(f"  error after:  {stats['error_after']:.4f}")
+        print(f"  (run more scenarios to accumulate richer training pairs)")
+
     print(f"\n{'='*60}")
     print("  SUMMARY")
     print(f"{'='*60}")
     for r in results:
-        print(f"  {r['scenario']:<24} D={r['divergence']:<6}  → {r['decision']}")
+        pred_flag = "⚠" if r["d_pred"] > 0.5 else "✓"
+        print(f"  {r['scenario']:<24} D_pred={r['d_pred']:<6} {pred_flag}  D={r['divergence']:<6}  → {r['decision']}")
 
     q_stats = dhard_queue.stats()
     print(f"\n  D_hard queue: {q_stats['total']} events logged")
