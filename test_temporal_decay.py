@@ -89,26 +89,38 @@ def test_system2_refuses_stale():
 
     # Write a centroid JSON and a fake .pt that looks stale (2 years old)
     with tempfile.TemporaryDirectory() as td:
+        import hmac as _hmac, hashlib
         stale_ts = _iso(2.0)
-        centroid = [0.1, 0.2, 0.3]
-        cjson = {
+        # 8-dim concept vectors — matches new embed_dim=8
+        centroid = [0.1, 0.2, 0.3, 0.1, 0.2, 0.3, 0.1, 0.2]
+        _KEY = b"snath_robotics_adapter_sovereignty_2026"
+        immutable = {
             "failure_class":    "environmental_transient",
             "centroid_vision":  centroid,
-            "centroid_proprio": [0.0, 0.0, 0.0],
+            "centroid_proprio": [0.0] * 8,
             "winner":           "vision",
             "win_rate":         0.9,
             "n_events":         10,
-            "created_at":       stale_ts,
         }
+        sig = _hmac.new(_KEY, json.dumps(immutable, sort_keys=True).encode(),
+                        hashlib.sha256).hexdigest()
+        cjson = {**immutable, "created_at": stale_ts, "sig": sig}
         pathlib.Path(td, "environmental_transient.json").write_text(json.dumps(cjson))
 
         import torch
+        A = torch.zeros(8, 1)
+        B = torch.zeros(1, 8)
+        a_hash = hashlib.sha256(A.numpy().tobytes()).hexdigest()[:16]
+        b_hash = hashlib.sha256(B.numpy().tobytes()).hexdigest()[:16]
+        pt_sig = _hmac.new(_KEY,
+            f"environmental_transient|vision|{a_hash}|{b_hash}".encode(),
+            hashlib.sha256).hexdigest()
         pt_payload = {
-            "A": torch.zeros(3, 1), "B": torch.zeros(1, 3),
+            "A": A, "B": B,
             "target_encoder": "vision",
-            "failure_class": "environmental_transient",
-            "created_at": stale_ts,
-            "hmac_hex": "",
+            "failure_class":  "environmental_transient",
+            "created_at":     stale_ts,
+            "hmac_hex":       pt_sig,
         }
         torch.save(pt_payload, os.path.join(td, "environmental_transient.pt"))
 
@@ -118,7 +130,7 @@ def test_system2_refuses_stale():
         import numpy as np
         _, note = ar.resolve(
             z_vision=np.array(centroid),
-            z_proprio=np.array([0.0, 0.0, 0.0]),
+            z_proprio=np.array([0.0] * 8),
             base_decision=RouteDecision.TRIGGER_REPLAN,
             conf_vision=0.8, conf_proprio=0.8,
             enc_vision=enc_v, enc_proprio=enc_p,

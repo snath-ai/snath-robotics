@@ -47,13 +47,19 @@ class VisionEncoder(nn.Module):
                     Default 768.
     """
 
-    def __init__(self, input_dim: int = 2048, embed_dim: int = 768):
+    def __init__(self, input_dim: int = 2048, embed_dim: int = 8):
         super().__init__()
         self.embed_dim = embed_dim
+        # Concept projection: input_dim → embed_dim (default 8).
+        # AIA routes on softmax over a LOW-DIMENSIONAL concept space (C=80).
+        # Routing softmax over 768 dims produces near-uniform distributions —
+        # the routing signal dies. C=8 gives peaked, discriminative outputs.
         self.proj = nn.Sequential(
             nn.Linear(input_dim, embed_dim),
             nn.LayerNorm(embed_dim),
         )
+        nn.init.xavier_uniform_(self.proj[0].weight)
+        nn.init.zeros_(self.proj[0].bias)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
@@ -78,6 +84,6 @@ class VisionEncoder(nn.Module):
         """
         payload = torch.load(pt_path, map_location="cpu", weights_only=False)
         A = payload["A"]   # (embed_dim, rank)
-        B = payload["B"]   # (rank, input_dim)
+        B = payload["B"]   # (rank, embed_dim)
         with torch.no_grad():
             self.proj[0].weight.data += (A @ B)

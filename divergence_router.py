@@ -101,9 +101,12 @@ class DivergenceRouter:
         delta_vec = p_a - p_b
         D         = float(delta_vec.abs().sum() / math.sqrt(G))
 
-        # Confidence: mean absolute deviation from uniform (0.5) as proxy
-        conf_a = float(torch.sigmoid((p_a.abs().mean() - 0.15) * 10))
-        conf_b = float(torch.sigmoid((p_b.abs().mean() - 0.15) * 10))
+        # Confidence: peakedness of the softmax distribution.
+        # (max(p) - 1/G) / (1 - 1/G) — 0 when uniform, 1 when fully peaked.
+        # Correct for concept distributions; sigmoid-mean is always constant
+        # for softmax outputs since mean(p) = 1/G regardless of peakedness.
+        conf_a = float(max(0.0, (float(p_a.max()) - 1.0/G) / (1.0 - 1.0/G)))
+        conf_b = float(max(0.0, (float(p_b.max()) - 1.0/G) / (1.0 - 1.0/G)))
 
         decision, note = self._decide(D, conf_a, conf_b)
 

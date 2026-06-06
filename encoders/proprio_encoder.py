@@ -49,17 +49,24 @@ class ProprioceptiveEncoder(nn.Module):
     """
 
     def __init__(self, imu_dim: int = 64, tactile_dim: int = 32,
-                 embed_dim: int = 768):
+                 embed_dim: int = 8):
         super().__init__()
         self.embed_dim   = embed_dim
         input_dim        = imu_dim + tactile_dim
 
+        # Concept projection to low-dimensional concept space — same
+        # rationale as VisionEncoder. Two-layer MLP kept for expressivity
+        # on the sensor-fusion task; final output is concept_dim=8.
         self.proj = nn.Sequential(
-            nn.Linear(input_dim, 256),
+            nn.Linear(input_dim, 64),
             nn.ReLU(),
-            nn.Linear(256, embed_dim),
+            nn.Linear(64, embed_dim),
             nn.LayerNorm(embed_dim),
         )
+        nn.init.xavier_uniform_(self.proj[0].weight)
+        nn.init.zeros_(self.proj[0].bias)
+        nn.init.xavier_uniform_(self.proj[2].weight)
+        nn.init.zeros_(self.proj[2].bias)
 
     def forward(self, imu: torch.Tensor,
                 tactile: torch.Tensor) -> torch.Tensor:
@@ -88,4 +95,5 @@ class ProprioceptiveEncoder(nn.Module):
         A = payload["A"]   # (embed_dim, rank)
         B = payload["B"]   # (rank, embed_dim)
         with torch.no_grad():
-            self.proj[-2].weight.data += (A @ B)
+            # Apply to final linear layer (proj[2]) — concept projection layer
+            self.proj[2].weight.data += (A @ B)

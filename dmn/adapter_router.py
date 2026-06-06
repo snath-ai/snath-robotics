@@ -43,11 +43,15 @@ import os
 from pathlib import Path
 from typing import Optional
 
+import hmac as _hmac
+import hashlib
 import numpy as np
 
 import sys, os as _os
 sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
 from core.types import RouteDecision
+
+_ADAPTER_KEY = b"snath_robotics_adapter_sovereignty_2026"
 
 
 def _cos(a, b) -> float:
@@ -63,6 +67,42 @@ _LAMBDA: dict = {
     "sensor_drift":            0.20,
     "default":                 0.10,
 }
+
+
+def _verify_json(adapter: dict) -> bool:
+    """Verify HMAC of JSON centroid adapter. Rejects unsigned adapters."""
+    stored_sig = adapter.get("sig", "")
+    if not stored_sig:
+        return False
+    immutable_keys = ["failure_class", "centroid_vision", "centroid_proprio",
+                      "winner", "win_rate", "n_events"]
+    payload = json.dumps(
+        {k: adapter[k] for k in immutable_keys if k in adapter},
+        sort_keys=True,
+    ).encode()
+    expected = _hmac.new(_ADAPTER_KEY, payload, hashlib.sha256).hexdigest()
+    return _hmac.compare_digest(stored_sig, expected)
+
+
+def _verify_pt(meta: dict) -> bool:
+    """Verify HMAC of .pt adapter before injection."""
+    stored_sig = meta.get("hmac_hex", "")
+    if not stored_sig:
+        return False
+    try:
+        A = meta["A"]
+        B = meta["B"]
+        fc = meta.get("failure_class", "")
+        te = meta.get("target_encoder", "")
+        a_hash = hashlib.sha256(A.numpy().tobytes()).hexdigest()[:16]
+        b_hash = hashlib.sha256(B.numpy().tobytes()).hexdigest()[:16]
+        payload_str = f"{fc}|{te}|{a_hash}|{b_hash}"
+        expected = _hmac.new(
+            _ADAPTER_KEY, payload_str.encode(), hashlib.sha256
+        ).hexdigest()
+        return _hmac.compare_digest(stored_sig, expected)
+    except Exception:
+        return False
 
 
 def _decay_weight(created_at_iso: str | None, failure_class: str = "default") -> float:
@@ -111,7 +151,10 @@ class RoboticsAdapterRouter:
         for fp in glob.glob(str(self.adapter_dir / "*.json")):
             try:
                 data = json.loads(Path(fp).read_text())
-                self._centroids.append(data)
+                if _verify_json(data):
+                    self._centroids.append(data)
+                elif self.verbose:
+                    print(f"[RoboticsAdapterRouter] HMAC FAIL — skipped {fp}")
             except Exception as e:
                 if self.verbose:
                     print(f"[RoboticsAdapterRouter] load error {fp}: {e}")
@@ -186,27 +229,31 @@ class RoboticsAdapterRouter:
                 f"winner={winner} win_rate={win_rate:.0%}")
 
         # ── SYSTEM 2: LoRA injection (perishable, trust-gated) ───────────
-        target_enc_name = winner
-        target_enc_obj  = enc_vision if winner == "vision" else enc_proprio
-        pt_path         = self.adapter_dir / f"{failure_class}.pt"
+        # target_encoder = the FAULTY encoder (loser). Read from .pt metadata.
+        pt_path = self.adapter_dir / f"{failure_class}.pt"
 
-        if pt_path.exists() and target_enc_obj is not None:
+        if pt_path.exists():
             try:
                 import torch as _torch
                 meta = _torch.load(str(pt_path), map_location="cpu",
                                    weights_only=False)
-                W = _decay_weight(meta.get("created_at"),
-                                  meta.get("failure_class", "default"))
-                if W >= self.min_trust:
-                    if hasattr(target_enc_obj, "load_lora"):
-                        target_enc_obj.load_lora(str(pt_path))
-                        note += (f" | [System 2] LoRA → '{target_enc_name}' "
-                                 f"encoder (W={W:.2f}, injected)")
-                    else:
-                        note += f" | [System 2] W={W:.2f} — encoder has no load_lora"
+                if not _verify_pt(meta):
+                    note += " | [System 2] .pt HMAC FAIL — refused"
                 else:
-                    note += (f" | [System 2] STALE adapter refused "
-                             f"(W={W:.2f} < {self.min_trust}) — System 1 only")
+                    W = _decay_weight(meta.get("created_at"),
+                                      meta.get("failure_class", "default"))
+                    target_enc_name = meta.get("target_encoder", "")
+                    target_enc_obj  = enc_vision if target_enc_name == "vision" else enc_proprio
+                    if W >= self.min_trust:
+                        if target_enc_obj is not None and hasattr(target_enc_obj, "load_lora"):
+                            target_enc_obj.load_lora(str(pt_path))
+                            note += (f" | [System 2] LoRA → '{target_enc_name}' "
+                                     f"encoder W={W:.2f} (injected)")
+                        else:
+                            note += f" | [System 2] W={W:.2f} — System 2 ready"
+                    else:
+                        note += (f" | [System 2] STALE adapter refused "
+                                 f"(W={W:.2f} < {self.min_trust}) — System 1 only")
             except Exception as exc:
                 note += f" | [System 2] load error: {exc}"
         elif self.verbose:

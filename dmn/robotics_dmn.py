@@ -117,14 +117,23 @@ class RoboticsDMN:
             winner = max(winner_counts, key=winner_counts.get) if winner_counts else "unknown"
             win_rate = round(winner_counts.get(winner, 0) / len(group), 3)
 
-            json_payload = {
-                "failure_class": failure_class,
+            json_immutable = {
+                "failure_class":    failure_class,
                 "centroid_vision":  centroid_a,
                 "centroid_proprio": centroid_b,
-                "winner":    winner,
-                "win_rate":  win_rate,
-                "n_events":  len(group),
+                "winner":           winner,
+                "win_rate":         win_rate,
+                "n_events":         len(group),
+            }
+            json_sig = _hmac.new(
+                _ADAPTER_KEY,
+                json.dumps(json_immutable, sort_keys=True).encode(),
+                hashlib.sha256,
+            ).hexdigest()
+            json_payload = {
+                **json_immutable,
                 "created_at": datetime.datetime.utcnow().isoformat() + "Z",
+                "sig": json_sig,
             }
             json_path = self.adapter_dir / f"{failure_class}.json"
             json_path.write_text(json.dumps(json_payload, indent=2))

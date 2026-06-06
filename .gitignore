@@ -10,6 +10,10 @@ venv/
 *.bin
 models/adapters/*.pt
 d_hard.jsonl
+demo_d_hard.jsonl
+proof_d_hard.jsonl
+models/demo_adapters/
+models/proof_adapters/
 *.log
 .DS_Store
 graphify-out/
