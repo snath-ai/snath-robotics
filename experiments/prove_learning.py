@@ -32,8 +32,10 @@ Run:
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sys
+from datetime import datetime
 
 import numpy as np
 import torch
@@ -344,6 +346,29 @@ def run_proof(
         print(f"  (AUROC={r1['auroc_overall']:.4f} < 0.70 threshold — "
               f"try --n-normal 1000 or --noise 0.05)")
     print("=" * 60)
+
+    out = dict(
+        config=dict(embed_dim=embed_dim, n_normal=n_normal, n_anomaly=n_anomaly,
+                    noise=noise, n_epochs=n_epochs, seed=seed),
+        phase_0=dict(auroc_overall=round(r0["auroc_overall"], 4),
+                     auroc_ice=round(r0["auroc_ice"], 4),
+                     auroc_motor=round(r0["auroc_motor"], 4)),
+        phase_1=dict(auroc_overall=round(r1["auroc_overall"], 4),
+                     auroc_ice=round(r1["auroc_ice"], 4),
+                     auroc_motor=round(r1["auroc_motor"], 4)),
+        phase_2=dict(auroc_overall=round(r2["auroc_overall"], 4),
+                     auroc_ice=round(r2["auroc_ice"], 4),
+                     auroc_motor=round(r2["auroc_motor"], 4)),
+        gain_phase0_to_1=round(delta_1, 4),
+        gain_phase1_to_2=round(delta_2, 4),
+        claim_proven=claim_proven,
+    )
+    out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, f"prove_learning_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+    with open(path, "w") as f:
+        json.dump(out, f, indent=2)
+    print(f"  Results saved → {path}")
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────

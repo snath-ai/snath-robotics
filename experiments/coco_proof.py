@@ -198,7 +198,7 @@ def precompute_coco_embeddings(
     from encoders._clip_backbone import get_clip
     from PIL import Image
     dev = torch.device(device)
-    model, proc = get_clip(dev)
+    model, preprocess, tokenizer = get_clip(dev)
 
     img_embs_list, cap_embs_list = [], []
     valid_pairs = []
@@ -206,16 +206,14 @@ def precompute_coco_embeddings(
     for i in range(0, len(pairs), batch_size):
         batch = pairs[i : i + batch_size]
         try:
-            images   = [Image.open(p["image_path"]).convert("RGB") for p in batch]
+            images   = [preprocess(Image.open(p["image_path"]).convert("RGB"))
+                        for p in batch]
             captions = [p["caption"] for p in batch]
-            img_in   = proc(images=images,   return_tensors="pt", padding=True)
-            cap_in   = proc(text=captions,   return_tensors="pt", padding=True,
-                            truncation=True, max_length=77)
-            img_in   = {k: v.to(dev) for k, v in img_in.items()}
-            cap_in   = {k: v.to(dev) for k, v in cap_in.items()}
+            img_in   = torch.stack(images).to(dev)
+            cap_in   = tokenizer(captions).to(dev)
             with torch.no_grad():
-                ie = F.normalize(model.get_image_features(**img_in), dim=-1)
-                ce = F.normalize(model.get_text_features(**cap_in),  dim=-1)
+                ie = F.normalize(model.encode_image(img_in), dim=-1)
+                ce = F.normalize(model.encode_text(cap_in),  dim=-1)
             img_embs_list.append(ie.cpu())
             cap_embs_list.append(ce.cpu())
             valid_pairs.extend(batch)
@@ -440,49 +438,42 @@ def run_jepa_predictor(
     """
     Train JEPA predictor z_img → ẑ_cap with zero labels.
 
-    Supervision: prediction error = 1 - cos(f_θ(z_img), sg(z_cap)).
-    Only matched pairs are used for training (the "normal walking" equivalent).
-    After training, high prediction error on mismatched oracle pairs = AUROC proof.
+    Runs on raw 512-dim CLIP embeddings, not on the concept projections.
+    The routing uses projected concept space (DivergenceRouter); the JEPA
+    uses the full CLIP space where matched/mismatched pairs are distinguishable.
 
-    This is the same JEPA claim as the physical robotics proof:
-      Physical:  z_vision → ẑ_proprio  |  error = surface looked safe, body says slip
-      COCO:      z_img    → ẑ_cap      |  error = image shows X, caption claims Y
-
-    Returns:
-        train_stats: dict (error_before, error_after, loss_final, auroc)
-        pred_errors: (N,) per-pair prediction errors
+    Physical:  z_vision → ẑ_proprio  |  error = surface looked safe, body says slip
+    COCO:      z_img    → ẑ_cap      |  error = image shows X, caption claims Y
     """
     from sklearn.metrics import roc_auc_score
 
-    log.info("=== JEPA predictor (label-free world model) ===")
-    embed_dim = enc_img.embed_dim
-    device    = enc_img.device
+    log.info("=== JEPA predictor (label-free world model, 512-dim CLIP space) ===")
+    clip_dim = img_embs.shape[1]   # 512
+    device   = enc_img.device
 
-    predictor = JEPAPredictor(embed_dim=embed_dim).to(device)
+    predictor = JEPAPredictor(embed_dim=clip_dim).to(device)
 
-    enc_img.eval()
-    enc_cap.eval()
-    with torch.no_grad():
-        z_train_img = enc_img(img_embs.to(device)).cpu()
-        z_train_cap = enc_cap(cap_embs.to(device)).cpu()
-
+    # Train on raw matched CLIP pairs — no labels, no concept projection
     train_stats = train_predictor(
-        predictor, z_train_img, z_train_cap,
+        predictor,
+        img_embs.to(device).cpu(),
+        cap_embs.to(device).cpu(),
         n_epochs=n_epochs, lr=lr, batch_size=batch_size,
     )
 
+    # Evaluate on oracle (matched + hard-mismatched) in raw CLIP space
     predictor.eval()
     pred_errors = []
     with torch.no_grad():
         for i in range(0, len(labels), batch_size):
-            z_img_b = enc_img(oracle_img[i : i + batch_size].to(device))
-            z_cap_b = enc_cap(oracle_cap[i : i + batch_size].to(device))
+            z_img_b = oracle_img[i : i + batch_size].to(device)
+            z_cap_b = oracle_cap[i : i + batch_size].to(device)
             err     = predictor.prediction_error(z_img_b, z_cap_b)
             pred_errors.append(err.cpu())
     pred_errors = torch.cat(pred_errors).numpy()
 
     auroc_pred = roc_auc_score(1 - labels, pred_errors)
-    log.info(f"  Predictor AUROC (label-free): {auroc_pred:.4f}  "
+    log.info(f"  Predictor AUROC (label-free, 512-dim): {auroc_pred:.4f}  "
              f"(mean error: {pred_errors.mean():.4f})")
     train_stats["auroc"] = auroc_pred
     return train_stats, pred_errors
@@ -576,10 +567,13 @@ def _resolve_device(requested: Optional[str]) -> str:
         if torch.cuda.is_available():
             return "cuda"
         if torch.backends.mps.is_available():
-            return "cpu"
+            return "mps"
         return "cpu"
     if requested == "cuda" and not torch.cuda.is_available():
         log.warning("CUDA requested but not available — falling back to CPU.")
+        return "cpu"
+    if requested == "mps" and not torch.backends.mps.is_available():
+        log.warning("MPS requested but not available — falling back to CPU.")
         return "cpu"
     return requested
 
@@ -592,6 +586,8 @@ def run_full_experiment(
     device:         Optional[str] = None,
     sigreg_epochs:  int   = 300,
     infonce_epochs: int   = 2,
+    split:          str   = "val2017",
+    max_pairs:      Optional[int] = None,
 ) -> dict:
     """
     Run the complete COCO / CLIP routing and JEPA proof.
@@ -616,7 +612,7 @@ def run_full_experiment(
     )
 
     # ── Embeddings ────────────────────────────────────────────────────────────
-    ann_file = DATA_DIR / "annotations" / "captions_train2017.json"
+    ann_file = DATA_DIR / "annotations" / f"captions_{split}.json"
     if smoke_test and not ann_file.exists():
         embed_dim = 8
         enc_img   = CLIPImageEncoder(embed_dim=embed_dim, device=device)
@@ -631,14 +627,14 @@ def run_full_experiment(
         metadata   = [{"image_id": i, "caption": f"synthetic_{i}", "image_path": ""}
                       for i in range(N)]
     else:
-        max_pairs = 200 if smoke_test else None
+        _max = 200 if smoke_test else max_pairs
         img_embs, cap_embs, metadata = precompute_coco_embeddings(
-            max_pairs=max_pairs, device=device,
+            split=split, max_pairs=_max, device=device,
         )
     log.info(f"Loaded {len(metadata)} pairs.")
 
     # ── Concept projection init ───────────────────────────────────────────────
-    if use_vocab_init and embed_dim == 80 and not smoke_test:
+    if use_vocab_init and embed_dim == 80 and ann_file.exists() and not smoke_test:
         log.info("Initialising concept projection with COCO vocabulary (τ=100)...")
         enc_img.init_concept_vocabulary(freeze=False)
         enc_cap.init_concept_vocabulary(freeze=False)
@@ -784,11 +780,15 @@ if __name__ == "__main__":
     parser.add_argument("--sigreg-epochs",  type=int,   default=300)
     parser.add_argument("--infonce-epochs", type=int,   default=2)
     parser.add_argument("--download",       action="store_true",
-                        help="Download COCO train2017 first")
+                        help="Download COCO split first (val2017=780MB, train2017=18GB)")
+    parser.add_argument("--split",          default="val2017",
+                        help="COCO split: val2017 (default, 5k images) or train2017 (118k images)")
+    parser.add_argument("--max-pairs",      type=int, default=None,
+                        help="Cap number of pairs (useful for quick GPU tests)")
     args = parser.parse_args()
 
     if args.download:
-        download_coco()
+        download_coco(split=args.split)
 
     run_full_experiment(
         smoke_test      = args.smoke_test,
@@ -798,4 +798,6 @@ if __name__ == "__main__":
         device          = args.device,
         sigreg_epochs   = args.sigreg_epochs,
         infonce_epochs  = args.infonce_epochs,
+        split           = args.split,
+        max_pairs       = args.max_pairs,
     )

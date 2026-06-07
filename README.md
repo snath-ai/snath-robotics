@@ -120,14 +120,16 @@ When `D_pred` is high, the robot's physical experience did not match what the vi
 
 The world annotates. Contact physics, joint torque, friction — these are objective facts. The system determines which stream was wrong from prediction geometry alone.
 
-**Structured proof (held-out test set):**
+**Structured proof (held-out test set, June 2026):**
 
-| Phase | AUROC |
-|---|---|
-| Untrained predictor — random baseline | 0.5382 |
-| Trained on normal pairs only, no labels | **0.9365** |
+| Phase | AUROC (all) | ice\_slip | motor\_deg |
+|---|---|---|---|
+| Untrained predictor — random baseline | 0.4529 | 0.4568 | 0.4490 |
+| Trained on normal pairs only, no labels | **0.9365** | **0.8960** | **0.9770** |
 
-AUROC gain of +0.40 with zero human annotation. This is LeCun's JEPA claim applied concretely. See §8.5 of *Architecture Is All You Need* ([doi:10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)) for the formal annotation burden theorem.
+AUROC gain of +0.48 with zero human annotation. D_pred ratio: 2.8× (anomalous pairs vs normal pairs). This is LeCun's JEPA claim applied concretely. See §8.5 of *Architecture Is All You Need* ([doi:10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)) for the formal annotation burden theorem.
+
+On real-world data — 5,000 CLIP ViT-B/32 pairs from COCO val2017 — the same label-free predictor achieves AUROC **0.9997**, with JEPA prediction error collapsing from 1.012 to 0.006 (159× reduction). Trigger rate: 56.46% of pairs flagged as hard (D ≥ τ_low). Isotropy preserved throughout.
 
 ---
 
@@ -178,13 +180,37 @@ python robotics_graph.py --train-predictor
 # Full annotation-free self-learning loop (40 steps, no human labels)
 python robotics_graph.py --end-to-end
 
-# Structured AUROC proof: 0.54 → 0.94 with zero labels
-python experiments/prove_learning.py
-
 # Run overnight DMN consolidation
 python robotics_graph.py --dmn-cycle
+```
 
-# Temporal decay regression tests (7 tests)
+## Complete 7-proof suite (annotation-free continual learning)
+
+All proofs save canonical JSON results to `experiments/results/` or `experiments/coco_results/`.
+
+```bash
+# Proof 1 — disagreement is a valid learning signal (AUROC 0.45 → 0.94)
+python experiments/prove_learning.py
+
+# Proof 2 — robust to noise and training set size (ablation sweep)
+python experiments/ablation_proof.py
+# Results: experiments/coco_results/ablation_<ts>.json
+
+# Proofs 3a + 3b — detection and correction transfer to new sessions
+python experiments/prove_transfer.py
+
+# Proofs 4a + 4b + 4c — policy memory (robot learns safe speed, 6.5× speedup)
+python experiments/prove_policy.py
+
+# Proof 7 — real COCO / CLIP ViT-B/32 512-d (AUROC 0.9997)
+python experiments/coco_proof.py
+# Results: experiments/coco_results/coco_proof_<ts>.json
+
+# Appendix B + Exp 1 — D_hard threshold sensitivity + curriculum vs random
+python experiments/curriculum_proof.py
+# Results: experiments/coco_results/curriculum_proof_<ts>.json
+
+# Temporal decay regression suite (7/7 pass)
 python test_temporal_decay.py
 ```
 

@@ -1,33 +1,38 @@
 """
 Shared CLIP ViT-B/32 backbone singleton for CLIPImageEncoder / CLIPTextEncoder.
 
-Loading CLIP twice causes Metal command queue contention on MPS and wastes
-~700MB of VRAM on CUDA. Both encoder classes call get_clip() which loads
-once and caches for the process lifetime.
+Uses open_clip instead of HuggingFace transformers — avoids the abseil mutex
+deadlock that affects transformers on macOS (PyTorch 2.x + Apple Silicon).
+
+Returns (model, preprocess, tokenizer):
+  model:       open_clip CLIPModel — model.encode_image(tensor), model.encode_text(tokens)
+  preprocess:  torchvision transform for PIL images → (3, 224, 224) tensor
+  tokenizer:   open_clip.get_tokenizer("ViT-B-32") — tokenizer(list[str]) → LongTensor
 """
 from __future__ import annotations
 
 from typing import Optional, Tuple
 import torch
 
-_model  = None
-_proc   = None
+_model      = None
+_preprocess = None
+_tokenizer  = None
 _device: Optional[torch.device] = None
 
 
 def get_clip(device: torch.device) -> Tuple:
     """
-    Return (CLIPModel, CLIPProcessor), loaded lazily and pinned to `device`.
-
-    If called a second time with a different device the cached instance is
-    returned unchanged — move it yourself if you need it elsewhere.
+    Return (model, preprocess, tokenizer), loaded lazily and pinned to `device`.
+    Subsequent calls return the cached instance regardless of device argument.
     """
-    global _model, _proc, _device
+    global _model, _preprocess, _tokenizer, _device
     if _model is None:
-        from transformers import CLIPModel, CLIPProcessor
-        _model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
-        _proc  = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+        import open_clip
+        _model, _, _preprocess = open_clip.create_model_and_transforms(
+            "ViT-B-32", pretrained="openai"
+        )
+        _tokenizer = open_clip.get_tokenizer("ViT-B-32")
         _model.eval()
         _model.to(device)
         _device = device
-    return _model, _proc
+    return _model, _preprocess, _tokenizer

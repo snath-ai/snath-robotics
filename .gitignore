@@ -16,9 +16,11 @@ models/demo_adapters/
 models/proof_adapters/
 models/coco_adapters/
 experiments/coco_results/
+experiments/results/
 data/coco/
 data/coco_clip_cache/
 coco_d_hard.jsonl
+transfer_d_hard.jsonl
 *.log
 .DS_Store
 graphify-out/

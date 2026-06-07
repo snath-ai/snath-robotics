@@ -87,14 +87,10 @@ class CLIPTextEncoder(nn.Module):
 
     def _clip_text_embed(self, text: str) -> torch.Tensor:
         """Run CLIP text tower. Returns L2-normalised (512,) tensor."""
-        model, proc = get_clip(self.device)
-        inputs = proc(
-            text=[text], return_tensors="pt",
-            padding=True, truncation=True, max_length=self.max_length,
-        )
-        inputs = {k: v.to(self.device) for k, v in inputs.items()}
+        model, _, tokenizer = get_clip(self.device)
         with torch.no_grad():
-            feats = model.get_text_features(**inputs)
+            tokens = tokenizer([text]).to(self.device)
+            feats  = model.encode_text(tokens)
         return F.normalize(feats.squeeze(0), dim=-1)
 
     def init_concept_vocabulary(
@@ -112,15 +108,10 @@ class CLIPTextEncoder(nn.Module):
                 f"embed_dim={self.embed_dim} must equal len(class_names)="
                 f"{len(class_names)} for vocabulary init."
             )
-        model, proc = get_clip(self.device)
+        model, _, tokenizer = get_clip(self.device)
         with torch.no_grad():
-            inputs = proc(
-                text=class_names, return_tensors="pt",
-                padding=True, truncation=True, max_length=77,
-            )
-            inputs = {k: v.to(self.device) for k, v in inputs.items()}
-            text_feats = model.get_text_features(**inputs)
-            text_feats = F.normalize(text_feats, dim=-1)
+            tokens     = tokenizer(class_names).to(self.device)
+            text_feats = F.normalize(model.encode_text(tokens), dim=-1)
         self.proj.weight.data = text_feats * self.temperature
         if freeze:
             for p in self.proj.parameters():
