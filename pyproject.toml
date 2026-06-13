@@ -1,0 +1,26 @@
+[project]
+name = "snath-robotics"
+version = "0.2.0"
+description = "Humanoid cognitive routing across independent sensor streams — Lár-JEPA V1–V6 dual-stream architecture"
+authors = [
+    {name = "Aadithya Vishnu Sajeev", email = "axdithya@snath.ai"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    "mujoco>=3.0.0",
+    "gymnasium[mujoco]>=1.0.0",
+]
+
+[tool.poetry]
+packages = [{include = "snath_robotics", from = "."}]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

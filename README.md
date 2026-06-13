@@ -162,6 +162,58 @@ The temporal decay formula `W = exp(−λ · Δt)`, the identification/correctio
 
 ---
 
+## PAV — MuJoCo Walker2d validation (June 2026)
+
+The PAV paper (*Physics Assumption Violations: Label-Free Detection via
+Concept-Space Routing in Deployed Robotic Systems*, Sajeev 2026) reports
+the first end-to-end validation of the V1–V6 routing contract on genuine
+physical dynamics.
+
+**Setup.** MuJoCo Walker2d-v5, 17-dim proprioceptive state, random policy.
+GRU encoder (H=64, G=8, L=30, trained 150 epochs on 50 000 windows per terrain
+type with CE + VICReg loss, 84.4% training accuracy). Terrain: normal (μ=0.80)
+and ice (μ=0.05). No labels at inference.
+
+**Five-phase protocol.**
+
+| Phase | Terrain | Steps | Key result |
+|---|---|---|---|
+| 1 — warm-up | Normal | 80 | EWMA reference anchor forms (c_ref = 0.97) |
+| 2 — stable | Normal | 50 | **83% COMMIT**, mean D = 0.20 |
+| 3 — PAV | Ice | 50 | **95% REPLAN + IMPASSE**, mean D = 0.43; D spikes to 0.64 on step 2 |
+| 4 — DMN | — | offline | 19 D-hard events → 1 LoRA adapter, zero labels |
+| 5 — adapted | Ice + adapter | 50 | Mean D = 0.15 (**65% reduction** from Phase 3) |
+
+**Encoder ablation.**
+
+| Encoder | COMMIT↑ | REPLAN↑ | ΔD↑ |
+|---|---|---|---|
+| Momentum (seq=10) | 0% | 57% | +0.01 |
+| JEPA (seq=30) | 0% | 0% | −0.03 |
+| **CLS-GRU (ours)** | **83%** | **95%** | **+0.50** |
+
+The classification loss collapses within-cluster scatter to 0.181 (normal) /
+0.184 (ice). Self-supervised baselines fail because they optimise temporal
+coherence, not physical separability.
+
+```bash
+# Train the GRU classification encoder (Walker2d, ~5 min)
+python experiments/train_gru_walker2d.py
+
+# Run the 5-phase PAV proof
+python experiments/mujoco_bipedal_proof_gru.py
+
+# Comparison: JEPA and momentum encoders
+python experiments/train_jepa_walker2d.py
+python experiments/train_momentum_walker2d.py
+python experiments/mujoco_bipedal_proof.py     # JEPA
+python experiments/mujoco_bipedal_proof_trained.py  # momentum
+```
+
+Results are saved to `experiments/gru_proof_<ts>.json`.
+
+---
+
 ## Getting started
 
 ```bash
@@ -218,10 +270,12 @@ python test_temporal_decay.py
 
 ## Research
 
-- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Ten-Abstract-Base-Class Specification for Domain-Agnostic Agent Execution.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
 - Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20278781](https://doi.org/10.5281/zenodo.20278781)
-- Sajeev, A.V. (2026). *Architecture Is All You Need: Pre-Registration and Protocol for Empirical Validation of the Lár Training Loop.* [doi.org/10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)
+- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
+- Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals.* [doi.org/10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128)
+- Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations.* [doi.org/10.5281/zenodo.20583318](https://doi.org/10.5281/zenodo.20583318)
 - Sajeev, A.V. (2026). *Snath Robotics: Multi-Stream Divergence Routing for Humanoid Robotics.* [doi.org/10.5281/zenodo.20517446](https://doi.org/10.5281/zenodo.20517446)
+- Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* (forthcoming — code in this repository)
 
 ---
 

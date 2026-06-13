@@ -1,0 +1,351 @@
+{
+  "summary": {
+    "p1_mean_D": 0.3322,
+    "p1_commit": 0.0,
+    "p2_mean_D": 0.2959,
+    "p2_rate": 0.5714,
+    "p4_mean_D": 0.3499,
+    "p4_replan": 0.0,
+    "D_drop_pct": -18.3,
+    "ice_events": 12,
+    "adapters_built": 1
+  },
+  "results": {
+    "phase_1_normal": [
+      {
+        "step": 10,
+        "D": 0.29480522871017456,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 11,
+        "D": 0.35525643825531006,
+        "decision": "DEFER"
+      },
+      {
+        "step": 12,
+        "D": 0.3299941420555115,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 13,
+        "D": 0.3029598891735077,
+        "decision": "DEFER"
+      },
+      {
+        "step": 14,
+        "D": 0.2925724685192108,
+        "decision": "DEFER"
+      },
+      {
+        "step": 15,
+        "D": 0.2955605089664459,
+        "decision": "DEFER"
+      },
+      {
+        "step": 16,
+        "D": 0.31608858704566956,
+        "decision": "DEFER"
+      },
+      {
+        "step": 17,
+        "D": 0.3207862973213196,
+        "decision": "DEFER"
+      },
+      {
+        "step": 18,
+        "D": 0.342492938041687,
+        "decision": "DEFER"
+      },
+      {
+        "step": 19,
+        "D": 0.32601988315582275,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 20,
+        "D": 0.35498693585395813,
+        "decision": "DEFER"
+      },
+      {
+        "step": 21,
+        "D": 0.3767752945423126,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 22,
+        "D": 0.3825666010379791,
+        "decision": "DEFER"
+      },
+      {
+        "step": 23,
+        "D": 0.3793899118900299,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 24,
+        "D": 0.3632013499736786,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 25,
+        "D": 0.35975152254104614,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 26,
+        "D": 0.34957659244537354,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 27,
+        "D": 0.3380889296531677,
+        "decision": "DEFER"
+      },
+      {
+        "step": 28,
+        "D": 0.2598944902420044,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 29,
+        "D": 0.34447142481803894,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 30,
+        "D": 0.29020193219184875,
+        "decision": "TRIGGER_REPLAN"
+      }
+    ],
+    "phase_2_ice": [
+      {
+        "step": 1,
+        "D": 0.3106406033039093,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.2714386582374573,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.26820108294487,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.2666865587234497,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.2488553524017334,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.3030572831630707,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 7,
+        "D": 0.2649574279785156,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 8,
+        "D": 0.15501031279563904,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 9,
+        "D": 0.2957020699977875,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 10,
+        "D": 0.27930665016174316,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 11,
+        "D": 0.25823116302490234,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 12,
+        "D": 0.29707926511764526,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 13,
+        "D": 0.3111005127429962,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 14,
+        "D": 0.3461191654205322,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 15,
+        "D": 0.30786794424057007,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 25,
+        "D": 0.3661271035671234,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 26,
+        "D": 0.35029467940330505,
+        "decision": "DEFER"
+      },
+      {
+        "step": 27,
+        "D": 0.33543550968170166,
+        "decision": "DEFER"
+      },
+      {
+        "step": 28,
+        "D": 0.35922276973724365,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 29,
+        "D": 0.42553338408470154,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 30,
+        "D": 0.1927548199892044,
+        "decision": "COMMIT_TRAJECTORY"
+      }
+    ],
+    "phase_4_adapted": [
+      {
+        "step": 1,
+        "D": 0.22939299046993256,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.3343038260936737,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.32981815934181213,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.27129292488098145,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.2790091633796692,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.2772461175918579,
+        "decision": "DEFER"
+      },
+      {
+        "step": 7,
+        "D": 0.2690357565879822,
+        "decision": "DEFER"
+      },
+      {
+        "step": 8,
+        "D": 0.26607927680015564,
+        "decision": "DEFER"
+      },
+      {
+        "step": 9,
+        "D": 0.30499884486198425,
+        "decision": "DEFER"
+      },
+      {
+        "step": 10,
+        "D": 0.3058438301086426,
+        "decision": "DEFER"
+      },
+      {
+        "step": 11,
+        "D": 0.3219207525253296,
+        "decision": "DEFER"
+      },
+      {
+        "step": 12,
+        "D": 0.3356127142906189,
+        "decision": "DEFER"
+      },
+      {
+        "step": 13,
+        "D": 0.35614150762557983,
+        "decision": "DEFER"
+      },
+      {
+        "step": 14,
+        "D": 0.3756592571735382,
+        "decision": "DEFER"
+      },
+      {
+        "step": 15,
+        "D": 0.3972139060497284,
+        "decision": "DEFER"
+      },
+      {
+        "step": 16,
+        "D": 0.3372843563556671,
+        "decision": "DEFER"
+      },
+      {
+        "step": 17,
+        "D": 0.3778371512889862,
+        "decision": "DEFER"
+      },
+      {
+        "step": 18,
+        "D": 0.4008982181549072,
+        "decision": "DEFER"
+      },
+      {
+        "step": 19,
+        "D": 0.40663203597068787,
+        "decision": "DEFER"
+      },
+      {
+        "step": 20,
+        "D": 0.4399511516094208,
+        "decision": "DEFER"
+      },
+      {
+        "step": 21,
+        "D": 0.44133061170578003,
+        "decision": "DEFER"
+      },
+      {
+        "step": 22,
+        "D": 0.4527592360973358,
+        "decision": "DEFER"
+      },
+      {
+        "step": 23,
+        "D": 0.44591641426086426,
+        "decision": "DEFER"
+      },
+      {
+        "step": 24,
+        "D": 0.44244149327278137,
+        "decision": "DEFER"
+      }
+    ]
+  }
+}

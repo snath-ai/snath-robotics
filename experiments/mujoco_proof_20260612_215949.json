@@ -1,0 +1,331 @@
+{
+  "timestamp": "2026-06-12T20:59:49.386132+00:00",
+  "config": {
+    "n_steps": 20,
+    "seed": 42,
+    "friction_normal": 0.8,
+    "friction_ice": 0.05,
+    "logit_strength": 4.0,
+    "slip_concept": 1,
+    "adapter_correction": 0.65
+  },
+  "summary": {
+    "p1_mean_D": 0.0109,
+    "p2_mean_D": 0.6953,
+    "p4_mean_D": 0.6063,
+    "D_reduction_pct": 12.8,
+    "p1_commit_rate": 1.0,
+    "p2_impasse_rate": 1.0,
+    "p4_replan_rate": 0.0,
+    "ice_events": 20,
+    "adapters_built": 1
+  },
+  "results": {
+    "phase_1_normal": [
+      {
+        "step": 1,
+        "D": 0.017734093591570854,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 2,
+        "D": 0.007798201870173216,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 3,
+        "D": 0.0061204032972455025,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 4,
+        "D": 0.008926496841013432,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 5,
+        "D": 0.03170628100633621,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 6,
+        "D": 0.008562779985368252,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 7,
+        "D": 0.02665277197957039,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 8,
+        "D": 0.010719739831984043,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 9,
+        "D": 0.006372104398906231,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 10,
+        "D": 0.008341307751834393,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 11,
+        "D": 0.0043235039338469505,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 12,
+        "D": 0.009525532834231853,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 13,
+        "D": 0.005056414287537336,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 14,
+        "D": 0.010318296030163765,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 15,
+        "D": 0.01096874289214611,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 16,
+        "D": 0.012160902842879295,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 17,
+        "D": 0.006244986783713102,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 18,
+        "D": 0.013988378457725048,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 19,
+        "D": 0.00537065276876092,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 20,
+        "D": 0.007954209111630917,
+        "decision": "COMMIT_TRAJECTORY"
+      }
+    ],
+    "phase_2_ice": [
+      {
+        "step": 1,
+        "D": 0.6949203610420227,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 2,
+        "D": 0.6949045658111572,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 3,
+        "D": 0.6950309872627258,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 4,
+        "D": 0.694234311580658,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 5,
+        "D": 0.6954482793807983,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 6,
+        "D": 0.6952341794967651,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 7,
+        "D": 0.6960837244987488,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 8,
+        "D": 0.6960735321044922,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 9,
+        "D": 0.6950348615646362,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 10,
+        "D": 0.6950997710227966,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 11,
+        "D": 0.6944847702980042,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 12,
+        "D": 0.6970531940460205,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 13,
+        "D": 0.6958475708961487,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 14,
+        "D": 0.6968269348144531,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 15,
+        "D": 0.6954835057258606,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 16,
+        "D": 0.6951988339424133,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 17,
+        "D": 0.6950072050094604,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 18,
+        "D": 0.6950610876083374,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 19,
+        "D": 0.6956276297569275,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 20,
+        "D": 0.6932699680328369,
+        "decision": "STRUCTURAL_IMPASSE"
+      }
+    ],
+    "phase_4_adapted": [
+      {
+        "step": 1,
+        "D": 0.6057016849517822,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 2,
+        "D": 0.6089041829109192,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 3,
+        "D": 0.6027855277061462,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 4,
+        "D": 0.6070950627326965,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 5,
+        "D": 0.6044511198997498,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 6,
+        "D": 0.6042885184288025,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 7,
+        "D": 0.6047539710998535,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 8,
+        "D": 0.6069952845573425,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 9,
+        "D": 0.6073529720306396,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 10,
+        "D": 0.606632649898529,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 11,
+        "D": 0.6079443097114563,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 12,
+        "D": 0.6068606376647949,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 13,
+        "D": 0.6094540953636169,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 14,
+        "D": 0.6048523187637329,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 15,
+        "D": 0.6095602512359619,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 16,
+        "D": 0.6011770963668823,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 17,
+        "D": 0.603706419467926,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 18,
+        "D": 0.6085299253463745,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 19,
+        "D": 0.6097044348716736,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 20,
+        "D": 0.6053354144096375,
+        "decision": "STRUCTURAL_IMPASSE"
+      }
+    ]
+  }
+}

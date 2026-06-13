@@ -68,7 +68,7 @@ class VisionEncoder(nn.Module):
         Returns:
             z_vision: (B, embed_dim) normalised latent.
         """
-        return F.normalize(self.proj(x), dim=-1)
+        return self.proj(x)   # raw LayerNorm output — router softmax handles normalisation
 
     def load_lora(self, pt_path: str) -> None:
         """

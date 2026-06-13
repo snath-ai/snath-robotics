@@ -78,7 +78,7 @@ class ProprioceptiveEncoder(nn.Module):
             z_proprio: (B, embed_dim) normalised latent.
         """
         x = torch.cat([imu, tactile], dim=-1)
-        return F.normalize(self.proj(x), dim=-1)
+        return self.proj(x)   # raw LayerNorm output — router softmax handles normalisation
 
     def load_lora(self, pt_path: str) -> None:
         """

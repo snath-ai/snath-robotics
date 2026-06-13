@@ -1,0 +1,256 @@
+{
+  "summary": {
+    "p1_mean_D": 0.2035,
+    "p1_commit": 0.8333,
+    "p2_mean_D": 0.4299,
+    "p2_rate": 0.95,
+    "p4_mean_D": 0.1494,
+    "p4_replan": 0.1905,
+    "D_drop_pct": 65.2,
+    "ice_events": 19,
+    "adapters_built": 1
+  },
+  "results": {
+    "phase_1_normal": [
+      {
+        "step": 28,
+        "D": 0.1457444727420807,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 29,
+        "D": 0.1422286033630371,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 30,
+        "D": 0.1932062804698944,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 31,
+        "D": 0.25653547048568726,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 32,
+        "D": 0.23474662005901337,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 33,
+        "D": 0.24875669181346893,
+        "decision": "COMMIT_TRAJECTORY"
+      }
+    ],
+    "phase_2_ice": [
+      {
+        "step": 1,
+        "D": 0.5485223531723022,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 2,
+        "D": 0.6422375440597534,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 3,
+        "D": 0.6728087663650513,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 4,
+        "D": 0.6800236105918884,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 5,
+        "D": 0.6799350380897522,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 6,
+        "D": 0.6823301911354065,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 7,
+        "D": 0.6809588670730591,
+        "decision": "STRUCTURAL_IMPASSE"
+      },
+      {
+        "step": 37,
+        "D": 0.25179919600486755,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 38,
+        "D": 0.2553263008594513,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 39,
+        "D": 0.28481951355934143,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 40,
+        "D": 0.3188501000404358,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 41,
+        "D": 0.3044204115867615,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 42,
+        "D": 0.35712048411369324,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 43,
+        "D": 0.277506560087204,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 44,
+        "D": 0.3425237238407135,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 45,
+        "D": 0.46624019742012024,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 46,
+        "D": 0.466042160987854,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 47,
+        "D": 0.257601261138916,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 48,
+        "D": 0.17891228199005127,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 49,
+        "D": 0.25013163685798645,
+        "decision": "TRIGGER_REPLAN"
+      }
+    ],
+    "phase_4_adapted": [
+      {
+        "step": 1,
+        "D": 0.1795845776796341,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 2,
+        "D": 0.1422978639602661,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 3,
+        "D": 0.13905486464500427,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 4,
+        "D": 0.14968840777873993,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 5,
+        "D": 0.07381614297628403,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 6,
+        "D": 0.03869779780507088,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 7,
+        "D": 0.06012425571680069,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 8,
+        "D": 0.038948915898799896,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 9,
+        "D": 0.08029987663030624,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 10,
+        "D": 0.02302931807935238,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 11,
+        "D": 0.09091802686452866,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 12,
+        "D": 0.12392815202474594,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 13,
+        "D": 0.14915731549263,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 14,
+        "D": 0.15315894782543182,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 44,
+        "D": 0.25756192207336426,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 45,
+        "D": 0.207588791847229,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 46,
+        "D": 0.17311523854732513,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 47,
+        "D": 0.30291548371315,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 48,
+        "D": 0.1686498522758484,
+        "decision": "COMMIT_TRAJECTORY"
+      },
+      {
+        "step": 49,
+        "D": 0.3114114999771118,
+        "decision": "TRIGGER_REPLAN"
+      },
+      {
+        "step": 50,
+        "D": 0.27377715706825256,
+        "decision": "TRIGGER_REPLAN"
+      }
+    ]
+  }
+}

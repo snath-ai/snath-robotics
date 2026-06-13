@@ -1,0 +1,329 @@
+{
+  "timestamp": "2026-06-12T20:54:56.451948+00:00",
+  "config": {
+    "n_steps": 20,
+    "seed": 42,
+    "friction_normal": 0.8,
+    "friction_ice": 0.05,
+    "base_noise": 0.15,
+    "adapter_correction": 0.0
+  },
+  "summary": {
+    "p1_mean_D": 0.1561,
+    "p2_mean_D": 0.1432,
+    "p4_mean_D": 0.139,
+    "D_reduction_pct": 2.9,
+    "p1_commit_rate": 0.0,
+    "p2_impasse_rate": 0.0,
+    "ice_events": 0,
+    "adapters_built": 0
+  },
+  "results": {
+    "phase_1_normal": [
+      {
+        "step": 1,
+        "D": 0.1592165231704712,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.18650326132774353,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.1533443182706833,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.14018480479717255,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.18548409640789032,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.12933653593063354,
+        "decision": "DEFER"
+      },
+      {
+        "step": 7,
+        "D": 0.08929170668125153,
+        "decision": "DEFER"
+      },
+      {
+        "step": 8,
+        "D": 0.15523399412631989,
+        "decision": "DEFER"
+      },
+      {
+        "step": 9,
+        "D": 0.16338439285755157,
+        "decision": "DEFER"
+      },
+      {
+        "step": 10,
+        "D": 0.17232617735862732,
+        "decision": "DEFER"
+      },
+      {
+        "step": 11,
+        "D": 0.1495325267314911,
+        "decision": "DEFER"
+      },
+      {
+        "step": 12,
+        "D": 0.1553172469139099,
+        "decision": "DEFER"
+      },
+      {
+        "step": 13,
+        "D": 0.17954930663108826,
+        "decision": "DEFER"
+      },
+      {
+        "step": 14,
+        "D": 0.18601077795028687,
+        "decision": "DEFER"
+      },
+      {
+        "step": 15,
+        "D": 0.11364538222551346,
+        "decision": "DEFER"
+      },
+      {
+        "step": 16,
+        "D": 0.19318096339702606,
+        "decision": "DEFER"
+      },
+      {
+        "step": 17,
+        "D": 0.1779634952545166,
+        "decision": "DEFER"
+      },
+      {
+        "step": 18,
+        "D": 0.18066033720970154,
+        "decision": "DEFER"
+      },
+      {
+        "step": 19,
+        "D": 0.1295313835144043,
+        "decision": "DEFER"
+      },
+      {
+        "step": 20,
+        "D": 0.12298575043678284,
+        "decision": "DEFER"
+      }
+    ],
+    "phase_2_ice": [
+      {
+        "step": 1,
+        "D": 0.16572205722332,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.11350338160991669,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.21146844327449799,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.14332781732082367,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.16099126636981964,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.11677464097738266,
+        "decision": "DEFER"
+      },
+      {
+        "step": 7,
+        "D": 0.1754959225654602,
+        "decision": "DEFER"
+      },
+      {
+        "step": 8,
+        "D": 0.17709027230739594,
+        "decision": "DEFER"
+      },
+      {
+        "step": 9,
+        "D": 0.10607790946960449,
+        "decision": "DEFER"
+      },
+      {
+        "step": 10,
+        "D": 0.06270065903663635,
+        "decision": "DEFER"
+      },
+      {
+        "step": 11,
+        "D": 0.16028408706188202,
+        "decision": "DEFER"
+      },
+      {
+        "step": 12,
+        "D": 0.15274859964847565,
+        "decision": "DEFER"
+      },
+      {
+        "step": 13,
+        "D": 0.1304789036512375,
+        "decision": "DEFER"
+      },
+      {
+        "step": 14,
+        "D": 0.15200455486774445,
+        "decision": "DEFER"
+      },
+      {
+        "step": 15,
+        "D": 0.10663225501775742,
+        "decision": "DEFER"
+      },
+      {
+        "step": 16,
+        "D": 0.14980828762054443,
+        "decision": "DEFER"
+      },
+      {
+        "step": 17,
+        "D": 0.15782146155834198,
+        "decision": "DEFER"
+      },
+      {
+        "step": 18,
+        "D": 0.16032922267913818,
+        "decision": "DEFER"
+      },
+      {
+        "step": 19,
+        "D": 0.13941603899002075,
+        "decision": "DEFER"
+      },
+      {
+        "step": 20,
+        "D": 0.12115893512964249,
+        "decision": "DEFER"
+      }
+    ],
+    "phase_4_adapted": [
+      {
+        "step": 1,
+        "D": 0.17026101052761078,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.15796248614788055,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.12994280457496643,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.1317528784275055,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.1940249651670456,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.15876655280590057,
+        "decision": "DEFER"
+      },
+      {
+        "step": 7,
+        "D": 0.14789223670959473,
+        "decision": "DEFER"
+      },
+      {
+        "step": 8,
+        "D": 0.1033114641904831,
+        "decision": "DEFER"
+      },
+      {
+        "step": 9,
+        "D": 0.14997024834156036,
+        "decision": "DEFER"
+      },
+      {
+        "step": 10,
+        "D": 0.14032819867134094,
+        "decision": "DEFER"
+      },
+      {
+        "step": 11,
+        "D": 0.1422272026538849,
+        "decision": "DEFER"
+      },
+      {
+        "step": 12,
+        "D": 0.1099383607506752,
+        "decision": "DEFER"
+      },
+      {
+        "step": 13,
+        "D": 0.1785304993391037,
+        "decision": "DEFER"
+      },
+      {
+        "step": 14,
+        "D": 0.14434905350208282,
+        "decision": "DEFER"
+      },
+      {
+        "step": 15,
+        "D": 0.13575543463230133,
+        "decision": "DEFER"
+      },
+      {
+        "step": 16,
+        "D": 0.13459956645965576,
+        "decision": "DEFER"
+      },
+      {
+        "step": 17,
+        "D": 0.11035002022981644,
+        "decision": "DEFER"
+      },
+      {
+        "step": 18,
+        "D": 0.1642870455980301,
+        "decision": "DEFER"
+      },
+      {
+        "step": 19,
+        "D": 0.14263036847114563,
+        "decision": "DEFER"
+      },
+      {
+        "step": 20,
+        "D": 0.03260742500424385,
+        "decision": "DEFER"
+      }
+    ]
+  }
+}

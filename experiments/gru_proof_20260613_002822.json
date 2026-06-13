@@ -1,0 +1,301 @@
+{
+  "summary": {
+    "p1_mean_D": 0.3378,
+    "p1_commit": 0.0,
+    "p2_mean_D": 0.3096,
+    "p2_rate": 0.0,
+    "p4_mean_D": 0.3494,
+    "p4_replan": 0.0,
+    "D_drop_pct": -12.9,
+    "ice_events": 0,
+    "adapters_built": 0
+  },
+  "results": {
+    "phase_1_normal": [
+      {
+        "step": 28,
+        "D": 0.34088242053985596,
+        "decision": "DEFER"
+      },
+      {
+        "step": 29,
+        "D": 0.33353912830352783,
+        "decision": "DEFER"
+      },
+      {
+        "step": 30,
+        "D": 0.33937573432922363,
+        "decision": "DEFER"
+      },
+      {
+        "step": 31,
+        "D": 0.34087222814559937,
+        "decision": "DEFER"
+      },
+      {
+        "step": 32,
+        "D": 0.3435925245285034,
+        "decision": "DEFER"
+      },
+      {
+        "step": 33,
+        "D": 0.3286408483982086,
+        "decision": "DEFER"
+      }
+    ],
+    "phase_2_ice": [
+      {
+        "step": 1,
+        "D": 0.21343235671520233,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.20180216431617737,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.2322845458984375,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.23098202049732208,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.25000837445259094,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.24802745878696442,
+        "decision": "DEFER"
+      },
+      {
+        "step": 7,
+        "D": 0.2572534382343292,
+        "decision": "DEFER"
+      },
+      {
+        "step": 37,
+        "D": 0.3164674639701843,
+        "decision": "DEFER"
+      },
+      {
+        "step": 38,
+        "D": 0.3525572419166565,
+        "decision": "DEFER"
+      },
+      {
+        "step": 39,
+        "D": 0.30406156182289124,
+        "decision": "DEFER"
+      },
+      {
+        "step": 40,
+        "D": 0.3255702555179596,
+        "decision": "DEFER"
+      },
+      {
+        "step": 41,
+        "D": 0.27406105399131775,
+        "decision": "DEFER"
+      },
+      {
+        "step": 42,
+        "D": 0.3819112181663513,
+        "decision": "DEFER"
+      },
+      {
+        "step": 43,
+        "D": 0.414482057094574,
+        "decision": "DEFER"
+      },
+      {
+        "step": 44,
+        "D": 0.4098604917526245,
+        "decision": "DEFER"
+      },
+      {
+        "step": 45,
+        "D": 0.4139195680618286,
+        "decision": "DEFER"
+      },
+      {
+        "step": 46,
+        "D": 0.3994792699813843,
+        "decision": "DEFER"
+      },
+      {
+        "step": 47,
+        "D": 0.3611389398574829,
+        "decision": "DEFER"
+      },
+      {
+        "step": 48,
+        "D": 0.3468976318836212,
+        "decision": "DEFER"
+      },
+      {
+        "step": 49,
+        "D": 0.25710248947143555,
+        "decision": "DEFER"
+      }
+    ],
+    "phase_4_adapted": [
+      {
+        "step": 1,
+        "D": 0.3990757465362549,
+        "decision": "DEFER"
+      },
+      {
+        "step": 2,
+        "D": 0.37300440669059753,
+        "decision": "DEFER"
+      },
+      {
+        "step": 3,
+        "D": 0.35653114318847656,
+        "decision": "DEFER"
+      },
+      {
+        "step": 4,
+        "D": 0.42298123240470886,
+        "decision": "DEFER"
+      },
+      {
+        "step": 5,
+        "D": 0.42484116554260254,
+        "decision": "DEFER"
+      },
+      {
+        "step": 6,
+        "D": 0.40405285358428955,
+        "decision": "DEFER"
+      },
+      {
+        "step": 7,
+        "D": 0.3897533118724823,
+        "decision": "DEFER"
+      },
+      {
+        "step": 8,
+        "D": 0.41108912229537964,
+        "decision": "DEFER"
+      },
+      {
+        "step": 9,
+        "D": 0.3937377631664276,
+        "decision": "DEFER"
+      },
+      {
+        "step": 10,
+        "D": 0.4070507287979126,
+        "decision": "DEFER"
+      },
+      {
+        "step": 11,
+        "D": 0.4074021577835083,
+        "decision": "DEFER"
+      },
+      {
+        "step": 12,
+        "D": 0.3782152533531189,
+        "decision": "DEFER"
+      },
+      {
+        "step": 13,
+        "D": 0.3512515425682068,
+        "decision": "DEFER"
+      },
+      {
+        "step": 14,
+        "D": 0.35751786828041077,
+        "decision": "DEFER"
+      },
+      {
+        "step": 15,
+        "D": 0.34198346734046936,
+        "decision": "DEFER"
+      },
+      {
+        "step": 16,
+        "D": 0.32707497477531433,
+        "decision": "DEFER"
+      },
+      {
+        "step": 17,
+        "D": 0.3405640721321106,
+        "decision": "DEFER"
+      },
+      {
+        "step": 18,
+        "D": 0.33305656909942627,
+        "decision": "DEFER"
+      },
+      {
+        "step": 19,
+        "D": 0.3089431822299957,
+        "decision": "DEFER"
+      },
+      {
+        "step": 20,
+        "D": 0.3132862150669098,
+        "decision": "DEFER"
+      },
+      {
+        "step": 21,
+        "D": 0.32344943284988403,
+        "decision": "DEFER"
+      },
+      {
+        "step": 22,
+        "D": 0.3259891867637634,
+        "decision": "DEFER"
+      },
+      {
+        "step": 23,
+        "D": 0.3122403919696808,
+        "decision": "DEFER"
+      },
+      {
+        "step": 24,
+        "D": 0.30630505084991455,
+        "decision": "DEFER"
+      },
+      {
+        "step": 25,
+        "D": 0.30941033363342285,
+        "decision": "DEFER"
+      },
+      {
+        "step": 26,
+        "D": 0.3168509900569916,
+        "decision": "DEFER"
+      },
+      {
+        "step": 27,
+        "D": 0.3036407232284546,
+        "decision": "DEFER"
+      },
+      {
+        "step": 28,
+        "D": 0.2858079969882965,
+        "decision": "DEFER"
+      },
+      {
+        "step": 29,
+        "D": 0.2882286012172699,
+        "decision": "DEFER"
+      },
+      {
+        "step": 30,
+        "D": 0.26881957054138184,
+        "decision": "DEFER"
+      }
+    ]
+  }
+}
