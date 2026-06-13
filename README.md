@@ -275,7 +275,7 @@ python test_temporal_decay.py
 - Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals.* [doi.org/10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128)
 - Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations.* [doi.org/10.5281/zenodo.20583318](https://doi.org/10.5281/zenodo.20583318)
 - Sajeev, A.V. (2026). *Snath Robotics: Multi-Stream Divergence Routing for Humanoid Robotics.* [doi.org/10.5281/zenodo.20517446](https://doi.org/10.5281/zenodo.20517446)
-- Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* (forthcoming — code in this repository)
+- Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* [doi.org/10.5281/zenodo.20682615](https://doi.org/10.5281/zenodo.20682615)
 
 ---
 
