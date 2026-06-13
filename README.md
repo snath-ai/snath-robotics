@@ -164,10 +164,10 @@ The temporal decay formula `W = exp(−λ · Δt)`, the identification/correctio
 
 ## PAV — MuJoCo Walker2d validation (June 2026)
 
-The PAV paper (*Physics Assumption Violations: Label-Free Detection via
-Concept-Space Routing in Deployed Robotic Systems*, Sajeev 2026) reports
-the first end-to-end validation of the V1–V6 routing contract on genuine
-physical dynamics.
+[*Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems*](https://doi.org/10.5281/zenodo.20682615)
+(Sajeev 2026) · fifth paper in the Lár series · [doi:10.5281/zenodo.20682615](https://doi.org/10.5281/zenodo.20682615)
+
+The PAV paper reports the first end-to-end validation of the V1–V6 routing contract on genuine physical dynamics.
 
 **Setup.** MuJoCo Walker2d-v5, 17-dim proprioceptive state, random policy.
 GRU encoder (H=64, G=8, L=30, trained 150 epochs on 50 000 windows per terrain
@@ -270,12 +270,17 @@ python test_temporal_decay.py
 
 ## Research
 
+**Lár series** (DAS → UCR → LTL → EIM → PAV):
+
 - Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20278781](https://doi.org/10.5281/zenodo.20278781)
 - Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
 - Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals.* [doi.org/10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128)
 - Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations.* [doi.org/10.5281/zenodo.20583318](https://doi.org/10.5281/zenodo.20583318)
-- Sajeev, A.V. (2026). *Snath Robotics: Multi-Stream Divergence Routing for Humanoid Robotics.* [doi.org/10.5281/zenodo.20517446](https://doi.org/10.5281/zenodo.20517446)
 - Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* [doi.org/10.5281/zenodo.20682615](https://doi.org/10.5281/zenodo.20682615)
+
+**Architecture paper:**
+
+- Sajeev, A.V. (2026). *Snath Robotics: Multi-Stream Divergence Routing for Humanoid Robotics.* [doi.org/10.5281/zenodo.20517446](https://doi.org/10.5281/zenodo.20517446)
 
 ---
 
