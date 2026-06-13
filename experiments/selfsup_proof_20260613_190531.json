@@ -1,0 +1,15 @@
+{
+  "gap1_closed": false,
+  "final_quality": {
+    "within_normal": 0.0513,
+    "within_ice": 0.2694,
+    "between": 0.2215,
+    "centroid_angle": 20.8,
+    "conf_normal": 0.2578,
+    "conf_ice": 0.3234,
+    "router_D_normal": 0.2591,
+    "router_D_ice": 0.2901,
+    "D_gap": 0.031
+  },
+  "n_rounds": 11
+}

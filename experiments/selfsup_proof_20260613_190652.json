@@ -1,0 +1,32 @@
+{
+  "timestamp": "20260613_190652",
+  "self_supervised": {
+    "phase1_conf": 0.3311,
+    "phase2_commit_pct": 0.0,
+    "phase2_mean_D": 0.2741,
+    "phase2_n_decisions": 2,
+    "phase3_pav_pct": 0.0,
+    "phase3_mean_D": 0.1807,
+    "phase3_n_decisions": 7,
+    "phase3_dhard_events": 0,
+    "phase4_dmn_ok": false,
+    "phase4_events_logged": 7,
+    "phase5_mean_D": 0.2122,
+    "phase5_div_reduction_pct": -17.4
+  },
+  "supervised": {
+    "phase1_conf": 0.927,
+    "phase2_commit_pct": 100.0,
+    "phase2_mean_D": 0.1157,
+    "phase2_n_decisions": 2,
+    "phase3_pav_pct": 0.0,
+    "phase3_mean_D": 0.1642,
+    "phase3_n_decisions": 7,
+    "phase3_dhard_events": 0,
+    "phase4_dmn_ok": false,
+    "phase4_events_logged": 7,
+    "phase5_mean_D": 0.2621,
+    "phase5_div_reduction_pct": -59.6
+  },
+  "gap1_closed": false
+}

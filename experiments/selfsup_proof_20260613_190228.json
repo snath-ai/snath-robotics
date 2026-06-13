@@ -1,0 +1,16 @@
+{
+  "gap1_closed": false,
+  "final_quality": {
+    "within_normal": 0.3796,
+    "within_ice": 0.3445,
+    "between": 0.4931,
+    "separation": 0.1136,
+    "centroid_angle": 37.4,
+    "conf_normal": 0.2916,
+    "conf_ice": 0.2747,
+    "router_D_normal": 0.2202,
+    "router_D_ice": 0.2343,
+    "D_gap": 0.0141
+  },
+  "rounds": 9
+}
