@@ -40,11 +40,17 @@ sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))
 from dhard import DHardQueue, RoboticsDHardEvent
 from dmn.sigreg import SIGRegLoss
 
+# AbstractDMN — resolved via lar-dmn path dependency
+try:
+    from brain.abstract_dmn import AbstractDMN
+except ImportError:
+    from abc import ABC as AbstractDMN  # graceful fallback during bootstrap
+
 _ADAPTER_KEY = b"snath_robotics_adapter_sovereignty_2026"
 _MIN_EVENTS  = 4
 
 
-class RoboticsDMN:
+class RoboticsDMN(AbstractDMN):
     """
     Default Mode Network for Snath Robotics.
 
@@ -201,6 +207,27 @@ class RoboticsDMN:
                       f"LoRA loss={loss.item():.4f}")
 
         return built
+
+    # ------------------------------------------------------------------
+    # AbstractDMN implementation
+    # ------------------------------------------------------------------
+
+    def ingest(self, event: "RoboticsDHardEvent") -> None:
+        """Append a D-hard event to the queue (Tier 1 — episodic)."""
+        self.queue.push(event)
+
+    def recall(self, query: str, **kwargs) -> dict:
+        """
+        Return the System 1 centroid cache entry for the given failure class
+        (Tier 2 — semantic). Returns {} if no adapter exists for that class.
+        """
+        adapter_path = self.adapter_dir / f"{query}.json"
+        if adapter_path.exists():
+            try:
+                return json.loads(adapter_path.read_text())
+            except Exception:
+                pass
+        return {}
 
     def stats(self) -> dict:
         return self.queue.stats()
