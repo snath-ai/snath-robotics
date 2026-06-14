@@ -80,7 +80,7 @@ The proprioceptive stream reports an asymmetry the visual stream cannot see. The
 
 ## Identification / correction trust asymmetry
 
-Formalised in *Architecture Is All You Need* (Sajeev 2026), §3.4 Remark (Temporal Decay and Synaptic Depression):
+Formalised in *The Lár Training Loop* ([doi:10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758), Sajeev 2026):
 
 **System 1 — identification — trust-invariant.**
 Centroid matching on the divergence vector fingerprint. The geometric signature of a sensor failure class is durable — the physics of ice does not change with time. System 1 fires regardless of adapter age and correctly names the failure class even when System 2 is fully stale.
@@ -127,7 +127,7 @@ The world annotates. Contact physics, joint torque, friction — these are objec
 | Untrained predictor — random baseline | 0.4529 | 0.4568 | 0.4490 |
 | Trained on normal pairs only, no labels | **0.9365** | **0.8960** | **0.9770** |
 
-AUROC gain of +0.48 with zero human annotation. D_pred ratio: 2.8× (anomalous pairs vs normal pairs). This is LeCun's JEPA claim applied concretely. See §8.5 of *Architecture Is All You Need* ([doi:10.5281/zenodo.20419182](https://doi.org/10.5281/zenodo.20419182)) for the formal annotation burden theorem.
+AUROC gain of +0.48 with zero human annotation. D_pred ratio: 2.8× (anomalous pairs vs normal pairs). This is LeCun's JEPA claim applied concretely. See *The Lár Training Loop* ([doi:10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758)) for the formal annotation burden theorem.
 
 On real-world data — 5,000 CLIP ViT-B/32 pairs from COCO val2017 — the same label-free predictor achieves AUROC **0.9997**, with JEPA prediction error collapsing from 1.012 to 0.006 (159× reduction). Trigger rate: 56.46% of pairs flagged as hard (D ≥ τ_low). Isotropy preserved throughout.
 
@@ -143,7 +143,7 @@ D_hard = { i : D_pred_i > threshold  or  Δᵢ ≥ δ  and  rᵢ = TRIGGER_REPLA
 
 During the consolidation cycle, `RoboticsDMN` clusters events by failure class, generates a System 1 JSON centroid cache and a System 2 signed LoRA `.pt` file, and saves both to `models/adapters/`. The predictor is retrained on the accumulated buffer each cycle, improving anomaly detection in the next pass. The fleet picks up new adapters on its next `adapter_router.refresh()` call.
 
-SIGReg (Sketched Isotropic Gaussian Regularisation, AIA §SIGReg) is wired into the training loop with `lambda_iso=0.0` by default — inert until AIA Experiment 3 calibrates the optimal weight.
+SIGReg (Sketched Isotropic Gaussian Regularisation, LTL §SIGReg) is wired into the training loop with `lambda_iso=0.0` by default — inert until the calibration experiment determines the optimal weight.
 
 ---
 
@@ -272,15 +272,11 @@ python test_temporal_decay.py
 
 **Lár series** (DAS → UCR → LTL → EIM → PAV):
 
-- Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20278781](https://doi.org/10.5281/zenodo.20278781)
-- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
-- Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals.* [doi.org/10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128)
-- Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations.* [doi.org/10.5281/zenodo.20583318](https://doi.org/10.5281/zenodo.20583318)
+- Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20525227](https://doi.org/10.5281/zenodo.20525227)
+- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20453093](https://doi.org/10.5281/zenodo.20453093)
+- Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals, Self-Curating Curriculum, LoRA Adapter Integration, Sketched Isotropic Gaussian Regularization, and Annotation-Free Continual Learning.* [doi.org/10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758)
+- Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations for Encoder-Invariant and Predictive Continual Learning.* [doi.org/10.5281/zenodo.20614051](https://doi.org/10.5281/zenodo.20614051)
 - Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* [doi.org/10.5281/zenodo.20682615](https://doi.org/10.5281/zenodo.20682615)
-
-**Architecture paper:**
-
-- Sajeev, A.V. (2026). *Snath Robotics: Multi-Stream Divergence Routing for Humanoid Robotics.* [doi.org/10.5281/zenodo.20517446](https://doi.org/10.5281/zenodo.20517446)
 
 ---
 
