@@ -7,7 +7,7 @@ Generates:
   - results.json                   (numbers for the paper)
 
 Usage:
-    poetry run python experiments/run_experiment.py
+    poetry run python experiments/persist/run_experiment.py
 """
 
 from __future__ import annotations
@@ -18,15 +18,15 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from environments.ice_world import IceWorldEnv, ZONES
-from experiments.persistence_loop import (
+from ice_world import IceWorldEnv, ZONES
+from persistence_loop import (
     Adaptor, AdaptorLibrary, AdaptorTournament, PersistenceLoop,
 )
 
@@ -37,7 +37,7 @@ from experiments.persistence_loop import (
 SEEDS                = [42, 7, 13, 99, 2026]
 BASELINE_STEPS       = 300      # total obs to collect across episodes
 STEPS_PER_ZONE       = 80       # steps per zone in detection experiment
-FIGURES_DIR          = Path(__file__).parent.parent / "figures"
+FIGURES_DIR          = Path(__file__).parent / "figures"
 FIGURES_DIR.mkdir(exist_ok=True)
 PHASE1_N_CANDIDATES  = 40       # delta candidates evaluated in Phase 1 search
 
