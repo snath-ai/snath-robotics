@@ -268,15 +268,55 @@ python test_temporal_decay.py
 
 ---
 
+## PERSIST — IceWorld validation (June 2026)
+
+[*PERSIST: Proprioceptive Error Resolution with Scope-bounded Invariant Signal Tracking*](https://github.com/snath-ai/snath-robotics)
+(Sajeev 2026) · sixth paper in the Lár series
+
+PERSIST formalises the response side of physics assumption violations. Where PAV detects that a physics assumption has been violated, PERSIST asks: how does the robot know whether its corrective response worked, how much to adjust, when to try a different approach, and when to give up and ask for help?
+
+**The PERSIST invariant.** The divergence signal D(t) that detects a physics violation is the same signal that verifies whether the adaptive response resolved it. One stream. Two purposes.
+
+**Setup.** MuJoCo Hopper-v5, IceWorld corridor with five sequential physics perturbation zones (Normal / Ice / Ice+Slope / Force / Novel). No zone labels available to the robot. Five seeds (42, 7, 13, 99, 2026).
+
+**Six-phase protocol.**
+
+| Phase | Scenario | Success | Steps (mean±std) | Notes |
+|---|---|---|---|---|
+| 1 — Encounter | Ice, no adaptor | 0/5 (0%) | — | Escalated; adaptor trained (+0.20±0.01/step) |
+| 2 — First try | Ice, D-hard trained adaptor | 5/5 (100%) | 8.0 ± 0.6 | Trained adaptor resolves ice violation |
+| 3 — Scope boundary | Ice+Slope, primitives only | 0/5 (0%) | — | Scope exceeded: primitives insufficient |
+| 4 — Exhaustion | Novel (all three) | 0/5 (0%) | — | Escalated: novel combined zone |
+| 5c — Memory (cold) | Ice, no memory | 5/5 (100%) | 50.0 ± 2.4 | 40 search + ~10 convergence decisions |
+| 5w — Memory (warm) | Ice, stored adaptor | 5/5 (100%) | 7.8 ± 0.7 | **6.4× speedup** vs cold (measured) |
+| 6 — Tournament | Three candidates | 0/5\* (0%) | — | Tournament correct 5/5; 55% D reduction |
+
+\* Phase 6 persistence resolution requires D < 0.8; scope boundary fires at D ≈ 1.0 — correct behaviour for a compound zone.
+
+**Memory speedup.** Phase 5-cold re-runs the full N_c=40-candidate delta search on second encounter (50.0±2.4 total decisions). Phase 5-warm skips the search entirely using the stored adaptor (7.8±0.7 decisions) — a measured 6.4× reduction in episode budget. No unit mixing: both numbers are decisions in the same online loop.
+
+```bash
+# Run the full six-phase PERSIST protocol (all 5 seeds, ~10 min)
+python experiments/persist/run_experiment.py
+
+# The persistence loop implementation (AdaptorLibrary, AdaptorTournament, PersistenceLoop)
+# experiments/persist/persistence_loop.py
+```
+
+Results are printed per-seed and aggregated; the memory speedup ratio is reported in `summary["memory_speedup"]`.
+
+---
+
 ## Research
 
-**Lár series** (DAS → UCR → LTL → EIM → PAV):
+**Lár series** (DAS → UCR → LTL → EIM → PAV → PERSIST):
 
 - Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20525227](https://doi.org/10.5281/zenodo.20525227)
 - Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20453093](https://doi.org/10.5281/zenodo.20453093)
 - Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals, Self-Curating Curriculum, LoRA Adapter Integration, Sketched Isotropic Gaussian Regularization, and Annotation-Free Continual Learning.* [doi.org/10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758)
 - Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations for Encoder-Invariant and Predictive Continual Learning.* [doi.org/10.5281/zenodo.20614051](https://doi.org/10.5281/zenodo.20614051)
 - Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* [doi.org/10.5281/zenodo.20682615](https://doi.org/10.5281/zenodo.20682615)
+- Sajeev, A.V. (2026). *PERSIST: Proprioceptive Error Resolution with Scope-bounded Invariant Signal Tracking.* doi:10.5281/zenodo.PENDING
 
 ---
 
