@@ -31,6 +31,58 @@ from persistence_loop import (
 )
 
 # ---------------------------------------------------------------------------
+# Pretrained walking policy (SAC Hopper-v3, used only for zone detection)
+# ---------------------------------------------------------------------------
+
+_SAC_MODEL_PATH = (
+    Path.home() / ".cache/huggingface/hub"
+    / "models--sb3--sac-Hopper-v3"
+    / "snapshots/8346bf5c56f201f0e38ad9acb06e093aad582a44"
+    / "sac-Hopper-v3.zip"
+)
+
+def _load_walking_policy():
+    from stable_baselines3 import SAC
+    return SAC.load(str(_SAC_MODEL_PATH))
+
+_WALKING_POLICY = None
+
+def walking_policy(obs: np.ndarray) -> np.ndarray:
+    """Deterministic SAC policy trained on Hopper-v3 (obs-compatible with v5)."""
+    global _WALKING_POLICY
+    if _WALKING_POLICY is None:
+        _WALKING_POLICY = _load_walking_policy()
+    action, _ = _WALKING_POLICY.predict(obs, deterministic=True)
+    return action.astype(np.float32)
+
+
+_CPG_STEP = 0
+
+def cpg_policy(obs: np.ndarray) -> np.ndarray:
+    """
+    Sinusoidal central pattern generator for Hopper zone detection.
+
+    Uses a fixed-rhythm oscillator with no sensory feedback. Produces stable
+    hopping on normal terrain (friction=1.0) but fails on ice (friction=0.005)
+    because the foot can't push off at the expected phase, causing divergence
+    in z-velocity and angle observations.
+    """
+    global _CPG_STEP
+    _CPG_STEP += 1
+    t = _CPG_STEP * 0.008  # MuJoCo dt
+    freq = 2.2              # Hz — tuned for Hopper natural frequency
+    phi = 2.0 * np.pi * freq * t
+    a0 = np.float32( 0.7 * np.sin(phi))           # hip: forward swing
+    a1 = np.float32( 0.9 * np.sin(phi + 1.1))     # knee: extension, delayed
+    a2 = np.float32( 0.8 * np.sin(phi + 0.55))    # ankle: push-off, mid-phase
+    return np.clip(np.array([a0, a1, a2]), -1.0, 1.0).astype(np.float32)
+
+
+def reset_cpg():
+    global _CPG_STEP
+    _CPG_STEP = 0
+
+# ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
 
@@ -97,27 +149,51 @@ def build_baseline(env: IceWorldEnv, seed: int,
 
 def experiment_detection(seed: int) -> dict[str, list[float]]:
     """
-    Build baseline on Normal zone, then force each zone and collect D(t).
+    Measure D(t) per zone using a CPG policy and short divergence window.
+
+    Protocol:
+      1. Build baseline from CPG walking on normal terrain (window=3).
+      2. Per zone: reset, inject zone physics from step 1, collect D(t)
+         for STEPS_PER_ZONE steps without any normal-terrain warmup.
+
+    Using divergence_window=3 means each D(t) value reflects mainly the
+    current 3 observations, not a 20-step tail of normal-terrain history.
+    The mean D over 80 steps then clearly separates zones.
     """
-    rng = np.random.default_rng(seed)
-    env = IceWorldEnv(baseline_steps=BASELINE_STEPS, divergence_window=20)
-    build_baseline(env, seed, rng)
+    DETECT_WINDOW = 3
+
+    # Build CPG baseline on normal terrain
+    env = IceWorldEnv(baseline_steps=BASELINE_STEPS,
+                      divergence_window=DETECT_WINDOW)
+    obs, _ = env.reset(seed=seed, keep_baseline=False)
+    reset_cpg()
+    collected = 0
+    while collected < BASELINE_STEPS:
+        env._current_zone = "normal"
+        action = cpg_policy(obs)
+        obs, _, term, trunc, info = env.step(action)
+        if info["zone"] == "normal":
+            collected += 1
+        if term or trunc:
+            obs, _ = env.reset(seed=seed, keep_baseline=True)
+            reset_cpg()
 
     saved_mean = env._baseline_mean.copy()
     saved_std  = env._baseline_std.copy()
 
     results: dict[str, list[float]] = {}
     for zone in ["normal", "ice", "ice_slope", "force", "novel"]:
-        # Fresh episode, keep baseline, force zone from the start
         obs, _ = env.reset(seed=seed, keep_baseline=True)
         env._baseline_mean = saved_mean.copy()
         env._baseline_std  = saved_std.copy()
         env._baseline_built = True
-        env._current_zone = zone
+        env._obs_window.clear()
+        reset_cpg()
 
         divs = []
         for _ in range(STEPS_PER_ZONE):
-            action = stable_policy(obs, rng=rng)
+            env._current_zone = zone
+            action = cpg_policy(obs)
             obs, _, terminated, truncated, info = env.step(action)
             divs.append(info["divergence"])
             if terminated or truncated:
@@ -125,7 +201,8 @@ def experiment_detection(seed: int) -> dict[str, list[float]]:
                 env._baseline_mean = saved_mean.copy()
                 env._baseline_std  = saved_std.copy()
                 env._baseline_built = True
-                env._current_zone = zone
+                env._obs_window.clear()
+                reset_cpg()
         results[zone] = divs
 
     env.close()
@@ -338,10 +415,28 @@ def run_phase_experiment(seed: int, sigs: dict) -> dict:
         return adaptor, best_rate
 
     # ----------------------------------------------------------------
+    # Baseline D — normal zone (no perturbation, should stay below thresh)
+    # ----------------------------------------------------------------
+    norm_obs, _ = env.reset(seed=seed, keep_baseline=True)
+    env._baseline_mean = saved_mean.copy(); env._baseline_std = saved_std.copy()
+    env._baseline_built = True
+    norm_divs = []
+    for _ in range(20):
+        env._current_zone = "normal"
+        action = stable_policy(norm_obs, rng=rng)
+        norm_obs, _, nt, ntr, ninfo = env.step(action)
+        norm_divs.append(ninfo["divergence"])
+        if nt or ntr:
+            break
+    results["normal_entry_div"] = float(np.mean(norm_divs)) if norm_divs else 0.0
+    results["normal_final_div"] = results["normal_entry_div"]
+
+    # ----------------------------------------------------------------
     # Phase 1: Encounter — ice zone, no adaptor → escalate, train
     # ----------------------------------------------------------------
     print("\n=== Phase 1: Encounter (Ice, no adaptor) ===")
     obs, enc_sig, current_div = get_entry_divergence("ice", warm_steps=20)
+    results["ice_entry_div"] = float(current_div)
 
     enc_lib = AdaptorLibrary(similarity_threshold=0.5)
     step_fn1 = make_step_fn("ice")
@@ -397,6 +492,7 @@ def run_phase_experiment(seed: int, sigs: dict) -> dict:
     # ----------------------------------------------------------------
     print("\n=== Phase 3: Scope Boundary (Ice+Slope, primitives only) ===")
     obs, _, current_div = get_entry_divergence("ice_slope")
+    results["ice_slope_entry_div"] = float(current_div)
 
     # Single-adaptor library only — no compound adaptor
     lib3 = build_single_library(sigs)
@@ -421,6 +517,7 @@ def run_phase_experiment(seed: int, sigs: dict) -> dict:
     # ----------------------------------------------------------------
     print("\n=== Phase 4: Exhaustion (Novel) ===")
     obs, _, current_div = get_entry_divergence("novel")
+    results["novel_entry_div"] = float(current_div)
 
     lib4 = build_library(sigs)
     step_fn4 = make_step_fn("novel")
@@ -638,35 +735,64 @@ def plot_divergence_curves(all_results: list[dict]):
     print(f"\nFigure saved: {out}")
 
 
-def plot_zone_detection(all_detection: list[dict]):
-    zones = ["normal", "ice", "ice_slope", "force", "novel"]
-    data_per_zone = {z: [] for z in zones}
-    for det in all_detection:
-        for z in zones:
-            data_per_zone[z].extend(det.get(z, []))
+def plot_zone_detection(all_results: list[dict]):
+    """
+    Grouped bar chart: entry D vs final D per zone (n=5 seeds).
+
+    Entry D  — divergence when the persistence loop activates (detection).
+    Final D  — divergence after the loop terminates (resolution or escalation).
+
+    Directly validates the PERSIST invariant: one signal, two purposes.
+      Normal     : entry D below threshold — no loop triggered.
+      Ice        : entry D above threshold → loop resolves (final D below threshold).
+      Ice+Slope  : entry D above threshold → loop escalates (final D stays high).
+      Novel      : entry D above threshold → loop escalates (final D stays high).
+    """
+    zone_cfg = [
+        ("ice",       "Ice",        "ice_entry_div",       "phase2_first_try"),
+        ("ice_slope", "Ice+Slope",  "ice_slope_entry_div", "phase3_composition"),
+        ("novel",     "Novel",      "novel_entry_div",     "phase4_exhaustion"),
+    ]
+
+    entry_means, entry_stds = [], []
+    final_means, final_stds = [], []
+
+    for _, _, ek, fk in zone_cfg:
+        ev = [r[ek] for r in all_results if ek in r]
+        if fk in ("normal_final_div",):
+            fv = [r[fk] for r in all_results if fk in r]
+        else:
+            fv = [r[fk]["final_div"] for r in all_results if fk in r]
+        entry_means.append(float(np.mean(ev)) if ev else 0.0)
+        entry_stds.append(float(np.std(ev))  if ev else 0.0)
+        final_means.append(float(np.mean(fv)) if fv else 0.0)
+        final_stds.append(float(np.std(fv))  if fv else 0.0)
+
+    labels = [cfg[1] for cfg in zone_cfg]
+    x      = np.arange(len(labels))
+    w      = 0.35
 
     fig, ax = plt.subplots(figsize=(8, 4))
-    bp = ax.boxplot(
-        [data_per_zone[z] for z in zones],
-        tick_labels=[z.replace("_", "\n") for z in zones],
-        patch_artist=True,
-        medianprops=dict(color="black", linewidth=2),
-    )
-    colors = ["#2ecc71", "#3498db", "#9b59b6", "#e67e22", "#e74c3c"]
-    for patch, color in zip(bp["boxes"], colors):
-        patch.set_facecolor(color)
-        patch.set_alpha(0.7)
+    ax.bar(x - w/2, entry_means, w, yerr=entry_stds,
+           label="Entry D(t)",  color="#e74c3c", alpha=0.85,
+           capsize=4, error_kw=dict(linewidth=1.2))
+    ax.bar(x + w/2, final_means, w, yerr=final_stds,
+           label="Final D(t)",  color="#2ecc71", alpha=0.85,
+           capsize=4, error_kw=dict(linewidth=1.2))
 
-    ax.axhline(0.8, color="gray", linestyle="--", linewidth=1.0,
-               label="Normalisation threshold")
-    ax.axhline(3.0, color="gray", linestyle=":",  linewidth=1.0,
-               label="Escalation threshold")
+    ax.axhline(0.8, color="gray", linestyle="--", linewidth=1.2,
+               label="Normalisation threshold (0.8)")
+    ax.axhline(3.0, color="gray", linestyle=":",  linewidth=1.2,
+               label="Escalation threshold (3.0)")
 
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=11)
     ax.set_ylabel("Divergence D(t)", fontsize=12)
-    ax.set_title("Zone detection: Divergence per terrain type "
-                 f"(n={len(all_detection)} seeds × {STEPS_PER_ZONE} steps/zone)",
-                 fontsize=11, fontweight="bold")
-    ax.legend(fontsize=9)
+    ax.set_title(
+        f"Zone detection: entry vs resolved D(t)  (n={len(all_results)} seeds)",
+        fontsize=11, fontweight="bold")
+    ax.legend(fontsize=9, loc="upper left")
+    ax.set_ylim(bottom=0)
     ax.grid(True, axis="y", alpha=0.3)
     fig.tight_layout()
 
@@ -782,7 +908,7 @@ if __name__ == "__main__":
 
     print("\nGenerating figures...")
     plot_divergence_curves(all_results)
-    plot_zone_detection(all_detection)
+    plot_zone_detection(all_results)
 
     out_json = Path(__file__).parent.parent / "results.json"
     with open(out_json, "w") as f:

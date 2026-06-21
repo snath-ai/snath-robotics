@@ -41,26 +41,26 @@ ZONES = {
 
 ZONE_FRICTION = {
     "normal":    1.0,
-    "ice":       0.02,   # near-zero friction
-    "ice_slope": 0.02,
+    "ice":       0.005,  # nearly frictionless
+    "ice_slope": 0.005,
     "force":     1.0,
-    "novel":     0.02,
+    "novel":     0.005,
 }
 
 ZONE_GRAVITY_OFFSET = {
     "normal":    0.0,
     "ice":       0.0,
-    "ice_slope": -2.5,   # downhill slope component (m/s^2)
+    "ice_slope": -5.0,   # steep downhill slope component (m/s^2)
     "force":     0.0,
-    "novel":     -2.5,
+    "novel":     -5.0,
 }
 
 ZONE_LATERAL_FORCE = {
     "normal":    0.0,
     "ice":       0.0,
     "ice_slope": 0.0,
-    "force":     8.0,    # N lateral perturbation
-    "novel":     8.0,
+    "force":     20.0,   # strong lateral wind force (N)
+    "novel":     20.0,
 }
 
 

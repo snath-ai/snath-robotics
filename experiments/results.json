@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "phase1_encounter": {
+      "success_rate": 0.0,
+      "mean_steps": 0.0,
+      "std_steps": 0.0,
+      "mean_final_div": 1.1128158779740485
+    },
+    "phase2_first_try": {
+      "success_rate": 1.0,
+      "mean_steps": 7.8,
+      "std_steps": 0.39999999999999997,
+      "mean_final_div": 0.7772294674263597
+    },
+    "phase3_composition": {
+      "success_rate": 0.0,
+      "mean_steps": 18.2,
+      "std_steps": 0.4,
+      "mean_final_div": 3.123097454726708
+    },
+    "phase4_exhaustion": {
+      "success_rate": 0.0,
+      "mean_steps": 16.0,
+      "std_steps": 0.0,
+      "mean_final_div": 6.104733478546167
+    },
+    "phase5_memory": {
+      "success_rate": 0.8,
+      "mean_steps": 9.2,
+      "std_steps": 1.9390719429665317,
+      "mean_final_div": 1.9820366754359178
+    },
+    "phase6_tournament": {
+      "success_rate": 0.0,
+      "mean_steps": 13.0,
+      "std_steps": 0.0,
+      "mean_final_div": 2.220669310177957
+    },
+    "memory_speedup": 5.260869565217392,
+    "first_encounter_total": 48.4,
+    "first_encounter_total_std": 0.4898979485566356,
+    "second_encounter_total": 9.2
+  },
+  "seeds": [
+    42,
+    7,
+    13,
+    99,
+    2026
+  ],
+  "detection": {
+    "normal": 2.8212338362781884,
+    "ice": 2.8212338362781884,
+    "ice_slope": 2.8358647468935816,
+    "force": 2.6520193941121577,
+    "novel": 2.8097549939699644
+  }
+}
