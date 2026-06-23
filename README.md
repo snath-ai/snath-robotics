@@ -80,7 +80,7 @@ The proprioceptive stream reports an asymmetry the visual stream cannot see. The
 
 ## Identification / correction trust asymmetry
 
-Formalised in *The Lár Training Loop* ([doi:10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758), Sajeev 2026):
+Formalised in *The Lár Training Loop* ([doi:10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128), Sajeev 2026):
 
 **System 1 — identification — trust-invariant.**
 Centroid matching on the divergence vector fingerprint. The geometric signature of a sensor failure class is durable — the physics of ice does not change with time. System 1 fires regardless of adapter age and correctly names the failure class even when System 2 is fully stale.
@@ -127,7 +127,7 @@ The world annotates. Contact physics, joint torque, friction — these are objec
 | Untrained predictor — random baseline | 0.4529 | 0.4568 | 0.4490 |
 | Trained on normal pairs only, no labels | **0.9365** | **0.8960** | **0.9770** |
 
-AUROC gain of +0.48 with zero human annotation. D_pred ratio: 2.8× (anomalous pairs vs normal pairs). This is LeCun's JEPA claim applied concretely. See *The Lár Training Loop* ([doi:10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758)) for the formal annotation burden theorem.
+AUROC gain of +0.48 with zero human annotation. D_pred ratio: 2.8× (anomalous pairs vs normal pairs). This is LeCun's JEPA claim applied concretely. See *The Lár Training Loop* ([doi:10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128)) for the formal annotation burden theorem.
 
 On real-world data — 5,000 CLIP ViT-B/32 pairs from COCO val2017 — the same label-free predictor achieves AUROC **0.9997**, with JEPA prediction error collapsing from 1.012 to 0.006 (159× reduction). Trigger rate: 56.46% of pairs flagged as hard (D ≥ τ_low). Isotropy preserved throughout.
 
@@ -198,19 +198,42 @@ coherence, not physical separability.
 
 ```bash
 # Train the GRU classification encoder (Walker2d, ~5 min)
-python experiments/train_gru_walker2d.py
+python experiments/pav/train_gru_walker2d.py
 
 # Run the 5-phase PAV proof
-python experiments/mujoco_bipedal_proof_gru.py
+python experiments/pav/mujoco_bipedal_proof_gru.py
 
 # Comparison: JEPA and momentum encoders
-python experiments/train_jepa_walker2d.py
-python experiments/train_momentum_walker2d.py
-python experiments/mujoco_bipedal_proof.py     # JEPA
-python experiments/mujoco_bipedal_proof_trained.py  # momentum
+python experiments/pav/train_jepa_walker2d.py
+python experiments/pav/train_momentum_walker2d.py
+python experiments/pav/mujoco_bipedal_proof.py     # JEPA
+python experiments/pav/mujoco_bipedal_proof_trained.py  # momentum
 ```
 
-Results are saved to `experiments/gru_proof_<ts>.json`.
+Results are saved to `experiments/pav/gru_proof_<ts>.json`.
+
+---
+
+## Repository layout
+
+Experiments, models, and encoders are organised by paper:
+
+```
+experiments/
+  pav/                  # PAV — MuJoCo Walker2d terrain detection (doi:10.5281/zenodo.20682615)
+  continual_learning/   # LTL + EIM 7-proof suite (doi:10.5281/zenodo.20581128, .20583318)
+  persist/              # PERSIST — IceWorld persistence loop (forthcoming; code pending)
+models/
+  pav/                  # PAV encoder checkpoints + LoRA adapter dirs
+  continual_learning/   # coco / proof / transfer adapter dirs
+  jepa_predictor.py, jepa_loop.py   # shared JEPA predictor (code)
+encoders/
+  robotics/             # proprioceptive + vision encoders (PAV, robotics_graph)
+  vision_language/      # CLIP image/text encoders (continual learning)
+```
+
+Shared routing infrastructure (`core/`, `dmn/`, `divergence_router.py`,
+`dhard.py`, `robotics_graph.py`) lives at the repository root.
 
 ---
 
@@ -238,29 +261,29 @@ python robotics_graph.py --dmn-cycle
 
 ## Complete 7-proof suite (annotation-free continual learning)
 
-All proofs save canonical JSON results to `experiments/results/` or `experiments/coco_results/`.
+All proofs save canonical JSON results to `experiments/continual_learning/results/` or `experiments/continual_learning/coco_results/`.
 
 ```bash
 # Proof 1 — disagreement is a valid learning signal (AUROC 0.45 → 0.94)
-python experiments/prove_learning.py
+python experiments/continual_learning/prove_learning.py
 
 # Proof 2 — robust to noise and training set size (ablation sweep)
-python experiments/ablation_proof.py
-# Results: experiments/coco_results/ablation_<ts>.json
+python experiments/continual_learning/ablation_proof.py
+# Results: experiments/continual_learning/coco_results/ablation_<ts>.json
 
 # Proofs 3a + 3b — detection and correction transfer to new sessions
-python experiments/prove_transfer.py
+python experiments/continual_learning/prove_transfer.py
 
 # Proofs 4a + 4b + 4c — policy memory (robot learns safe speed, 6.5× speedup)
-python experiments/prove_policy.py
+python experiments/continual_learning/prove_policy.py
 
 # Proof 7 — real COCO / CLIP ViT-B/32 512-d (AUROC 0.9997)
-python experiments/coco_proof.py
-# Results: experiments/coco_results/coco_proof_<ts>.json
+python experiments/continual_learning/coco_proof.py
+# Results: experiments/continual_learning/coco_results/coco_proof_<ts>.json
 
 # Appendix B + Exp 1 — D_hard threshold sensitivity + curriculum vs random
-python experiments/curriculum_proof.py
-# Results: experiments/coco_results/curriculum_proof_<ts>.json
+python experiments/continual_learning/curriculum_proof.py
+# Results: experiments/continual_learning/coco_results/curriculum_proof_<ts>.json
 
 # Temporal decay regression suite (7/7 pass)
 python test_temporal_decay.py
@@ -311,10 +334,10 @@ Results are printed per-seed and aggregated; the memory speedup ratio is reporte
 
 **Lár series** (DAS → UCR → LTL → EIM → PAV → PERSIST):
 
-- Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20525227](https://doi.org/10.5281/zenodo.20525227)
-- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20453093](https://doi.org/10.5281/zenodo.20453093)
-- Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals, Self-Curating Curriculum, LoRA Adapter Integration, Sketched Isotropic Gaussian Regularization, and Annotation-Free Continual Learning.* [doi.org/10.5281/zenodo.20613758](https://doi.org/10.5281/zenodo.20613758)
-- Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations for Encoder-Invariant and Predictive Continual Learning.* [doi.org/10.5281/zenodo.20614051](https://doi.org/10.5281/zenodo.20614051)
+- Sajeev, A.V. (2026). *Divergence Is Not Noise: Multi-Stream Routing Without Modal Fusion and the Safety-Learning Equivalence.* [doi.org/10.5281/zenodo.20278781](https://doi.org/10.5281/zenodo.20278781)
+- Sajeev, A.V. (2026). *Universal Cognitive Routing: A Forward-Compatible Architecture for Heterogeneous AI Systems.* [doi.org/10.5281/zenodo.20278775](https://doi.org/10.5281/zenodo.20278775)
+- Sajeev, A.V. (2026). *The Lár Training Loop: Routing Flags as Gradient Signals, Self-Curating Curriculum, LoRA Adapter Integration, Sketched Isotropic Gaussian Regularization, and Annotation-Free Continual Learning.* [doi.org/10.5281/zenodo.20581128](https://doi.org/10.5281/zenodo.20581128)
+- Sajeev, A.V. (2026). *The Encoder Is Not the Memory: World-Grounded Difficulty Representations for Encoder-Invariant and Predictive Continual Learning.* [doi.org/10.5281/zenodo.20583318](https://doi.org/10.5281/zenodo.20583318)
 - Sajeev, A.V. (2026). *Physics Assumption Violations: Label-Free Detection via Concept-Space Routing in Deployed Robotic Systems.* [doi.org/10.5281/zenodo.20682615](https://doi.org/10.5281/zenodo.20682615)
 - Sajeev, A.V. (2026). *PERSIST: Proprioceptive Error Resolution with Scope-bounded Invariant Signal Tracking.* doi:10.5281/zenodo.PENDING
 

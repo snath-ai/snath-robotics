@@ -1,294 +1,114 @@
 """
-IceWorld: A custom MuJoCo environment for testing physics assumption violation
-detection, adaptive response verification, and bounded persistent adaptation.
+IceWorld: MuJoCo Hopper-v5 corridor with four physics perturbation zones.
 
-Part of the PERSIST paper (Paper 6 in the Snath series):
-  Physics-grounded Iterative Refinement with Scope-bounded Incremental
-  Stopping Threshold
+Zone layout (x-position of robot torso):
+  Normal    [0, 2)   baseline friction (μ = 1.0)
+  Ice       [2, 4)   reduced friction (μ = 0.20)
+  Ice+Slope [4, 6)   friction loss + gravity bias (Δg_x = +0.5 m/s²)
+  Force     [6, 8)   lateral perturbation (F_x = 1.5 N on torso)
+  Novel     [8, 10)  all three simultaneously
 
-Environment structure:
-  A corridor with four sequential zones:
-    Zone 1: Ice patch          — zero friction
-    Zone 2: Ice + slope        — friction loss + gravity component change
-    Zone 3: Force perturbation — sudden lateral/longitudinal force (wind/impact)
-    Zone 4: Novel combined     — all three simultaneously (never seen in training)
+Perturbations are calibrated to be detectable (D > D_NORM) but recoverable
+with a small action-delta adaptor.  Near-zero friction (0.005) prevents
+convergence entirely and is experimentally non-viable.
 
-Robot: Hopper (simple, clean action space, interventions are readable)
-
-The divergence signal (from PAV) runs continuously as the robot moves.
-The persistence loop (PERSIST) uses divergence as the fitness function
-for iterative response refinement.
-
-Zones are defined by x-position thresholds along the corridor.
+Callers apply zones explicitly via set_zone(); x-position tracking is
+available via get_x_pos() for corridor-style experiments.
 """
 
+from __future__ import annotations
 import numpy as np
 import gymnasium as gym
-from gymnasium import spaces
 
-
-# ---------------------------------------------------------------------------
-# Zone definitions (x-position thresholds along corridor)
-# ---------------------------------------------------------------------------
-
-ZONES = {
-    "normal":    (0.0,  2.0),   # baseline terrain
-    "ice":       (2.0,  4.0),   # Zone 1: zero friction
-    "ice_slope": (4.0,  6.0),   # Zone 2: ice + slope (gravity component)
-    "force":     (6.0,  8.0),   # Zone 3: lateral force perturbation
-    "novel":     (8.0, 10.0),   # Zone 4: all three combined
+# physics config per zone
+ZONE_PARAMS: dict[str, dict] = {
+    "normal":    {"friction": 1.000, "gravity_x": 0.0, "force_x": 0.0},
+    "ice":       {"friction": 0.200, "gravity_x": 0.0, "force_x": 0.0},
+    "ice_slope": {"friction": 0.200, "gravity_x": 0.5, "force_x": 0.0},
+    "force":     {"friction": 1.000, "gravity_x": 0.0, "force_x": 1.5},
+    "novel":     {"friction": 0.200, "gravity_x": 0.5, "force_x": 1.5},
 }
 
-ZONE_FRICTION = {
-    "normal":    1.0,
-    "ice":       0.005,  # nearly frictionless
-    "ice_slope": 0.005,
-    "force":     1.0,
-    "novel":     0.005,
-}
-
-ZONE_GRAVITY_OFFSET = {
-    "normal":    0.0,
-    "ice":       0.0,
-    "ice_slope": -5.0,   # steep downhill slope component (m/s^2)
-    "force":     0.0,
-    "novel":     -5.0,
-}
-
-ZONE_LATERAL_FORCE = {
-    "normal":    0.0,
-    "ice":       0.0,
-    "ice_slope": 0.0,
-    "force":     20.0,   # strong lateral wind force (N)
-    "novel":     20.0,
-}
+# Hopper-v5 body ordering: world=0, torso=1, thigh=2, leg=3, foot=4
+_TORSO_BODY = 1
+# Window covers ~3 full hop cycles (Hopper hops at ~3 Hz, MuJoCo at 50 Hz →
+# ~17 steps/cycle; 50 steps ≈ 3 cycles).  A window shorter than one cycle
+# leaves the rolling mean perpetually out of phase with the baseline mean,
+# inflating D(t) in normal conditions and masking perturbation signal.
+_WINDOW     = 50
 
 
-# ---------------------------------------------------------------------------
-# IceWorld environment
-# ---------------------------------------------------------------------------
+class IceWorld:
+    """Hopper-v5 with caller-controlled zone physics.
 
-class IceWorldEnv(gym.Env):
-    """
-    IceWorld wraps Hopper-v4 with zone-based physics modification.
-
-    Key additions over standard Hopper:
-      - get_current_zone(): returns active zone name from x-position
-      - divergence_signal: rolling divergence from baseline proprioceptive stats
-      - zone_log: list of (step, zone, divergence) tuples for plotting
+    Usage:
+        env = IceWorld(seed=42)
+        obs, _ = env.reset()
+        env.set_zone("ice")
+        obs, rew, done, trunc, info = env.step(action)
     """
 
-    metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 50}
+    def __init__(self, seed: int = 42) -> None:
+        self.env  = gym.make("Hopper-v5")
+        self.seed = seed
+        self._base_friction: np.ndarray | None = None
+        self.active_zone: str = "normal"
 
-    def __init__(
-        self,
-        baseline_steps: int = 200,
-        divergence_window: int = 20,
-        escalation_threshold: float = 3.0,
-        render_mode=None,
-    ):
-        """
-        Args:
-            baseline_steps:        Steps on normal terrain to build baseline stats.
-            divergence_window:     Rolling window size for divergence computation.
-            escalation_threshold:  Divergence magnitude above which escalation fires.
-            render_mode:           'human' or 'rgb_array'.
-        """
-        self.render_mode = render_mode
-        self.baseline_steps = baseline_steps
-        self.divergence_window = divergence_window
-        self.escalation_threshold = escalation_threshold
-
-        self._env = gym.make("Hopper-v5", render_mode=render_mode)
-        self.observation_space = self._env.observation_space
-        self.action_space = self._env.action_space
-
-        # Baseline proprioceptive statistics (built during normal zone)
-        self._baseline_obs: list = []
-        self._baseline_mean: np.ndarray | None = None
-        self._baseline_std:  np.ndarray | None = None
-        self._baseline_built = False
-
-        # Rolling observation window for live divergence
-        self._obs_window: list = []
-
-        # State
-        self._step_count = 0
-        self._x_position = 0.0
-        self._current_zone = "normal"
-
-        # Logs
-        self.zone_log:       list[tuple] = []   # (step, zone, divergence)
-        self.escalation_log: list[tuple] = []   # (step, zone, reason)
-
-    # -----------------------------------------------------------------------
-    # Zone utilities
-    # -----------------------------------------------------------------------
-
-    def get_current_zone(self) -> str:
-        for zone, (lo, hi) in ZONES.items():
-            if lo <= self._x_position < hi:
-                return zone
-        return "novel" if self._x_position >= 8.0 else "normal"
-
-    def _apply_zone_physics(self, action: np.ndarray) -> np.ndarray:
-        """
-        Apply zone physics by modifying MuJoCo model parameters directly.
-        geom[0] = floor, body[1] = torso.
-        """
-        zone = self._current_zone
-        u = self._env.unwrapped
-
-        # Floor sliding friction
-        u.model.geom_friction[0, 0] = ZONE_FRICTION[zone]
-
-        # Slope: x-axis gravity component (downhill tilt)
-        u.model.opt.gravity[0] = ZONE_GRAVITY_OFFSET[zone]
-
-        # Lateral wind force on torso
-        lateral = ZONE_LATERAL_FORCE[zone]
-        u.data.xfrc_applied[1, 0] = lateral
-
-        return action
-
-    # -----------------------------------------------------------------------
-    # Divergence signal
-    # -----------------------------------------------------------------------
-
-    def _update_baseline(self, obs: np.ndarray):
-        if not self._baseline_built:
-            self._baseline_obs.append(obs)
-            if len(self._baseline_obs) >= self.baseline_steps:
-                arr = np.array(self._baseline_obs)
-                self._baseline_mean = arr.mean(axis=0)
-                self._baseline_std  = arr.std(axis=0) + 1e-8
-                self._baseline_built = True
-
-    def compute_divergence(self, obs: np.ndarray) -> float:
-        """
-        Compute divergence of current observation from baseline.
-        Returns scalar divergence magnitude (z-score norm over window).
-        Returns 0.0 if baseline not yet built.
-        """
-        if not self._baseline_built:
-            return 0.0
-
-        self._obs_window.append(obs)
-        if len(self._obs_window) > self.divergence_window:
-            self._obs_window.pop(0)
-
-        window_mean = np.array(self._obs_window).mean(axis=0)
-        z = (window_mean - self._baseline_mean) / self._baseline_std
-        return float(np.linalg.norm(z))
-
-    def is_escalation_needed(self, divergence: float) -> bool:
-        return divergence >= self.escalation_threshold
-
-    # -----------------------------------------------------------------------
-    # Gym interface
-    # -----------------------------------------------------------------------
-
-    def reset(self, seed=None, options=None, keep_baseline: bool = False):
-        """
-        Args:
-            keep_baseline: If True, baseline statistics are preserved across the
-                           reset so they can accumulate across multiple episodes.
-        """
-        # Restore default MuJoCo physics before each episode
-        u = self._env.unwrapped
-        u.model.geom_friction[0, 0] = 1.0
-        u.model.opt.gravity[0] = 0.0
-        u.data.xfrc_applied[:] = 0.0
-
-        obs, info = self._env.reset(seed=seed, options=options)
-        self._step_count = 0
-        self._x_position = 0.0
-        self._current_zone = "normal"
-
-        if not keep_baseline:
-            self._baseline_obs.clear()
-            self._baseline_built = False
-
-        self._obs_window.clear()
-        self.zone_log.clear()
-        self.escalation_log.clear()
+    def reset(self) -> tuple[np.ndarray, dict]:
+        obs, info = self.env.reset(seed=self.seed)
+        if self._base_friction is None:
+            self._base_friction = self.env.unwrapped.model.geom_friction.copy()
+        self.set_zone("normal")
         return obs, info
 
     def step(self, action: np.ndarray):
-        modified_action = self._apply_zone_physics(action)
-        obs, reward, terminated, truncated, info = self._env.step(modified_action)
+        # Re-assert lateral force each step — xfrc_applied persists in MuJoCo
+        # data but explicit reassignment guards against library-internal resets.
+        if ZONE_PARAMS[self.active_zone]["force_x"] != 0.0:
+            self.env.unwrapped.data.xfrc_applied[_TORSO_BODY, 0] = (
+                ZONE_PARAMS[self.active_zone]["force_x"]
+            )
+        obs, rew, term, trunc, info = self.env.step(action)
+        info["zone"] = self.active_zone
+        return obs, rew, term, trunc, info
 
-        # Update x-position estimate from obs (Hopper obs[0] = z-height,
-        # obs[5] = x-velocity; integrate x-velocity for position)
-        x_vel = float(obs[5]) if len(obs) > 5 else 0.0
-        self._x_position += x_vel * 0.008   # dt = 0.008s for Hopper
-        self._current_zone = self.get_current_zone()
+    def set_zone(self, zone: str) -> None:
+        """Apply named-zone physics immediately; safe to call mid-episode."""
+        cfg   = ZONE_PARAMS[zone]
+        model = self.env.unwrapped.model
+        data  = self.env.unwrapped.data
+        model.geom_friction[:]    = self._base_friction.copy()
+        model.geom_friction[:, 0] = cfg["friction"]
+        model.opt.gravity[:]      = np.array([cfg["gravity_x"], 0.0, -9.81])
+        data.xfrc_applied[:]      = 0.0
+        if cfg["force_x"] != 0.0:
+            data.xfrc_applied[_TORSO_BODY, 0] = cfg["force_x"]
+        self.active_zone = zone
 
-        # Build baseline on normal terrain
-        if self._current_zone == "normal":
-            self._update_baseline(obs)
+    def get_x_pos(self) -> float:
+        return float(self.env.unwrapped.data.qpos[0])
 
-        # Compute divergence
-        divergence = self.compute_divergence(obs)
+    def close(self) -> None:
+        self.env.close()
 
-        # Log
-        self.zone_log.append((self._step_count, self._current_zone, divergence))
+    @property
+    def obs_dim(self) -> int:
+        return int(self.env.observation_space.shape[0])
 
-        # Check escalation
-        if self.is_escalation_needed(divergence) and self._current_zone != "normal":
-            self.escalation_log.append((
-                self._step_count,
-                self._current_zone,
-                f"divergence={divergence:.3f} >= threshold={self.escalation_threshold}"
-            ))
-
-        info["zone"]       = self._current_zone
-        info["divergence"] = divergence
-        info["x_position"] = self._x_position
-        info["escalation"] = self.is_escalation_needed(divergence)
-
-        self._step_count += 1
-        return obs, reward, terminated, truncated, info
-
-    def render(self):
-        return self._env.render()
-
-    def close(self):
-        self._env.close()
+    @property
+    def act_dim(self) -> int:
+        return int(self.env.action_space.shape[0])
 
 
-# ---------------------------------------------------------------------------
-# Quick smoke test
-# ---------------------------------------------------------------------------
-
-if __name__ == "__main__":
-    print("IceWorld smoke test")
-    print("=" * 50)
-
-    env = IceWorldEnv(baseline_steps=50, escalation_threshold=2.5)
-    obs, _ = env.reset(seed=42)
-
-    divergence_by_zone = {z: [] for z in ZONES}
-
-    for step in range(500):
-        action = env.action_space.sample()
-        obs, reward, terminated, truncated, info = env.step(action)
-
-        zone = info["zone"]
-        div  = info["divergence"]
-        divergence_by_zone[zone].append(div)
-
-        if info["escalation"]:
-            print(f"  Step {step:3d} | Zone: {zone:12s} | Divergence: {div:.3f} | ESCALATION")
-
-        if terminated or truncated:
-            obs, _ = env.reset()
-
-    print("\nMean divergence per zone:")
-    for zone, divs in divergence_by_zone.items():
-        if divs:
-            print(f"  {zone:12s}: {np.mean(divs):.3f}")
-
-    print(f"\nEscalation events: {len(env.escalation_log)}")
-    env.close()
-    print("Done.")
+def compute_divergence(
+    obs: np.ndarray,
+    buf: list[np.ndarray],
+    mu: np.ndarray,
+    sigma: np.ndarray,
+) -> float:
+    """D(t) = ‖(rolling_mean(buf[-W:]) − μ) / σ‖₂   (PERSIST paper eq. 4)."""
+    buf.append(obs.copy())
+    if len(buf) > _WINDOW:
+        buf.pop(0)
+    rolling = np.mean(buf, axis=0)
+    return float(np.linalg.norm((rolling - mu) / (sigma + 1e-8)))

@@ -30,9 +30,9 @@ from typing import List, Tuple
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from experiments.prove_learning import make_structured_data, evaluate
+from experiments.continual_learning.prove_learning import make_structured_data, evaluate
 from models.jepa_predictor import JEPAPredictor, train_predictor
 
 

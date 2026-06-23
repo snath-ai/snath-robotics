@@ -40,11 +40,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-_ROOT = Path(__file__).parent.parent
+_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import gymnasium
-from encoders.gru_proprio_encoder import GRUProprioEncoder
+from encoders.robotics.gru_proprio_encoder import GRUProprioEncoder
 
 OBS_DIM    = 17
 SEQ_LEN    = 10
@@ -52,7 +52,7 @@ EMBED_DIM  = 8
 HIDDEN_DIM = 32
 FRICTION_NORMAL = 0.80
 FRICTION_ICE    = 0.05
-MODEL_PATH = _ROOT / "models" / "gru_proprio.pt"
+MODEL_PATH = _ROOT / "models" / "pav" / "gru_proprio.pt"
 
 
 # ══════════════════════════════════════════════════════════════════════════════

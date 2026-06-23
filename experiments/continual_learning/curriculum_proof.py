@@ -29,7 +29,7 @@ import torch
 import torch.nn.functional as F
 from sklearn.metrics import roc_auc_score
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from models.jepa_predictor import JEPAPredictor, train_predictor
 
@@ -44,7 +44,7 @@ LR         = 1e-3
 
 def load_coco() -> tuple[torch.Tensor, torch.Tensor]:
     d = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
         "data", "coco_clip_cache",
     )
     img = torch.load(os.path.join(d, "coco_val2017_img.pt"),

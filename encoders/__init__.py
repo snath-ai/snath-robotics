@@ -1,2 +1,2 @@
-from .vision_encoder import VisionEncoder
-from .proprio_encoder import ProprioceptiveEncoder
+from .robotics.vision_encoder import VisionEncoder
+from .robotics.proprio_encoder import ProprioceptiveEncoder

@@ -69,10 +69,10 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from encoders.clip_image_encoder import CLIPImageEncoder, COCO_CLASSES
-from encoders.clip_text_encoder  import CLIPTextEncoder
+from encoders.vision_language.clip_image_encoder import CLIPImageEncoder, COCO_CLASSES
+from encoders.vision_language.clip_text_encoder  import CLIPTextEncoder
 from divergence_router           import DivergenceRouter
 from dhard                       import DHardQueue, RoboticsDHardEvent
 from dmn.robotics_dmn            import RoboticsDMN
@@ -83,11 +83,11 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 log = logging.getLogger(__name__)
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-_HERE        = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_HERE        = Path(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 DATA_DIR     = _HERE / "data" / "coco"
 CACHE_DIR    = _HERE / "data" / "coco_clip_cache"
 RESULTS_DIR  = _HERE / "experiments" / "coco_results"
-ADAPTER_DIR  = _HERE / "models" / "coco_adapters"
+ADAPTER_DIR  = _HERE / "models" / "continual_learning" / "coco_adapters"
 DHARD_PATH   = _HERE / "coco_d_hard.jsonl"
 
 # ── Routing thresholds ────────────────────────────────────────────────────────
@@ -195,7 +195,7 @@ def precompute_coco_embeddings(
     if max_pairs:
         pairs = pairs[:max_pairs]
 
-    from encoders._clip_backbone import get_clip
+    from encoders.vision_language._clip_backbone import get_clip
     from PIL import Image
     dev = torch.device(device)
     model, preprocess, tokenizer = get_clip(dev)

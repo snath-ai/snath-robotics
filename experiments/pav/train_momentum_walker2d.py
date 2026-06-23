@@ -51,18 +51,18 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-_ROOT = Path(__file__).parent.parent
+_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import gymnasium
-from encoders.proprio_encoder import ProprioceptiveEncoder
+from encoders.robotics.proprio_encoder import ProprioceptiveEncoder
 
 IMU_DIM       = 64
 TACTILE_DIM   = 32
 EMBED_DIM     = 8
 FRICTION_NORMAL = 0.80
 FRICTION_ICE    = 0.05
-MODEL_PATH    = _ROOT / "models" / "proprio_momentum.pt"
+MODEL_PATH    = _ROOT / "models" / "pav" / "proprio_momentum.pt"
 
 
 # ══════════════════════════════════════════════════════════════════════════════

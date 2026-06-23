@@ -8,15 +8,15 @@ venv/
 *.pth
 *.ckpt
 *.bin
-models/adapters/*.pt
+models/pav/adapters/*.pt
 d_hard.jsonl
 demo_d_hard.jsonl
 proof_d_hard.jsonl
 models/demo_adapters/
-models/proof_adapters/
-models/coco_adapters/
-experiments/coco_results/
-experiments/results/
+models/continual_learning/proof_adapters/
+models/continual_learning/coco_adapters/
+experiments/continual_learning/coco_results/
+experiments/continual_learning/results/
 data/coco/
 data/coco_clip_cache/
 coco_d_hard.jsonl
@@ -24,3 +24,5 @@ transfer_d_hard.jsonl
 *.log
 .DS_Store
 graphify-out/
+models/persist/
+experiments/persist/persist_results_*.json

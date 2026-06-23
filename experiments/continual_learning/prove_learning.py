@@ -42,7 +42,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from models.jepa_predictor import JEPAPredictor, train_predictor
 from dhard import DHardQueue, RoboticsDHardEvent
 from dmn.robotics_dmn import RoboticsDMN
@@ -198,7 +198,7 @@ def run_dmn_cycle(
     z_prp_test:   torch.Tensor,
     labels_test:  np.ndarray,
     queue_path:   str = "proof_d_hard.jsonl",
-    adapter_dir:  str = "models/proof_adapters",
+    adapter_dir:  str = "models/continual_learning/proof_adapters",
 ) -> list:
     """
     Run one DMN consolidation cycle using D_pred as the labelling signal.
@@ -314,7 +314,7 @@ def run_proof(
         data["z_vis_test"],  data["z_prp_test"],
         data["labels_test"],
         queue_path="proof_d_hard.jsonl",
-        adapter_dir="models/proof_adapters",
+        adapter_dir="models/continual_learning/proof_adapters",
     )
     r2 = evaluate(predictor, data["z_vis_test"], data["z_prp_test"],
                   data["labels_test"], "Phase 2: after DMN")

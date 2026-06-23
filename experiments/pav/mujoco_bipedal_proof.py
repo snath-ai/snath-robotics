@@ -48,7 +48,7 @@ import torch
 import torch.nn.functional as F
 
 # ── path resolution ───────────────────────────────────────────────────────────
-_ROOT = Path(__file__).parent.parent
+_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import gymnasium
@@ -68,7 +68,7 @@ FRICTION_NORMAL  = 0.80
 FRICTION_ICE     = 0.05
 
 DHARD_PATH   = str(_ROOT / "mujoco_d_hard.jsonl")
-ADAPTER_DIR  = str(_ROOT / "models" / "adapters")
+ADAPTER_DIR  = str(_ROOT / "models" / "pav" / "adapters")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -356,7 +356,7 @@ def run_proof(n_steps: int = 25, render: bool = False, seed: int = 42) -> dict:
     print(f"  ✓ Adaptation     : D reduced {D_reduction:+.1f}% after consolidation")
     print(f"{'═'*65}\n")
 
-    out = _ROOT / "experiments" / f"mujoco_proof_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    out = _ROOT / "experiments" / "pav" / f"mujoco_proof_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(out, "w") as f:
         json.dump({
             "timestamp": datetime.now(timezone.utc).isoformat(),

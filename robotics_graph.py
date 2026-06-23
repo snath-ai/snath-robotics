@@ -30,8 +30,8 @@ import torch
 import numpy as np
 
 from core.types import RouteDecision
-from encoders.vision_encoder import VisionEncoder
-from encoders.proprio_encoder import ProprioceptiveEncoder
+from encoders.robotics.vision_encoder import VisionEncoder
+from encoders.robotics.proprio_encoder import ProprioceptiveEncoder
 from divergence_router import DivergenceRouter
 from dmn.adapter_router import RoboticsAdapterRouter
 from dhard import DHardQueue
@@ -65,7 +65,7 @@ router         = DivergenceRouter(
     dhard   =dhard_queue,
 )
 adapter_router = RoboticsAdapterRouter(
-    adapter_dir=os.path.join(_HERE, "models", "adapters"),
+    adapter_dir=os.path.join(_HERE, "models", "demo_adapters"),
     min_trust  =_ROUTING["min_trust"],
 )
 
@@ -341,7 +341,7 @@ def main():
 
     if args.dmn_cycle:
         from dmn.robotics_dmn import RoboticsDMN
-        dmn = RoboticsDMN(queue_path="d_hard.jsonl", adapter_dir="models/adapters")
+        dmn = RoboticsDMN(queue_path="d_hard.jsonl", adapter_dir="models/demo_adapters")
         s   = dmn.stats()
         print(f"[RoboticsDMN] Queue: {s['total']} total, {s['resolved']} resolved")
         built = dmn.consolidate(lambda_iso=args.lambda_iso)

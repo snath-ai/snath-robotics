@@ -39,7 +39,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from models.jepa_predictor import JEPAPredictor, train_predictor
 from dhard import DHardQueue, RoboticsDHardEvent
@@ -125,7 +125,7 @@ def log_and_consolidate(
     z_vis_motordeg: torch.Tensor,
     z_prp_motordeg: torch.Tensor,
     queue_path:     str = "transfer_d_hard.jsonl",
-    adapter_dir:    str = "models/transfer_adapters",
+    adapter_dir:    str = "models/continual_learning/transfer_adapters",
 ) -> dict | None:
     """
     Log motor_deg failures to D_hard, consolidate, return adapter payload.

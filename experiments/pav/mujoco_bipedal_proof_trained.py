@@ -35,11 +35,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-_ROOT = Path(__file__).parent.parent
+_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import gymnasium
-from encoders.proprio_encoder import ProprioceptiveEncoder
+from encoders.robotics.proprio_encoder import ProprioceptiveEncoder
 from divergence_router        import DivergenceRouter
 from dhard                    import DHardQueue, RoboticsDHardEvent
 from dmn.robotics_dmn         import RoboticsDMN
@@ -52,9 +52,9 @@ TACTILE_DIM   = 32
 EMBED_DIM     = 8
 FRICTION_NORMAL = 0.80
 FRICTION_ICE    = 0.05
-MODEL_PATH    = _ROOT / "models" / "proprio_jepa.pt"
+MODEL_PATH    = _ROOT / "models" / "pav" / "proprio_jepa.pt"
 DHARD_PATH    = str(_ROOT / "mujoco_trained_d_hard.jsonl")
-ADAPTER_DIR   = str(_ROOT / "models" / "adapters_trained")
+ADAPTER_DIR   = str(_ROOT / "models" / "pav" / "adapters_trained")
 
 
 def obs_to_encoder(obs: np.ndarray) -> tuple[torch.Tensor, torch.Tensor]:
@@ -308,7 +308,7 @@ def run_proof(n_steps: int = 25, seed: int = 42) -> None:
     print(f"  ✓ Routing fires from geometry of concept space, not rules")
     print(f"{'═'*65}\n")
 
-    out = _ROOT / "experiments" / f"trained_proof_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    out = _ROOT / "experiments" / "pav" / f"trained_proof_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(out, "w") as f:
         json.dump({"summary": {
             "p1_mean_D": round(p1_mean_D, 4), "p1_commit": round(p1_commit, 4),

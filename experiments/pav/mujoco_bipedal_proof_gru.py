@@ -34,11 +34,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-_ROOT = Path(__file__).parent.parent
+_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import gymnasium
-from encoders.gru_proprio_encoder import GRUProprioEncoder
+from encoders.robotics.gru_proprio_encoder import GRUProprioEncoder
 from divergence_router            import DivergenceRouter
 from dhard                        import DHardQueue, RoboticsDHardEvent
 from dmn.robotics_dmn             import RoboticsDMN
@@ -47,9 +47,9 @@ from core.types                   import RouteDecision
 
 FRICTION_NORMAL = 0.80
 FRICTION_ICE    = 0.05
-MODEL_PATH   = _ROOT / "models" / "gru_cls.pt"
+MODEL_PATH   = _ROOT / "models" / "pav" / "gru_cls.pt"
 DHARD_PATH   = str(_ROOT / "mujoco_gru_d_hard_cls.jsonl")
-ADAPTER_DIR  = str(_ROOT / "models" / "adapters_gru_cls")
+ADAPTER_DIR  = str(_ROOT / "models" / "pav" / "adapters_gru_cls")
 EWMA_ALPHA   = 0.90   # high α → slow drift, z_vision stays close to recent normal obs
 WARMUP_STEPS = 80     # seq_len=30 needs ≥30 steps to fill buffer; 80 gives ~50 z_p readings for EWMA
 
@@ -353,7 +353,7 @@ def run_proof(n_steps: int = 30, seed: int = 42) -> None:
     print(f"  ✓ Routing: fires from concept-space geometry, not rules")
     print(f"{'═'*65}\n")
 
-    out = _ROOT / "experiments" / f"gru_proof_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    out = _ROOT / "experiments" / "pav" / f"gru_proof_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(out, "w") as f:
         json.dump({"summary": {
             "p1_mean_D": round(p1_mean_D, 4), "p1_commit": round(p1_commit, 4),

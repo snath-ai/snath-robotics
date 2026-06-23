@@ -36,11 +36,11 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-_ROOT = Path(__file__).parent.parent
+_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
 import gymnasium
-from encoders.gru_proprio_encoder import GRUProprioEncoder
+from encoders.robotics.gru_proprio_encoder import GRUProprioEncoder
 from dmn.robotics_dmn             import RoboticsDMN
 from dmn.adapter_router           import RoboticsAdapterRouter
 from dhard                        import DHardQueue, RoboticsDHardEvent
@@ -58,8 +58,8 @@ TAU_L   = 0.25
 DELTA   = 0.35
 EWMA_ALPHA = 0.90
 
-SELFSUP_PATH = _ROOT / "models" / "gru_selfsup.pt"
-SUPERVISED_PATH = _ROOT / "models" / "gru_cls.pt"
+SELFSUP_PATH = _ROOT / "models" / "pav" / "gru_selfsup.pt"
+SUPERVISED_PATH = _ROOT / "models" / "pav" / "gru_cls.pt"
 
 
 # ── Encoder loader ─────────────────────────────────────────────────────────────
@@ -321,7 +321,7 @@ def main(seed: int) -> None:
     ss_results = run_proof(
         ss_enc, "selfsup",
         dhard_path=str(_ROOT / f"selfsup_dhard_{ts}.jsonl"),
-        adapter_dir=str(_ROOT / "models" / "adapters_selfsup"),
+        adapter_dir=str(_ROOT / "models" / "pav" / "adapters_selfsup"),
         seed=seed,
     )
 
@@ -331,7 +331,7 @@ def main(seed: int) -> None:
         sup_results = run_proof(
             sup_enc, "supervised",
             dhard_path=str(_ROOT / f"supervised_dhard_{ts}.jsonl"),
-            adapter_dir=str(_ROOT / "models" / "adapters_selfsup_sup"),
+            adapter_dir=str(_ROOT / "models" / "pav" / "adapters_selfsup_sup"),
             seed=seed,
         )
 
