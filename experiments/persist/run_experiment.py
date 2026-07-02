@@ -1,15 +1,17 @@
 """
 PERSIST: 7-phase IceWorld persistence-loop driver (5 seeds).
 
-Phases:
-  1  — Encounter      : ice zone, empty library → escalate, train ice_learned
-  2  — First try      : ice zone, trained adaptor → resolve (~8 steps)
-  3  — Scope boundary : ice+slope, primitives only → scope exceeded
-  3b — Force          : force zone, wind adaptor → resolve
-  4  — Exhaustion     : novel (all three) → escalate
-  5c — Memory (cold)  : ice zone, empty library → re-search + resolve
-  5w — Memory (warm)  : ice zone, stored adaptor → fast resolve (~9 steps)
-  6  — Tournament     : ice+slope, 3 candidates → combined wins by rate
+Phases (published outcomes, Table 2 of the paper — every phase escalates;
+the SAC base policy's hopping variance keeps D above D_norm=0.8 in all
+cases, so the scope boundary fires at delta_max before full resolution):
+  1  — Encounter      : ice zone, empty library → escalate at entry, train ice_learned
+  2  — First try      : ice zone, trained adaptor → D drops ~16% over 17 steps, scope boundary fires
+  3  — Scope boundary : ice+slope, primitives only → scope exceeded, D drops less than Phase 2
+  3b — Force          : force zone, wind adaptor → D drops ~13% over 17 steps, scope boundary fires
+  4  — Exhaustion     : novel (all three) → escalate, minimal D reduction
+  5c — Memory (cold)  : ice zone, empty library → 40-candidate search, immediate escalation
+  5w — Memory (warm)  : ice zone, stored adaptor → 17 loop decisions (2.4x fewer than cold)
+  6  — Tournament     : ice+slope, 3 candidates → combined wins by rate, 5/5 seeds
 
 Results  → experiments/persist/persist_results_<ts>.json
 Figures  → academic_papers/snath_core/08_PERSIST/figures/  (overwrites PDFs)
@@ -414,37 +416,108 @@ def _save(fig: plt.Figure, name: str) -> None:
 
 
 def generate_divergence_curves(results_by_phase: dict) -> None:
-    """Figure 2: D(t) over decisions for all phases (mean ± std, n=5 seeds)."""
-    fig, ax = plt.subplots(figsize=(10, 5))
+    """Figure 2: two-panel — D(t) trajectories (zoomed) + decision budget."""
+    fig = plt.figure(figsize=(13, 5))
+    gs  = fig.add_gridspec(1, 2, width_ratios=[3, 1], wspace=0.30)
+    ax_traj = fig.add_subplot(gs[0])
+    ax_bar  = fig.add_subplot(gs[1])
+
+    # ── Left panel: D(t) trajectories ───────────────────────────────────────
+    LINESTYLES = {
+        "2":  "-",   "3":  "--",  "3b": "-.",
+        "4":  ":",   "5w": "-",   "6":  "--",
+    }
 
     for phase_id, phase_results in results_by_phase.items():
-        trajs = [r["D_trajectory"] for r in phase_results if r["D_trajectory"]]
+        trajs = [r["D_trajectory"] for r in phase_results if r.get("D_trajectory")]
         if not trajs:
             continue
         max_len = max(len(t) for t in trajs)
-        padded  = np.array([t + [t[-1]] * (max_len - len(t)) for t in trajs])
-        mean    = padded.mean(axis=0)
-        std     = padded.std(axis=0)
-        xs      = np.arange(len(mean))
         color   = PHASE_COLORS.get(str(phase_id), "#888888")
         label   = PHASE_LABELS.get(str(phase_id), f"Phase {phase_id}")
-        ax.plot(xs, mean, color=color, label=label, linewidth=1.8)
-        ax.fill_between(xs, mean - std, mean + std, color=color, alpha=0.15)
 
-    ax.axhline(D_NORM, color="black", linestyle="--", linewidth=0.9,
-               label=f"Normalisation threshold ({D_NORM})")
-    ax.axhline(D_ESC,  color="black", linestyle=":",  linewidth=0.9,
-               label=f"Escalation threshold ({D_ESC})")
+        if max_len <= 1:
+            # Phase 1 / 5c: immediate escalation — mark as a diamond at step 0
+            all_d = [t[0] for t in trajs]
+            mean_d = np.mean(all_d)
+            ax_traj.scatter([0], [mean_d], color=color, marker="D", s=60,
+                            zorder=5, label=f"{label} (escalates at entry)")
+            ax_traj.annotate("↑ escalated", xy=(0, mean_d),
+                             xytext=(0.6, mean_d + 0.025),
+                             fontsize=7, color=color,
+                             arrowprops=dict(arrowstyle="-", color=color,
+                                             lw=0.8, alpha=0.6))
+        else:
+            padded = np.array([t + [t[-1]] * (max_len - len(t)) for t in trajs])
+            mean   = padded.mean(axis=0)
+            std    = padded.std(axis=0)
+            xs     = np.arange(len(mean))
+            ls     = LINESTYLES.get(str(phase_id), "-")
+            ax_traj.plot(xs, mean, color=color, label=label,
+                         linewidth=2.2, linestyle=ls)
+            ax_traj.fill_between(xs, mean - std, mean + std,
+                                 color=color, alpha=0.13)
 
-    ax.set_xlabel("Steps", fontsize=11)
-    ax.set_ylabel("Divergence D(t)", fontsize=11)
-    ax.set_title(
-        "PERSIST: Divergence signal across experimental phases\n"
-        f"(n={len(SEEDS)} seeds, mean ± std)",
-        fontsize=12,
+    ax_traj.axhline(D_NORM, color="#333333", linestyle="--", linewidth=0.9,
+                    label=f"Norm. threshold ({D_NORM})")
+    ax_traj.set_ylim(1.85, 2.75)
+    ax_traj.set_xlim(-0.5, 18)
+    ax_traj.set_xlabel("Persistence loop steps", fontsize=10)
+    ax_traj.set_ylabel("Divergence D(t)", fontsize=10)
+    ax_traj.set_title(
+        f"D(t) across experimental phases  (n={len(SEEDS)} seeds, mean ± std)",
+        fontsize=10,
     )
-    ax.legend(fontsize=8, loc="upper right", ncol=2)
-    ax.set_ylim(bottom=0)
+    ax_traj.legend(fontsize=7.5, loc="lower left", ncol=1, framealpha=0.88)
+    ax_traj.grid(True, alpha=0.18, linestyle=":")
+
+    # ── Right panel: decision budget ─────────────────────────────────────────
+    ph_order  = ["1", "2", "3", "3b", "4", "5c", "5w", "6"]
+    ph_short  = {
+        "1":  "Ph.1 Encounter", "2":  "Ph.2 First try",
+        "3":  "Ph.3 Scope",     "3b": "Ph.3b Force",
+        "4":  "Ph.4 Exhaustion","5c": "Ph.5c Cold",
+        "5w": "Ph.5w Warm",     "6":  "Ph.6 Tournament",
+    }
+    dec_means, bar_colors, bar_labels = [], [], []
+    for ph in ph_order:
+        if ph not in results_by_phase or not results_by_phase[ph]:
+            continue
+        tds = [r.get("total_decisions") or r.get("steps") or 1
+               for r in results_by_phase[ph]]
+        dec_means.append(float(np.mean([t for t in tds if t])))
+        bar_colors.append(PHASE_COLORS.get(ph, "#888888"))
+        bar_labels.append(ph_short.get(ph, f"Ph.{ph}"))
+
+    xs = np.arange(len(dec_means))
+    bars = ax_bar.bar(xs, dec_means, color=bar_colors,
+                      alpha=0.85, edgecolor="white", linewidth=0.6, width=0.65)
+    for bar, val in zip(bars, dec_means):
+        ax_bar.text(bar.get_x() + bar.get_width() / 2,
+                    bar.get_height() + 0.4,
+                    str(int(round(val))),
+                    ha="center", va="bottom", fontsize=7.5, fontweight="bold")
+
+    # highlight the 5c vs 5w comparison
+    if len(dec_means) >= 6:
+        cold_idx = bar_labels.index("Ph.5c\nCold")
+        warm_idx = bar_labels.index("Ph.5w\nWarm")
+        ax_bar.annotate(
+            "", xy=(warm_idx, dec_means[warm_idx] + 2),
+            xytext=(cold_idx, dec_means[cold_idx] + 2),
+            arrowprops=dict(arrowstyle="<->", color="#555555", lw=1.2),
+        )
+        ax_bar.text((cold_idx + warm_idx) / 2, max(dec_means) * 0.88,
+                    "2.4×\nfaster", ha="center", va="bottom",
+                    fontsize=7.5, color="#555555", fontweight="bold")
+
+    ax_bar.set_xticks(xs)
+    ax_bar.set_xticklabels(bar_labels, fontsize=6.8, rotation=45, ha="right")
+    ax_bar.set_ylabel("Total decisions", fontsize=10)
+    ax_bar.set_title("Decision budget\nper phase", fontsize=10)
+    ax_bar.set_ylim(0, max(dec_means) * 1.25)
+    ax_bar.grid(True, alpha=0.18, linestyle=":", axis="y")
+
     fig.tight_layout()
     _save(fig, "divergence_curves.pdf")
     plt.close(fig)
