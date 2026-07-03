@@ -1,0 +1,87 @@
+{
+  "experiment": "fusion_vs_routing_flickr30k_hard_negative",
+  "timestamp": "2026-05-20T11:25:26.464753Z",
+  "model": "OpenCLIP ViT-B-32 / openai",
+  "dataset": "Flickr30k (clip-benchmark/wds_flickr30k)",
+  "ground_truth": "Hard contradiction oracle: j_contra = argmax[CLS_sim \u00d7 L1_concept]",
+  "concepts": [
+    "person",
+    "dog",
+    "cat",
+    "car",
+    "bicycle",
+    "food",
+    "building",
+    "tree",
+    "water",
+    "sky",
+    "table",
+    "chair",
+    "motorcycle",
+    "ball",
+    "sports activity",
+    "group of people",
+    "indoor scene",
+    "outdoor scene",
+    "night scene",
+    "street",
+    "beach",
+    "mountain",
+    "child",
+    "couple",
+    "crowd"
+  ],
+  "note": "F2 fixes Experiment F's design flaw. Normal pairs use concept-nearest partner; contradiction pairs use CLS-similar but concept-different partner (hard negative). The oracle deliberately blinds the fusion signal while preserving the routing signal.",
+  "results": [
+    {
+      "method": "Routing \u2014 OpenCLIP concept-vector L1 (zero-shot)",
+      "auroc": 0.3708,
+      "accuracy": 0.53,
+      "p_value": 0.12121212121212119,
+      "sensitivity": 1.0,
+      "specificity": 0.06,
+      "contingency": {
+        "tp": 50,
+        "fp": 47,
+        "fn": 0,
+        "tn": 3
+      }
+    },
+    {
+      "method": "Fusion  \u2014 OpenCLIP CLS cosine (zero-shot)",
+      "auroc": 0.7508,
+      "accuracy": 0.71,
+      "p_value": 4.285574212115433e-06,
+      "sensitivity": 0.52,
+      "specificity": 0.9,
+      "contingency": {
+        "tp": 26,
+        "fp": 5,
+        "fn": 24,
+        "tn": 45
+      }
+    },
+    {
+      "method": "Supervised \u2014 concat + logistic (N=100 labels)",
+      "auroc": 0.7592,
+      "accuracy": 0.76,
+      "p_value": 1.0205420345089444e-07,
+      "sensitivity": 0.84,
+      "specificity": 0.68,
+      "contingency": {
+        "tp": 42,
+        "fp": 16,
+        "fn": 8,
+        "tn": 34
+      }
+    }
+  ],
+  "distributions": {
+    "routing_normal_mean": 0.1469,
+    "routing_contra_mean": 0.1197,
+    "routing_lift": 0.815,
+    "fusion_normal_mean": 0.77,
+    "fusion_contra_mean": 0.8095,
+    "fusion_lift": 1.051
+  }
+}

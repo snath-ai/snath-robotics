@@ -1,0 +1,62 @@
+{
+  "experiment": "fusion_vs_routing_coco_80class_softmax",
+  "timestamp": "2026-05-20T11:40:53.950918Z",
+  "model": "OpenCLIP ViT-B-32 / openai",
+  "dataset": "MSCOCO (clip-benchmark/wds_mscoco_captions)",
+  "ground_truth": "Hard contradiction: argmax[CLS_sim \u00d7 L1_softmax_concept]",
+  "n_concepts": 80,
+  "concept_type": "80-class softmax (sparse) image \u00d7 keyword text (binary)",
+  "temperature": 100.0,
+  "results": [
+    {
+      "method": "Routing \u2014 80-class softmax image \u00d7 keyword text L1 (zero-shot)",
+      "auroc": 0.8068,
+      "accuracy": 0.79,
+      "p_value": 3.853415214019128e-09,
+      "sensitivity": 0.82,
+      "specificity": 0.76,
+      "contingency": {
+        "tp": 41,
+        "fp": 12,
+        "fn": 9,
+        "tn": 38
+      }
+    },
+    {
+      "method": "Fusion  \u2014 OpenCLIP CLS cosine (zero-shot)",
+      "auroc": 0.8312,
+      "accuracy": 0.78,
+      "p_value": 3.887698736407942e-09,
+      "sensitivity": 0.9,
+      "specificity": 0.66,
+      "contingency": {
+        "tp": 45,
+        "fp": 17,
+        "fn": 5,
+        "tn": 33
+      }
+    },
+    {
+      "method": "Supervised \u2014 concat logistic (N=100 labels)",
+      "auroc": 0.4724,
+      "accuracy": 0.54,
+      "p_value": 0.2661426556490991,
+      "sensitivity": 0.4,
+      "specificity": 0.68,
+      "contingency": {
+        "tp": 20,
+        "fp": 16,
+        "fn": 30,
+        "tn": 34
+      }
+    }
+  ],
+  "distributions": {
+    "routing_normal_mean": 1.9495,
+    "routing_contra_mean": 3.1712,
+    "routing_lift": 1.627,
+    "fusion_normal_mean": 0.7449,
+    "fusion_contra_mean": 0.7946,
+    "fusion_lift": 1.067
+  }
+}

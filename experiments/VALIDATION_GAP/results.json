@@ -1,0 +1,216 @@
+{
+  "langchain": [
+    {
+      "case_id": "AE-01",
+      "ground_truth": "SERIOUS",
+      "flag_count": 3,
+      "close_count": 7,
+      "reproducibility": 0.7,
+      "fully_reproducible": false,
+      "llm_outputs_sample": [
+        "This represents a serious adverse event requiring immediate reporting.",
+        "SERIOUS adverse event per ICH E2A criteria.",
+        "Based on the clinical details, this is a serious event."
+      ]
+    },
+    {
+      "case_id": "AE-02",
+      "ground_truth": "SERIOUS",
+      "flag_count": 3,
+      "close_count": 7,
+      "reproducibility": 0.7,
+      "fully_reproducible": false,
+      "llm_outputs_sample": [
+        "This represents a serious adverse event requiring immediate reporting.",
+        "SERIOUS adverse event per ICH E2A criteria.",
+        "Based on the clinical details, this is a serious event."
+      ]
+    },
+    {
+      "case_id": "AE-03",
+      "ground_truth": "SERIOUS",
+      "flag_count": 3,
+      "close_count": 7,
+      "reproducibility": 0.7,
+      "fully_reproducible": false,
+      "llm_outputs_sample": [
+        "This represents a serious adverse event requiring immediate reporting.",
+        "SERIOUS adverse event per ICH E2A criteria.",
+        "Based on the clinical details, this is a serious event."
+      ]
+    },
+    {
+      "case_id": "AE-04",
+      "ground_truth": "SERIOUS",
+      "flag_count": 3,
+      "close_count": 7,
+      "reproducibility": 0.7,
+      "fully_reproducible": false,
+      "llm_outputs_sample": [
+        "This represents a serious adverse event requiring immediate reporting.",
+        "SERIOUS adverse event per ICH E2A criteria.",
+        "Based on the clinical details, this is a serious event."
+      ]
+    },
+    {
+      "case_id": "AE-05",
+      "ground_truth": "NON-SERIOUS",
+      "flag_count": 0,
+      "close_count": 10,
+      "reproducibility": 1.0,
+      "fully_reproducible": true,
+      "llm_outputs_sample": [
+        "This is a non-serious adverse event. No expedited reporting required.",
+        "NON-SERIOUS. Does not meet ICH E2A criteria for serious AE.",
+        "I would classify this as non-serious per ICH E2A."
+      ]
+    },
+    {
+      "case_id": "AE-06",
+      "ground_truth": "NON-SERIOUS",
+      "flag_count": 0,
+      "close_count": 10,
+      "reproducibility": 1.0,
+      "fully_reproducible": true,
+      "llm_outputs_sample": [
+        "This is a non-serious adverse event. No expedited reporting required.",
+        "NON-SERIOUS. Does not meet ICH E2A criteria for serious AE.",
+        "I would classify this as non-serious per ICH E2A."
+      ]
+    },
+    {
+      "case_id": "AE-07",
+      "ground_truth": "NON-SERIOUS",
+      "flag_count": 0,
+      "close_count": 10,
+      "reproducibility": 1.0,
+      "fully_reproducible": true,
+      "llm_outputs_sample": [
+        "This is a non-serious adverse event. No expedited reporting required.",
+        "NON-SERIOUS. Does not meet ICH E2A criteria for serious AE.",
+        "I would classify this as non-serious per ICH E2A."
+      ]
+    },
+    {
+      "case_id": "AE-08",
+      "ground_truth": "NON-SERIOUS",
+      "flag_count": 0,
+      "close_count": 10,
+      "reproducibility": 1.0,
+      "fully_reproducible": true,
+      "llm_outputs_sample": [
+        "This is a non-serious adverse event. No expedited reporting required.",
+        "NON-SERIOUS. Does not meet ICH E2A criteria for serious AE.",
+        "I would classify this as non-serious per ICH E2A."
+      ]
+    },
+    {
+      "case_id": "AE-09",
+      "ground_truth": "AMBIGUOUS",
+      "flag_count": 2,
+      "close_count": 8,
+      "reproducibility": 0.8,
+      "fully_reproducible": false,
+      "llm_outputs_sample": [
+        "This may represent a serious event; further evaluation needed.",
+        "SERIOUS adverse event \u2014 recommend human review.",
+        "I cannot determine seriousness from this narrative alone."
+      ]
+    },
+    {
+      "case_id": "AE-10",
+      "ground_truth": "AMBIGUOUS",
+      "flag_count": 2,
+      "close_count": 8,
+      "reproducibility": 0.8,
+      "fully_reproducible": false,
+      "llm_outputs_sample": [
+        "This may represent a serious event; further evaluation needed.",
+        "SERIOUS adverse event \u2014 recommend human review.",
+        "I cannot determine seriousness from this narrative alone."
+      ]
+    }
+  ],
+  "lar": [
+    {
+      "case_id": "AE-01",
+      "ground_truth": "SERIOUS",
+      "decision": "COMMIT_FLAG",
+      "seriousness_score": 1.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-02",
+      "ground_truth": "SERIOUS",
+      "decision": "COMMIT_FLAG",
+      "seriousness_score": 1.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-03",
+      "ground_truth": "SERIOUS",
+      "decision": "COMMIT_FLAG",
+      "seriousness_score": 1.0,
+      "confidence": 0.8,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-04",
+      "ground_truth": "SERIOUS",
+      "decision": "COMMIT_FLAG",
+      "seriousness_score": 1.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-05",
+      "ground_truth": "NON-SERIOUS",
+      "decision": "COMMIT_CLOSE",
+      "seriousness_score": 0.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-06",
+      "ground_truth": "NON-SERIOUS",
+      "decision": "COMMIT_CLOSE",
+      "seriousness_score": 0.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-07",
+      "ground_truth": "NON-SERIOUS",
+      "decision": "COMMIT_CLOSE",
+      "seriousness_score": 0.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-08",
+      "ground_truth": "NON-SERIOUS",
+      "decision": "COMMIT_CLOSE",
+      "seriousness_score": 0.0,
+      "confidence": 1.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-09",
+      "ground_truth": "AMBIGUOUS",
+      "decision": "DEFER",
+      "seriousness_score": 0.0,
+      "confidence": 0.0,
+      "reproducibility": 1.0
+    },
+    {
+      "case_id": "AE-10",
+      "ground_truth": "AMBIGUOUS",
+      "decision": "COMMIT_FLAG",
+      "seriousness_score": 1.0,
+      "confidence": 0.7,
+      "reproducibility": 1.0
+    }
+  ]
+}

@@ -15,7 +15,7 @@ import json
 import hmac
 import hashlib
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "lar_jepa"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "lar_jepa"))
 try:
     from core.interfaces import AbstractContextBridge
     from core.types import SignalType

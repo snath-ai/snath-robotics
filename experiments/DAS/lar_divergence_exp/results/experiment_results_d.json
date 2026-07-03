@@ -1,0 +1,71 @@
+{
+  "experiment": "routing_vs_fusion_comparison",
+  "timestamp": "2026-05-20T10:53:59.954312Z",
+  "source_data": "/Users/aadithya/Desktop/Private/personal/Snath/JEPA_Playground/Experiments/lar_divergence_exp/results/experiment_results_c2.json",
+  "description": "Head-to-head routing vs fusion on saved C2 vectors. No re-encoding.",
+  "test_n": 100,
+  "results": [
+    {
+      "method": "Routing \u2014 L1 distance (zero-shot)",
+      "auroc": 0.8738,
+      "accuracy": 0.85,
+      "p_value": 4.853955341250335e-13,
+      "contingency": {
+        "tp": 44,
+        "fp": 9,
+        "fn": 6,
+        "tn": 41
+      },
+      "sensitivity": 0.88,
+      "specificity": 0.82
+    },
+    {
+      "method": "Average fusion \u2014 entropy (zero-shot)",
+      "auroc": 0.8932,
+      "accuracy": 0.88,
+      "p_value": 2.5478589401158665e-15,
+      "contingency": {
+        "tp": 44,
+        "fp": 6,
+        "fn": 6,
+        "tn": 44
+      },
+      "sensitivity": 0.88,
+      "specificity": 0.88
+    },
+    {
+      "method": "Supervised fusion \u2014 concat + logistic",
+      "auroc": 0.9272,
+      "accuracy": 0.91,
+      "p_value": 4.979001411356309e-18,
+      "contingency": {
+        "tp": 45,
+        "fp": 4,
+        "fn": 5,
+        "tn": 46
+      },
+      "sensitivity": 0.9,
+      "specificity": 0.92
+    }
+  ],
+  "finding_names": [
+    "atelectasis",
+    "consolidation",
+    "infiltration",
+    "pneumothorax",
+    "pulmonary edema",
+    "emphysema",
+    "fibrosis",
+    "pleural effusion",
+    "pneumonia",
+    "pleural thickening",
+    "cardiomegaly",
+    "nodule",
+    "mass",
+    "hernia",
+    "lung lesion",
+    "fracture",
+    "lung opacity",
+    "enlarged cardiomediastinum"
+  ]
+}

@@ -1,0 +1,1637 @@
+{
+  "experiment": "nlm_cxr_divergence_v1",
+  "timestamp": "2026-05-19T22:49:30.844878Z",
+  "config": {
+    "tau_high": 0.75,
+    "tau_low": 0.3,
+    "delta": 0.45,
+    "n_sample": 100,
+    "device": "mps"
+  },
+  "summary": {
+    "normal": {
+      "n": 100,
+      "mean_divergence": 1.0347,
+      "mean_conf_vit": 0.6001,
+      "mean_conf_biobert": 0.6287,
+      "decisions": {
+        "COMMIT_TRAJECTORY": 100
+      },
+      "trigger_replan_pct": 0.0,
+      "commit_pct": 100.0
+    },
+    "contradiction": {
+      "n": 100,
+      "mean_divergence": 1.025,
+      "mean_conf_vit": 0.6025,
+      "mean_conf_biobert": 0.6259,
+      "decisions": {
+        "COMMIT_TRAJECTORY": 100
+      },
+      "trigger_replan_pct": 0.0,
+      "commit_pct": 100.0
+    }
+  },
+  "records": [
+    {
+      "cxr_id": "CXR3197",
+      "label": "normal",
+      "confidence_vit": 0.5941,
+      "confidence_bert": 0.601,
+      "divergence": 1.0403,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2845",
+      "label": "normal",
+      "confidence_vit": 0.5923,
+      "confidence_bert": 0.6431,
+      "divergence": 1.0401,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3624",
+      "label": "normal",
+      "confidence_vit": 0.5907,
+      "confidence_bert": 0.62,
+      "divergence": 1.0642,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR751",
+      "label": "normal",
+      "confidence_vit": 0.6061,
+      "confidence_bert": 0.5887,
+      "divergence": 1.0397,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1573",
+      "label": "normal",
+      "confidence_vit": 0.589,
+      "confidence_bert": 0.6149,
+      "divergence": 1.0219,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3445",
+      "label": "normal",
+      "confidence_vit": 0.5925,
+      "confidence_bert": 0.6305,
+      "divergence": 1.0381,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2711",
+      "label": "normal",
+      "confidence_vit": 0.5962,
+      "confidence_bert": 0.6329,
+      "divergence": 1.0294,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2826",
+      "label": "normal",
+      "confidence_vit": 0.6009,
+      "confidence_bert": 0.6224,
+      "divergence": 1.02,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2903",
+      "label": "normal",
+      "confidence_vit": 0.6177,
+      "confidence_bert": 0.6368,
+      "divergence": 1.0234,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3238",
+      "label": "normal",
+      "confidence_vit": 0.5866,
+      "confidence_bert": 0.659,
+      "divergence": 1.0349,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR422",
+      "label": "normal",
+      "confidence_vit": 0.5937,
+      "confidence_bert": 0.6218,
+      "divergence": 1.0363,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1709",
+      "label": "normal",
+      "confidence_vit": 0.5855,
+      "confidence_bert": 0.6468,
+      "divergence": 1.0512,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3156",
+      "label": "normal",
+      "confidence_vit": 0.5933,
+      "confidence_bert": 0.6611,
+      "divergence": 1.0421,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR881",
+      "label": "normal",
+      "confidence_vit": 0.5872,
+      "confidence_bert": 0.6236,
+      "divergence": 1.028,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3372",
+      "label": "normal",
+      "confidence_vit": 0.5799,
+      "confidence_bert": 0.5943,
+      "divergence": 1.0269,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR322",
+      "label": "normal",
+      "confidence_vit": 0.6057,
+      "confidence_bert": 0.6327,
+      "divergence": 1.0475,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR193",
+      "label": "normal",
+      "confidence_vit": 0.6033,
+      "confidence_bert": 0.5927,
+      "divergence": 1.0227,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3428",
+      "label": "normal",
+      "confidence_vit": 0.6065,
+      "confidence_bert": 0.6315,
+      "divergence": 1.0452,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3834",
+      "label": "normal",
+      "confidence_vit": 0.5846,
+      "confidence_bert": 0.6305,
+      "divergence": 1.0219,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1543",
+      "label": "normal",
+      "confidence_vit": 0.5896,
+      "confidence_bert": 0.6432,
+      "divergence": 1.0412,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR323",
+      "label": "normal",
+      "confidence_vit": 0.5976,
+      "confidence_bert": 0.6613,
+      "divergence": 1.0491,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR996",
+      "label": "normal",
+      "confidence_vit": 0.5928,
+      "confidence_bert": 0.6037,
+      "divergence": 1.0468,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR290",
+      "label": "normal",
+      "confidence_vit": 0.5992,
+      "confidence_bert": 0.6372,
+      "divergence": 1.0507,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3620",
+      "label": "normal",
+      "confidence_vit": 0.6008,
+      "confidence_bert": 0.6592,
+      "divergence": 1.0527,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2759",
+      "label": "normal",
+      "confidence_vit": 0.5936,
+      "confidence_bert": 0.6551,
+      "divergence": 1.0513,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR669",
+      "label": "normal",
+      "confidence_vit": 0.5891,
+      "confidence_bert": 0.6173,
+      "divergence": 1.0506,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3240",
+      "label": "normal",
+      "confidence_vit": 0.5991,
+      "confidence_bert": 0.6448,
+      "divergence": 1.0292,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1225",
+      "label": "normal",
+      "confidence_vit": 0.5993,
+      "confidence_bert": 0.6151,
+      "divergence": 1.0243,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3022",
+      "label": "normal",
+      "confidence_vit": 0.5853,
+      "confidence_bert": 0.6026,
+      "divergence": 1.0386,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR330",
+      "label": "normal",
+      "confidence_vit": 0.6044,
+      "confidence_bert": 0.5954,
+      "divergence": 1.0433,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2288",
+      "label": "normal",
+      "confidence_vit": 0.6045,
+      "confidence_bert": 0.6272,
+      "divergence": 1.0344,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1937",
+      "label": "normal",
+      "confidence_vit": 0.5882,
+      "confidence_bert": 0.6207,
+      "divergence": 1.0384,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3719",
+      "label": "normal",
+      "confidence_vit": 0.6163,
+      "confidence_bert": 0.6247,
+      "divergence": 1.0359,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2263",
+      "label": "normal",
+      "confidence_vit": 0.6011,
+      "confidence_bert": 0.5915,
+      "divergence": 1.0375,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2068",
+      "label": "normal",
+      "confidence_vit": 0.589,
+      "confidence_bert": 0.6534,
+      "divergence": 1.0178,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3593",
+      "label": "normal",
+      "confidence_vit": 0.6054,
+      "confidence_bert": 0.6084,
+      "divergence": 1.0251,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1335",
+      "label": "normal",
+      "confidence_vit": 0.597,
+      "confidence_bert": 0.6364,
+      "divergence": 1.0399,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2943",
+      "label": "normal",
+      "confidence_vit": 0.6094,
+      "confidence_bert": 0.6136,
+      "divergence": 1.017,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2298",
+      "label": "normal",
+      "confidence_vit": 0.6055,
+      "confidence_bert": 0.6191,
+      "divergence": 1.0146,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2450",
+      "label": "normal",
+      "confidence_vit": 0.6011,
+      "confidence_bert": 0.6339,
+      "divergence": 1.0409,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1626",
+      "label": "normal",
+      "confidence_vit": 0.6091,
+      "confidence_bert": 0.6458,
+      "divergence": 1.0138,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1845",
+      "label": "normal",
+      "confidence_vit": 0.5952,
+      "confidence_bert": 0.641,
+      "divergence": 1.0142,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR36",
+      "label": "normal",
+      "confidence_vit": 0.5991,
+      "confidence_bert": 0.6687,
+      "divergence": 1.0376,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2139",
+      "label": "normal",
+      "confidence_vit": 0.5992,
+      "confidence_bert": 0.6338,
+      "divergence": 1.0572,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1260",
+      "label": "normal",
+      "confidence_vit": 0.5949,
+      "confidence_bert": 0.6206,
+      "divergence": 1.05,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3671",
+      "label": "normal",
+      "confidence_vit": 0.6456,
+      "confidence_bert": 0.632,
+      "divergence": 1.0015,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2187",
+      "label": "normal",
+      "confidence_vit": 0.5984,
+      "confidence_bert": 0.6525,
+      "divergence": 1.0386,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1328",
+      "label": "normal",
+      "confidence_vit": 0.6233,
+      "confidence_bert": 0.6238,
+      "divergence": 1.0222,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3499",
+      "label": "normal",
+      "confidence_vit": 0.6178,
+      "confidence_bert": 0.6165,
+      "divergence": 1.0234,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR684",
+      "label": "normal",
+      "confidence_vit": 0.6013,
+      "confidence_bert": 0.6004,
+      "divergence": 1.0504,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2152",
+      "label": "normal",
+      "confidence_vit": 0.6053,
+      "confidence_bert": 0.6187,
+      "divergence": 1.0382,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR769",
+      "label": "normal",
+      "confidence_vit": 0.6046,
+      "confidence_bert": 0.6274,
+      "divergence": 1.0525,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1824",
+      "label": "normal",
+      "confidence_vit": 0.5949,
+      "confidence_bert": 0.6335,
+      "divergence": 1.0259,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR413",
+      "label": "normal",
+      "confidence_vit": 0.6001,
+      "confidence_bert": 0.5955,
+      "divergence": 1.0348,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR735",
+      "label": "normal",
+      "confidence_vit": 0.5932,
+      "confidence_bert": 0.6272,
+      "divergence": 1.0342,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1970",
+      "label": "normal",
+      "confidence_vit": 0.5997,
+      "confidence_bert": 0.6115,
+      "divergence": 1.0477,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2056",
+      "label": "normal",
+      "confidence_vit": 0.6043,
+      "confidence_bert": 0.6297,
+      "divergence": 1.0107,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR554",
+      "label": "normal",
+      "confidence_vit": 0.6045,
+      "confidence_bert": 0.6491,
+      "divergence": 1.0418,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1855",
+      "label": "normal",
+      "confidence_vit": 0.6093,
+      "confidence_bert": 0.6248,
+      "divergence": 1.0304,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR261",
+      "label": "normal",
+      "confidence_vit": 0.6027,
+      "confidence_bert": 0.6521,
+      "divergence": 1.0426,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR783",
+      "label": "normal",
+      "confidence_vit": 0.6013,
+      "confidence_bert": 0.6369,
+      "divergence": 1.0387,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR679",
+      "label": "normal",
+      "confidence_vit": 0.6033,
+      "confidence_bert": 0.6302,
+      "divergence": 1.0337,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2428",
+      "label": "normal",
+      "confidence_vit": 0.5964,
+      "confidence_bert": 0.6344,
+      "divergence": 1.0575,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1574",
+      "label": "normal",
+      "confidence_vit": 0.5956,
+      "confidence_bert": 0.6336,
+      "divergence": 1.0409,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1685",
+      "label": "normal",
+      "confidence_vit": 0.5985,
+      "confidence_bert": 0.6131,
+      "divergence": 1.0288,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR351",
+      "label": "normal",
+      "confidence_vit": 0.5977,
+      "confidence_bert": 0.6659,
+      "divergence": 1.0533,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2978",
+      "label": "normal",
+      "confidence_vit": 0.5994,
+      "confidence_bert": 0.6462,
+      "divergence": 1.037,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1240",
+      "label": "normal",
+      "confidence_vit": 0.6217,
+      "confidence_bert": 0.6278,
+      "divergence": 1.0204,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3808",
+      "label": "normal",
+      "confidence_vit": 0.6227,
+      "confidence_bert": 0.5937,
+      "divergence": 1.0448,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2111",
+      "label": "normal",
+      "confidence_vit": 0.617,
+      "confidence_bert": 0.6246,
+      "divergence": 0.9994,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR796",
+      "label": "normal",
+      "confidence_vit": 0.6025,
+      "confidence_bert": 0.6334,
+      "divergence": 1.0271,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1572",
+      "label": "normal",
+      "confidence_vit": 0.5974,
+      "confidence_bert": 0.6606,
+      "divergence": 1.0347,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3383",
+      "label": "normal",
+      "confidence_vit": 0.6061,
+      "confidence_bert": 0.6369,
+      "divergence": 1.0372,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1925",
+      "label": "normal",
+      "confidence_vit": 0.5977,
+      "confidence_bert": 0.6525,
+      "divergence": 1.0411,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR882",
+      "label": "normal",
+      "confidence_vit": 0.6295,
+      "confidence_bert": 0.5881,
+      "divergence": 1.0471,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2782",
+      "label": "normal",
+      "confidence_vit": 0.6072,
+      "confidence_bert": 0.6346,
+      "divergence": 1.0191,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1419",
+      "label": "normal",
+      "confidence_vit": 0.5972,
+      "confidence_bert": 0.6119,
+      "divergence": 1.0399,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3060",
+      "label": "normal",
+      "confidence_vit": 0.5921,
+      "confidence_bert": 0.6409,
+      "divergence": 1.0433,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3363",
+      "label": "normal",
+      "confidence_vit": 0.5979,
+      "confidence_bert": 0.6336,
+      "divergence": 1.0511,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR215",
+      "label": "normal",
+      "confidence_vit": 0.5874,
+      "confidence_bert": 0.6482,
+      "divergence": 1.0411,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR578",
+      "label": "normal",
+      "confidence_vit": 0.6264,
+      "confidence_bert": 0.6432,
+      "divergence": 1.0395,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2812",
+      "label": "normal",
+      "confidence_vit": 0.5774,
+      "confidence_bert": 0.6228,
+      "divergence": 1.0092,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR393",
+      "label": "normal",
+      "confidence_vit": 0.6001,
+      "confidence_bert": 0.6396,
+      "divergence": 1.05,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2774",
+      "label": "normal",
+      "confidence_vit": 0.5956,
+      "confidence_bert": 0.6188,
+      "divergence": 1.0534,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3458",
+      "label": "normal",
+      "confidence_vit": 0.6055,
+      "confidence_bert": 0.6154,
+      "divergence": 1.0356,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2061",
+      "label": "normal",
+      "confidence_vit": 0.6148,
+      "confidence_bert": 0.6448,
+      "divergence": 1.051,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3683",
+      "label": "normal",
+      "confidence_vit": 0.6016,
+      "confidence_bert": 0.6422,
+      "divergence": 1.023,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3822",
+      "label": "normal",
+      "confidence_vit": 0.6014,
+      "confidence_bert": 0.6037,
+      "divergence": 1.0399,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR181",
+      "label": "normal",
+      "confidence_vit": 0.5904,
+      "confidence_bert": 0.6184,
+      "divergence": 1.0346,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2763",
+      "label": "normal",
+      "confidence_vit": 0.599,
+      "confidence_bert": 0.6167,
+      "divergence": 1.0211,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR285",
+      "label": "normal",
+      "confidence_vit": 0.5982,
+      "confidence_bert": 0.6197,
+      "divergence": 1.0065,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3850",
+      "label": "normal",
+      "confidence_vit": 0.5939,
+      "confidence_bert": 0.6323,
+      "divergence": 1.0324,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR943",
+      "label": "normal",
+      "confidence_vit": 0.6027,
+      "confidence_bert": 0.5978,
+      "divergence": 1.0307,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1892",
+      "label": "normal",
+      "confidence_vit": 0.6072,
+      "confidence_bert": 0.6374,
+      "divergence": 1.0519,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2821",
+      "label": "normal",
+      "confidence_vit": 0.594,
+      "confidence_bert": 0.6266,
+      "divergence": 1.031,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR434",
+      "label": "normal",
+      "confidence_vit": 0.5808,
+      "confidence_bert": 0.6274,
+      "divergence": 1.0293,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1795",
+      "label": "normal",
+      "confidence_vit": 0.5779,
+      "confidence_bert": 0.6559,
+      "divergence": 1.0343,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3784",
+      "label": "normal",
+      "confidence_vit": 0.6051,
+      "confidence_bert": 0.6344,
+      "divergence": 0.9852,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR428",
+      "label": "normal",
+      "confidence_vit": 0.6064,
+      "confidence_bert": 0.6508,
+      "divergence": 1.0347,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3229",
+      "label": "normal",
+      "confidence_vit": 0.5891,
+      "confidence_bert": 0.6247,
+      "divergence": 1.0153,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1436",
+      "label": "contradiction",
+      "confidence_vit": 0.6129,
+      "confidence_bert": 0.6418,
+      "divergence": 1.0136,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3761",
+      "label": "contradiction",
+      "confidence_vit": 0.5786,
+      "confidence_bert": 0.5894,
+      "divergence": 1.0105,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1277",
+      "label": "contradiction",
+      "confidence_vit": 0.5961,
+      "confidence_bert": 0.6086,
+      "divergence": 1.0535,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2003",
+      "label": "contradiction",
+      "confidence_vit": 0.6079,
+      "confidence_bert": 0.6454,
+      "divergence": 0.9646,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3187",
+      "label": "contradiction",
+      "confidence_vit": 0.5859,
+      "confidence_bert": 0.6086,
+      "divergence": 1.0168,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR206",
+      "label": "contradiction",
+      "confidence_vit": 0.6019,
+      "confidence_bert": 0.6064,
+      "divergence": 1.0369,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1012",
+      "label": "contradiction",
+      "confidence_vit": 0.6047,
+      "confidence_bert": 0.6092,
+      "divergence": 1.0324,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3498",
+      "label": "contradiction",
+      "confidence_vit": 0.6082,
+      "confidence_bert": 0.6591,
+      "divergence": 1.0402,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3364",
+      "label": "contradiction",
+      "confidence_vit": 0.5958,
+      "confidence_bert": 0.615,
+      "divergence": 1.036,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3839",
+      "label": "contradiction",
+      "confidence_vit": 0.6207,
+      "confidence_bert": 0.6722,
+      "divergence": 1.0225,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR29",
+      "label": "contradiction",
+      "confidence_vit": 0.6084,
+      "confidence_bert": 0.6154,
+      "divergence": 1.0457,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1906",
+      "label": "contradiction",
+      "confidence_vit": 0.6161,
+      "confidence_bert": 0.579,
+      "divergence": 1.0146,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1753",
+      "label": "contradiction",
+      "confidence_vit": 0.5902,
+      "confidence_bert": 0.6502,
+      "divergence": 1.046,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2728",
+      "label": "contradiction",
+      "confidence_vit": 0.6231,
+      "confidence_bert": 0.6555,
+      "divergence": 1.009,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2415",
+      "label": "contradiction",
+      "confidence_vit": 0.595,
+      "confidence_bert": 0.7207,
+      "divergence": 1.0196,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2475",
+      "label": "contradiction",
+      "confidence_vit": 0.5876,
+      "confidence_bert": 0.6284,
+      "divergence": 1.0423,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3075",
+      "label": "contradiction",
+      "confidence_vit": 0.6045,
+      "confidence_bert": 0.6421,
+      "divergence": 1.0461,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1370",
+      "label": "contradiction",
+      "confidence_vit": 0.6047,
+      "confidence_bert": 0.6461,
+      "divergence": 1.0456,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3945",
+      "label": "contradiction",
+      "confidence_vit": 0.5878,
+      "confidence_bert": 0.6666,
+      "divergence": 1.0196,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR28",
+      "label": "contradiction",
+      "confidence_vit": 0.5861,
+      "confidence_bert": 0.6329,
+      "divergence": 1.0331,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3191",
+      "label": "contradiction",
+      "confidence_vit": 0.596,
+      "confidence_bert": 0.6293,
+      "divergence": 1.0272,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1864",
+      "label": "contradiction",
+      "confidence_vit": 0.5994,
+      "confidence_bert": 0.6047,
+      "divergence": 1.0373,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2184",
+      "label": "contradiction",
+      "confidence_vit": 0.5919,
+      "confidence_bert": 0.6491,
+      "divergence": 1.0555,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR111",
+      "label": "contradiction",
+      "confidence_vit": 0.6004,
+      "confidence_bert": 0.5895,
+      "divergence": 1.0421,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2608",
+      "label": "contradiction",
+      "confidence_vit": 0.6095,
+      "confidence_bert": 0.611,
+      "divergence": 0.9814,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3798",
+      "label": "contradiction",
+      "confidence_vit": 0.5897,
+      "confidence_bert": 0.6255,
+      "divergence": 1.0342,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2879",
+      "label": "contradiction",
+      "confidence_vit": 0.6064,
+      "confidence_bert": 0.61,
+      "divergence": 1.0337,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2474",
+      "label": "contradiction",
+      "confidence_vit": 0.6042,
+      "confidence_bert": 0.6007,
+      "divergence": 1.0256,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1446",
+      "label": "contradiction",
+      "confidence_vit": 0.6028,
+      "confidence_bert": 0.6069,
+      "divergence": 1.0224,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3248",
+      "label": "contradiction",
+      "confidence_vit": 0.5929,
+      "confidence_bert": 0.6089,
+      "divergence": 1.017,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3656",
+      "label": "contradiction",
+      "confidence_vit": 0.5873,
+      "confidence_bert": 0.6184,
+      "divergence": 1.0518,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1160",
+      "label": "contradiction",
+      "confidence_vit": 0.589,
+      "confidence_bert": 0.666,
+      "divergence": 1.032,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2318",
+      "label": "contradiction",
+      "confidence_vit": 0.5815,
+      "confidence_bert": 0.6128,
+      "divergence": 1.0038,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3095",
+      "label": "contradiction",
+      "confidence_vit": 0.6043,
+      "confidence_bert": 0.6097,
+      "divergence": 1.0478,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1513",
+      "label": "contradiction",
+      "confidence_vit": 0.5914,
+      "confidence_bert": 0.6158,
+      "divergence": 1.0254,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3840",
+      "label": "contradiction",
+      "confidence_vit": 0.6269,
+      "confidence_bert": 0.6392,
+      "divergence": 0.9911,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1614",
+      "label": "contradiction",
+      "confidence_vit": 0.5888,
+      "confidence_bert": 0.6407,
+      "divergence": 1.0123,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR88",
+      "label": "contradiction",
+      "confidence_vit": 0.6015,
+      "confidence_bert": 0.6227,
+      "divergence": 1.023,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3326",
+      "label": "contradiction",
+      "confidence_vit": 0.6416,
+      "confidence_bert": 0.591,
+      "divergence": 1.0117,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2890",
+      "label": "contradiction",
+      "confidence_vit": 0.6329,
+      "confidence_bert": 0.6451,
+      "divergence": 1.0068,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2191",
+      "label": "contradiction",
+      "confidence_vit": 0.5914,
+      "confidence_bert": 0.6278,
+      "divergence": 1.0449,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1014",
+      "label": "contradiction",
+      "confidence_vit": 0.5829,
+      "confidence_bert": 0.623,
+      "divergence": 1.0247,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3479",
+      "label": "contradiction",
+      "confidence_vit": 0.6103,
+      "confidence_bert": 0.6454,
+      "divergence": 1.0376,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3951",
+      "label": "contradiction",
+      "confidence_vit": 0.5943,
+      "confidence_bert": 0.631,
+      "divergence": 1.0243,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1292",
+      "label": "contradiction",
+      "confidence_vit": 0.5928,
+      "confidence_bert": 0.6536,
+      "divergence": 1.0489,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2691",
+      "label": "contradiction",
+      "confidence_vit": 0.6122,
+      "confidence_bert": 0.6004,
+      "divergence": 1.0116,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3091",
+      "label": "contradiction",
+      "confidence_vit": 0.5773,
+      "confidence_bert": 0.6402,
+      "divergence": 1.043,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3214",
+      "label": "contradiction",
+      "confidence_vit": 0.5924,
+      "confidence_bert": 0.6339,
+      "divergence": 1.0327,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1702",
+      "label": "contradiction",
+      "confidence_vit": 0.6034,
+      "confidence_bert": 0.6375,
+      "divergence": 1.0527,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1541",
+      "label": "contradiction",
+      "confidence_vit": 0.5904,
+      "confidence_bert": 0.5953,
+      "divergence": 1.024,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2259",
+      "label": "contradiction",
+      "confidence_vit": 0.6154,
+      "confidence_bert": 0.646,
+      "divergence": 1.024,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR436",
+      "label": "contradiction",
+      "confidence_vit": 0.6088,
+      "confidence_bert": 0.6076,
+      "divergence": 1.0086,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR593",
+      "label": "contradiction",
+      "confidence_vit": 0.5958,
+      "confidence_bert": 0.6238,
+      "divergence": 1.0483,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1525",
+      "label": "contradiction",
+      "confidence_vit": 0.6515,
+      "confidence_bert": 0.6467,
+      "divergence": 0.9485,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1909",
+      "label": "contradiction",
+      "confidence_vit": 0.5954,
+      "confidence_bert": 0.6198,
+      "divergence": 1.0261,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2465",
+      "label": "contradiction",
+      "confidence_vit": 0.6029,
+      "confidence_bert": 0.6248,
+      "divergence": 1.0314,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3076",
+      "label": "contradiction",
+      "confidence_vit": 0.6421,
+      "confidence_bert": 0.6281,
+      "divergence": 0.9895,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3455",
+      "label": "contradiction",
+      "confidence_vit": 0.6021,
+      "confidence_bert": 0.6022,
+      "divergence": 1.033,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR802",
+      "label": "contradiction",
+      "confidence_vit": 0.6162,
+      "confidence_bert": 0.6013,
+      "divergence": 1.0096,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3565",
+      "label": "contradiction",
+      "confidence_vit": 0.5888,
+      "confidence_bert": 0.6602,
+      "divergence": 1.0542,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2414",
+      "label": "contradiction",
+      "confidence_vit": 0.5884,
+      "confidence_bert": 0.6566,
+      "divergence": 1.0235,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1362",
+      "label": "contradiction",
+      "confidence_vit": 0.6057,
+      "confidence_bert": 0.5972,
+      "divergence": 1.0193,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2955",
+      "label": "contradiction",
+      "confidence_vit": 0.5944,
+      "confidence_bert": 0.6016,
+      "divergence": 1.0281,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1992",
+      "label": "contradiction",
+      "confidence_vit": 0.6306,
+      "confidence_bert": 0.6351,
+      "divergence": 0.9859,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR305",
+      "label": "contradiction",
+      "confidence_vit": 0.6099,
+      "confidence_bert": 0.6162,
+      "divergence": 1.0048,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2904",
+      "label": "contradiction",
+      "confidence_vit": 0.6091,
+      "confidence_bert": 0.6087,
+      "divergence": 1.0289,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR840",
+      "label": "contradiction",
+      "confidence_vit": 0.6238,
+      "confidence_bert": 0.6189,
+      "divergence": 0.9916,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR522",
+      "label": "contradiction",
+      "confidence_vit": 0.6007,
+      "confidence_bert": 0.637,
+      "divergence": 1.0447,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2390",
+      "label": "contradiction",
+      "confidence_vit": 0.5995,
+      "confidence_bert": 0.6785,
+      "divergence": 1.0206,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2217",
+      "label": "contradiction",
+      "confidence_vit": 0.5807,
+      "confidence_bert": 0.5839,
+      "divergence": 1.0338,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR431",
+      "label": "contradiction",
+      "confidence_vit": 0.5933,
+      "confidence_bert": 0.6513,
+      "divergence": 1.0441,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1125",
+      "label": "contradiction",
+      "confidence_vit": 0.6291,
+      "confidence_bert": 0.6211,
+      "divergence": 0.9749,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1021",
+      "label": "contradiction",
+      "confidence_vit": 0.5919,
+      "confidence_bert": 0.5897,
+      "divergence": 1.0209,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3847",
+      "label": "contradiction",
+      "confidence_vit": 0.6087,
+      "confidence_bert": 0.6289,
+      "divergence": 1.0184,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1935",
+      "label": "contradiction",
+      "confidence_vit": 0.6013,
+      "confidence_bert": 0.6703,
+      "divergence": 1.0491,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR825",
+      "label": "contradiction",
+      "confidence_vit": 0.5963,
+      "confidence_bert": 0.5881,
+      "divergence": 1.0275,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR847",
+      "label": "contradiction",
+      "confidence_vit": 0.5949,
+      "confidence_bert": 0.652,
+      "divergence": 1.0465,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1043",
+      "label": "contradiction",
+      "confidence_vit": 0.64,
+      "confidence_bert": 0.6505,
+      "divergence": 0.9801,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR387",
+      "label": "contradiction",
+      "confidence_vit": 0.5887,
+      "confidence_bert": 0.6402,
+      "divergence": 1.0178,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1164",
+      "label": "contradiction",
+      "confidence_vit": 0.6238,
+      "confidence_bert": 0.5961,
+      "divergence": 1.0301,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1819",
+      "label": "contradiction",
+      "confidence_vit": 0.5853,
+      "confidence_bert": 0.6092,
+      "divergence": 1.0192,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3068",
+      "label": "contradiction",
+      "confidence_vit": 0.6414,
+      "confidence_bert": 0.6008,
+      "divergence": 1.0042,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3510",
+      "label": "contradiction",
+      "confidence_vit": 0.6075,
+      "confidence_bert": 0.5979,
+      "divergence": 1.0096,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1874",
+      "label": "contradiction",
+      "confidence_vit": 0.6093,
+      "confidence_bert": 0.6702,
+      "divergence": 1.0428,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3786",
+      "label": "contradiction",
+      "confidence_vit": 0.6197,
+      "confidence_bert": 0.627,
+      "divergence": 0.9757,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2673",
+      "label": "contradiction",
+      "confidence_vit": 0.5864,
+      "confidence_bert": 0.6344,
+      "divergence": 1.032,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1085",
+      "label": "contradiction",
+      "confidence_vit": 0.613,
+      "confidence_bert": 0.6776,
+      "divergence": 1.0224,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1496",
+      "label": "contradiction",
+      "confidence_vit": 0.593,
+      "confidence_bert": 0.6137,
+      "divergence": 1.0415,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1637",
+      "label": "contradiction",
+      "confidence_vit": 0.5875,
+      "confidence_bert": 0.636,
+      "divergence": 1.0273,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR3369",
+      "label": "contradiction",
+      "confidence_vit": 0.6043,
+      "confidence_bert": 0.6283,
+      "divergence": 1.0268,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR483",
+      "label": "contradiction",
+      "confidence_vit": 0.6015,
+      "confidence_bert": 0.6287,
+      "divergence": 1.0355,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1031",
+      "label": "contradiction",
+      "confidence_vit": 0.6024,
+      "confidence_bert": 0.5663,
+      "divergence": 1.0579,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1769",
+      "label": "contradiction",
+      "confidence_vit": 0.5922,
+      "confidence_bert": 0.5869,
+      "divergence": 1.0419,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2355",
+      "label": "contradiction",
+      "confidence_vit": 0.6023,
+      "confidence_bert": 0.6386,
+      "divergence": 1.0322,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2448",
+      "label": "contradiction",
+      "confidence_vit": 0.6036,
+      "confidence_bert": 0.6279,
+      "divergence": 0.9868,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1204",
+      "label": "contradiction",
+      "confidence_vit": 0.5819,
+      "confidence_bert": 0.6093,
+      "divergence": 1.0208,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1100",
+      "label": "contradiction",
+      "confidence_vit": 0.5977,
+      "confidence_bert": 0.6139,
+      "divergence": 1.0465,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2864",
+      "label": "contradiction",
+      "confidence_vit": 0.6062,
+      "confidence_bert": 0.5967,
+      "divergence": 1.0351,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR2589",
+      "label": "contradiction",
+      "confidence_vit": 0.5906,
+      "confidence_bert": 0.6361,
+      "divergence": 1.049,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR1076",
+      "label": "contradiction",
+      "confidence_vit": 0.5962,
+      "confidence_bert": 0.6333,
+      "divergence": 1.0574,
+      "decision": "COMMIT_TRAJECTORY"
+    }
+  ]
+}

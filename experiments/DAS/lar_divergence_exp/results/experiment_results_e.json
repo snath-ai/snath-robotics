@@ -1,0 +1,44 @@
+{
+  "experiment": "fusion_vs_routing_same_model_nlm_cxr",
+  "timestamp": "2026-05-20T11:06:00.434673Z",
+  "model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+  "dataset": "NLM Indiana University CXR",
+  "ground_truth": "Synthetic (TXV oracle, same as C2)",
+  "note": "Same model and data as C2. Only scoring function differs.",
+  "results": [
+    {
+      "method": "Fusion \u2014 BiomedCLIP CLS cosine (zero-shot)",
+      "auroc": 0.8536,
+      "accuracy": 0.81,
+      "p_value": 1.0296155412278695e-10,
+      "sensitivity": 0.9,
+      "specificity": 0.72,
+      "contingency": {
+        "tp": 45,
+        "fp": 14,
+        "fn": 5,
+        "tn": 36
+      }
+    },
+    {
+      "method": "Routing \u2014 BiomedCLIP finding-vector L1 (zero-shot)",
+      "auroc": 0.8736,
+      "accuracy": 0.85,
+      "p_value": 4.853955341250335e-13,
+      "sensitivity": 0.88,
+      "specificity": 0.82,
+      "contingency": {
+        "tp": 44,
+        "fp": 9,
+        "fn": 6,
+        "tn": 41
+      }
+    }
+  ],
+  "distributions": {
+    "fusion_normal_mean": 0.6081,
+    "fusion_contra_mean": 0.6596,
+    "routing_normal_mean": 3.8073,
+    "routing_contra_mean": 11.8595
+  }
+}

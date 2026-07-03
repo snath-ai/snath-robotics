@@ -37,7 +37,7 @@ import hashlib
 import numpy as np
 from dataclasses import dataclass
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "lar_jepa"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", "lar_jepa"))
 
 try:
     from core.interfaces import AbstractContextBridge

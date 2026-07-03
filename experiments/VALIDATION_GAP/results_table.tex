@@ -1,0 +1,35 @@
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Empirical comparison: LangChain probabilistic routing vs.\ Lár deterministic routing
+on 10 synthetic AE narratives ($n=10$ runs each). Lár v2.2.0 \texttt{GraphExecutor}
+with HMAC-SHA256 audit signing (FDA 21 CFR Part 11). LC~= LangChain.}
+\label{tab:validation-gap-results}
+\begin{tabular}{llrrrllrrl}
+\toprule
+\multicolumn{2}{c}{Case} &
+\multicolumn{3}{c}{LangChain} &
+\multicolumn{5}{c}{Lár (v2.2.0, \texttt{GraphExecutor})} \\
+\cmidrule(lr){1-2}\cmidrule(lr){3-5}\cmidrule(lr){6-10}
+ID & GT & Flag/Close & Repro & OK &
+Decision & Score & Conf & HMAC & OK \\
+\midrule
+    AE-01 & SERIOUS & 3/10 & 70% & \xmark & FLAG & 1.000 & 1.000 & \cmark & \cmark \\
+    AE-02 & SERIOUS & 3/10 & 70% & \xmark & FLAG & 1.000 & 1.000 & \cmark & \cmark \\
+    AE-03 & SERIOUS & 3/10 & 70% & \xmark & FLAG & 1.000 & 0.800 & \cmark & \cmark \\
+    AE-04 & SERIOUS & 3/10 & 70% & \xmark & FLAG & 1.000 & 1.000 & \cmark & \cmark \\
+    AE-05 & NON-SERIOUS & 0/10 & 100% & \cmark & CLOSE & 0.000 & 1.000 & \cmark & \cmark \\
+    AE-06 & NON-SERIOUS & 0/10 & 100% & \cmark & CLOSE & 0.000 & 1.000 & \cmark & \cmark \\
+    AE-07 & NON-SERIOUS & 0/10 & 100% & \cmark & CLOSE & 0.000 & 1.000 & \cmark & \cmark \\
+    AE-08 & NON-SERIOUS & 0/10 & 100% & \cmark & CLOSE & 0.000 & 1.000 & \cmark & \cmark \\
+    AE-09 & AMBIGUOUS & 2/10 & 80% & --- & DEFER & 0.000 & 0.000 & \cmark & \cmark \\
+    AE-10 & AMBIGUOUS & 2/10 & 80% & --- & FLAG & 1.000 & 0.700 & \cmark & \xmark \\
+\midrule
+\multicolumn{3}{l}{Mean reproducibility} &
+  84% & & & 100\% & & \cmark & \\\\
+\multicolumn{3}{l}{Fully reproducible (all 10 runs)} &
+  4/10 & & & 10/10 & & & \\\\
+\bottomrule
+\end{tabular}
+\end{table}

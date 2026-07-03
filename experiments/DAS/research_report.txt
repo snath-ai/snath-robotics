@@ -1,0 +1,277 @@
+Enterprise Cognitive Architecture for Multi-Stream Multi-Omics: Resolving Plasticity Collapse, Triadic Arbitration, and Overconfidence in Content-Blind Systems
+Continual Learning and Spectral Regularization in Dynamic Adapter Selection
+Sequential fine-tuning of large pre-trained models on continuous, noisy biological data distributions presents a severe risk of catastrophic forgetting and loss of plasticity. Under the Lár cognitive framework, specialized parameter-efficient adapters, such as Low-Rank Adaptation (LoRA) modules, are dynamically loaded into memory at runtime. This selection is based on input-similarity centroids mapped within an abstract difference vector space, known as the $A$-space :
+$$\Delta_i = z_A^i - z_B^i$$
+where $z_A^i$ and $z_B^i$ represent the high-dimensional latent vectors produced by independent stream encoders.
+When the architecture is exposed to continuous, non-linear multi-omics streams, sequential training causes weight matrices to drift from their optimal pre-trained configurations. This drift results in the rapid accumulation of "intruder dimensions". These are singular vectors in the adapted weight updates that exhibit high-magnitude singular values but are nearly orthogonal to the singular vectors of the original pre-trained weight matrix. The emergence of these dimensions causes interference at task boundaries, resulting in adapter collapse.
+The Mechanics of Intruder Dimensions
+Analyzing this phenomenon requires applying Singular Value Decomposition (SVD) directly to the weight updates. Let $W_0 \in \mathbb{R}^{d_{\text{in}} \times d_{\text{out}}}$ be a frozen, pre-trained linear weight matrix. Standard low-rank adaptation represents the fine-tuned update as $\Delta W = BA$, where $B \in \mathbb{R}^{d_{\text{in}} \times r}$ and $A \in \mathbb{R}^{r \times d_{\text{out}}}$, with the rank $r \ll \min(d_{\text{in}}, d_{\text{out}})$. The overall fine-tuned weight matrix is formulated as :
+$$W_{\text{tuned}} = W_0 + \Delta W = W_0 + BA$$
+The SVD of the fine-tuned weight matrix is defined as :
+$$W_{\text{tuned}} = U \Sigma V^T$$
+where $U$ and $V$ are the orthogonal matrices of left and right singular vectors, and $\Sigma$ is a diagonal matrix containing the singular values sorted in descending order. A singular vector $y_j \in U$ is classified as an intruder dimension if its maximum absolute cosine similarity to any pre-trained singular vector $x_i$ of $W_0$ falls below a strict similarity threshold $\epsilon$ :
+$$\max_i \left| \cos(y_j, x_i) \right| < \epsilon$$
+In models fine-tuned with standard LoRA, these intruder dimensions dominate the top-ranking singular values.Research by Biderman et al. (2024) and Sharma et al. (2024) demonstrates that these dimensions are causally linked to catastrophic forgetting. Modifying these vectors provides a mechanism to counteract this degradation. To establish a stable, continuous learning paradigm, a causal intervention scales down the top intruder singular values post-fine-tuning using a scaling parameter $\lambda \in $ :
+$$W_{\text{intervened}} = W_0 + \Delta W + (\lambda - 1) u_i \sigma_i v_i^T$$
+where $u_i$, $\sigma_i$, and $v_i^T$ correspond to the left singular vector, singular value, and right singular vector of the targeted intruder dimension. Empirical results show that setting $\lambda \in [0.7, 0.9]$ yields a significant reduction in forgetting of the pre-training distribution with negligible impact on task-specific performance.
+Spectral Regularization and Advanced PEFT Frameworks
+To bound the growth of intruder dimensions during active training, spectral regularizers can be applied directly to the weight parameters. Keeping the maximum singular value of the layer weight update close to one preserves the initialization properties, sustains gradient diversity, and maintains model trainability. The spectral regularizer applied to the low-rank update matrix $\Delta W = BA$ penalizes deviations from unity :
+$$\mathcal{L}_{\text{spec}}(W) = \beta \left( \sigma_{\text{max}}(W) - 1 \right)^2$$
+where $\sigma_{\text{max}}(W)$ is the spectral norm (largest singular value) of the weight matrix and $\beta$ is a regularization hyperparameter. When compared to standard weight decay or $L_2$ regularization, this approach provides the parameter space with more freedom to fit downstream distributions, restricting updates only along directions that scale the spectral norm.
+Framework
+Parameter Optimization Strategy
+Regularizer Formulation
+Primary Safety / Plasticity Mechanism
+Spectral Regularization
+Constrains global weight matrix bounds during sequential tasks.
+$\mathcal{L}_{\text{spec}} = \beta (\sigma_{\text{max}}(W) - 1)^2$
+Sustains gradient diversity and prevents loss of plasticity.
+BA-LoRA
+Decomposes $W_0$ via SVD; trains principal adapters while freezing residuals.
+Consistency, diversity, and SVD-based output-space penalties.
+Counteracts catastrophic inheritance of noise and biases from pre-training.
+LoRI
+Freezes projection matrix $A$as random projection; sparsifies matrix $B$.
+Sparse masking matrices $M_t$ extracted via magnitude calibration.
+Isolates parameter updates across tasks via orthogonal subspaces.
+ProCL
+Partitions adapter weights into dynamic program memory slots.
+Input-conditioned attention-based slot routing.
+Localizes parameter updates, consolidating memory into a persistent adapter.
+
+Under BA-LoRA (Yupeng Chang, Yi Chang, and Yuan Wu, 2024-2026), the base weights $W$ are decomposed using SVD, splitting the components into principal parts (used to initialize low-rank matrices $A$ and $B$) and residual parts (stored in a frozen residual matrix $W_{\text{res}}$) :
+$$A = U_{:r} S_{:r}^{1/2}, \quad B = S_{:r}^{1/2} V_{:r}^T, \quad W_{\text{res}} = U_{r:} S_{r:} V_{r:}^T$$
+where $r$ is the specified adapter rank. BA-LoRA incorporates a consistency regularizer to anchor pre-trained knowledge, a diversity regularizer to maintain output entropy, and an SVD regularizer to stabilize low-rank projections.
+Alternatively, LoRI (Juzheng Zhang, Jiacheng You, Ashwinee Panda, and Tom Goldstein, 2025) freezes $A$ as a random projection and trains matrix $B$ using a task-specific sparse mask $M_t \in \{0, 1\}^{r \times d_{\text{out}}}$, resulting in the update :
+$$\Delta_t W = (B \odot M_t) A$$
+This formulation maps task adapters into approximately orthogonal subspaces, minimizing cross-task interference during model merging and sequential training.
+ProCL (Hung Le and Svetha Venkatesh, May 2026) treats low-rank adapters as structured program memory slots, denoted as $\mathcal{P} = \{P_1, P_2, \dots, P_S\}$. An input-conditioned attention mechanism dynamically retrieves and composes these program slots based on the input features :
+$$\Delta W_{\text{adapted}} = \sum_{s=1}^S \alpha_s(x) P_s$$
+where $\alpha_s(x)$ represents the attention weight assigned to slot $P_s$. Over time, these transient compositions are integrated into a persistent adapter through a consolidation step, ensuring zero inference-time overhead during deployment while preserving maximum stability during training.
+Gradient Decoupling Under Shared Cross-Modal Losses
+When training paired stream adapters across a shared cross-modal divergence loss, backpropagation flows through both encoders simultaneously, coupling their optimization paths. This coupling risks contaminating the streams, as Adapter A implicitly learns latent structural states from Stream B. To enforce representational independence, gradient decoupling techniques must be applied.
+========================= CROSS-MODAL GRADIENT DECOUPLING =========================
+Stream A Encoder (phi_A) ---> g_A = grad(L) ---\
+                                                 +---> [PCGrad / FOP Projection]
+Stream B Encoder (phi_B) ---> g_B = grad(L) ---/                 |
+                                                                 v
+                                                     Decoupled Gradient Updates
+                                                   (Eliminates Mutual Information)
+===================================================================================
+
+Using Projecting Conflicting Gradients (PCGrad), gradients are projected onto the normal plane of conflicting tasks.Let $g_A = \nabla_{\phi^A} \mathcal{L}$ and $g_B = \nabla_{\phi^B} \mathcal{L}$ be the gradients of the adapters.If the cosine similarity between the gradients is negative, indicating optimization conflict, PCGrad alters the update direction :
+$$\text{if } g_A \cdot g_B < 0: \quad g_A^{\text{PC}} = g_A - \frac{g_A \cdot g_B}{\|g_B\|^2} g_B$$
+This ensures that the update applied to Adapter A does not contain any component that opposes the parameter optimization direction of Adapter B, neutralizing destructive interference.
+To scale this to ultra-large batch configurations, the Fisher-Orthogonal Projection (FOP) combined with the second-order SOAP optimizer is utilized. SOAP provides a memory-efficient surrogate for Natural Gradient Descent by projecting gradients onto a skewed eigenbasis and applying coordinate-wise adaptive normalization. FOP constructs a variance-aware update direction by leveraging sub-batch gradient differences, projecting the gradient difference orthogonally to the primary descent trajectory under the Fisher Information Matrix (FIM) metric $F$ :
+$$\tilde{g}_A = g_A - F^{-1} \left( \frac{g_A^T F^{-1} g_B}{g_B^T F^{-1} g_B} \right) g_B$$
+To minimize computation, Multi-Level FOP (ML-FOP) employs a hierarchical folding strategy. Let the gradient accumulation window be recursively bisected into a dyadic tree. At each tree level, lightweight cumulative snapshots are telescopically fused :
+$$\Delta G^{(l)} = G_{\text{segment\_1}}^{(l-1)} - G_{\text{segment\_2}}^{(l-1)}$$
+ML-FOP applies the orthogonal projection step only on these coarse telescoping boundaries, capturing multi-scale cross-modality variance without the computational overhead of evaluating the Fisher matrix at every micro-step.
+Mathematical Arbitration of K-Stream Agreement Graphs (K > 2)
+Evolving the cognitive framework from a binary router to a Triadic or N-Stream topology ($K > 2$) is necessary to capture non-linear, epistatic interactions. In multi-omics settings, properties such as drug-induced epistatic toxicity satisfy the synergistic relation $P(Y \mid A, B) \neq P(Y \mid A) + P(Y \mid B)$. Resolving this synergy requires independent, content-blind streams that monitor separate observational spaces from orthogonal vantage points (e.g., Genomics Stream A, Transcriptomics Stream B, and Interactome Stream C).
+               (cA, zA)
+                        \
+                         \  D(A, B)
+                          \
+ --- --- (cB, zB)
+     (cC, zC)     D(A, C)          |          D(B, C)
+                                   v
+                            RouteDecision 
+             {COMMIT_TRAJECTORY, TRIGGER_REPLAN, STRUCTURAL_IMPASSE}
+
+The router must remain strictly content-blind (satisfying invariant V4), operating exclusively on the scalar confidence vector $\mathbf{c} = [c_1, c_2, \dots, c_K]^T \in ^K$ and the pairwise divergence matrix $M \in \mathbb{R}^{K \times K}_{\ge 0}$, where $M_{ij} = D(z_i, z_j)$ represents the geometric distance between the latent outputs of stream $i$ and stream $j$.
+Piecewise Arbitration Function for Triadic Routing (K = 3)
+For a triadic stream topology ($K = 3$), the pairwise distance matrix is defined as :
+$$M = \begin{pmatrix} 0 & D(A,B) & D(A,C) \\ D(B,A) & 0 & D(B,C) \\ D(C,A) & D(C,B) & 0 \end{pmatrix}$$
+The arbitration routing function $\text{route}(\mathbf{c}, M)$ maps these inputs to one of the discrete decisions defined in the cognitive contract: COMMIT_TRAJECTORY, TRIGGER_REPLAN, or STRUCTURAL_IMPASSE. To guarantee completeness (satisfying invariant V5), the confidence space is divided using thresholds $\tau_{\text{high}}$ and $\tau_{\text{low}}$, while the distance space is thresholded by the divergence limit $\delta$.
+Let $\mathbf{1}_{\text{high}}(c_i) = \mathbb{I}(c_i \ge \tau_{\text{high}})$ and $\mathbf{1}_{\text{low}}(c_i) = \mathbb{I}(c_i \ge \tau_{\text{low}})$ represent indicators of stream confidence. The arbitration logic is governed by a deterministic, non-differentiable piecewise step function :
+$$\text{route}(\mathbf{c}, M) = \begin{cases}
+\text{COMMIT_TRAJECTORY} & \text{if } \forall i, j: \mathbf{1}{\text{high}}(c_i)\mathbf{1}{\text{high}}(c_j) = 1 \text{ and } M_{ij} < \delta \
+\text{TRIGGER_REPLAN} & \text{if } \forall i: \mathbf{1}{\text{high}}(c_i) = 1 \text{ and } \exists (i, j): M{ij} \ge \delta \
+\text{COMMIT_TRAJECTORY} & \text{if } \exists! i: \mathbf{1}{\text{high}}(c_i) = 1 \ \text{STRUCTURAL_IMPASSE} & \text{if } \forall i: \mathbf{1}{\text{low}}(c_i) = 0 \
+\text{STRUCTURAL_IMPASSE} & \text{otherwise}
+\end{cases}$$
+This formulation covers all confidence-divergence boundaries. The final otherwise clause handles cases where some streams fall into the middle-confidence zone, ensuring no region of the input space remains undefined.
+Graph Topologies and Arbitration Decisions
+Topology Name
+Mathematical Subgraph Conditions
+Configuration of c
+Arbitration Routing Decision
+System Interpretation & Downstream Action
+Complete Clique Agreement
+$\forall i, j: M_{ij} < \delta$
+$\forall i: c_i \ge \tau_{\text{high}}$
+COMMIT_TRAJECTORY
+All biological streams confidently agree; execute clinical pipeline.
+Star Topology Dissensus
+$M_{12} < \delta \land M_{13} \ge \delta \land M_{23} \ge \delta$
+$\forall i: c_i \ge \tau_{\text{high}}$
+TRIGGER_REPLAN / IMPASSE
+Genomics (A) and Transcriptomics (B) agree, but Phenotypic (C) disagrees.
+Clique Dissensus
+$\forall i \neq j: M_{ij} \ge \delta$
+$\forall i: c_i \ge \tau_{\text{high}}$
+STRUCTURAL_IMPASSE
+Pairwise violent contradiction across all streams; halt and escalate.
+Asymmetric Quorum Deferral
+$M_{12} < \delta$
+$c_1, c_2 \ge \tau_{\text{high}} \land c_3 < \tau_{\text{low}}$
+COMMIT_TRAJECTORY
+Stream C is highly uncertain; defer to agreed majoritarian consensus of A and B.
+Bipartite Dissensus
+$M_{12} < \delta \land M_{34} < \delta \land M_{13} \ge \delta$
+$\forall i: c_i \ge \tau_{\text{high}}$
+STRUCTURAL_IMPASSE
+Streams form two distinct, internally consistent but conflicting coalitions.
+
+Decision-Theoretic Cost Modeling and Quorum Sensing
+Under realistic biological noise, the router's arbitration must balance speed, accuracy, and safety. This trade-off is modeled using a decentralized Quorum-Sensing algorithm. Let $v_i \in \{0, 1\}$ represent the binary classification output of stream $i$, with associated confidence $c_i$. The evidence for an option $a \in \{0, 1\}$ accumulates over a decision graph as a weighted sum of the active streams :
+$$\mathcal{E}(a) = \sum_{i=1}^K \mathbb{I}(v_i = a) \cdot w_i(c_i)$$
+where $w_i(c_i)$ represents a non-linear weighting function mapping confidence to voting power. A consensus decision is triggered when the accumulated evidence for any option crosses a quorum threshold $\tau_Q$ :
+$$\mathcal{E}(a) \ge \tau_Q$$
+The selection of the quorum threshold $\tau_Q$ is optimized via a decision-theoretic cost model that minimizes expected risk :
+$$\mathcal{R} = C_{\text{fn}} \cdot P(\text{error} \mid \text{commit}) + C_{\text{fa}} \cdot P(\text{unnecessary replan}) + \theta \cdot T_{\text{decision}}$$
+where $C_{\text{fn}}$ is the cost of a false negative (e.g., executing a COMMIT when a critical stream indicates lethal toxicity), $C_{\text{fa}}$ is the cost of a false alarm (unnecessary REPLAN or IMPASSE), $T_{\text{decision}}$ is the decision latency, and $\theta$ is a temporal cost penalty.
+In safety-critical medical contexts, $C_{\text{fn}} \gg C_{\text{fa}}$. To minimize risk, the optimal system configuration employs a super-majoritarian quorum threshold $\tau_Q$, or implements a strict safety-conservative override. This override routes any star topology dissensus containing a high-confidence anomaly to STRUCTURAL_IMPASSE, ensuring that minority dissent from a highly confident, orthogonal validator is never averaged away.
+Hidden Ancestor Graph Modeling
+To formalize the tracking of anomalies across the agreement graph, we can adapt the Hidden Ancestor Graphsframework. Let $G = (V, E)$ be the agreement graph, where vertices $V$ represent the active streams and edges $E$represent observed alignments. Edges with end points in the same classification are agreement edges ($M_{ij} < \delta$), while those connecting differing classifications are conflict edges ($M_{ij} \ge \delta$).
+Each stream vertex has a hidden binary state $S_i \in \{\text{tame}, \text{wild}\}$. Under this formulation, a conflict edge can only exist if at least one of its end points is in a "wild" state. The "wild" state corresponds to class disaffiliation—a mathematical indicator that the encoder's internal representations have diverged from expected patterns, signaling a localized anomaly. By framing the stream topology in this manner, the system identifies wild nodes using a neighborhood-based vertex cover, isolating structural misalignments without inspecting core representations.
+Encoder-Level Pre-Routing Out-of-Distribution (OOD) Detection
+Content-blind routing architectures remain vulnerable to the "confidence trap". When processing highly unfamiliar, novel pathologies outside the pre-training distribution, max-softmax encoders are prone to extreme overconfidence under severe distribution shift. If both streams confidently agree on the wrong familiar-looking class, the inter-stream divergence remains artificially low. The router then erroneously triggers a COMMIT_TRAJECTORY decision. To prevent these pipeline failures, a pre-routing safety layer must detect OOD samples at the encoder level before computing divergence.
+Raw Input (x) ---> ---> Pre-routing OOD Filter
+                           |                                   | (If OOD score > threshold)
+                           v                                   v
+                   
+                           |
+                           v
+              Pairwise Divergence Computation 
+                           |
+                           v
+                    [Arbitration]
+
+X-Mahalanobis: Multi-Layer Transformer Feature Mixing
+To capture subtle out-of-distribution shifts, the X-Mahalanobis framework extracts and blends features across all intermediate and final layers of a pre-trained Transformer. Rather than relying solely on the penultimate layer, X-Mahalanobis utilizes the representation geometry of shallow layers to improve OOD separation.
+Let $z_i^l = \phi^l(x_i) \in \mathbb{R}^d$ represent the feature representation extracted from layer $l \in \{1, 2, \dots, L\}$ of a Transformer encoder for an in-distribution sample $x_i$. To construct layer importance weights without relying on a validation set, the framework measures the total feature covariance of each layer. Let $\Sigma^l$ be the empirical covariance matrix of layer $l$ computed over the in-distribution training set $\mathcal{D}_{train}$:
+$$\Sigma^l = \frac{1}{N-1} \sum_{i=1}^N (z_i^l - \mu^l)(z_i^l - \mu^l)^T$$
+where $\mu^l = \frac{1}{N}\sum_{i=1}^N z_i^l$ is the layer centroid. The layer weight $w_l$ is defined by the trace of this covariance matrix, which represents the total feature variance of that layer :
+$$w_l = \text{Tr}(\Sigma^l)$$
+Layers with larger feature variance exert more influence, whereas layers with low variance are downweighted. The multi-layer features of a test sample $x^*$ are then combined into a blended feature vector $z_{blend}^*$ :
+$$z_{blend}^* = \sum_{l=1}^L \left( \frac{w_l}{\sum_{j=1}^L w_j} \right) z^{*l}$$
+Using this blended feature space, the OOD score is computed as the minimum Mahalanobis distance between the test sample and the in-distribution class centroids $\mu_{c, blend}$ :
+$$S_{OOD}(x^*) = \min_{c \in \mathcal{C}} (z_{blend}^* - \mu_{c, blend})^T \Sigma_{blend}^{-1} (z_{blend}^* - \mu_{c, blend})$$
+where $\Sigma_{blend}$ is the shared close-form covariance matrix of the blended features. For label-free multi-omics foundation models where discrete class labels are unavailable, a global Gaussian model is fit directly to the unlabeled representations, yielding a label-free global OOD score :
+$$S_{global}(x^*) = (z_{blend}^* - \mu_{global})^T \Sigma_{global}^{-1} (z_{blend}^* - \mu_{global})$$
+This formulation can be integrated directly with multi-omics foundation models like CellxPert, which unifies single-cell transcriptomics (scRNA-seq), chromatin accessibility (ATAC-seq), and surface proteomic (CITE-seq) measurements. By applying X-Mahalanobis to CellxPert's spatial-visual and genomic embeddings, OOD mutations and novel cell types are isolated at the encoder boundary before passing to the content-blind routing layer.
+Energy-Based OOD Scoring
+An alternative, highly efficient pre-routing safety metric is the Energy-Based OOD Score. The energy score maps the logit outputs of the encoder to a scalar value that corresponds to the density of the data. For an encoder $f(x)$ mapping inputs to $C$ classification logits, the energy score is formulated as:
+$$E(x; f) = -T \cdot \log \sum_{j=1}^C e^{f_j(x) / T}$$
+where $T$ is a temperature scaling parameter. Inputs that yield higher energy values (closer to zero or positive) suggest lower density and are flagged as OOD, whereas lower energy values correspond to highly confident in-distribution inputs. To amplify the separation margin at the boundary, this score can be evaluated using input perturbation, adjusting the input $x$ by a perturbation magnitude $\epsilon$ in the direction of the gradient of the energy score :
+$$x_{perturbed} = x - \epsilon \cdot \text{sign}\left( \nabla_x E(x; f) \right)$$
+This is particularly effective when applied to vision models like the Swin Transformer trained on histopathology scans.Using energy-based outlier exposure, anomalous tissues are rejected with high specificity.
+UAT-Lite: Inference-Time Uncertainty-Aware Self-Attention
+To calibrate the encoder's internal representations and prevent softmax overconfidence under distribution shifts, the UAT-Lite framework is integrated into the Transformer blocks. UAT-Lite injects token-level epistemic uncertainty directly into the self-attention mechanism at inference time using approximate Bayesian inference via Monte Carlo (MC) dropout.
+Input Tokens (x_t) ---> ---> M Stochastic Passes
+                                                          |
+                                                          v
+                                             Token-level Variance (sigma_t^2)
+                                                          |
+                                                          v
+                                             Uncertainty-Aware Attention
+                                             (Downweights unstable keys)
+
+At test time, dropout layers are kept active. The system runs $M$ stochastic forward passes for an input sequence $\mathbf{x} = (x_1, \dots, x_T)$, generating $M$ contextual representations $\{h_{t, m}^{(L)}\}_{m=1}^M$. The token-level epistemic uncertainty $\sigma_t^2$ is estimated as the sample variance of the embeddings across the MC passes :
+$$\sigma_t^2 = \frac{1}{M-1} \sum_{m=1}^M \| h_{t, m}^{(L)} - \bar{h}_t^{(L)} \|^2$$
+This token-level uncertainty serves as a proxy for the stability and reliability of each token's contribution to the sequence representation. In standard self-attention, the attention weights $A_{ij}$ are computed via queries $Q$ and keys $K$ :
+$$A_{ij} = \text{softmax}\left( \frac{Q_i K_j^T}{\sqrt{d_k}} \right)$$
+UAT-Lite modifies this attention computation by introducing an uncertainty-based penalty that downweights the influence of unstable or ambiguous tokens :
+$$A_{ij}^{UAT} = \text{softmax}\left( \frac{Q_i K_j^T}{\sqrt{d_k}} - \gamma \cdot \sigma_j^2 \right)$$
+where $\gamma$ is a tunable scaling parameter. This uncertainty-aware attention mechanism prevents noisy, out-of-distribution tokens from dominating the self-attention pooling. This results in highly calibrated final logit distributions, reducing the Expected Calibration Error (ECE) under distribution shifts without requiring parameter updates or retraining.
+Comparative Matrix of Pre-Routing Safety Layers
+Safety Layer
+Algorithmic Mechanism
+Mathematical Metric
+Computational Complexity
+Implementation Requirements
+X-Mahalanobis
+Covariance-weighted fusion of multi-layer representations.
+$S_{\text{OOD}}(x^*) = (z_{\text{blend}}^* - \mu)^T \Sigma^{-1} (z_{\text{blend}}^* - \mu)$
+$\mathcal{O}(L \cdot d + d^3)$(one-time offline FIM inversion).
+Requires storing historical in-distribution centroids and covariance matrices.
+Energy-Based OOD
+Maps output logit distributions to a free energy scalar.
+$E(x) = -T \log \sum e^{f_j(x)/T}$
+$\mathcal{O}(C)$(negligible overhead post-logit extraction).
+Requires calibration of temperature $T$and the threshold boundary.
+UAT-Lite
+Bayesian self-attention modulated by token-level variance.
+$A_{ij}^{UAT} = \text{softmax}\left( \frac{Q_i K_j^T}{\sqrt{d_k}} - \gamma \sigma_j^2 \right)$
+$\mathcal{O}(M \cdot L \cdot T^2 \cdot d)$ ($M$stochastic forward passes).
+Requires keeping dropout layers active at inference time.
+
+Modular Implementation Blueprint
+The pre-routing safety, continual learning, and graph arbitration components can be integrated into a modular, stateless execution spine based on the Lár cognitive contract.
+====================================== DETERMINISTIC GRAPH EXECUTION SPINE ======================================
+                                                        |
+                            |
+      |                                                 |
+      v                                                 |
+[AbstractModalEncoders]                                 | (Satisfies Invariant M1-M3) 
+      |                                                 |
+      +--->             | (Epistemic token filtering) 
+      |                                                 |
+      +--->       | (Failsafe threshold gate) 
+      |          |                                      |
+      |          +---> If OOD > Threshold ------------->|===> (Halt & Escalate) 
+      v                                                 |
+          | (Determines adapter activation) 
+      |                                                 |
+      +---> Centroid Match: Load Clustered Adapters     | (PiSSA / BA-LoRA / LoRI) [1, 6, 13]
+      |                                                 |
+      v                                                 |
+[Adapted Inference Pass]                                | (Decoupled optimization via FOP-SOAP) [1, 25]
+      |                                                 |
+      v                                                 |
+                              | (Satisfies Invariant CB1-CB2) 
+      |                                                 |
+      v                                                 |
+                  | (Content-blind piecewise decision mapping) 
+      |                                                 |
+      +---> Consensus Quorum Evaluation                 | (Decision-theoretic cost risk bounds) 
+      |                                                 |
+      +---> Decision Dispatch ------------------------->|===> {COMMIT_TRAJECTORY, TRIGGER_REPLAN, IMPASSE} 
+=================================================================================================================
+
+1. Pre-Routing Safety and Calibration Stage
+Epistemic Attenuation: The input sequence is routed through the pre-trained AbstractModalEncoder with active inference-time dropout (UAT-Lite execution). The token-level sample variance $\sigma_j^2$ is calculated over $M$ passes, and self-attention weights are modulated to filter out unstable tokens. This produces calibrated, out-of-distribution-robust latent representations $z_A$, $z_B$, and $z_C$.
+X-Mahalanobis Filter: The fused multi-layer representations are compiled:
+$$z_{\text{blend}} = \sum w_l z^l$$
+If the global Mahalanobis OOD score $S_{\text{global}}(z_{\text{blend}})$ exceeds a certified threshold, the spine bypasses downstream routing, writes the failure state to GraphState, and returns STRUCTURAL_IMPASSE.
+2. Base Pass and Centroid Lookup
+Stateless Base Pass: If the OOD filter accepts the inputs, the encoders run their deterministic base pass (with dropout disabled) to produce base representations :
+$$\mathbf{z}^{\text{base}} =$$
+Difference Mapping: The $A$-space difference vectors are computed :
+$$\Delta_{\text{AB}} = z_A^{\text{base}} - z_B^{\text{base}}, \quad \Delta_{\text{BC}} = z_B^{\text{base}} - z_C^{\text{base}}$$
+Dynamic Adapter Retrieval: The system performs a nearest-neighbor centroid check against the stored adapter library $\mathcal{L}$ :
+$$c^* = \arg\max_c \cos(\Delta^{\text{base}}, \bar{\Delta}_c)$$
+If $\cos(\Delta^{\text{base}}, \bar{\Delta}_{c^*}) \ge \tau_{\text{sim}}$, the corresponding specialized adapter pair or triad $\phi_{c^*}$ is retrieved from the default mode network database.
+3. Adapted Pass with Decoupled Gradients
+Adapted Representation Generation: The encoders re-execute with the retrieved low-rank matrices $\phi_{c^*}$ applied to the query, key, and value attention projections.
+Inter-Stream Gradient Decoupling: During offline adapter training on $\mathcal{D}_{\text{hard}}$ clusters, backpropagation updates $\phi^A$ and $\phi^B$ across the shared loss. To prevent mutual information contamination, gradients are decoupled using PCGrad or FOP-SOAP :
+Gradients are projected onto the normal plane of conflicting directions :
+$$g_A^{\text{PC}} = g_A - \mathbb{I}(g_A \cdot g_B < 0) \frac{g_A \cdot g_B}{\|g_B\|^2} g_B$$
+For large batch sizes, ML-FOP-SOAP telescoping folds micro-step variance segments to ensure stable convergence.
+Plasticity Protection: The low-rank updates are regularized using spectral norm penalties to keep the maximum singular value of each update matrix close to one :
+$$\mathcal{L} = \mathcal{L}_{\text{task}} + \beta (\sigma_{\text{max}}(\Delta W) - 1)^2$$
+This prevents the accumulation of intruder dimensions and preserves model plasticity.
+4. Stateless Context Bridge
+The adapted latents are routed to an implementation of AbstractContextBridge. To enforce stream independence (satisfying invariant V1), the bridge must be strictly stateless and act as a pure function (satisfying invariants CB1 and CB2). The bridge aligns representation dimensions and converts outputs to the format expected by the arbitration router without maintaining internal memory.
+5. Content-Blind Arbitration Graph
+The aligned latents are passed to the AbstractDivergenceRouter. The router computes the pairwise divergence matrix $M$ and extracts the confidence vector $\mathbf{c}$ :
+Divergence Computation:
+$$M_{ij} = \|v_i - v_j\|_1$$
+This measures the directional, per-concept $L_1$ disagreement between the streams, satisfying invariant V2.
+Piecewise Arbitration: The router evaluates the piecewise step function over $M$ and $\mathbf{c}$ to determine the topology (Complete Clique, Star Dissensus, Clique Dissensus, or Asymmetric Deferral).
+Quorum Optimization: The quorum-sensing Urn-feedback mechanism evaluates the accumulated evidence modulated by decision risk :
+$$\mathcal{E}(a) \ge \tau_Q$$
+If the evidence for consensus is sufficient, the router returns COMMIT_TRAJECTORY. If a confident minority stream contradicts the consensus (star topology), the system overrides the majoritarian vote, halts the execution pipeline, and returns TRIGGER_REPLAN or STRUCTURAL_IMPASSE. Every step of this execution trace is logged with an HMAC-SHA256 signature to guarantee complete auditability.
+

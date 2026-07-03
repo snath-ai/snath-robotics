@@ -26,3 +26,7 @@ transfer_d_hard.jsonl
 graphify-out/
 models/persist/
 experiments/persist/persist_results_*.json
+experiments/DAS/lar_divergence_exp/data/NLMCXR_png.tgz
+experiments/DAS/lar_divergence_exp/data/NLMCXR_reports.tar
+experiments/DAS/lar_divergence_exp/data/images/
+experiments/DAS/lar_divergence_exp/data/reports/

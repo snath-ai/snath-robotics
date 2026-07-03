@@ -1,0 +1,63 @@
+{
+  "experiment": "fusion_vs_routing_coco_img_text_hard_negatives",
+  "timestamp": "2026-05-20T11:47:23.806713Z",
+  "model": "OpenCLIP ViT-B-32 / openai",
+  "dataset": "MSCOCO (clip-benchmark/wds_mscoco_captions)",
+  "ground_truth": "Image-text hard negative: argmax[img_text_CLS_sim \u00d7 L1_concept]",
+  "oracle_note": "j_contra selected so CLIP_text(caption_j) is similar to CLIP_image(img_i) [fools fusion], yet concept_img_j differs from concept_img_i [routing detects].",
+  "n_concepts": 80,
+  "concept_type": "80-class softmax image (sparse) \u00d7 keyword text (binary)",
+  "temperature": 100.0,
+  "results": [
+    {
+      "method": "Routing \u2014 80-class softmax \u00d7 keyword text L1 (zero-shot)",
+      "auroc": 0.7166,
+      "accuracy": 0.7,
+      "p_value": 5.6986421029544724e-05,
+      "sensitivity": 0.66,
+      "specificity": 0.74,
+      "contingency": {
+        "tp": 33,
+        "fp": 13,
+        "fn": 17,
+        "tn": 37
+      }
+    },
+    {
+      "method": "Fusion  \u2014 OpenCLIP CLS cosine (zero-shot)",
+      "auroc": 0.508,
+      "accuracy": 0.6,
+      "p_value": 0.030038685194759492,
+      "sensitivity": 0.74,
+      "specificity": 0.46,
+      "contingency": {
+        "tp": 37,
+        "fp": 27,
+        "fn": 13,
+        "tn": 23
+      }
+    },
+    {
+      "method": "Supervised \u2014 concat logistic C=0.1 (N=100 labels)",
+      "auroc": 0.5008,
+      "accuracy": 0.56,
+      "p_value": 0.07389591108530107,
+      "sensitivity": 0.92,
+      "specificity": 0.2,
+      "contingency": {
+        "tp": 46,
+        "fp": 40,
+        "fn": 4,
+        "tn": 10
+      }
+    }
+  ],
+  "distributions": {
+    "routing_normal_mean": 1.9495,
+    "routing_contra_mean": 2.9532,
+    "routing_lift": 1.515,
+    "fusion_normal_mean": 0.7449,
+    "fusion_contra_mean": 0.7435,
+    "fusion_lift": 0.998
+  }
+}

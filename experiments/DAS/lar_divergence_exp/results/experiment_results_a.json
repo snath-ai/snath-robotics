@@ -1,0 +1,1642 @@
+{
+  "experiment": "nlm_cxr_divergence_option_a",
+  "timestamp": "2026-05-19T23:09:33.124607Z",
+  "option": "A \u2014 BiomedCLIP shared vision-language space",
+  "config": {
+    "model": "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "tau_high": 0.75,
+    "tau_low": 0.2,
+    "delta": 0.5,
+    "n_sample": 100,
+    "device": "mps"
+  },
+  "summary": {
+    "normal": {
+      "n": 100,
+      "mean_divergence": 0.6007,
+      "mean_conf_a": 1.0,
+      "mean_conf_b": 1.0,
+      "decisions": {
+        "TRIGGER_REPLAN": 99,
+        "COMMIT_TRAJECTORY": 1
+      },
+      "trigger_replan_pct": 99.0,
+      "commit_pct": 1.0,
+      "impasse_pct": 0.0
+    },
+    "contradiction": {
+      "n": 100,
+      "mean_divergence": 0.622,
+      "mean_conf_a": 1.0,
+      "mean_conf_b": 1.0,
+      "decisions": {
+        "TRIGGER_REPLAN": 100
+      },
+      "trigger_replan_pct": 100.0,
+      "commit_pct": 0.0,
+      "impasse_pct": 0.0
+    }
+  },
+  "records": [
+    {
+      "cxr_id": "CXR3197",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6788,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2845",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5439,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3624",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5521,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR751",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6015,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1573",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6059,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3445",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5433,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2711",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.581,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2826",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5795,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2903",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6437,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3238",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5755,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR422",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6243,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1709",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5768,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3156",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.57,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR881",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.576,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3372",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5867,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR322",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6103,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR193",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5936,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3428",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6008,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3834",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5886,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1543",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5846,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR323",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6097,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR996",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5566,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR290",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5684,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3620",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.59,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2759",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5892,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR669",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5652,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3240",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5696,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1225",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5216,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3022",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5275,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR330",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.641,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2288",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5552,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1937",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6015,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3719",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7917,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2263",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6571,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2068",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5357,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3593",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5427,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1335",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5897,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2943",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6752,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2298",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.604,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2450",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6509,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1626",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6016,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1845",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.717,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR36",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.589,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2139",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6466,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1260",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.592,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3671",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7611,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2187",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6097,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1328",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6099,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3499",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6156,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR684",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6119,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2152",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5621,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR769",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5694,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1824",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5912,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR413",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5687,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR735",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6545,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1970",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6683,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2056",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6671,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR554",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5341,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1855",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5801,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR261",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5703,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR783",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.61,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR679",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6086,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2428",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5975,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1574",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5463,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1685",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5911,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR351",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6561,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2978",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6506,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1240",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7034,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3808",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6062,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2111",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.4864,
+      "decision": "COMMIT_TRAJECTORY"
+    },
+    {
+      "cxr_id": "CXR796",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5227,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1572",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5872,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3383",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.586,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1925",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6114,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR882",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6951,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2782",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6437,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1419",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5788,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3060",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5996,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3363",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5637,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR215",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.612,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR578",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5365,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2812",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6245,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR393",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5627,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2774",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5934,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3458",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5794,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2061",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5991,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3683",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5917,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3822",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6317,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR181",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5471,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2763",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5564,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR285",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6861,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3850",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5613,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR943",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.676,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1892",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5629,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2821",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5554,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR434",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6089,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1795",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5933,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3784",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6893,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR428",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5837,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3229",
+      "label": "normal",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5969,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1436",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5739,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3761",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5958,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1277",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6688,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2003",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6214,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3187",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6267,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR206",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6927,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1012",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.581,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3498",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.633,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3364",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6171,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3839",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.687,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR29",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.594,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1906",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7034,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1753",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5899,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2728",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6122,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2415",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6047,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2475",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6446,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3075",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5901,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1370",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5644,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3945",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6728,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR28",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5583,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3191",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5934,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1864",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5376,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2184",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.592,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR111",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5808,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2608",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7456,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3798",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5535,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2879",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6256,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2474",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.536,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1446",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.537,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3248",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6639,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3656",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6017,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1160",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6011,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2318",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5923,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3095",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5819,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1513",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5843,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3840",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6867,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1614",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6276,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR88",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6878,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3326",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6375,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2890",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6573,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2191",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5239,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1014",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6236,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3479",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6054,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3951",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6472,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1292",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6382,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2691",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6639,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3091",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5796,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3214",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6141,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1702",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5406,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1541",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6402,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2259",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6373,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR436",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.672,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR593",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5929,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1525",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7576,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1909",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5697,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2465",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5411,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3076",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.605,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3455",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5668,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR802",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6861,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3565",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6644,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2414",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5417,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1362",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6925,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2955",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7127,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1992",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6044,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR305",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6669,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2904",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5949,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR840",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7598,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR522",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6127,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2390",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5863,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2217",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7167,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR431",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5801,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1125",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6512,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1021",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5512,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3847",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6085,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1935",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6104,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR825",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6929,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR847",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6387,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1043",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7175,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR387",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5716,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1164",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6481,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1819",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5579,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3068",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7524,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3510",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.7124,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1874",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5987,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3786",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6483,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2673",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.64,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1085",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5491,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1496",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5715,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1637",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5662,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR3369",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5771,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR483",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6859,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1031",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.616,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1769",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6267,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2355",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6446,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2448",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6747,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1204",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6169,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1100",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.541,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2864",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5769,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR2589",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.5684,
+      "decision": "TRIGGER_REPLAN"
+    },
+    {
+      "cxr_id": "CXR1076",
+      "label": "contradiction",
+      "conf_a": 1.0,
+      "conf_b": 1.0,
+      "divergence": 0.6957,
+      "decision": "TRIGGER_REPLAN"
+    }
+  ]
+}

@@ -1,0 +1,4450 @@
+{
+  "experiment": "nlm_cxr_divergence_option_a2",
+  "timestamp": "2026-05-19T23:14:05.818364Z",
+  "option": "A2 \u2014 BiomedCLIP zero-shot finding-vector divergence",
+  "findings": [
+    "cardiomegaly",
+    "pleural effusion",
+    "pulmonary atelectasis",
+    "opacity",
+    "pneumothorax"
+  ],
+  "config": {
+    "model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "tau_high": 0.7,
+    "tau_low": 0.1,
+    "delta": 0.8,
+    "n_sample": 100,
+    "device": "mps"
+  },
+  "summary": {
+    "normal": {
+      "n": 100,
+      "mean_divergence": 0.9349,
+      "mean_conf_a": 0.9025,
+      "mean_conf_b": 0.9,
+      "decisions": {
+        "COMMIT_TRAJECTORY": 84,
+        "TRIGGER_REPLAN": 16
+      },
+      "trigger_replan_pct": 16.0,
+      "commit_pct": 84.0,
+      "impasse_pct": 0.0
+    },
+    "contradiction": {
+      "n": 100,
+      "mean_divergence": 1.7082,
+      "mean_conf_a": 0.7901,
+      "mean_conf_b": 0.7844,
+      "decisions": {
+        "COMMIT_TRAJECTORY": 72,
+        "TRIGGER_REPLAN": 28
+      },
+      "trigger_replan_pct": 28.0,
+      "commit_pct": 72.0,
+      "impasse_pct": 0.0
+    }
+  },
+  "records": [
+    {
+      "cxr_id": "CXR3197",
+      "label": "normal",
+      "conf_a": 0.9972,
+      "conf_b": 0.7177,
+      "divergence": 0.6999,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.006,
+        0.0,
+        0.001
+      ],
+      "v_b": [
+        0.015,
+        0.025,
+        0.347,
+        0.319,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2845",
+      "label": "normal",
+      "conf_a": 0.9914,
+      "conf_b": 0.9997,
+      "divergence": 0.0206,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.019,
+        0.002,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3624",
+      "label": "normal",
+      "conf_a": 0.9795,
+      "conf_b": 0.9993,
+      "divergence": 0.0494,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.047,
+        0.002,
+        0.001
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR751",
+      "label": "normal",
+      "conf_a": 0.9964,
+      "conf_b": 0.99,
+      "divergence": 0.0168,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.008,
+        0.0,
+        0.001
+      ],
+      "v_b": [
+        0.011,
+        0.0,
+        0.013,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1573",
+      "label": "normal",
+      "conf_a": 0.9878,
+      "conf_b": 0.9999,
+      "divergence": 0.0303,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.004,
+        0.015,
+        0.01,
+        0.001
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3445",
+      "label": "normal",
+      "conf_a": 0.9989,
+      "conf_b": 0.9982,
+      "divergence": 0.0027,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.002,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.004,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2711",
+      "label": "normal",
+      "conf_a": 0.8531,
+      "conf_b": 0.9068,
+      "divergence": 0.1524,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.001,
+        0.226,
+        0.106,
+        0.033
+      ],
+      "v_b": [
+        0.005,
+        0.006,
+        0.22,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2826",
+      "label": "normal",
+      "conf_a": 0.9934,
+      "conf_b": 0.9874,
+      "divergence": 0.0152,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.015,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.004,
+        0.0,
+        0.027,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2903",
+      "label": "normal",
+      "conf_a": 0.4411,
+      "conf_b": 0.9461,
+      "divergence": 3.3438,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.46,
+        0.478,
+        0.81,
+        0.882,
+        0.848
+      ],
+      "v_b": [
+        0.004,
+        0.0,
+        0.13,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3238",
+      "label": "normal",
+      "conf_a": 0.9904,
+      "conf_b": 0.8756,
+      "divergence": 0.2947,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.019,
+        0.003,
+        0.002
+      ],
+      "v_b": [
+        0.005,
+        0.002,
+        0.302,
+        0.001,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR422",
+      "label": "normal",
+      "conf_a": 0.9834,
+      "conf_b": 0.7681,
+      "divergence": 2.0317,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.002,
+        0.001,
+        0.031,
+        0.007,
+        0.002
+      ],
+      "v_b": [
+        0.251,
+        0.071,
+        0.896,
+        0.851,
+        0.004
+      ]
+    },
+    {
+      "cxr_id": "CXR1709",
+      "label": "normal",
+      "conf_a": 0.9533,
+      "conf_b": 0.9816,
+      "divergence": 0.0809,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.105,
+        0.009,
+        0.001
+      ],
+      "v_b": [
+        0.007,
+        0.0,
+        0.039,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3156",
+      "label": "normal",
+      "conf_a": 0.9955,
+      "conf_b": 0.9994,
+      "divergence": 0.0104,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.009,
+        0.0,
+        0.002
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR881",
+      "label": "normal",
+      "conf_a": 0.965,
+      "conf_b": 0.9959,
+      "divergence": 0.0773,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.001,
+        0.059,
+        0.022,
+        0.004
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.01,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3372",
+      "label": "normal",
+      "conf_a": 0.7946,
+      "conf_b": 0.6712,
+      "divergence": 1.4962,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.946,
+        0.151,
+        0.869,
+        0.83,
+        0.007
+      ],
+      "v_b": [
+        0.991,
+        0.662,
+        0.645,
+        0.12,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR322",
+      "label": "normal",
+      "conf_a": 0.9956,
+      "conf_b": 0.7498,
+      "divergence": 0.6146,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.01,
+        0.0,
+        0.001
+      ],
+      "v_b": [
+        0.208,
+        0.001,
+        0.412,
+        0.003,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR193",
+      "label": "normal",
+      "conf_a": 0.9931,
+      "conf_b": 0.9389,
+      "divergence": 0.1372,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.016,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.008,
+        0.001,
+        0.142,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3428",
+      "label": "normal",
+      "conf_a": 0.9883,
+      "conf_b": 0.7898,
+      "divergence": 1.1443,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.0,
+        0.0,
+        0.026,
+        0.001,
+        0.002
+      ],
+      "v_b": [
+        0.032,
+        0.241,
+        0.824,
+        0.068,
+        0.008
+      ]
+    },
+    {
+      "cxr_id": "CXR3834",
+      "label": "normal",
+      "conf_a": 0.992,
+      "conf_b": 0.8091,
+      "divergence": 0.8969,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.007,
+        0.0,
+        0.01,
+        0.002,
+        0.0
+      ],
+      "v_b": [
+        0.14,
+        0.038,
+        0.72,
+        0.019,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1543",
+      "label": "normal",
+      "conf_a": 0.9636,
+      "conf_b": 0.9698,
+      "divergence": 0.0604,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.012,
+        0.002,
+        0.045,
+        0.031,
+        0.0
+      ],
+      "v_b": [
+        0.007,
+        0.001,
+        0.067,
+        0.0,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR323",
+      "label": "normal",
+      "conf_a": 0.9533,
+      "conf_b": 0.8871,
+      "divergence": 0.1772,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.108,
+        0.003,
+        0.004
+      ],
+      "v_b": [
+        0.005,
+        0.008,
+        0.268,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR996",
+      "label": "normal",
+      "conf_a": 0.9909,
+      "conf_b": 0.9965,
+      "divergence": 0.014,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.003,
+        0.0,
+        0.018,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.003,
+        0.0,
+        0.006,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR290",
+      "label": "normal",
+      "conf_a": 0.9947,
+      "conf_b": 0.9376,
+      "divergence": 0.1431,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.012,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.003,
+        0.0,
+        0.122,
+        0.031,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3620",
+      "label": "normal",
+      "conf_a": 0.9615,
+      "conf_b": 0.9059,
+      "divergence": 0.1798,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.013,
+        0.001,
+        0.071,
+        0.01,
+        0.0
+      ],
+      "v_b": [
+        0.003,
+        0.001,
+        0.23,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2759",
+      "label": "normal",
+      "conf_a": 0.9931,
+      "conf_b": 0.6237,
+      "divergence": 1.5698,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.016,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.237,
+        0.485,
+        0.823,
+        0.023,
+        0.018
+      ]
+    },
+    {
+      "cxr_id": "CXR669",
+      "label": "normal",
+      "conf_a": 0.8204,
+      "conf_b": 0.6746,
+      "divergence": 0.7878,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.251,
+        0.0,
+        0.184,
+        0.009,
+        0.004
+      ],
+      "v_b": [
+        0.564,
+        0.007,
+        0.644,
+        0.014,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3240",
+      "label": "normal",
+      "conf_a": 0.9973,
+      "conf_b": 0.833,
+      "divergence": 0.411,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.006,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.024,
+        0.001,
+        0.391,
+        0.0,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1225",
+      "label": "normal",
+      "conf_a": 0.9986,
+      "conf_b": 0.9996,
+      "divergence": 0.0023,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.003,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3022",
+      "label": "normal",
+      "conf_a": 0.8046,
+      "conf_b": 0.7287,
+      "divergence": 0.3947,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.75,
+        0.874,
+        0.999,
+        1.0,
+        0.889
+      ],
+      "v_b": [
+        0.75,
+        0.975,
+        1.0,
+        0.999,
+        0.598
+      ]
+    },
+    {
+      "cxr_id": "CXR330",
+      "label": "normal",
+      "conf_a": 0.6995,
+      "conf_b": 0.7625,
+      "divergence": 3.1502,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.248,
+        0.567,
+        0.988,
+        0.975,
+        0.966
+      ],
+      "v_b": [
+        0.187,
+        0.045,
+        0.355,
+        0.006,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2288",
+      "label": "normal",
+      "conf_a": 0.9918,
+      "conf_b": 0.9987,
+      "divergence": 0.0173,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.019,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.003,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1937",
+      "label": "normal",
+      "conf_a": 0.9945,
+      "conf_b": 0.9811,
+      "divergence": 0.0343,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.012,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.009,
+        0.001,
+        0.036,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3719",
+      "label": "normal",
+      "conf_a": 0.5991,
+      "conf_b": 0.822,
+      "divergence": 1.9282,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.003,
+        0.653,
+        0.365,
+        0.285
+      ],
+      "v_b": [
+        0.055,
+        0.98,
+        0.887,
+        1.0,
+        0.257
+      ]
+    },
+    {
+      "cxr_id": "CXR2263",
+      "label": "normal",
+      "conf_a": 0.9842,
+      "conf_b": 0.7124,
+      "divergence": 2.1477,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.006,
+        0.001,
+        0.028,
+        0.003,
+        0.003
+      ],
+      "v_b": [
+        0.871,
+        0.189,
+        0.863,
+        0.262,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR2068",
+      "label": "normal",
+      "conf_a": 0.9971,
+      "conf_b": 0.9999,
+      "divergence": 0.0072,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.007,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3593",
+      "label": "normal",
+      "conf_a": 0.9924,
+      "conf_b": 0.9999,
+      "divergence": 0.0187,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.018,
+        0.0,
+        0.001
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1335",
+      "label": "normal",
+      "conf_a": 0.9447,
+      "conf_b": 0.9823,
+      "divergence": 0.094,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.021,
+        0.001,
+        0.082,
+        0.034,
+        0.001
+      ],
+      "v_b": [
+        0.004,
+        0.0,
+        0.04,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2943",
+      "label": "normal",
+      "conf_a": 0.8238,
+      "conf_b": 0.7066,
+      "divergence": 1.5645,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.255,
+        0.895,
+        0.981,
+        0.997,
+        0.942
+      ],
+      "v_b": [
+        0.577,
+        0.999,
+        0.982,
+        0.755,
+        0.047
+      ]
+    },
+    {
+      "cxr_id": "CXR2298",
+      "label": "normal",
+      "conf_a": 0.5775,
+      "conf_b": 0.9996,
+      "divergence": 3.2489,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.699,
+        0.153,
+        0.934,
+        0.933,
+        0.531
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2450",
+      "label": "normal",
+      "conf_a": 0.9574,
+      "conf_b": 0.9991,
+      "divergence": 0.1041,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.001,
+        0.069,
+        0.035,
+        0.001
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.002,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1626",
+      "label": "normal",
+      "conf_a": 0.7676,
+      "conf_b": 0.7529,
+      "divergence": 1.9385,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.156,
+        0.813,
+        0.994,
+        0.998,
+        0.77
+      ],
+      "v_b": [
+        0.107,
+        0.096,
+        0.97,
+        0.617,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1845",
+      "label": "normal",
+      "conf_a": 0.7914,
+      "conf_b": 0.9255,
+      "divergence": 4.2921,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.909,
+        0.794,
+        0.934,
+        0.996,
+        0.846
+      ],
+      "v_b": [
+        0.01,
+        0.034,
+        0.142,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR36",
+      "label": "normal",
+      "conf_a": 0.7304,
+      "conf_b": 0.9996,
+      "divergence": 0.9126,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.62,
+        0.002,
+        0.264,
+        0.016,
+        0.011
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2139",
+      "label": "normal",
+      "conf_a": 0.9878,
+      "conf_b": 0.7874,
+      "divergence": 2.1643,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.0,
+        0.0,
+        0.03,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.89,
+        0.048,
+        0.942,
+        0.312,
+        0.003
+      ]
+    },
+    {
+      "cxr_id": "CXR1260",
+      "label": "normal",
+      "conf_a": 0.9902,
+      "conf_b": 0.9962,
+      "divergence": 0.0194,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.022,
+        0.001,
+        0.002
+      ],
+      "v_b": [
+        0.002,
+        0.0,
+        0.007,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3671",
+      "label": "normal",
+      "conf_a": 0.6392,
+      "conf_b": 0.9105,
+      "divergence": 3.8741,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.714,
+        0.571,
+        0.988,
+        0.972,
+        0.853
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.222,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2187",
+      "label": "normal",
+      "conf_a": 0.7584,
+      "conf_b": 0.9815,
+      "divergence": 0.5724,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.009,
+        0.274,
+        0.026,
+        0.295
+      ],
+      "v_b": [
+        0.008,
+        0.0,
+        0.037,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1328",
+      "label": "normal",
+      "conf_a": 0.4765,
+      "conf_b": 0.9925,
+      "divergence": 3.6725,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.586,
+        0.588,
+        0.954,
+        0.983,
+        0.58
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.017,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3499",
+      "label": "normal",
+      "conf_a": 0.994,
+      "conf_b": 0.975,
+      "divergence": 0.0555,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.011,
+        0.0,
+        0.004
+      ],
+      "v_b": [
+        0.025,
+        0.0,
+        0.033,
+        0.005,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR684",
+      "label": "normal",
+      "conf_a": 0.616,
+      "conf_b": 0.7824,
+      "divergence": 1.5092,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.971,
+        0.757,
+        0.64,
+        0.697,
+        0.024
+      ],
+      "v_b": [
+        0.893,
+        0.025,
+        0.625,
+        0.035,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR2152",
+      "label": "normal",
+      "conf_a": 0.9879,
+      "conf_b": 0.9996,
+      "divergence": 0.0294,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.027,
+        0.0,
+        0.003
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR769",
+      "label": "normal",
+      "conf_a": 0.9898,
+      "conf_b": 0.9845,
+      "divergence": 0.0162,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.024,
+        0.001,
+        0.001
+      ],
+      "v_b": [
+        0.003,
+        0.0,
+        0.035,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1824",
+      "label": "normal",
+      "conf_a": 0.9935,
+      "conf_b": 0.9039,
+      "divergence": 0.2241,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.01,
+        0.006,
+        0.0
+      ],
+      "v_b": [
+        0.029,
+        0.0,
+        0.204,
+        0.007,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR413",
+      "label": "normal",
+      "conf_a": 0.9815,
+      "conf_b": 0.9773,
+      "divergence": 0.031,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.038,
+        0.007,
+        0.001
+      ],
+      "v_b": [
+        0.021,
+        0.0,
+        0.035,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR735",
+      "label": "normal",
+      "conf_a": 0.9905,
+      "conf_b": 0.9993,
+      "divergence": 0.0219,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.003,
+        0.001,
+        0.011,
+        0.007,
+        0.002
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1970",
+      "label": "normal",
+      "conf_a": 0.9934,
+      "conf_b": 0.6606,
+      "divergence": 2.7836,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.015,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.988,
+        0.442,
+        0.987,
+        0.376,
+        0.006
+      ]
+    },
+    {
+      "cxr_id": "CXR2056",
+      "label": "normal",
+      "conf_a": 0.5331,
+      "conf_b": 0.9956,
+      "divergence": 2.8648,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.52,
+        0.071,
+        0.859,
+        0.975,
+        0.45
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.01,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR554",
+      "label": "normal",
+      "conf_a": 0.9933,
+      "conf_b": 0.9993,
+      "divergence": 0.015,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.014,
+        0.002,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1855",
+      "label": "normal",
+      "conf_a": 0.9877,
+      "conf_b": 0.7755,
+      "divergence": 0.562,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.028,
+        0.002,
+        0.001
+      ],
+      "v_b": [
+        0.033,
+        0.011,
+        0.515,
+        0.032,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR261",
+      "label": "normal",
+      "conf_a": 0.9946,
+      "conf_b": 0.9853,
+      "divergence": 0.0279,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.01,
+        0.002,
+        0.002
+      ],
+      "v_b": [
+        0.007,
+        0.001,
+        0.029,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR783",
+      "label": "normal",
+      "conf_a": 0.9715,
+      "conf_b": 0.883,
+      "divergence": 0.7543,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.059,
+        0.005,
+        0.007
+      ],
+      "v_b": [
+        0.001,
+        0.008,
+        0.767,
+        0.02,
+        0.03
+      ]
+    },
+    {
+      "cxr_id": "CXR679",
+      "label": "normal",
+      "conf_a": 0.7609,
+      "conf_b": 0.9945,
+      "divergence": 0.9151,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.195,
+        0.003,
+        0.666,
+        0.056,
+        0.009
+      ],
+      "v_b": [
+        0.005,
+        0.0,
+        0.008,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2428",
+      "label": "normal",
+      "conf_a": 0.8501,
+      "conf_b": 0.8615,
+      "divergence": 0.7984,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.003,
+        0.0,
+        0.35,
+        0.01,
+        0.012
+      ],
+      "v_b": [
+        0.08,
+        0.159,
+        0.9,
+        0.006,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR1574",
+      "label": "normal",
+      "conf_a": 0.9974,
+      "conf_b": 0.9986,
+      "divergence": 0.0032,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.006,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.003,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1685",
+      "label": "normal",
+      "conf_a": 0.9939,
+      "conf_b": 0.9824,
+      "divergence": 0.0325,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.013,
+        0.0,
+        0.002
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.043,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR351",
+      "label": "normal",
+      "conf_a": 0.9341,
+      "conf_b": 0.8399,
+      "divergence": 0.2676,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.147,
+        0.009,
+        0.008
+      ],
+      "v_b": [
+        0.006,
+        0.001,
+        0.392,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2978",
+      "label": "normal",
+      "conf_a": 0.5421,
+      "conf_b": 0.7988,
+      "divergence": 3.2486,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.599,
+        0.494,
+        0.979,
+        0.965,
+        0.806
+      ],
+      "v_b": [
+        0.04,
+        0.004,
+        0.546,
+        0.004,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1240",
+      "label": "normal",
+      "conf_a": 0.5177,
+      "conf_b": 0.8521,
+      "divergence": 2.2188,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.108,
+        0.2,
+        0.825,
+        0.52,
+        0.758
+      ],
+      "v_b": [
+        0.898,
+        0.986,
+        0.988,
+        0.915,
+        0.844
+      ]
+    },
+    {
+      "cxr_id": "CXR3808",
+      "label": "normal",
+      "conf_a": 0.9611,
+      "conf_b": 0.5787,
+      "divergence": 0.956,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.087,
+        0.009,
+        0.001
+      ],
+      "v_b": [
+        0.332,
+        0.318,
+        0.364,
+        0.039,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR2111",
+      "label": "normal",
+      "conf_a": 0.7953,
+      "conf_b": 0.7229,
+      "divergence": 0.4653,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.729,
+        0.867,
+        0.987,
+        0.985,
+        0.92
+      ],
+      "v_b": [
+        0.512,
+        0.997,
+        0.998,
+        0.981,
+        0.818
+      ]
+    },
+    {
+      "cxr_id": "CXR796",
+      "label": "normal",
+      "conf_a": 0.9919,
+      "conf_b": 0.9998,
+      "divergence": 0.0198,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.004,
+        0.0,
+        0.015,
+        0.002,
+        0.001
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1572",
+      "label": "normal",
+      "conf_a": 0.991,
+      "conf_b": 0.9992,
+      "divergence": 0.0208,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.02,
+        0.0,
+        0.002
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.002,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3383",
+      "label": "normal",
+      "conf_a": 0.9942,
+      "conf_b": 0.8849,
+      "divergence": 0.2732,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.013,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.007,
+        0.0,
+        0.274,
+        0.006,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1925",
+      "label": "normal",
+      "conf_a": 0.9803,
+      "conf_b": 0.6668,
+      "divergence": 1.7946,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.047,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.607,
+        0.025,
+        0.899,
+        0.3,
+        0.014
+      ]
+    },
+    {
+      "cxr_id": "CXR882",
+      "label": "normal",
+      "conf_a": 0.7246,
+      "conf_b": 0.9602,
+      "divergence": 4.212,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.532,
+        0.853,
+        0.988,
+        0.988,
+        0.951
+      ],
+      "v_b": [
+        0.049,
+        0.0,
+        0.048,
+        0.002,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2782",
+      "label": "normal",
+      "conf_a": 0.9967,
+      "conf_b": 0.8079,
+      "divergence": 0.4728,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.007,
+        0.0,
+        0.001
+      ],
+      "v_b": [
+        0.235,
+        0.0,
+        0.237,
+        0.008,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1419",
+      "label": "normal",
+      "conf_a": 0.9844,
+      "conf_b": 0.8097,
+      "divergence": 0.4576,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.027,
+        0.011,
+        0.0
+      ],
+      "v_b": [
+        0.069,
+        0.065,
+        0.341,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3060",
+      "label": "normal",
+      "conf_a": 0.9719,
+      "conf_b": 0.999,
+      "divergence": 0.0679,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.066,
+        0.002,
+        0.001
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.001,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3363",
+      "label": "normal",
+      "conf_a": 0.9417,
+      "conf_b": 0.9922,
+      "divergence": 0.1264,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.009,
+        0.0,
+        0.109,
+        0.025,
+        0.003
+      ],
+      "v_b": [
+        0.002,
+        0.0,
+        0.017,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR215",
+      "label": "normal",
+      "conf_a": 0.7552,
+      "conf_b": 0.8401,
+      "divergence": 0.6671,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.955,
+        0.006,
+        0.389,
+        0.171,
+        0.002
+      ],
+      "v_b": [
+        0.866,
+        0.032,
+        0.853,
+        0.084,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR578",
+      "label": "normal",
+      "conf_a": 0.9984,
+      "conf_b": 0.9999,
+      "divergence": 0.0037,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.003,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2812",
+      "label": "normal",
+      "conf_a": 0.736,
+      "conf_b": 0.8192,
+      "divergence": 3.3477,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.554,
+        0.967,
+        0.989,
+        0.995,
+        0.835
+      ],
+      "v_b": [
+        0.035,
+        0.029,
+        0.77,
+        0.158,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR393",
+      "label": "normal",
+      "conf_a": 0.9886,
+      "conf_b": 0.9696,
+      "divergence": 0.0493,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.026,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.022,
+        0.002,
+        0.051,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2774",
+      "label": "normal",
+      "conf_a": 0.9853,
+      "conf_b": 0.85,
+      "divergence": 0.3389,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.003,
+        0.0,
+        0.032,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.07,
+        0.002,
+        0.302,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3458",
+      "label": "normal",
+      "conf_a": 0.9964,
+      "conf_b": 0.9985,
+      "divergence": 0.0051,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.007,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.004,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2061",
+      "label": "normal",
+      "conf_a": 0.9858,
+      "conf_b": 0.9996,
+      "divergence": 0.0353,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.009,
+        0.001,
+        0.026
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3683",
+      "label": "normal",
+      "conf_a": 0.9951,
+      "conf_b": 0.9711,
+      "divergence": 0.0677,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.008,
+        0.001,
+        0.003
+      ],
+      "v_b": [
+        0.002,
+        0.0,
+        0.07,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3822",
+      "label": "normal",
+      "conf_a": 0.9963,
+      "conf_b": 0.6355,
+      "divergence": 1.982,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.008,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.335,
+        0.84,
+        0.7,
+        0.115,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR181",
+      "label": "normal",
+      "conf_a": 0.9599,
+      "conf_b": 0.9978,
+      "divergence": 0.0955,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.002,
+        0.0,
+        0.061,
+        0.037,
+        0.0
+      ],
+      "v_b": [
+        0.001,
+        0.001,
+        0.004,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2763",
+      "label": "normal",
+      "conf_a": 0.9771,
+      "conf_b": 0.9934,
+      "divergence": 0.0449,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.002,
+        0.0,
+        0.053,
+        0.001,
+        0.001
+      ],
+      "v_b": [
+        0.004,
+        0.0,
+        0.012,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR285",
+      "label": "normal",
+      "conf_a": 0.8803,
+      "conf_b": 0.8019,
+      "divergence": 4.1603,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.76,
+        0.959,
+        0.992,
+        0.998,
+        0.993
+      ],
+      "v_b": [
+        0.009,
+        0.003,
+        0.523,
+        0.005,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3850",
+      "label": "normal",
+      "conf_a": 0.996,
+      "conf_b": 0.9856,
+      "divergence": 0.03,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.008,
+        0.002,
+        0.0
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.036,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR943",
+      "label": "normal",
+      "conf_a": 0.6077,
+      "conf_b": 0.9773,
+      "divergence": 3.9624,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.724,
+        0.695,
+        0.971,
+        0.97,
+        0.659
+      ],
+      "v_b": [
+        0.04,
+        0.0,
+        0.016,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1892",
+      "label": "normal",
+      "conf_a": 0.9988,
+      "conf_b": 0.991,
+      "divergence": 0.0206,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.002,
+        0.0,
+        0.001
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.021,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2821",
+      "label": "normal",
+      "conf_a": 0.9834,
+      "conf_b": 0.7477,
+      "divergence": 0.5892,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.04,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.188,
+        0.0,
+        0.44,
+        0.002,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR434",
+      "label": "normal",
+      "conf_a": 0.9644,
+      "conf_b": 0.7956,
+      "divergence": 1.5509,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.005,
+        0.0,
+        0.079,
+        0.003,
+        0.002
+      ],
+      "v_b": [
+        0.699,
+        0.015,
+        0.865,
+        0.058,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1795",
+      "label": "normal",
+      "conf_a": 0.809,
+      "conf_b": 0.9803,
+      "divergence": 0.4283,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.389,
+        0.001,
+        0.079,
+        0.007,
+        0.001
+      ],
+      "v_b": [
+        0.031,
+        0.0,
+        0.018,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3784",
+      "label": "normal",
+      "conf_a": 0.9384,
+      "conf_b": 0.9955,
+      "divergence": 4.8349,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.851,
+        0.998,
+        0.999,
+        1.0,
+        0.997
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.01,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR428",
+      "label": "normal",
+      "conf_a": 0.9699,
+      "conf_b": 0.9982,
+      "divergence": 0.0706,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.001,
+        0.049,
+        0.022,
+        0.003
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.005,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3229",
+      "label": "normal",
+      "conf_a": 0.7026,
+      "conf_b": 0.9948,
+      "divergence": 1.3456,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.014,
+        0.033,
+        0.614,
+        0.694,
+        0.004
+      ],
+      "v_b": [
+        0.0,
+        0.0,
+        0.013,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1436",
+      "label": "contradiction",
+      "conf_a": 0.6437,
+      "conf_b": 0.6902,
+      "divergence": 1.3431,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.001,
+        0.602,
+        0.091,
+        0.399
+      ],
+      "v_b": [
+        0.154,
+        0.372,
+        0.983,
+        0.18,
+        0.051
+      ]
+    },
+    {
+      "cxr_id": "CXR3761",
+      "label": "contradiction",
+      "conf_a": 0.8867,
+      "conf_b": 0.7725,
+      "divergence": 0.6407,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.097,
+        0.009,
+        0.118,
+        0.057,
+        0.003
+      ],
+      "v_b": [
+        0.178,
+        0.001,
+        0.611,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1277",
+      "label": "contradiction",
+      "conf_a": 0.9949,
+      "conf_b": 0.847,
+      "divergence": 0.3698,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.011,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.017,
+        0.001,
+        0.362,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2003",
+      "label": "contradiction",
+      "conf_a": 0.7284,
+      "conf_b": 0.731,
+      "divergence": 3.2553,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.897,
+        0.864,
+        0.899,
+        0.965,
+        0.303
+      ],
+      "v_b": [
+        0.205,
+        0.003,
+        0.462,
+        0.003,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3187",
+      "label": "contradiction",
+      "conf_a": 0.9651,
+      "conf_b": 0.9212,
+      "divergence": 3.7306,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.024,
+        0.006,
+        0.039,
+        0.017,
+        0.002
+      ],
+      "v_b": [
+        0.992,
+        0.983,
+        0.988,
+        0.848,
+        0.007
+      ]
+    },
+    {
+      "cxr_id": "CXR206",
+      "label": "contradiction",
+      "conf_a": 0.8834,
+      "conf_b": 0.7652,
+      "divergence": 3.0212,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.013,
+        0.0,
+        0.244,
+        0.029,
+        0.005
+      ],
+      "v_b": [
+        0.404,
+        0.904,
+        0.976,
+        0.983,
+        0.046
+      ]
+    },
+    {
+      "cxr_id": "CXR1012",
+      "label": "contradiction",
+      "conf_a": 0.6425,
+      "conf_b": 0.8837,
+      "divergence": 2.4128,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.281,
+        0.873,
+        0.71,
+        0.822,
+        0.018
+      ],
+      "v_b": [
+        0.046,
+        0.087,
+        0.157,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3498",
+      "label": "contradiction",
+      "conf_a": 0.987,
+      "conf_b": 0.6519,
+      "divergence": 1.9188,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.019,
+        0.003,
+        0.01
+      ],
+      "v_b": [
+        0.047,
+        0.673,
+        0.868,
+        0.316,
+        0.048
+      ]
+    },
+    {
+      "cxr_id": "CXR3364",
+      "label": "contradiction",
+      "conf_a": 0.998,
+      "conf_b": 0.672,
+      "divergence": 3.182,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.003,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.915,
+        0.653,
+        0.988,
+        0.628,
+        0.004
+      ]
+    },
+    {
+      "cxr_id": "CXR3839",
+      "label": "contradiction",
+      "conf_a": 0.7364,
+      "conf_b": 0.503,
+      "divergence": 2.0887,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.938,
+        0.341,
+        0.958,
+        0.943,
+        0.842
+      ],
+      "v_b": [
+        0.443,
+        0.314,
+        0.846,
+        0.223,
+        0.108
+      ]
+    },
+    {
+      "cxr_id": "CXR29",
+      "label": "contradiction",
+      "conf_a": 0.8008,
+      "conf_b": 0.4763,
+      "divergence": 2.5007,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.01,
+        0.138,
+        0.089,
+        0.149,
+        0.114
+      ],
+      "v_b": [
+        0.763,
+        0.59,
+        0.959,
+        0.533,
+        0.154
+      ]
+    },
+    {
+      "cxr_id": "CXR1906",
+      "label": "contradiction",
+      "conf_a": 0.5855,
+      "conf_b": 0.6215,
+      "divergence": 2.1829,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.196,
+        0.357,
+        0.954,
+        0.937,
+        0.625
+      ],
+      "v_b": [
+        0.406,
+        0.664,
+        0.823,
+        0.027,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1753",
+      "label": "contradiction",
+      "conf_a": 0.9397,
+      "conf_b": 0.9151,
+      "divergence": 0.0938,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.006,
+        0.0,
+        0.128,
+        0.016,
+        0.001
+      ],
+      "v_b": [
+        0.019,
+        0.021,
+        0.171,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2728",
+      "label": "contradiction",
+      "conf_a": 0.708,
+      "conf_b": 0.9429,
+      "divergence": 0.6225,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.088,
+        0.014,
+        0.491,
+        0.136,
+        0.001
+      ],
+      "v_b": [
+        0.075,
+        0.021,
+        0.972,
+        0.017,
+        0.003
+      ]
+    },
+    {
+      "cxr_id": "CXR2415",
+      "label": "contradiction",
+      "conf_a": 0.4934,
+      "conf_b": 0.7485,
+      "divergence": 1.3334,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.271,
+        0.326,
+        0.174,
+        0.506,
+        0.003
+      ],
+      "v_b": [
+        0.029,
+        0.151,
+        0.586,
+        0.017,
+        0.018
+      ]
+    },
+    {
+      "cxr_id": "CXR2475",
+      "label": "contradiction",
+      "conf_a": 0.9905,
+      "conf_b": 0.7514,
+      "divergence": 1.4822,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.0,
+        0.0,
+        0.02,
+        0.002,
+        0.001
+      ],
+      "v_b": [
+        0.717,
+        0.002,
+        0.725,
+        0.06,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3075",
+      "label": "contradiction",
+      "conf_a": 0.9941,
+      "conf_b": 0.9572,
+      "divergence": 0.0967,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.011,
+        0.003,
+        0.0
+      ],
+      "v_b": [
+        0.018,
+        0.002,
+        0.087,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1370",
+      "label": "contradiction",
+      "conf_a": 0.9796,
+      "conf_b": 0.8742,
+      "divergence": 0.2687,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.048,
+        0.001,
+        0.002
+      ],
+      "v_b": [
+        0.008,
+        0.001,
+        0.305,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3945",
+      "label": "contradiction",
+      "conf_a": 0.9832,
+      "conf_b": 0.7222,
+      "divergence": 3.5487,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.0,
+        0.0,
+        0.032,
+        0.002,
+        0.008
+      ],
+      "v_b": [
+        0.143,
+        0.948,
+        0.964,
+        0.543,
+        0.993
+      ]
+    },
+    {
+      "cxr_id": "CXR28",
+      "label": "contradiction",
+      "conf_a": 0.8263,
+      "conf_b": 0.8301,
+      "divergence": 0.6055,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.988,
+        0.844,
+        0.984,
+        0.999,
+        0.249
+      ],
+      "v_b": [
+        0.728,
+        0.916,
+        0.984,
+        0.961,
+        0.014
+      ]
+    },
+    {
+      "cxr_id": "CXR3191",
+      "label": "contradiction",
+      "conf_a": 0.782,
+      "conf_b": 0.6419,
+      "divergence": 0.7868,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.117,
+        0.001,
+        0.358,
+        0.033,
+        0.036
+      ],
+      "v_b": [
+        0.557,
+        0.044,
+        0.61,
+        0.018,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1864",
+      "label": "contradiction",
+      "conf_a": 0.9792,
+      "conf_b": 0.879,
+      "divergence": 0.2514,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.019,
+        0.0,
+        0.032,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.118,
+        0.001,
+        0.182,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2184",
+      "label": "contradiction",
+      "conf_a": 0.7577,
+      "conf_b": 0.9038,
+      "divergence": 0.578,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.405,
+        0.003,
+        0.092,
+        0.105,
+        0.001
+      ],
+      "v_b": [
+        0.036,
+        0.031,
+        0.171,
+        0.003,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR111",
+      "label": "contradiction",
+      "conf_a": 0.8124,
+      "conf_b": 0.682,
+      "divergence": 2.3908,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.797,
+        0.999,
+        0.888,
+        0.988,
+        0.14
+      ],
+      "v_b": [
+        0.012,
+        0.469,
+        0.812,
+        0.124,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR2608",
+      "label": "contradiction",
+      "conf_a": 0.5315,
+      "conf_b": 0.6207,
+      "divergence": 2.2802,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.193,
+        0.571,
+        0.912,
+        0.902,
+        0.637
+      ],
+      "v_b": [
+        0.465,
+        0.937,
+        0.694,
+        0.113,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR3798",
+      "label": "contradiction",
+      "conf_a": 0.9982,
+      "conf_b": 0.9687,
+      "divergence": 0.0741,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.004,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.001,
+        0.001,
+        0.076,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2879",
+      "label": "contradiction",
+      "conf_a": 0.9779,
+      "conf_b": 0.8067,
+      "divergence": 2.2723,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.001,
+        0.0,
+        0.049,
+        0.002,
+        0.003
+      ],
+      "v_b": [
+        0.943,
+        0.161,
+        0.977,
+        0.241,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR2474",
+      "label": "contradiction",
+      "conf_a": 0.5499,
+      "conf_b": 0.7364,
+      "divergence": 1.2877,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.047,
+        0.646,
+        0.702,
+        0.615,
+        0.042
+      ],
+      "v_b": [
+        0.013,
+        0.185,
+        0.552,
+        0.013,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1446",
+      "label": "contradiction",
+      "conf_a": 0.8084,
+      "conf_b": 0.6013,
+      "divergence": 1.6854,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.132,
+        0.693,
+        0.991,
+        0.996,
+        0.974
+      ],
+      "v_b": [
+        0.009,
+        0.417,
+        0.941,
+        0.611,
+        0.122
+      ]
+    },
+    {
+      "cxr_id": "CXR3248",
+      "label": "contradiction",
+      "conf_a": 0.7797,
+      "conf_b": 0.4488,
+      "divergence": 2.8665,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.161,
+        0.993,
+        0.827,
+        0.968,
+        0.821
+      ],
+      "v_b": [
+        0.433,
+        0.468,
+        0.535,
+        0.012,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3656",
+      "label": "contradiction",
+      "conf_a": 0.9746,
+      "conf_b": 0.6823,
+      "divergence": 0.98,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.057,
+        0.005,
+        0.0
+      ],
+      "v_b": [
+        0.624,
+        0.034,
+        0.369,
+        0.015,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1160",
+      "label": "contradiction",
+      "conf_a": 0.9028,
+      "conf_b": 0.8006,
+      "divergence": 1.2956,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.002,
+        0.024,
+        0.901,
+        0.932,
+        0.95
+      ],
+      "v_b": [
+        0.033,
+        0.925,
+        0.996,
+        0.861,
+        0.753
+      ]
+    },
+    {
+      "cxr_id": "CXR2318",
+      "label": "contradiction",
+      "conf_a": 0.775,
+      "conf_b": 0.5938,
+      "divergence": 1.6771,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.002,
+        0.269,
+        0.019,
+        0.728
+      ],
+      "v_b": [
+        0.276,
+        0.156,
+        0.889,
+        0.423,
+        0.95
+      ]
+    },
+    {
+      "cxr_id": "CXR3095",
+      "label": "contradiction",
+      "conf_a": 0.6582,
+      "conf_b": 0.7477,
+      "divergence": 1.9085,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.766,
+        0.123,
+        0.883,
+        0.694,
+        0.073
+      ],
+      "v_b": [
+        0.357,
+        0.002,
+        0.259,
+        0.012,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1513",
+      "label": "contradiction",
+      "conf_a": 0.9977,
+      "conf_b": 0.9076,
+      "divergence": 0.2265,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.004,
+        0.001,
+        0.001
+      ],
+      "v_b": [
+        0.003,
+        0.003,
+        0.223,
+        0.003,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3840",
+      "label": "contradiction",
+      "conf_a": 0.8175,
+      "conf_b": 0.7123,
+      "divergence": 2.0678,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.24,
+        0.917,
+        0.941,
+        0.99,
+        0.936
+      ],
+      "v_b": [
+        0.352,
+        0.923,
+        0.813,
+        0.102,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1614",
+      "label": "contradiction",
+      "conf_a": 0.5923,
+      "conf_b": 0.6939,
+      "divergence": 2.2059,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.331,
+        0.173,
+        0.989,
+        0.979,
+        0.484
+      ],
+      "v_b": [
+        0.872,
+        0.719,
+        0.989,
+        0.33,
+        0.016
+      ]
+    },
+    {
+      "cxr_id": "CXR88",
+      "label": "contradiction",
+      "conf_a": 0.6091,
+      "conf_b": 0.9833,
+      "divergence": 3.9809,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.6,
+        0.776,
+        0.975,
+        0.987,
+        0.685
+      ],
+      "v_b": [
+        0.012,
+        0.001,
+        0.029,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3326",
+      "label": "contradiction",
+      "conf_a": 0.6027,
+      "conf_b": 0.685,
+      "divergence": 1.2121,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.598,
+        0.059,
+        0.786,
+        0.911,
+        0.23
+      ],
+      "v_b": [
+        0.506,
+        0.053,
+        0.84,
+        0.08,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR2890",
+      "label": "contradiction",
+      "conf_a": 0.4823,
+      "conf_b": 0.8897,
+      "divergence": 3.2082,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.526,
+        0.389,
+        0.914,
+        0.973,
+        0.682
+      ],
+      "v_b": [
+        0.017,
+        0.002,
+        0.173,
+        0.002,
+        0.082
+      ]
+    },
+    {
+      "cxr_id": "CXR2191",
+      "label": "contradiction",
+      "conf_a": 0.9834,
+      "conf_b": 0.9953,
+      "divergence": 0.0299,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.005,
+        0.0,
+        0.029,
+        0.007,
+        0.0
+      ],
+      "v_b": [
+        0.002,
+        0.0,
+        0.009,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1014",
+      "label": "contradiction",
+      "conf_a": 0.642,
+      "conf_b": 0.9817,
+      "divergence": 1.0873,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.619,
+        0.04,
+        0.331,
+        0.122,
+        0.022
+      ],
+      "v_b": [
+        0.029,
+        0.0,
+        0.015,
+        0.002,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3479",
+      "label": "contradiction",
+      "conf_a": 0.8562,
+      "conf_b": 0.8891,
+      "divergence": 0.2676,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.998,
+        0.831,
+        0.998,
+        0.996,
+        0.818
+      ],
+      "v_b": [
+        0.995,
+        1.0,
+        1.0,
+        1.0,
+        0.728
+      ]
+    },
+    {
+      "cxr_id": "CXR3951",
+      "label": "contradiction",
+      "conf_a": 0.83,
+      "conf_b": 0.5334,
+      "divergence": 2.0969,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.005,
+        0.301,
+        0.996,
+        0.998,
+        0.887
+      ],
+      "v_b": [
+        0.34,
+        0.703,
+        0.952,
+        0.545,
+        0.025
+      ]
+    },
+    {
+      "cxr_id": "CXR1292",
+      "label": "contradiction",
+      "conf_a": 0.9746,
+      "conf_b": 0.7776,
+      "divergence": 1.3517,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.008,
+        0.001,
+        0.04,
+        0.015,
+        0.0
+      ],
+      "v_b": [
+        0.343,
+        0.086,
+        0.93,
+        0.051,
+        0.006
+      ]
+    },
+    {
+      "cxr_id": "CXR2691",
+      "label": "contradiction",
+      "conf_a": 0.4974,
+      "conf_b": 0.9257,
+      "divergence": 2.0665,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.412,
+        0.362,
+        0.954,
+        0.97,
+        0.406
+      ],
+      "v_b": [
+        0.044,
+        0.031,
+        0.926,
+        0.034,
+        0.003
+      ]
+    },
+    {
+      "cxr_id": "CXR3091",
+      "label": "contradiction",
+      "conf_a": 0.9774,
+      "conf_b": 0.8858,
+      "divergence": 1.8111,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.024,
+        0.0,
+        0.029,
+        0.003,
+        0.001
+      ],
+      "v_b": [
+        0.98,
+        0.029,
+        0.811,
+        0.046,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR3214",
+      "label": "contradiction",
+      "conf_a": 0.6733,
+      "conf_b": 0.6878,
+      "divergence": 0.9081,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.998,
+        0.506,
+        0.899,
+        0.807,
+        0.027
+      ],
+      "v_b": [
+        0.917,
+        0.809,
+        0.851,
+        0.353,
+        0.005
+      ]
+    },
+    {
+      "cxr_id": "CXR1702",
+      "label": "contradiction",
+      "conf_a": 0.993,
+      "conf_b": 0.9924,
+      "divergence": 0.0023,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.003,
+        0.0,
+        0.014,
+        0.0,
+        0.0
+      ],
+      "v_b": [
+        0.003,
+        0.0,
+        0.016,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1541",
+      "label": "contradiction",
+      "conf_a": 0.9113,
+      "conf_b": 0.6907,
+      "divergence": 2.1365,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.021,
+        0.004,
+        0.131,
+        0.042,
+        0.024
+      ],
+      "v_b": [
+        0.719,
+        0.795,
+        0.734,
+        0.021,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2259",
+      "label": "contradiction",
+      "conf_a": 0.6332,
+      "conf_b": 0.6021,
+      "divergence": 1.931,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.374,
+        0.577,
+        0.953,
+        0.996,
+        0.932
+      ],
+      "v_b": [
+        0.124,
+        0.368,
+        0.976,
+        0.474,
+        0.005
+      ]
+    },
+    {
+      "cxr_id": "CXR436",
+      "label": "contradiction",
+      "conf_a": 0.8438,
+      "conf_b": 0.7709,
+      "divergence": 1.4324,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.823,
+        0.92,
+        0.989,
+        0.997,
+        0.881
+      ],
+      "v_b": [
+        0.952,
+        0.674,
+        0.964,
+        0.841,
+        0.004
+      ]
+    },
+    {
+      "cxr_id": "CXR593",
+      "label": "contradiction",
+      "conf_a": 0.9736,
+      "conf_b": 0.6336,
+      "divergence": 1.3545,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.004,
+        0.0,
+        0.051,
+        0.01,
+        0.001
+      ],
+      "v_b": [
+        0.48,
+        0.169,
+        0.752,
+        0.019,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1525",
+      "label": "contradiction",
+      "conf_a": 0.5444,
+      "conf_b": 0.8066,
+      "divergence": 1.1795,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.292,
+        0.408,
+        0.822,
+        0.938,
+        0.801
+      ],
+      "v_b": [
+        0.462,
+        0.999,
+        0.999,
+        0.993,
+        0.989
+      ]
+    },
+    {
+      "cxr_id": "CXR1909",
+      "label": "contradiction",
+      "conf_a": 0.5676,
+      "conf_b": 0.6741,
+      "divergence": 1.6463,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.523,
+        0.006,
+        0.328,
+        0.269,
+        0.001
+      ],
+      "v_b": [
+        0.195,
+        0.585,
+        0.89,
+        0.093,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR2465",
+      "label": "contradiction",
+      "conf_a": 0.9673,
+      "conf_b": 0.9957,
+      "divergence": 0.0708,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.016,
+        0.0,
+        0.06,
+        0.004,
+        0.001
+      ],
+      "v_b": [
+        0.004,
+        0.0,
+        0.007,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3076",
+      "label": "contradiction",
+      "conf_a": 0.5334,
+      "conf_b": 0.7411,
+      "divergence": 2.0475,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.27,
+        0.458,
+        0.958,
+        0.949,
+        0.654
+      ],
+      "v_b": [
+        0.956,
+        0.818,
+        0.995,
+        0.611,
+        0.027
+      ]
+    },
+    {
+      "cxr_id": "CXR3455",
+      "label": "contradiction",
+      "conf_a": 0.8342,
+      "conf_b": 0.9421,
+      "divergence": 2.0397,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.138,
+        0.063,
+        0.877,
+        0.936,
+        0.025
+      ],
+      "v_b": [
+        0.976,
+        0.995,
+        0.998,
+        0.999,
+        0.112
+      ]
+    },
+    {
+      "cxr_id": "CXR802",
+      "label": "contradiction",
+      "conf_a": 0.9272,
+      "conf_b": 0.8652,
+      "divergence": 2.9175,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.87,
+        0.971,
+        0.993,
+        0.999,
+        0.985
+      ],
+      "v_b": [
+        0.819,
+        0.016,
+        0.962,
+        0.089,
+        0.014
+      ]
+    },
+    {
+      "cxr_id": "CXR3565",
+      "label": "contradiction",
+      "conf_a": 0.7125,
+      "conf_b": 0.7303,
+      "divergence": 2.2382,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.513,
+        0.996,
+        0.991,
+        1.0,
+        0.219
+      ],
+      "v_b": [
+        0.29,
+        0.2,
+        0.903,
+        0.083,
+        0.003
+      ]
+    },
+    {
+      "cxr_id": "CXR2414",
+      "label": "contradiction",
+      "conf_a": 0.5265,
+      "conf_b": 0.6308,
+      "divergence": 1.9316,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.787,
+        0.485,
+        0.966,
+        0.995,
+        0.553
+      ],
+      "v_b": [
+        0.422,
+        0.326,
+        0.976,
+        0.062,
+        0.089
+      ]
+    },
+    {
+      "cxr_id": "CXR1362",
+      "label": "contradiction",
+      "conf_a": 0.5018,
+      "conf_b": 0.8041,
+      "divergence": 1.1261,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.711,
+        0.899,
+        0.617,
+        0.719,
+        0.192
+      ],
+      "v_b": [
+        0.992,
+        0.992,
+        0.999,
+        0.904,
+        0.377
+      ]
+    },
+    {
+      "cxr_id": "CXR2955",
+      "label": "contradiction",
+      "conf_a": 0.975,
+      "conf_b": 0.7655,
+      "divergence": 2.9393,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.941,
+        1.0,
+        0.997,
+        1.0,
+        1.0
+      ],
+      "v_b": [
+        0.748,
+        0.214,
+        0.958,
+        0.061,
+        0.018
+      ]
+    },
+    {
+      "cxr_id": "CXR1992",
+      "label": "contradiction",
+      "conf_a": 0.6293,
+      "conf_b": 0.8022,
+      "divergence": 1.6025,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.26,
+        0.059,
+        0.844,
+        0.892,
+        0.656
+      ],
+      "v_b": [
+        0.297,
+        0.014,
+        0.874,
+        0.04,
+        0.018
+      ]
+    },
+    {
+      "cxr_id": "CXR305",
+      "label": "contradiction",
+      "conf_a": 0.5508,
+      "conf_b": 0.9776,
+      "divergence": 2.6142,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.265,
+        0.131,
+        0.778,
+        0.988,
+        0.508
+      ],
+      "v_b": [
+        0.02,
+        0.0,
+        0.035,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR2904",
+      "label": "contradiction",
+      "conf_a": 0.9791,
+      "conf_b": 0.8023,
+      "divergence": 0.5117,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.046,
+        0.004,
+        0.001
+      ],
+      "v_b": [
+        0.023,
+        0.001,
+        0.531,
+        0.0,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR840",
+      "label": "contradiction",
+      "conf_a": 0.6392,
+      "conf_b": 0.7441,
+      "divergence": 2.6834,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.35,
+        0.272,
+        0.981,
+        0.993,
+        0.746
+      ],
+      "v_b": [
+        0.072,
+        0.047,
+        0.51,
+        0.022,
+        0.007
+      ]
+    },
+    {
+      "cxr_id": "CXR522",
+      "label": "contradiction",
+      "conf_a": 0.9977,
+      "conf_b": 0.8599,
+      "divergence": 1.0932,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.0,
+        0.0,
+        0.004,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.035,
+        0.054,
+        0.874,
+        0.044,
+        0.091
+      ]
+    },
+    {
+      "cxr_id": "CXR2390",
+      "label": "contradiction",
+      "conf_a": 0.8488,
+      "conf_b": 0.5865,
+      "divergence": 0.8125,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.002,
+        0.001,
+        0.257,
+        0.052,
+        0.066
+      ],
+      "v_b": [
+        0.386,
+        0.222,
+        0.385,
+        0.04,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR2217",
+      "label": "contradiction",
+      "conf_a": 0.8089,
+      "conf_b": 0.825,
+      "divergence": 4.0848,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.67,
+        0.88,
+        0.996,
+        0.998,
+        0.978
+      ],
+      "v_b": [
+        0.303,
+        0.003,
+        0.13,
+        0.002,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR431",
+      "label": "contradiction",
+      "conf_a": 0.9977,
+      "conf_b": 0.9836,
+      "divergence": 0.0376,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.004,
+        0.001,
+        0.0
+      ],
+      "v_b": [
+        0.006,
+        0.0,
+        0.035,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1125",
+      "label": "contradiction",
+      "conf_a": 0.7024,
+      "conf_b": 0.6845,
+      "divergence": 2.6629,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.756,
+        0.94,
+        0.986,
+        0.994,
+        0.42
+      ],
+      "v_b": [
+        0.305,
+        0.251,
+        0.822,
+        0.053,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR1021",
+      "label": "contradiction",
+      "conf_a": 0.5575,
+      "conf_b": 0.6724,
+      "divergence": 2.0447,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.133,
+        0.066,
+        0.541,
+        0.422,
+        0.974
+      ],
+      "v_b": [
+        0.695,
+        0.881,
+        0.995,
+        0.61,
+        0.999
+      ]
+    },
+    {
+      "cxr_id": "CXR3847",
+      "label": "contradiction",
+      "conf_a": 0.5667,
+      "conf_b": 0.9239,
+      "divergence": 1.781,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.017,
+        0.134,
+        0.689,
+        0.755,
+        0.376
+      ],
+      "v_b": [
+        0.0,
+        0.001,
+        0.186,
+        0.003,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1935",
+      "label": "contradiction",
+      "conf_a": 0.9211,
+      "conf_b": 0.9258,
+      "divergence": 0.1578,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.001,
+        0.111,
+        0.03,
+        0.055
+      ],
+      "v_b": [
+        0.033,
+        0.0,
+        0.152,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR825",
+      "label": "contradiction",
+      "conf_a": 0.7503,
+      "conf_b": 0.8237,
+      "divergence": 3.0028,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.041,
+        0.855,
+        0.132,
+        0.305,
+        0.001
+      ],
+      "v_b": [
+        0.998,
+        0.957,
+        1.0,
+        0.993,
+        0.389
+      ]
+    },
+    {
+      "cxr_id": "CXR847",
+      "label": "contradiction",
+      "conf_a": 0.8087,
+      "conf_b": 0.8783,
+      "divergence": 0.446,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.003,
+        0.006,
+        0.153,
+        0.313,
+        0.002
+      ],
+      "v_b": [
+        0.02,
+        0.006,
+        0.273,
+        0.005,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1043",
+      "label": "contradiction",
+      "conf_a": 0.8268,
+      "conf_b": 0.7982,
+      "divergence": 4.0625,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.741,
+        0.91,
+        0.988,
+        0.997,
+        0.931
+      ],
+      "v_b": [
+        0.047,
+        0.257,
+        0.199,
+        0.001,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR387",
+      "label": "contradiction",
+      "conf_a": 0.7322,
+      "conf_b": 0.7872,
+      "divergence": 1.7677,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.066,
+        0.253,
+        0.852,
+        0.963,
+        0.166
+      ],
+      "v_b": [
+        0.014,
+        0.009,
+        0.498,
+        0.01,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1164",
+      "label": "contradiction",
+      "conf_a": 0.5709,
+      "conf_b": 0.776,
+      "divergence": 3.318,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.475,
+        0.625,
+        0.982,
+        0.961,
+        0.834
+      ],
+      "v_b": [
+        0.318,
+        0.008,
+        0.232,
+        0.002,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1819",
+      "label": "contradiction",
+      "conf_a": 0.6,
+      "conf_b": 0.6771,
+      "divergence": 1.2393,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.845,
+        0.053,
+        0.545,
+        0.678,
+        0.015
+      ],
+      "v_b": [
+        0.287,
+        0.029,
+        0.569,
+        0.06,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3068",
+      "label": "contradiction",
+      "conf_a": 0.8205,
+      "conf_b": 0.7237,
+      "divergence": 3.569,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.722,
+        0.898,
+        0.986,
+        0.997,
+        0.949
+      ],
+      "v_b": [
+        0.267,
+        0.044,
+        0.646,
+        0.025,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR3510",
+      "label": "contradiction",
+      "conf_a": 0.576,
+      "conf_b": 0.639,
+      "divergence": 2.4839,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.547,
+        0.367,
+        0.957,
+        0.966,
+        0.836
+      ],
+      "v_b": [
+        0.796,
+        0.179,
+        0.597,
+        0.115,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR1874",
+      "label": "contradiction",
+      "conf_a": 0.6336,
+      "conf_b": 0.5906,
+      "divergence": 1.0317,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.016,
+        0.362,
+        0.819,
+        0.995,
+        0.648
+      ],
+      "v_b": [
+        0.108,
+        0.378,
+        0.957,
+        0.533,
+        0.972
+      ]
+    },
+    {
+      "cxr_id": "CXR3786",
+      "label": "contradiction",
+      "conf_a": 0.9413,
+      "conf_b": 0.8237,
+      "divergence": 0.9149,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.918,
+        0.974,
+        0.993,
+        0.998,
+        0.97
+      ],
+      "v_b": [
+        0.969,
+        0.84,
+        0.999,
+        0.998,
+        0.247
+      ]
+    },
+    {
+      "cxr_id": "CXR2673",
+      "label": "contradiction",
+      "conf_a": 0.7673,
+      "conf_b": 0.8396,
+      "divergence": 4.0172,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.065,
+        0.052,
+        0.38,
+        0.076,
+        0.007
+      ],
+      "v_b": [
+        0.998,
+        0.995,
+        1.0,
+        0.994,
+        0.612
+      ]
+    },
+    {
+      "cxr_id": "CXR1085",
+      "label": "contradiction",
+      "conf_a": 0.9945,
+      "conf_b": 0.9956,
+      "divergence": 0.0078,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.001,
+        0.0,
+        0.008,
+        0.005,
+        0.001
+      ],
+      "v_b": [
+        0.002,
+        0.0,
+        0.009,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1496",
+      "label": "contradiction",
+      "conf_a": 0.8724,
+      "conf_b": 0.6741,
+      "divergence": 1.9195,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.77,
+        0.001,
+        0.081,
+        0.006,
+        0.0
+      ],
+      "v_b": [
+        0.11,
+        0.623,
+        0.699,
+        0.026,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1637",
+      "label": "contradiction",
+      "conf_a": 0.9696,
+      "conf_b": 0.9968,
+      "divergence": 0.0679,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.009,
+        0.002,
+        0.055,
+        0.008,
+        0.002
+      ],
+      "v_b": [
+        0.001,
+        0.0,
+        0.007,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR3369",
+      "label": "contradiction",
+      "conf_a": 0.5508,
+      "conf_b": 0.9856,
+      "divergence": 2.7884,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.219,
+        0.6,
+        0.43,
+        0.926
+      ],
+      "v_b": [
+        0.965,
+        1.0,
+        1.0,
+        0.999,
+        1.0
+      ]
+    },
+    {
+      "cxr_id": "CXR483",
+      "label": "contradiction",
+      "conf_a": 0.9013,
+      "conf_b": 0.7083,
+      "divergence": 0.9023,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.006,
+        0.0,
+        0.172,
+        0.065,
+        0.004
+      ],
+      "v_b": [
+        0.171,
+        0.161,
+        0.71,
+        0.101,
+        0.007
+      ]
+    },
+    {
+      "cxr_id": "CXR1031",
+      "label": "contradiction",
+      "conf_a": 0.8708,
+      "conf_b": 0.6484,
+      "divergence": 2.27,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.068,
+        0.015,
+        0.208,
+        0.025,
+        0.007
+      ],
+      "v_b": [
+        0.849,
+        0.671,
+        0.831,
+        0.229,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1769",
+      "label": "contradiction",
+      "conf_a": 0.7928,
+      "conf_b": 0.7917,
+      "divergence": 2.2403,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.992,
+        0.992,
+        0.982,
+        0.983,
+        0.533
+      ],
+      "v_b": [
+        0.148,
+        0.971,
+        0.889,
+        0.232,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR2355",
+      "label": "contradiction",
+      "conf_a": 0.8261,
+      "conf_b": 0.6394,
+      "divergence": 1.4152,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.081,
+        0.007,
+        0.194,
+        0.149,
+        0.003
+      ],
+      "v_b": [
+        0.508,
+        0.2,
+        0.966,
+        0.167,
+        0.009
+      ]
+    },
+    {
+      "cxr_id": "CXR2448",
+      "label": "contradiction",
+      "conf_a": 0.7929,
+      "conf_b": 0.9796,
+      "divergence": 3.76,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.164,
+        0.997,
+        0.956,
+        0.997,
+        0.697
+      ],
+      "v_b": [
+        0.002,
+        0.022,
+        0.024,
+        0.001,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR1204",
+      "label": "contradiction",
+      "conf_a": 0.9906,
+      "conf_b": 0.8615,
+      "divergence": 1.1926,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.005,
+        0.0,
+        0.013,
+        0.005,
+        0.0
+      ],
+      "v_b": [
+        0.246,
+        0.017,
+        0.935,
+        0.017,
+        0.001
+      ]
+    },
+    {
+      "cxr_id": "CXR1100",
+      "label": "contradiction",
+      "conf_a": 0.5228,
+      "conf_b": 0.9447,
+      "divergence": 1.8448,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.686,
+        0.815,
+        0.389,
+        0.3,
+        0.004
+      ],
+      "v_b": [
+        0.99,
+        0.996,
+        0.997,
+        0.967,
+        0.089
+      ]
+    },
+    {
+      "cxr_id": "CXR2864",
+      "label": "contradiction",
+      "conf_a": 0.9478,
+      "conf_b": 0.727,
+      "divergence": 0.6461,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.006,
+        0.072,
+        0.021,
+        0.031
+      ],
+      "v_b": [
+        0.01,
+        0.313,
+        0.354,
+        0.003,
+        0.002
+      ]
+    },
+    {
+      "cxr_id": "CXR2589",
+      "label": "contradiction",
+      "conf_a": 0.9792,
+      "conf_b": 0.933,
+      "divergence": 0.1173,
+      "decision": "COMMIT_TRAJECTORY",
+      "v_a": [
+        0.0,
+        0.0,
+        0.049,
+        0.002,
+        0.001
+      ],
+      "v_b": [
+        0.023,
+        0.001,
+        0.131,
+        0.013,
+        0.0
+      ]
+    },
+    {
+      "cxr_id": "CXR1076",
+      "label": "contradiction",
+      "conf_a": 0.7393,
+      "conf_b": 0.822,
+      "divergence": 3.1603,
+      "decision": "TRIGGER_REPLAN",
+      "v_a": [
+        0.005,
+        0.021,
+        0.755,
+        0.373,
+        0.008
+      ],
+      "v_b": [
+        0.966,
+        0.994,
+        0.998,
+        0.981,
+        0.383
+      ]
+    }
+  ]
+}

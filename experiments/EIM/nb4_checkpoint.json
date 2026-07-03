@@ -1,0 +1,25 @@
+{
+  "auroc_oracle_full": NaN,
+  "auroc_oracle_knn": NaN,
+  "auroc_mlp": NaN,
+  "best_k": 5,
+  "best_auroc": NaN,
+  "entropic_gate": "IMPASSE",
+  "routing_decision": "BELOW_BASELINE",
+  "invariant_checks": {
+    "A1 compute() signature": true,
+    "A2 weights.shape == K.shape[0]": true,
+    "A3 weights >= 0": true,
+    "A4 sum(weights) \u2248 1": true,
+    "A5 topk descending": true,
+    "A6 len(topk) == k": true
+  },
+  "encoder_delta_norm": 31.979366302490234,
+  "k_ablation_results": {
+    "5": NaN,
+    "10": NaN,
+    "20": NaN,
+    "50": NaN
+  },
+  "timestamp": 1780873661.014646
+}

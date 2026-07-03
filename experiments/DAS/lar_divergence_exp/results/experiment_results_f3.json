@@ -1,0 +1,62 @@
+{
+  "experiment": "fusion_vs_routing_coco_80cats_hard_negative",
+  "timestamp": "2026-05-20T11:36:48.129048Z",
+  "model": "OpenCLIP ViT-B-32 / openai",
+  "dataset": "MSCOCO (clip-benchmark/wds_mscoco_captions)",
+  "ground_truth": "Hard contradiction oracle: argmax[CLS_sim \u00d7 L1_image_concept]",
+  "n_concepts": 80,
+  "concept_type": "CLIP image templates + keyword text matching (hybrid)",
+  "results": [
+    {
+      "method": "Routing \u2014 CLIP image \u00d7 keyword text L1 (zero-shot)",
+      "auroc": 0.546,
+      "accuracy": 0.61,
+      "p_value": 0.008153785863904781,
+      "sensitivity": 0.88,
+      "specificity": 0.34,
+      "contingency": {
+        "tp": 44,
+        "fp": 33,
+        "fn": 6,
+        "tn": 17
+      }
+    },
+    {
+      "method": "Fusion  \u2014 OpenCLIP CLS cosine (zero-shot)",
+      "auroc": 0.8116,
+      "accuracy": 0.78,
+      "p_value": 1.3041283363486635e-08,
+      "sensitivity": 0.82,
+      "specificity": 0.74,
+      "contingency": {
+        "tp": 41,
+        "fp": 13,
+        "fn": 9,
+        "tn": 37
+      }
+    },
+    {
+      "method": "Supervised \u2014 concat + logistic (N=100 labels)",
+      "auroc": 0.9328,
+      "accuracy": 0.91,
+      "p_value": 4.979001411356309e-18,
+      "sensitivity": 0.9,
+      "specificity": 0.92,
+      "contingency": {
+        "tp": 45,
+        "fp": 4,
+        "fn": 5,
+        "tn": 46
+      }
+    }
+  ],
+  "distributions": {
+    "routing_normal_mean": 39.7872,
+    "routing_contra_mean": 39.8056,
+    "routing_lift": 1.0,
+    "fusion_normal_mean": 0.7613,
+    "fusion_contra_mean": 0.8142,
+    "fusion_lift": 1.07
+  },
+  "note": "Image concept: CLIP image templates for 80 COCO categories. Text concept: keyword matching (binary). Hybrid mirrors C2: TXV oracle (image-only) vs BiomedCLIP routing (both sides). Here: image-CLIP concept vs keyword concept, tested against CLIP CLS fusion."
+}

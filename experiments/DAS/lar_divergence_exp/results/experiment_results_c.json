@@ -1,0 +1,2042 @@
+{
+  "experiment": "nlm_cxr_divergence_option_c",
+  "timestamp": "2026-05-20T00:01:29.628931Z",
+  "option": "C \u2014 TXV DenseNet-121 (image) \u00d7 BiomedCLIP finding-vector (text)",
+  "ground_truth": "synthetic \u2014 TXV-maximally-distant patient report swap",
+  "config": {
+    "txv_model": "densenet121-res224-all",
+    "text_model": "BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "tau_high": 0.45,
+    "tau_low": 0.1,
+    "delta": 0.77,
+    "n_normal": 100,
+    "n_contra": 100,
+    "pool_size": 500,
+    "device": "mps"
+  },
+  "calibration": {
+    "n": 100,
+    "delta": 0.77,
+    "accuracy": 0.55,
+    "tau_high": 0.45
+  },
+  "test_evaluation": {
+    "auroc": 0.4655,
+    "accuracy": 0.45,
+    "p_value": 1.0,
+    "contingency_table": {
+      "tp": 45,
+      "fp": 55,
+      "fn": 0,
+      "tn": 0
+    },
+    "trigger_replan_normal_pct": 80.0,
+    "trigger_replan_contradiction_pct": 66.7,
+    "mean_D_normal": 3.5426,
+    "mean_D_contra": 3.2901
+  },
+  "cal_records": [
+    {
+      "img_cxr_id": "CXR1256",
+      "txt_cxr_id": "CXR1256",
+      "label": "normal",
+      "conf_a": 0.5594,
+      "conf_b": 0.9989,
+      "divergence": 3.9804,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR314",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6561,
+      "conf_b": 0.8568,
+      "divergence": 2.4375,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.1741
+    },
+    {
+      "img_cxr_id": "CXR774",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4795,
+      "conf_b": 0.8568,
+      "divergence": 4.0082,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.492
+    },
+    {
+      "img_cxr_id": "CXR1994",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7464,
+      "conf_b": 0.8568,
+      "divergence": 1.7571,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.9898
+    },
+    {
+      "img_cxr_id": "CXR283",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.898,
+      "conf_b": 0.8568,
+      "divergence": 0.7775,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.3861
+    },
+    {
+      "img_cxr_id": "CXR3521",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2554,
+      "conf_b": 0.5481,
+      "divergence": 5.1071,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.9563
+    },
+    {
+      "img_cxr_id": "CXR3041",
+      "txt_cxr_id": "CXR3041",
+      "label": "normal",
+      "conf_a": 0.6785,
+      "conf_b": 0.9997,
+      "divergence": 2.9686,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2781",
+      "txt_cxr_id": "CXR2781",
+      "label": "normal",
+      "conf_a": 0.4204,
+      "conf_b": 0.9991,
+      "divergence": 5.3969,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR503",
+      "txt_cxr_id": "CXR503",
+      "label": "normal",
+      "conf_a": 0.8976,
+      "conf_b": 0.9971,
+      "divergence": 0.9061,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1145",
+      "txt_cxr_id": "CXR1145",
+      "label": "normal",
+      "conf_a": 0.5928,
+      "conf_b": 0.6382,
+      "divergence": 3.3489,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3200",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.945,
+      "conf_b": 0.8568,
+      "divergence": 0.9551,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.8091
+    },
+    {
+      "img_cxr_id": "CXR2071",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2947,
+      "conf_b": 0.5481,
+      "divergence": 5.2057,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.4035
+    },
+    {
+      "img_cxr_id": "CXR2218",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.1955,
+      "conf_b": 0.5481,
+      "divergence": 5.4541,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 8.5088
+    },
+    {
+      "img_cxr_id": "CXR1949",
+      "txt_cxr_id": "CXR1949",
+      "label": "normal",
+      "conf_a": 0.7761,
+      "conf_b": 0.9731,
+      "divergence": 1.7928,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3149",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7701,
+      "conf_b": 0.8568,
+      "divergence": 1.6591,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.2084
+    },
+    {
+      "img_cxr_id": "CXR3437",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8292,
+      "conf_b": 0.8568,
+      "divergence": 1.1427,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 8.7356
+    },
+    {
+      "img_cxr_id": "CXR2639",
+      "txt_cxr_id": "CXR2639",
+      "label": "normal",
+      "conf_a": 0.5439,
+      "conf_b": 0.8899,
+      "divergence": 4.5302,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR315",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7343,
+      "conf_b": 0.8568,
+      "divergence": 1.9578,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.913
+    },
+    {
+      "img_cxr_id": "CXR2820",
+      "txt_cxr_id": "CXR2820",
+      "label": "normal",
+      "conf_a": 0.8912,
+      "conf_b": 0.9993,
+      "divergence": 0.9772,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2630",
+      "txt_cxr_id": "CXR2630",
+      "label": "normal",
+      "conf_a": 0.4711,
+      "conf_b": 0.9819,
+      "divergence": 4.8972,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2889",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8765,
+      "conf_b": 0.8568,
+      "divergence": 1.0047,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.192
+    },
+    {
+      "img_cxr_id": "CXR642",
+      "txt_cxr_id": "CXR642",
+      "label": "normal",
+      "conf_a": 0.7368,
+      "conf_b": 0.9954,
+      "divergence": 2.3847,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR65",
+      "txt_cxr_id": "CXR65",
+      "label": "normal",
+      "conf_a": 0.428,
+      "conf_b": 0.9213,
+      "divergence": 4.8906,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1943",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8502,
+      "conf_b": 0.8568,
+      "divergence": 1.1389,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 8.9283
+    },
+    {
+      "img_cxr_id": "CXR3540",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7293,
+      "conf_b": 0.8568,
+      "divergence": 1.8705,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.8571
+    },
+    {
+      "img_cxr_id": "CXR3289",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8024,
+      "conf_b": 0.8568,
+      "divergence": 1.4913,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 8.5252
+    },
+    {
+      "img_cxr_id": "CXR3398",
+      "txt_cxr_id": "CXR3398",
+      "label": "normal",
+      "conf_a": 0.4909,
+      "conf_b": 0.6326,
+      "divergence": 4.1795,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3030",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8689,
+      "conf_b": 0.8568,
+      "divergence": 1.0286,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.1238
+    },
+    {
+      "img_cxr_id": "CXR3219",
+      "txt_cxr_id": "CXR3219",
+      "label": "normal",
+      "conf_a": 0.4257,
+      "conf_b": 0.9847,
+      "divergence": 5.1986,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR141",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6032,
+      "conf_b": 0.8568,
+      "divergence": 2.7903,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.6808
+    },
+    {
+      "img_cxr_id": "CXR1773",
+      "txt_cxr_id": "CXR1773",
+      "label": "normal",
+      "conf_a": 0.9317,
+      "conf_b": 0.5481,
+      "divergence": 3.8339,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2422",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3478,
+      "conf_b": 0.5481,
+      "divergence": 4.3134,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.2919
+    },
+    {
+      "img_cxr_id": "CXR2257",
+      "txt_cxr_id": "CXR2257",
+      "label": "normal",
+      "conf_a": 0.45,
+      "conf_b": 0.9977,
+      "divergence": 5.1789,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR248",
+      "txt_cxr_id": "CXR248",
+      "label": "normal",
+      "conf_a": 0.7575,
+      "conf_b": 0.9962,
+      "divergence": 2.1556,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR162",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8949,
+      "conf_b": 0.8568,
+      "divergence": 0.8774,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.3577
+    },
+    {
+      "img_cxr_id": "CXR206",
+      "txt_cxr_id": "CXR206",
+      "label": "normal",
+      "conf_a": 0.357,
+      "conf_b": 0.4541,
+      "divergence": 5.9409,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3139",
+      "txt_cxr_id": "CXR3139",
+      "label": "normal",
+      "conf_a": 0.5535,
+      "conf_b": 0.9968,
+      "divergence": 4.0436,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR143",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6575,
+      "conf_b": 0.8568,
+      "divergence": 2.6934,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.2044
+    },
+    {
+      "img_cxr_id": "CXR1117",
+      "txt_cxr_id": "CXR1117",
+      "label": "normal",
+      "conf_a": 0.7539,
+      "conf_b": 0.8462,
+      "divergence": 14.3055,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2062",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.5206,
+      "conf_b": 0.8568,
+      "divergence": 4.7515,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.2156
+    },
+    {
+      "img_cxr_id": "CXR2720",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8927,
+      "conf_b": 0.8568,
+      "divergence": 0.995,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.3378
+    },
+    {
+      "img_cxr_id": "CXR3324",
+      "txt_cxr_id": "CXR3324",
+      "label": "normal",
+      "conf_a": 0.369,
+      "conf_b": 0.8926,
+      "divergence": 5.4123,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3152",
+      "txt_cxr_id": "CXR3152",
+      "label": "normal",
+      "conf_a": 0.2188,
+      "conf_b": 0.6568,
+      "divergence": 5.3056,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1738",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.618,
+      "conf_b": 0.8568,
+      "divergence": 2.2645,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.8596
+    },
+    {
+      "img_cxr_id": "CXR1896",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.9401,
+      "conf_b": 0.8568,
+      "divergence": 0.864,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.7649
+    },
+    {
+      "img_cxr_id": "CXR1095",
+      "txt_cxr_id": "CXR1095",
+      "label": "normal",
+      "conf_a": 0.3355,
+      "conf_b": 0.9596,
+      "divergence": 6.0224,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2039",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.5544,
+      "conf_b": 0.8568,
+      "divergence": 2.9204,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.2332
+    },
+    {
+      "img_cxr_id": "CXR3372",
+      "txt_cxr_id": "CXR1759",
+      "label": "contradiction",
+      "conf_a": 0.4575,
+      "conf_b": 0.9041,
+      "divergence": 4.9597,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.751
+    },
+    {
+      "img_cxr_id": "CXR409",
+      "txt_cxr_id": "CXR409",
+      "label": "normal",
+      "conf_a": 0.1899,
+      "conf_b": 0.7976,
+      "divergence": 6.5467,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1015",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3235,
+      "conf_b": 0.5481,
+      "divergence": 4.3944,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.106
+    },
+    {
+      "img_cxr_id": "CXR1555",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.5913,
+      "conf_b": 0.8568,
+      "divergence": 2.8837,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.5715
+    },
+    {
+      "img_cxr_id": "CXR1926",
+      "txt_cxr_id": "CXR1926",
+      "label": "normal",
+      "conf_a": 0.9136,
+      "conf_b": 0.9976,
+      "divergence": 0.7753,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2651",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6077,
+      "conf_b": 0.8568,
+      "divergence": 2.8757,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.6623
+    },
+    {
+      "img_cxr_id": "CXR3242",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4797,
+      "conf_b": 0.8568,
+      "divergence": 4.0432,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.5656
+    },
+    {
+      "img_cxr_id": "CXR3640",
+      "txt_cxr_id": "CXR3640",
+      "label": "normal",
+      "conf_a": 0.7525,
+      "conf_b": 0.9129,
+      "divergence": 2.0045,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3789",
+      "txt_cxr_id": "CXR3789",
+      "label": "normal",
+      "conf_a": 0.3427,
+      "conf_b": 0.9965,
+      "divergence": 5.939,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2116",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4309,
+      "conf_b": 0.8568,
+      "divergence": 4.5615,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.0471
+    },
+    {
+      "img_cxr_id": "CXR3768",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2561,
+      "conf_b": 0.5481,
+      "divergence": 6.6663,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.5852
+    },
+    {
+      "img_cxr_id": "CXR2668",
+      "txt_cxr_id": "CXR2668",
+      "label": "normal",
+      "conf_a": 0.3858,
+      "conf_b": 0.9986,
+      "divergence": 5.8802,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1188",
+      "txt_cxr_id": "CXR1188",
+      "label": "normal",
+      "conf_a": 0.4422,
+      "conf_b": 0.996,
+      "divergence": 5.3206,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3525",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3353,
+      "conf_b": 0.5481,
+      "divergence": 4.7017,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.7805
+    },
+    {
+      "img_cxr_id": "CXR1539",
+      "txt_cxr_id": "CXR1539",
+      "label": "normal",
+      "conf_a": 0.6795,
+      "conf_b": 0.9939,
+      "divergence": 2.865,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3901",
+      "txt_cxr_id": "CXR889",
+      "label": "contradiction",
+      "conf_a": 0.321,
+      "conf_b": 0.9963,
+      "divergence": 7.3294,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.7801
+    },
+    {
+      "img_cxr_id": "CXR1877",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.9293,
+      "conf_b": 0.8568,
+      "divergence": 1.173,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.6675
+    },
+    {
+      "img_cxr_id": "CXR3877",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.245,
+      "conf_b": 0.5481,
+      "divergence": 5.7095,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 7.0806
+    },
+    {
+      "img_cxr_id": "CXR29",
+      "txt_cxr_id": "CXR29",
+      "label": "normal",
+      "conf_a": 0.3326,
+      "conf_b": 0.6859,
+      "divergence": 6.2544,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR854",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4303,
+      "conf_b": 0.8568,
+      "divergence": 4.2652,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.1474
+    },
+    {
+      "img_cxr_id": "CXR1578",
+      "txt_cxr_id": "CXR1578",
+      "label": "normal",
+      "conf_a": 0.5779,
+      "conf_b": 0.9892,
+      "divergence": 4.1572,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2376",
+      "txt_cxr_id": "CXR2376",
+      "label": "normal",
+      "conf_a": 0.7349,
+      "conf_b": 0.9798,
+      "divergence": 2.4382,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3174",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2263,
+      "conf_b": 0.5481,
+      "divergence": 5.0773,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.8615
+    },
+    {
+      "img_cxr_id": "CXR588",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8824,
+      "conf_b": 0.8568,
+      "divergence": 0.9807,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.2451
+    },
+    {
+      "img_cxr_id": "CXR1060",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8079,
+      "conf_b": 0.8568,
+      "divergence": 1.5321,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.5655
+    },
+    {
+      "img_cxr_id": "CXR3500",
+      "txt_cxr_id": "CXR3500",
+      "label": "normal",
+      "conf_a": 0.687,
+      "conf_b": 0.9918,
+      "divergence": 2.8099,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3232",
+      "txt_cxr_id": "CXR3232",
+      "label": "normal",
+      "conf_a": 0.6021,
+      "conf_b": 0.9899,
+      "divergence": 3.5641,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3547",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.393,
+      "conf_b": 0.5481,
+      "divergence": 4.6316,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.1973
+    },
+    {
+      "img_cxr_id": "CXR3664",
+      "txt_cxr_id": "CXR3664",
+      "label": "normal",
+      "conf_a": 0.7181,
+      "conf_b": 0.9927,
+      "divergence": 2.4811,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR294",
+      "txt_cxr_id": "CXR2058",
+      "label": "contradiction",
+      "conf_a": 0.3782,
+      "conf_b": 0.9983,
+      "divergence": 7.5716,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 7.0105
+    },
+    {
+      "img_cxr_id": "CXR1840",
+      "txt_cxr_id": "CXR1840",
+      "label": "normal",
+      "conf_a": 0.3422,
+      "conf_b": 0.9845,
+      "divergence": 6.3973,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1730",
+      "txt_cxr_id": "CXR1730",
+      "label": "normal",
+      "conf_a": 0.559,
+      "conf_b": 0.9975,
+      "divergence": 4.0108,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3700",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4726,
+      "conf_b": 0.8568,
+      "divergence": 4.5267,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.222
+    },
+    {
+      "img_cxr_id": "CXR2456",
+      "txt_cxr_id": "CXR2456",
+      "label": "normal",
+      "conf_a": 0.5832,
+      "conf_b": 0.7478,
+      "divergence": 3.5297,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2574",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7132,
+      "conf_b": 0.8568,
+      "divergence": 1.5986,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.7142
+    },
+    {
+      "img_cxr_id": "CXR1416",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4521,
+      "conf_b": 0.8568,
+      "divergence": 4.2582,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 4.9845
+    },
+    {
+      "img_cxr_id": "CXR2903",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4771,
+      "conf_b": 0.8568,
+      "divergence": 3.5459,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.5956
+    },
+    {
+      "img_cxr_id": "CXR2981",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7574,
+      "conf_b": 0.8568,
+      "divergence": 1.8677,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.111
+    },
+    {
+      "img_cxr_id": "CXR1653",
+      "txt_cxr_id": "CXR1653",
+      "label": "normal",
+      "conf_a": 0.2374,
+      "conf_b": 0.8568,
+      "divergence": 9.0154,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1912",
+      "txt_cxr_id": "CXR1912",
+      "label": "normal",
+      "conf_a": 0.8706,
+      "conf_b": 0.9994,
+      "divergence": 1.1791,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2024",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7156,
+      "conf_b": 0.8568,
+      "divergence": 1.9278,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.7443
+    },
+    {
+      "img_cxr_id": "CXR3137",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8544,
+      "conf_b": 0.8568,
+      "divergence": 1.0421,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 8.9706
+    },
+    {
+      "img_cxr_id": "CXR3339",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4556,
+      "conf_b": 0.8568,
+      "divergence": 3.8251,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.3883
+    },
+    {
+      "img_cxr_id": "CXR3988",
+      "txt_cxr_id": "CXR3988",
+      "label": "normal",
+      "conf_a": 0.6516,
+      "conf_b": 0.9338,
+      "divergence": 3.054,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1168",
+      "txt_cxr_id": "CXR1168",
+      "label": "normal",
+      "conf_a": 0.5034,
+      "conf_b": 0.996,
+      "divergence": 4.4776,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1504",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.52,
+      "conf_b": 0.8568,
+      "divergence": 3.2718,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.9138
+    },
+    {
+      "img_cxr_id": "CXR261",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6365,
+      "conf_b": 0.8568,
+      "divergence": 2.5696,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.0173
+    },
+    {
+      "img_cxr_id": "CXR1919",
+      "txt_cxr_id": "CXR2540",
+      "label": "contradiction",
+      "conf_a": 0.3524,
+      "conf_b": 0.9984,
+      "divergence": 6.3373,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.8316
+    },
+    {
+      "img_cxr_id": "CXR2671",
+      "txt_cxr_id": "CXR2671",
+      "label": "normal",
+      "conf_a": 0.3033,
+      "conf_b": 0.9944,
+      "divergence": 7.1313,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1577",
+      "txt_cxr_id": "CXR1577",
+      "label": "normal",
+      "conf_a": 0.4555,
+      "conf_b": 0.9975,
+      "divergence": 5.3152,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1192",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.9047,
+      "conf_b": 0.8568,
+      "divergence": 0.9618,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 9.4458
+    },
+    {
+      "img_cxr_id": "CXR244",
+      "txt_cxr_id": "CXR2058",
+      "label": "contradiction",
+      "conf_a": 0.3864,
+      "conf_b": 0.9983,
+      "divergence": 5.7106,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.1443
+    },
+    {
+      "img_cxr_id": "CXR3332",
+      "txt_cxr_id": "CXR3332",
+      "label": "normal",
+      "conf_a": 0.5502,
+      "conf_b": 0.9986,
+      "divergence": 4.1058,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    }
+  ],
+  "test_records": [
+    {
+      "img_cxr_id": "CXR2502",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.1827,
+      "conf_b": 0.5481,
+      "divergence": 5.7123,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 7.9185
+    },
+    {
+      "img_cxr_id": "CXR1936",
+      "txt_cxr_id": "CXR1936",
+      "label": "normal",
+      "conf_a": 0.3569,
+      "conf_b": 0.6104,
+      "divergence": 5.3785,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR658",
+      "txt_cxr_id": "CXR658",
+      "label": "normal",
+      "conf_a": 0.5148,
+      "conf_b": 0.9994,
+      "divergence": 4.4227,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR722",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8003,
+      "conf_b": 0.8568,
+      "divergence": 1.4255,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.5016
+    },
+    {
+      "img_cxr_id": "CXR1200",
+      "txt_cxr_id": "CXR1200",
+      "label": "normal",
+      "conf_a": 0.5755,
+      "conf_b": 0.9629,
+      "divergence": 3.6548,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1236",
+      "txt_cxr_id": "CXR1236",
+      "label": "normal",
+      "conf_a": 0.8615,
+      "conf_b": 0.972,
+      "divergence": 1.3567,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2312",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8609,
+      "conf_b": 0.8568,
+      "divergence": 1.0903,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 9.0207
+    },
+    {
+      "img_cxr_id": "CXR919",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8343,
+      "conf_b": 0.8568,
+      "divergence": 1.0824,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.8128
+    },
+    {
+      "img_cxr_id": "CXR1883",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8084,
+      "conf_b": 0.8568,
+      "divergence": 1.4178,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.5798
+    },
+    {
+      "img_cxr_id": "CXR1663",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6706,
+      "conf_b": 0.8568,
+      "divergence": 2.308,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.3038
+    },
+    {
+      "img_cxr_id": "CXR1265",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2851,
+      "conf_b": 0.5481,
+      "divergence": 4.8294,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.1172
+    },
+    {
+      "img_cxr_id": "CXR3891",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.1991,
+      "conf_b": 0.5481,
+      "divergence": 5.3468,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 8.3724
+    },
+    {
+      "img_cxr_id": "CXR2423",
+      "txt_cxr_id": "CXR2423",
+      "label": "normal",
+      "conf_a": 0.8281,
+      "conf_b": 0.9986,
+      "divergence": 1.5697,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2728",
+      "txt_cxr_id": "CXR2728",
+      "label": "normal",
+      "conf_a": 0.2001,
+      "conf_b": 0.945,
+      "divergence": 7.3167,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2455",
+      "txt_cxr_id": "CXR889",
+      "label": "contradiction",
+      "conf_a": 0.3779,
+      "conf_b": 0.9963,
+      "divergence": 7.1446,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.5707
+    },
+    {
+      "img_cxr_id": "CXR360",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.662,
+      "conf_b": 0.8568,
+      "divergence": 2.5189,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.2181
+    },
+    {
+      "img_cxr_id": "CXR3965",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6111,
+      "conf_b": 0.8568,
+      "divergence": 2.8039,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.7996
+    },
+    {
+      "img_cxr_id": "CXR2493",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.4178,
+      "conf_b": 0.5481,
+      "divergence": 4.8488,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.0406
+    },
+    {
+      "img_cxr_id": "CXR3494",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6179,
+      "conf_b": 0.8568,
+      "divergence": 2.9245,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.8454
+    },
+    {
+      "img_cxr_id": "CXR152",
+      "txt_cxr_id": "CXR152",
+      "label": "normal",
+      "conf_a": 0.3621,
+      "conf_b": 0.8971,
+      "divergence": 5.2128,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2832",
+      "txt_cxr_id": "CXR2832",
+      "label": "normal",
+      "conf_a": 0.2738,
+      "conf_b": 0.9193,
+      "divergence": 6.1727,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR721",
+      "txt_cxr_id": "CXR721",
+      "label": "normal",
+      "conf_a": 0.6776,
+      "conf_b": 0.9995,
+      "divergence": 2.9076,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3814",
+      "txt_cxr_id": "CXR3814",
+      "label": "normal",
+      "conf_a": 0.7892,
+      "conf_b": 0.9969,
+      "divergence": 1.8829,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR969",
+      "txt_cxr_id": "CXR969",
+      "label": "normal",
+      "conf_a": 0.4959,
+      "conf_b": 0.9871,
+      "divergence": 4.5801,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3842",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.526,
+      "conf_b": 0.8568,
+      "divergence": 3.3714,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 5.991
+    },
+    {
+      "img_cxr_id": "CXR392",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.5238,
+      "conf_b": 0.8568,
+      "divergence": 3.3725,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 5.9908
+    },
+    {
+      "img_cxr_id": "CXR42",
+      "txt_cxr_id": "CXR42",
+      "label": "normal",
+      "conf_a": 0.589,
+      "conf_b": 0.9922,
+      "divergence": 3.7284,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3674",
+      "txt_cxr_id": "CXR3674",
+      "label": "normal",
+      "conf_a": 0.7137,
+      "conf_b": 0.998,
+      "divergence": 2.6519,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2874",
+      "txt_cxr_id": "CXR2874",
+      "label": "normal",
+      "conf_a": 0.779,
+      "conf_b": 0.9779,
+      "divergence": 1.8558,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3233",
+      "txt_cxr_id": "CXR3233",
+      "label": "normal",
+      "conf_a": 0.5844,
+      "conf_b": 0.918,
+      "divergence": 3.497,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2356",
+      "txt_cxr_id": "CXR2356",
+      "label": "normal",
+      "conf_a": 0.5252,
+      "conf_b": 0.9982,
+      "divergence": 4.3884,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2653",
+      "txt_cxr_id": "CXR2653",
+      "label": "normal",
+      "conf_a": 0.8645,
+      "conf_b": 0.9964,
+      "divergence": 1.1923,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1556",
+      "txt_cxr_id": "CXR1556",
+      "label": "normal",
+      "conf_a": 0.2313,
+      "conf_b": 0.9618,
+      "divergence": 7.7496,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR355",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3821,
+      "conf_b": 0.5481,
+      "divergence": 4.9859,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.379
+    },
+    {
+      "img_cxr_id": "CXR2941",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7687,
+      "conf_b": 0.8568,
+      "divergence": 1.5277,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.2151
+    },
+    {
+      "img_cxr_id": "CXR940",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7982,
+      "conf_b": 0.8568,
+      "divergence": 1.5175,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.4587
+    },
+    {
+      "img_cxr_id": "CXR1799",
+      "txt_cxr_id": "CXR1799",
+      "label": "normal",
+      "conf_a": 0.5807,
+      "conf_b": 0.9972,
+      "divergence": 3.9702,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3167",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7617,
+      "conf_b": 0.8568,
+      "divergence": 1.6561,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.1382
+    },
+    {
+      "img_cxr_id": "CXR2318",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3239,
+      "conf_b": 0.5481,
+      "divergence": 4.9187,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.6529
+    },
+    {
+      "img_cxr_id": "CXR414",
+      "txt_cxr_id": "CXR414",
+      "label": "normal",
+      "conf_a": 0.4894,
+      "conf_b": 0.9861,
+      "divergence": 4.6591,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2136",
+      "txt_cxr_id": "CXR2136",
+      "label": "normal",
+      "conf_a": 0.2251,
+      "conf_b": 0.9992,
+      "divergence": 8.0459,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR198",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2689,
+      "conf_b": 0.5481,
+      "divergence": 5.6331,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.845
+    },
+    {
+      "img_cxr_id": "CXR3621",
+      "txt_cxr_id": "CXR3621",
+      "label": "normal",
+      "conf_a": 0.2724,
+      "conf_b": 0.9963,
+      "divergence": 7.7849,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1759",
+      "txt_cxr_id": "CXR1759",
+      "label": "normal",
+      "conf_a": 0.5106,
+      "conf_b": 0.9041,
+      "divergence": 4.8614,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2273",
+      "txt_cxr_id": "CXR2273",
+      "label": "normal",
+      "conf_a": 0.8175,
+      "conf_b": 0.999,
+      "divergence": 1.6421,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1910",
+      "txt_cxr_id": "CXR1910",
+      "label": "normal",
+      "conf_a": 0.5602,
+      "conf_b": 0.9982,
+      "divergence": 4.0329,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1316",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7918,
+      "conf_b": 0.8568,
+      "divergence": 1.4357,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.427
+    },
+    {
+      "img_cxr_id": "CXR2619",
+      "txt_cxr_id": "CXR2619",
+      "label": "normal",
+      "conf_a": 0.7754,
+      "conf_b": 0.9946,
+      "divergence": 1.9726,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3213",
+      "txt_cxr_id": "CXR3213",
+      "label": "normal",
+      "conf_a": 0.6881,
+      "conf_b": 0.9914,
+      "divergence": 2.7558,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2636",
+      "txt_cxr_id": "CXR2636",
+      "label": "normal",
+      "conf_a": 0.6848,
+      "conf_b": 0.9733,
+      "divergence": 2.6188,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2157",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6341,
+      "conf_b": 0.8568,
+      "divergence": 2.5205,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.9878
+    },
+    {
+      "img_cxr_id": "CXR654",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8252,
+      "conf_b": 0.8568,
+      "divergence": 1.2041,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 8.7307
+    },
+    {
+      "img_cxr_id": "CXR624",
+      "txt_cxr_id": "CXR624",
+      "label": "normal",
+      "conf_a": 0.6106,
+      "conf_b": 0.9813,
+      "divergence": 3.4553,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1638",
+      "txt_cxr_id": "CXR1638",
+      "label": "normal",
+      "conf_a": 0.3842,
+      "conf_b": 0.8181,
+      "divergence": 5.0797,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2572",
+      "txt_cxr_id": "CXR2572",
+      "label": "normal",
+      "conf_a": 0.5898,
+      "conf_b": 0.9988,
+      "divergence": 3.7652,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2209",
+      "txt_cxr_id": "CXR2209",
+      "label": "normal",
+      "conf_a": 0.6666,
+      "conf_b": 0.9492,
+      "divergence": 2.7746,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR257",
+      "txt_cxr_id": "CXR257",
+      "label": "normal",
+      "conf_a": 0.6414,
+      "conf_b": 0.974,
+      "divergence": 3.2033,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2722",
+      "txt_cxr_id": "CXR2722",
+      "label": "normal",
+      "conf_a": 0.6295,
+      "conf_b": 0.4729,
+      "divergence": 4.0797,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR643",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6941,
+      "conf_b": 0.8568,
+      "divergence": 1.8557,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.5453
+    },
+    {
+      "img_cxr_id": "CXR2755",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3004,
+      "conf_b": 0.5481,
+      "divergence": 4.8357,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.91
+    },
+    {
+      "img_cxr_id": "CXR1593",
+      "txt_cxr_id": "CXR1593",
+      "label": "normal",
+      "conf_a": 0.2923,
+      "conf_b": 0.681,
+      "divergence": 5.7045,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2340",
+      "txt_cxr_id": "CXR2058",
+      "label": "contradiction",
+      "conf_a": 0.2948,
+      "conf_b": 0.9983,
+      "divergence": 7.0984,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.5589
+    },
+    {
+      "img_cxr_id": "CXR3601",
+      "txt_cxr_id": "CXR3601",
+      "label": "normal",
+      "conf_a": 0.5027,
+      "conf_b": 0.3674,
+      "divergence": 5.0048,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3997",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4526,
+      "conf_b": 0.8568,
+      "divergence": 4.0347,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 5.2923
+    },
+    {
+      "img_cxr_id": "CXR1535",
+      "txt_cxr_id": "CXR1535",
+      "label": "normal",
+      "conf_a": 0.5498,
+      "conf_b": 0.9943,
+      "divergence": 4.0109,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3881",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2447,
+      "conf_b": 0.5481,
+      "divergence": 5.4183,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 7.16
+    },
+    {
+      "img_cxr_id": "CXR2552",
+      "txt_cxr_id": "CXR2552",
+      "label": "normal",
+      "conf_a": 0.3934,
+      "conf_b": 0.9993,
+      "divergence": 5.9716,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2791",
+      "txt_cxr_id": "CXR2791",
+      "label": "normal",
+      "conf_a": 0.9001,
+      "conf_b": 0.9978,
+      "divergence": 0.896,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3445",
+      "txt_cxr_id": "CXR3445",
+      "label": "normal",
+      "conf_a": 0.7945,
+      "conf_b": 0.9974,
+      "divergence": 1.8552,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1096",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3736,
+      "conf_b": 0.5481,
+      "divergence": 4.6441,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.2482
+    },
+    {
+      "img_cxr_id": "CXR2816",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.3185,
+      "conf_b": 0.5481,
+      "divergence": 5.3377,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.165
+    },
+    {
+      "img_cxr_id": "CXR2310",
+      "txt_cxr_id": "CXR2310",
+      "label": "normal",
+      "conf_a": 0.8536,
+      "conf_b": 0.9971,
+      "divergence": 1.298,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2613",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.5152,
+      "conf_b": 0.8568,
+      "divergence": 3.8028,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 5.9444
+    },
+    {
+      "img_cxr_id": "CXR1757",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.681,
+      "conf_b": 0.8568,
+      "divergence": 2.0915,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.4306
+    },
+    {
+      "img_cxr_id": "CXR3012",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.9266,
+      "conf_b": 0.8568,
+      "divergence": 0.9595,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 9.6435
+    },
+    {
+      "img_cxr_id": "CXR3236",
+      "txt_cxr_id": "CXR3236",
+      "label": "normal",
+      "conf_a": 0.6971,
+      "conf_b": 0.9986,
+      "divergence": 2.7637,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3538",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8652,
+      "conf_b": 0.8568,
+      "divergence": 0.9903,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 9.0911
+    },
+    {
+      "img_cxr_id": "CXR3135",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.8738,
+      "conf_b": 0.8568,
+      "divergence": 1.1819,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 9.1685
+    },
+    {
+      "img_cxr_id": "CXR1569",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6547,
+      "conf_b": 0.8568,
+      "divergence": 2.4896,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.1739
+    },
+    {
+      "img_cxr_id": "CXR817",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.2876,
+      "conf_b": 0.5481,
+      "divergence": 5.0038,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 6.1436
+    },
+    {
+      "img_cxr_id": "CXR2788",
+      "txt_cxr_id": "CXR2788",
+      "label": "normal",
+      "conf_a": 0.7693,
+      "conf_b": 0.9919,
+      "divergence": 2.0381,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2192",
+      "txt_cxr_id": "CXR2192",
+      "label": "normal",
+      "conf_a": 0.7978,
+      "conf_b": 0.9862,
+      "divergence": 1.7542,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR426",
+      "txt_cxr_id": "CXR426",
+      "label": "normal",
+      "conf_a": 0.5487,
+      "conf_b": 0.9983,
+      "divergence": 4.0629,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3105",
+      "txt_cxr_id": "CXR3105",
+      "label": "normal",
+      "conf_a": 0.8121,
+      "conf_b": 0.9986,
+      "divergence": 1.795,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3426",
+      "txt_cxr_id": "CXR3426",
+      "label": "normal",
+      "conf_a": 0.7684,
+      "conf_b": 0.9976,
+      "divergence": 2.0641,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2186",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.5047,
+      "conf_b": 0.8568,
+      "divergence": 3.7689,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 5.5351
+    },
+    {
+      "img_cxr_id": "CXR291",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6492,
+      "conf_b": 0.8568,
+      "divergence": 2.7178,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.1084
+    },
+    {
+      "img_cxr_id": "CXR1760",
+      "txt_cxr_id": "CXR1760",
+      "label": "normal",
+      "conf_a": 0.5631,
+      "conf_b": 0.9984,
+      "divergence": 3.9979,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3449",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6296,
+      "conf_b": 0.8568,
+      "divergence": 2.7541,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.9388
+    },
+    {
+      "img_cxr_id": "CXR2130",
+      "txt_cxr_id": "CXR1773",
+      "label": "contradiction",
+      "conf_a": 0.302,
+      "conf_b": 0.5481,
+      "divergence": 4.4427,
+      "decision": "COMMIT_TRAJECTORY",
+      "txv_l1_gt": 5.9974
+    },
+    {
+      "img_cxr_id": "CXR370",
+      "txt_cxr_id": "CXR370",
+      "label": "normal",
+      "conf_a": 0.8315,
+      "conf_b": 0.9958,
+      "divergence": 1.5208,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2904",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.4531,
+      "conf_b": 0.8568,
+      "divergence": 4.1583,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 5.3199
+    },
+    {
+      "img_cxr_id": "CXR954",
+      "txt_cxr_id": "CXR954",
+      "label": "normal",
+      "conf_a": 0.4666,
+      "conf_b": 0.9838,
+      "divergence": 4.8904,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2968",
+      "txt_cxr_id": "CXR2968",
+      "label": "normal",
+      "conf_a": 0.7979,
+      "conf_b": 0.9698,
+      "divergence": 1.8878,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR398",
+      "txt_cxr_id": "CXR398",
+      "label": "normal",
+      "conf_a": 0.8426,
+      "conf_b": 0.9966,
+      "divergence": 1.402,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR3977",
+      "txt_cxr_id": "CXR3977",
+      "label": "normal",
+      "conf_a": 0.7985,
+      "conf_b": 0.9979,
+      "divergence": 1.8033,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR1115",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.7276,
+      "conf_b": 0.8568,
+      "divergence": 1.9687,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 7.8464
+    },
+    {
+      "img_cxr_id": "CXR1728",
+      "txt_cxr_id": "CXR1728",
+      "label": "normal",
+      "conf_a": 0.8523,
+      "conf_b": 0.9633,
+      "divergence": 1.1669,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR306",
+      "txt_cxr_id": "CXR306",
+      "label": "normal",
+      "conf_a": 0.4963,
+      "conf_b": 0.9992,
+      "divergence": 4.7323,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 0.0
+    },
+    {
+      "img_cxr_id": "CXR2934",
+      "txt_cxr_id": "CXR1653",
+      "label": "contradiction",
+      "conf_a": 0.6109,
+      "conf_b": 0.8568,
+      "divergence": 2.9032,
+      "decision": "TRIGGER_REPLAN",
+      "txv_l1_gt": 6.7995
+    }
+  ]
+}

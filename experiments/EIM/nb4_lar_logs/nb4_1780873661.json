@@ -1,0 +1,19 @@
+{
+  "experiment": "NB4",
+  "auroc_oracle_full": NaN,
+  "auroc_oracle_knn": NaN,
+  "auroc_mlp": NaN,
+  "best_k": 5,
+  "best_auroc": NaN,
+  "entropic_gate": "IMPASSE",
+  "abc_invariants": {
+    "A1 compute() signature": true,
+    "A2 weights.shape == K.shape[0]": true,
+    "A3 weights >= 0": true,
+    "A4 sum(weights) \u2248 1": true,
+    "A5 topk descending": true,
+    "A6 len(topk) == k": true
+  },
+  "timestamp": 1780873661.036285,
+  "signature": "f37453f3b94a96ed4f8bb29c661003c4ee3f5cbe9b20facb5755599b2ecfa963"
+}
