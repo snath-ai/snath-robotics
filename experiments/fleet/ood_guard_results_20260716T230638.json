@@ -1,0 +1,1164 @@
+{
+  "protocol": {
+    "wind_novel_N": 10.0,
+    "wind_weak_N": 4.0,
+    "guard": {
+      "ref_windows": 250,
+      "k": 10,
+      "quantile": 0.99,
+      "features": "z-scaled per-dim window mean+std",
+      "threshold": "self-calibrated LOO quantile"
+    },
+    "routed_windows_per_phase": 30,
+    "seeds": [
+      42
+    ],
+    "encoder": "gru_cls_multiseed_cpg.pt",
+    "criteria": {
+      "G1": "wind10 novel-alarm >= 80% each seed",
+      "G2": "normal novel-alarm <= 5% each seed",
+      "G3": "ice novel-alarm <= 5% and recognised >= 75% each seed"
+    }
+  },
+  "results": [
+    {
+      "seed": 42,
+      "events_shipped": 30,
+      "adapter_transferred": true,
+      "guard_threshold": 5.990431631987966,
+      "normal": {
+        "mean_D": 0.00022589110715974433,
+        "mean_guard": 4.325597440707851,
+        "guard_ood_rate": 0.13333333333333333,
+        "novel_alarm": 0.13333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.8666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.0002850702730938792,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.528740971944047,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 2,
+            "D": 0.00023336955928243697,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.340345324279505,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 3,
+            "D": 0.00023376122408080846,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.2615238828867548,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 4,
+            "D": 0.00028772419318556786,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.374599731391995,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 5,
+            "D": 0.00033850394538603723,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.629245804372487,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 6,
+            "D": 0.00034709725878201425,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.844649116000278,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 7,
+            "D": 0.00027182683697901666,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.006247700040271,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 8,
+            "D": 0.00020520496764220297,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.354492436810595,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 9,
+            "D": 0.00014593885862268507,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.7119504403822114,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 10,
+            "D": 0.00014874710177537054,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.096528894546109,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 11,
+            "D": 0.000172323954757303,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.534921861203875,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 12,
+            "D": 0.0002116448013111949,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.977847163643334,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 13,
+            "D": 0.00027343176770955324,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.384003147282983,
+            "guard_ood": true,
+            "outcome": "ALARM_NOVEL"
+          },
+          {
+            "iter": 14,
+            "D": 0.00044135632924735546,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.6703247406306945,
+            "guard_ood": true,
+            "outcome": "ALARM_NOVEL"
+          },
+          {
+            "iter": 15,
+            "D": 0.000454672088380903,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.817792056934387,
+            "guard_ood": true,
+            "outcome": "ALARM_NOVEL"
+          },
+          {
+            "iter": 16,
+            "D": 0.0004981977981515229,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.807355697785309,
+            "guard_ood": true,
+            "outcome": "ALARM_NOVEL"
+          },
+          {
+            "iter": 46,
+            "D": 0.00013309880159795284,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.2720673542958307,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 47,
+            "D": 0.00020494389173109084,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.206530453645738,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 48,
+            "D": 0.00023981033882591873,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.1535500952865445,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 49,
+            "D": 0.00023018720094114542,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.2000095562730224,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 50,
+            "D": 0.00020423531532287598,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.321323658510156,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 51,
+            "D": 0.0002561291621532291,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.4783044263518748,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 52,
+            "D": 0.00022847157379146665,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.6741244801575212,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 53,
+            "D": 0.00017565964662935585,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.872549352343497,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 54,
+            "D": 0.00014128113980405033,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.001174029217317,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 55,
+            "D": 9.925662016030401e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.058697201700264,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 56,
+            "D": 8.648743096273392e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.064103415491163,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 57,
+            "D": 7.642304990440607e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.194227883929886,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 58,
+            "D": 6.881888839416206e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.357083740458625,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 59,
+            "D": 8.305919618578628e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.5736086034392525,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          }
+        ]
+      },
+      "ice": {
+        "mean_D": 0.0002860854811539563,
+        "mean_guard": 5.226643012007795,
+        "guard_ood_rate": 0.16666666666666666,
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.0001694389502517879,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.790237899779463,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 2,
+            "D": 0.00023705205239821225,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.848542513958927,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 3,
+            "D": 0.00028142851078882813,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.94645294677755,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 4,
+            "D": 0.0003071511455345899,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.014209092581657,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 5,
+            "D": 0.0003375411906745285,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.146672868339044,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 6,
+            "D": 0.00041216728277504444,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.198285536512371,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 7,
+            "D": 0.00047562530380673707,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.266270540218596,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 8,
+            "D": 0.00037501504993997514,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.147265755677055,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 9,
+            "D": 0.00026769613032229245,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.019228549161736,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 10,
+            "D": 0.00016746997425798327,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.03752320386845,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 11,
+            "D": 0.00015515102131757885,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.263613126551173,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 12,
+            "D": 0.00014313726569525898,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.479395465799867,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 13,
+            "D": 0.0001585083664394915,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.670360390707652,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 14,
+            "D": 0.0001771599636413157,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.807696944666848,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 15,
+            "D": 0.00022710004122927785,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.858212458471202,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 16,
+            "D": 0.0003416132240090519,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.856563491037479,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 17,
+            "D": 0.00020297056471463293,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.821010361137231,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 18,
+            "D": 0.00015918866847641766,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.849730772831721,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 19,
+            "D": 0.0003440284344833344,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.02829261940885,
+            "guard_ood": true,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 20,
+            "D": 0.0004887652467004955,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.242563219390445,
+            "guard_ood": true,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 21,
+            "D": 0.00029556412482634187,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.4593097990374115,
+            "guard_ood": true,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 22,
+            "D": 0.0005112547078169882,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.781595810654534,
+            "guard_ood": true,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 23,
+            "D": 0.0006000541034154594,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 6.918934154532439,
+            "guard_ood": true,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 53,
+            "D": 0.0003207883855793625,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.957949478723261,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 54,
+            "D": 0.00016639413661323488,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.9470258551898576,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 55,
+            "D": 0.00029610079945996404,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.998649755861396,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 56,
+            "D": 0.00031884442432783544,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.0241813153722195,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 57,
+            "D": 0.00024749129079282284,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.056660030540849,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 58,
+            "D": 0.0001936375629156828,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.1537768746000765,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          },
+          {
+            "iter": 59,
+            "D": 0.00020422651141416281,
+            "anchor": "ice_learned",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.209079528844467,
+            "guard_ood": false,
+            "outcome": "RECOGNISED_known"
+          }
+        ]
+      },
+      "wind10": {
+        "mean_D": 0.00020429334205497677,
+        "mean_guard": 4.66811103962144,
+        "guard_ood_rate": 0.0,
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.0002733875880949199,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.38207987004828,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 2,
+            "D": 0.0003038614522665739,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.477616449569842,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 3,
+            "D": 0.000195173459360376,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.5122710917590565,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 4,
+            "D": 0.00017793763254303485,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.695900943633054,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 5,
+            "D": 6.901344750076532e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.090146273760292,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 6,
+            "D": 0.00016649179451633245,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.510957451988029,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 36,
+            "D": 0.00013666666927747428,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.076220429703371,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 37,
+            "D": 0.00011900097888428718,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.937091724657107,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 38,
+            "D": 0.00016385145136155188,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.836226202094385,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 39,
+            "D": 0.00019372340466361493,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 3.8604779398664784,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 40,
+            "D": 0.00027629281976260245,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.03675579894564,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 41,
+            "D": 0.0002882977423723787,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.169450704075892,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 42,
+            "D": 0.0002848754811566323,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.296191148611623,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 43,
+            "D": 0.000312534102704376,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.384011169295144,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 44,
+            "D": 0.0004074262105859816,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.469184482618455,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 45,
+            "D": 0.0004079582868143916,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.595434052300681,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 46,
+            "D": 0.00022314052330330014,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.730905925977108,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 47,
+            "D": 0.00013442851195577532,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.731754699056015,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 48,
+            "D": 0.00011294661817373708,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.670644931684907,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 49,
+            "D": 0.00015808577882125974,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.654285264399073,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 50,
+            "D": 0.00016593957843724638,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.567468582374083,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 51,
+            "D": 0.00016897256136871874,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.658429377080502,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 52,
+            "D": 0.00021272755111567676,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.792802653257702,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 53,
+            "D": 0.00025209737941622734,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.968617845057365,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 54,
+            "D": 0.0002507874451112002,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.107880904907819,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 55,
+            "D": 0.00021832158381585032,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.156873684787046,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 56,
+            "D": 0.00017775011656340212,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.236631598100461,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 57,
+            "D": 0.00012205844541313127,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.333217898081803,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 58,
+            "D": 8.266444638138637e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.4450681704098685,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 59,
+            "D": 7.238719990709797e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.6587339205421525,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          }
+        ]
+      },
+      "wind4": {
+        "mean_D": 0.00022698833005658042,
+        "mean_guard": 4.738023126684928,
+        "guard_ood_rate": 0.0,
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.00024854051298461854,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.462585267052285,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 2,
+            "D": 0.00026779930340126157,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.127200545622216,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 3,
+            "D": 0.00031066517112776637,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.023011835476423,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 4,
+            "D": 0.0003543532220646739,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.115250766524848,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 5,
+            "D": 0.00036128636565990746,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.191499357245403,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 6,
+            "D": 0.0003773836651816964,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.297594814594192,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 7,
+            "D": 0.0003240112855564803,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.297031182931279,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 8,
+            "D": 0.00024020206183195114,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.345350253451592,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 9,
+            "D": 0.00015135160356294364,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.531418725884988,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 10,
+            "D": 9.643383964430541e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.840927852459002,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 11,
+            "D": 0.00014970512711443007,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.108681728602147,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 12,
+            "D": 0.00019196199718862772,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.312635798467887,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 42,
+            "D": 0.00012201342906337231,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.00254349781166,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 43,
+            "D": 7.16285576345399e-05,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.016233784274384,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 44,
+            "D": 0.00012590982078108937,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.029725058031102,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 45,
+            "D": 0.0001885185338323936,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.052387733068361,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 46,
+            "D": 0.00025397021090611815,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.129158813822109,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 47,
+            "D": 0.00032074510818347335,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.333777923011145,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 48,
+            "D": 0.00034230793244205415,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.6904105574769845,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 49,
+            "D": 0.0004010307602584362,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 4.99828646662527,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 50,
+            "D": 0.00039683078648522496,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.168506944351082,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 51,
+            "D": 0.0002698795578908175,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.353537032629364,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 52,
+            "D": 0.00013801699969917536,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.431654432735225,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 53,
+            "D": 0.00011254437413299456,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.473271188898009,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 54,
+            "D": 0.00011877556244144216,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.416743937979992,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 55,
+            "D": 0.00019317101396154612,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.429917054184154,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 56,
+            "D": 0.00016601810057181865,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.48681648459095,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 57,
+            "D": 0.00020367161778267473,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.459428113266982,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 58,
+            "D": 0.00015885266475379467,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.463038010677069,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          },
+          {
+            "iter": 59,
+            "D": 0.00015207071555778384,
+            "anchor": "normal",
+            "decision": "COMMIT_TRAJECTORY",
+            "guard": 5.552068638801744,
+            "guard_ood": false,
+            "outcome": "COMMIT_normal"
+          }
+        ]
+      }
+    }
+  ],
+  "pass": {
+    "G1": false,
+    "G2": false,
+    "G3": true
+  }
+}

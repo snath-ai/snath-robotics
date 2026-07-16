@@ -103,9 +103,52 @@ numbers instead of raw trajectories. The hard part is not the transfer; it is
 building the concept space (finding 1) and knowing when you are outside it
 (finding 3).
 
+## OOD Guard Experiment (`ood_guard.py`) — 2026-07-16, follow-up
+
+Closes as much of the confidence trap (finding 3) as this regime allows, and
+maps what remains. The guard is a one-step ridge dynamics model
+f(obs, act) → Δobs fitted on normal terrain, scored by the **drift** of its
+signed residuals (per-dim rolling mean over 20 steps, z-scored against
+held-out fresh-normal drift statistics, max over dims, threshold = held-out
+q99). Novel alarm = guard says dynamics-OOD while the concept view matches
+the *normal* anchor — the divergence principle applied to the guard itself
+(stream A = predicted next state, stream B = observed next state).
+
+Three simpler designs were tried first and rejected with evidence (see the
+script docstring): window-stat baselines and kNN novelty fail because a fresh
+normal episode drifts more across window statistics than moderate unseen
+physics shifts them; per-step |residual| fails because a linear model is
+equally wrong about contact everywhere.
+
+**Results (5 seeds):**
+
+| Check | Outcome |
+|---|---|
+| G2 no false novelty (normal) | **PASS** — 0.7% ± 1.5 |
+| G3 recognition kept (ice) | **PASS** — 100% recognised, 0% novel-alarm, every seed |
+| G1 novelty at 10 N | **FAIL (expected)** — 4.7%; 10 N is in the blind band of both views |
+| Sensitivity curve (guard-OOD) | 10 N: 4.7% → 20 N: 35% → 30 N: 52% → 40 N: 81% |
+
+**Two open findings, quantified:**
+
+1. **Blind band.** Persistent forces ≲ 15 N are invisible to both the concept
+   view (enc D ≤ 0.02) and the dynamics-drift view in this reset-heavy regime
+   (~38-step episodes cap drift accumulation; 10 N ≈ 0.07 σ/step of residual
+   bias on a ~24 kg walker). Detection is graded, not binary.
+2. **Class capture.** Under strong wind the concept encoder does not default
+   to *normal* — it maps gait disruption onto the **ice logit** (wind-30:
+   recognised-as-ice up to 87% in some seeds), so "guard OOD + concept says
+   known class" reads as consistent and novel physics masquerades as a known
+   one — the wrong adapter would be applied fleet-wide. The remedy is already
+   in the series: PERSIST's detect→**verify** loop (trial the matched adaptor,
+   confirm divergence actually falls) is precisely the mechanism that catches
+   a wrong class match. Detection (PAV) + transfer (this experiment) +
+   verification (PERSIST) are all load-bearing; none subsumes another.
+
 ## Reproduce
 
 ```bash
 .venv/bin/python experiments/fleet/train_cls_multiseed.py --policy cpg
 .venv/bin/python experiments/fleet/fleet_n2_transfer.py
+.venv/bin/python experiments/fleet/ood_guard.py
 ```
