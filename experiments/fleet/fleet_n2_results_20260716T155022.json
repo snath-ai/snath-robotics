@@ -1,0 +1,1157 @@
+{
+  "protocol": {
+    "n_robots": 2,
+    "routed_windows_per_phase": 30,
+    "seeds": [
+      42
+    ],
+    "encoder": "gru_cls_multiseed_cpg.pt",
+    "policy": "cpg",
+    "friction_mechanism": "all-geom sliding friction (real ice)",
+    "anchor": "EWMA alpha=0.9, 120 warmup steps",
+    "router": {
+      "tau_high": 0.6,
+      "tau_low": 0.25,
+      "delta": 0.35
+    },
+    "transfer_artifact": "HMAC-signed D-hard JSONL (19 numbers/event)",
+    "criteria": {
+      "P1": "transfer drop >= 30% each seed",
+      "P2": "B-fleet normal COMMIT >= 60% each seed"
+    }
+  },
+  "results": [
+    {
+      "seed": 42,
+      "a_normal": {
+        "mean_D": 0.0002879638874825711,
+        "commit": 1.0,
+        "detect": 0.0,
+        "n_routed": 30,
+        "iters": 84,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 26,
+            "D": 0.0003007437917403877,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 27,
+            "D": 0.0003306284488644451,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 28,
+            "D": 0.0003258134238421917,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 29,
+            "D": 0.00030225689988583326,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 30,
+            "D": 0.00030282605439424515,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 31,
+            "D": 0.0004894018638879061,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 32,
+            "D": 0.0004782821924891323,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 33,
+            "D": 0.00014800608914811164,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 34,
+            "D": 0.00014388869749382138,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 35,
+            "D": 0.00019048075773753226,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 36,
+            "D": 0.00027569098165258765,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 37,
+            "D": 0.00022413527767639607,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 38,
+            "D": 0.0001721615990391001,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 39,
+            "D": 0.00016383809270337224,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 69,
+            "D": 0.0005767149850726128,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 70,
+            "D": 0.0004187418380752206,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 71,
+            "D": 0.00034705831785686314,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 72,
+            "D": 0.0002660162281244993,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 73,
+            "D": 0.00024797223159112036,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 74,
+            "D": 0.000259209715295583,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 75,
+            "D": 0.00036894582444801927,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 76,
+            "D": 0.0005161719745956361,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 77,
+            "D": 0.0003420209395699203,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 78,
+            "D": 0.0003122792695648968,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 79,
+            "D": 0.0003366144956089556,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 80,
+            "D": 0.00025712023489177227,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 81,
+            "D": 0.0001475164172006771,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 82,
+            "D": 0.00014595974062103778,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 83,
+            "D": 0.0001207873719977215,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 84,
+            "D": 0.0001276328694075346,
+            "decision": "COMMIT_TRAJECTORY"
+          }
+        ]
+      },
+      "a_ice": {
+        "mean_D": 0.7065840264161428,
+        "commit": 0.0,
+        "detect": 1.0,
+        "n_routed": 30,
+        "iters": 88,
+        "n_events": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7066246867179871,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 2,
+            "D": 0.7065969705581665,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 3,
+            "D": 0.7066026329994202,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 4,
+            "D": 0.7066112756729126,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 5,
+            "D": 0.7066070437431335,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 6,
+            "D": 0.7065881490707397,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 7,
+            "D": 0.7065497636795044,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 8,
+            "D": 0.706500232219696,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 9,
+            "D": 0.7064707279205322,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 10,
+            "D": 0.7065693140029907,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 11,
+            "D": 0.7065848708152771,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 12,
+            "D": 0.7066046595573425,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 13,
+            "D": 0.706649661064148,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 14,
+            "D": 0.7066174745559692,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 44,
+            "D": 0.7066190838813782,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 45,
+            "D": 0.7066108584403992,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 46,
+            "D": 0.7066037058830261,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 47,
+            "D": 0.7065981030464172,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 48,
+            "D": 0.706585168838501,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 49,
+            "D": 0.7065677642822266,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 50,
+            "D": 0.7065544724464417,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 51,
+            "D": 0.7065581679344177,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 81,
+            "D": 0.7066232562065125,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 82,
+            "D": 0.7065991163253784,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 83,
+            "D": 0.7065836191177368,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 84,
+            "D": 0.7065306901931763,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 85,
+            "D": 0.7065141797065735,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 86,
+            "D": 0.7065736651420593,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 87,
+            "D": 0.7066242098808289,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 88,
+            "D": 0.7065972685813904,
+            "decision": "STRUCTURAL_IMPASSE"
+          }
+        ]
+      },
+      "events_shipped": 30,
+      "numbers_shipped": 570,
+      "a_self_drop_pct": 0.027657259133547964,
+      "a_ice_adapted": {
+        "mean_D": 0.7063886046409606,
+        "commit": 0.0,
+        "detect": 1.0,
+        "n_routed": 30,
+        "iters": 59,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7065841555595398,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 2,
+            "D": 0.7064926028251648,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 3,
+            "D": 0.706466555595398,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 4,
+            "D": 0.706462025642395,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 5,
+            "D": 0.7064841985702515,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 6,
+            "D": 0.7064809799194336,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 7,
+            "D": 0.7064685821533203,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 8,
+            "D": 0.7064471244812012,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 9,
+            "D": 0.706378161907196,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 10,
+            "D": 0.7062704563140869,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 11,
+            "D": 0.7060990929603577,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 12,
+            "D": 0.7059884667396545,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 13,
+            "D": 0.70611172914505,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 14,
+            "D": 0.7063685655593872,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 15,
+            "D": 0.7064937353134155,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 16,
+            "D": 0.7064952254295349,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 17,
+            "D": 0.7065290212631226,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 47,
+            "D": 0.7065186500549316,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 48,
+            "D": 0.7064960598945618,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 49,
+            "D": 0.7064399123191833,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 50,
+            "D": 0.7063552737236023,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 51,
+            "D": 0.7061908841133118,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 52,
+            "D": 0.7062453031539917,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 53,
+            "D": 0.7063528895378113,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 54,
+            "D": 0.7063719630241394,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 55,
+            "D": 0.7063504457473755,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 56,
+            "D": 0.7063614726066589,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 57,
+            "D": 0.7063959240913391,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 58,
+            "D": 0.7064730525016785,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 59,
+            "D": 0.7064856290817261,
+            "decision": "STRUCTURAL_IMPASSE"
+          }
+        ]
+      },
+      "adapter_transferred": true,
+      "b_cold_normal": {
+        "mean_D": 0.00019635464535288822,
+        "commit": 1.0,
+        "detect": 0.0,
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 9.643187513574958e-05,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 2,
+            "D": 0.0001313913962803781,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 3,
+            "D": 0.00016691059863660485,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 4,
+            "D": 0.00014786205429118127,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 5,
+            "D": 0.00010982378444168717,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 6,
+            "D": 9.145212970906869e-05,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 7,
+            "D": 0.00013976584887132049,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 8,
+            "D": 0.00018344212730880827,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 38,
+            "D": 0.00038680978468619287,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 39,
+            "D": 0.00030024023726582527,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 40,
+            "D": 0.0002380473742960021,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 41,
+            "D": 0.00030799291562289,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 42,
+            "D": 0.00029515844653360546,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 43,
+            "D": 0.00017141747230198234,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 44,
+            "D": 0.0001941937516676262,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 45,
+            "D": 0.00015665660612285137,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 75,
+            "D": 8.188386709662154e-05,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 76,
+            "D": 0.00017630343791097403,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 77,
+            "D": 0.00020751470583491027,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 107,
+            "D": 0.00018179208564106375,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 108,
+            "D": 0.00018728374561760575,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 109,
+            "D": 0.00021914270473644137,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 110,
+            "D": 0.0002820233639795333,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 111,
+            "D": 0.00036445437581278384,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 112,
+            "D": 0.0003103208728134632,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 113,
+            "D": 0.00018165457004215568,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 114,
+            "D": 0.00010404724889667705,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 115,
+            "D": 0.00014421100786421448,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 116,
+            "D": 0.00017827466945163906,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 117,
+            "D": 0.0001541363017167896,
+            "decision": "COMMIT_TRAJECTORY"
+          }
+        ]
+      },
+      "b_cold_ice": {
+        "mean_D": 0.706585435072581,
+        "commit": 0.0,
+        "detect": 1.0,
+        "n_routed": 30,
+        "iters": 88,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7065916657447815,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 2,
+            "D": 0.7066487073898315,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 3,
+            "D": 0.7066168189048767,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 4,
+            "D": 0.7065563797950745,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 5,
+            "D": 0.7065372467041016,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 6,
+            "D": 0.7065166234970093,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 7,
+            "D": 0.7065036296844482,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 8,
+            "D": 0.70649653673172,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 38,
+            "D": 0.706548273563385,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 39,
+            "D": 0.7065423130989075,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 40,
+            "D": 0.7065668702125549,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 41,
+            "D": 0.7066254615783691,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 42,
+            "D": 0.706636905670166,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 43,
+            "D": 0.7066329717636108,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 44,
+            "D": 0.70663982629776,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 45,
+            "D": 0.7066444158554077,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 46,
+            "D": 0.7066225409507751,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 47,
+            "D": 0.706600546836853,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 48,
+            "D": 0.7065985202789307,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 49,
+            "D": 0.7065821290016174,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 50,
+            "D": 0.706555962562561,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 51,
+            "D": 0.706529974937439,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 52,
+            "D": 0.7064776420593262,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 53,
+            "D": 0.7065472602844238,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 54,
+            "D": 0.7065930366516113,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 84,
+            "D": 0.706662118434906,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 85,
+            "D": 0.7066471576690674,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 86,
+            "D": 0.7066306471824646,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 87,
+            "D": 0.7066202163696289,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 88,
+            "D": 0.7065906524658203,
+            "decision": "STRUCTURAL_IMPASSE"
+          }
+        ]
+      },
+      "b_fleet_normal": {
+        "mean_D": 0.0002873806673354314,
+        "commit": 1.0,
+        "detect": 0.0,
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.000134953748784028,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 2,
+            "D": 0.00018147761875297874,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 3,
+            "D": 0.00022965089010540396,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 4,
+            "D": 0.00023399447673000395,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 5,
+            "D": 0.0001710329670459032,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 6,
+            "D": 0.00012692177551798522,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 7,
+            "D": 0.00018635232117958367,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 8,
+            "D": 0.00024048337945714593,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 38,
+            "D": 0.0005989685305394232,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 39,
+            "D": 0.00045431600301526487,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 40,
+            "D": 0.00035233190283179283,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 41,
+            "D": 0.0004432215355336666,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 42,
+            "D": 0.00042345767724327743,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 43,
+            "D": 0.00022834583069197834,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 44,
+            "D": 0.00024842226412147284,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 45,
+            "D": 0.00024919729912653565,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 75,
+            "D": 0.0001125085327657871,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 76,
+            "D": 0.00025706144515424967,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 77,
+            "D": 0.00028184897382743657,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 107,
+            "D": 0.0002696459414437413,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 108,
+            "D": 0.00027391171897761524,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 109,
+            "D": 0.0003186935791745782,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 110,
+            "D": 0.0004461650678422302,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 111,
+            "D": 0.0005874529015272856,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 112,
+            "D": 0.0004942927043884993,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 113,
+            "D": 0.00028368434868752956,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 114,
+            "D": 0.00015061350131873041,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 115,
+            "D": 0.00019070181588176638,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 116,
+            "D": 0.0002399062504991889,
+            "decision": "COMMIT_TRAJECTORY"
+          },
+          {
+            "iter": 117,
+            "D": 0.00021180501789785922,
+            "decision": "COMMIT_TRAJECTORY"
+          }
+        ]
+      },
+      "b_fleet_ice": {
+        "mean_D": 0.7063899497191112,
+        "commit": 0.0,
+        "detect": 1.0,
+        "n_routed": 30,
+        "iters": 88,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7063703536987305,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 2,
+            "D": 0.7064712047576904,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 3,
+            "D": 0.7064350843429565,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 4,
+            "D": 0.7063300609588623,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 5,
+            "D": 0.7062793374061584,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 6,
+            "D": 0.7062497138977051,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 7,
+            "D": 0.7062397003173828,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 8,
+            "D": 0.7062228918075562,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 38,
+            "D": 0.7063460946083069,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 39,
+            "D": 0.7063233256340027,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 40,
+            "D": 0.7063586711883545,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 41,
+            "D": 0.7064569592475891,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 42,
+            "D": 0.7064872980117798,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 43,
+            "D": 0.7065090537071228,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 44,
+            "D": 0.7065137624740601,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 45,
+            "D": 0.7065029144287109,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 46,
+            "D": 0.7064639925956726,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 47,
+            "D": 0.7064310312271118,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 48,
+            "D": 0.7064257264137268,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 49,
+            "D": 0.7063889503479004,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 50,
+            "D": 0.7063348889350891,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 51,
+            "D": 0.706282377243042,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 52,
+            "D": 0.7061854004859924,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 53,
+            "D": 0.7063011527061462,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 54,
+            "D": 0.7063941955566406,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 84,
+            "D": 0.7065382599830627,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 85,
+            "D": 0.7065159678459167,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 86,
+            "D": 0.7064868211746216,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 87,
+            "D": 0.7064574956893921,
+            "decision": "STRUCTURAL_IMPASSE"
+          },
+          {
+            "iter": 88,
+            "D": 0.7063958048820496,
+            "decision": "STRUCTURAL_IMPASSE"
+          }
+        ]
+      },
+      "transfer_drop_pct": 0.027666201957548674
+    }
+  ],
+  "pass": {
+    "P1": false,
+    "P2": true
+  }
+}
