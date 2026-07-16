@@ -30,8 +30,12 @@ Hardware: consumer MacBook, CPU only. Runtime: ~8 min encoder training +
    live accuracy 44–50%). Retrained on 20 seeds/class: held-out live accuracy
    1.00 / 0.995, live D gap 0.70.
 3. **Structured CPG gait** (PAV future direction 2). Under uniform random
-   actions the friction concept is not reliably decodable from held-out windows
-   even with real ice and multi-seed data.
+   actions, coarse terrain statistics barely separate even with real friction
+   (mean |v_x| 0.537 normal vs 0.525 ice) while the periodic gait separates
+   visibly (0.907 vs 1.000). Whether a random policy admits *any* decodable
+   terrain signal under real friction is left open — no encoder was trained on
+   that combination (the 44–50% held-out result was random policy under the
+   *defective* friction).
 4. **EWMA anchor (α = 0.90)** as the PAV paper specifies (the proof code kept
    only the last embedding).
 5. **Fixed routed-window counts per phase** (the published run's effective
