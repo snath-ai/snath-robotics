@@ -206,12 +206,27 @@ class GuardedRobot(Robot):
             anchor_name, r = self.marouter.route(self.anchors, z_p)
             g = self.guard_score()
             guard_ood = g > self._g_thresh
-            concept_normal = (r.decision.value == "COMMIT_TRAJECTORY"
-                              and anchor_name == "normal")
-            novel = guard_ood and concept_normal
+            # Class-capture fix (Finding 4.2 remedy, partial): the original
+            # contradiction check only vetoed the *default* class ("normal").
+            # A recognised NON-normal class (e.g. "ice_learned") was treated
+            # as automatically consistent with a guard-OOD verdict, so wind
+            # windows that the concept view mapped onto the ice anchor could
+            # never be caught even when the guard's independent dynamics-
+            # drift view disagreed. The guard is a genuinely different
+            # feature (persistent-force residual drift) that the concept
+            # encoder's gait-window embedding does not carry — extending the
+            # veto to any COMMIT (not just the normal one) uses that
+            # discriminative signal to gate recognition of every class, not
+            # only the fallback one. This does not fix the underlying
+            # concept-space entanglement of wind and ice; it only rejects a
+            # class match when the second, independent view actively
+            # contradicts it. Windows in the guard's blind band (persistent
+            # forces too weak/short to move guard drift) still get captured.
+            concept_commit = (r.decision.value == "COMMIT_TRAJECTORY")
+            novel = guard_ood and concept_commit
             if novel:
                 outcome = "ALARM_NOVEL"
-            elif r.decision.value == "COMMIT_TRAJECTORY":
+            elif concept_commit:
                 outcome = "COMMIT_normal" if anchor_name == "normal" \
                     else "RECOGNISED_known"
             else:

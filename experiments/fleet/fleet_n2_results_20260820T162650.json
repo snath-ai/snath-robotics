@@ -1,0 +1,4085 @@
+{
+  "protocol": {
+    "n_robots": 2,
+    "routed_windows_per_phase": 30,
+    "seeds": [
+      42,
+      7
+    ],
+    "encoder": "gru_cls_multiseed_cpg.pt",
+    "policy": "cpg",
+    "wind_novel_N": 4.0,
+    "friction_mechanism": "all-geom sliding friction (real ice)",
+    "anchor": "EWMA alpha=0.9, 120 warmup steps",
+    "routing": "adapter-library multi-anchor, min divergence",
+    "router": {
+      "tau_high": 0.6,
+      "tau_low": 0.25,
+      "delta": 0.35
+    },
+    "transfer_artifact": "HMAC-signed D-hard JSONL (19 numbers/event)",
+    "criteria": {
+      "P1": "B-fleet ice D drop >= 50% and recognised >= 80%, each seed",
+      "P2": "B-fleet normal COMMIT >= 95%, each seed",
+      "P3": "B-fleet novel-wind detect >= 80%, each seed"
+    }
+  },
+  "results": [
+    {
+      "seed": 42,
+      "a_normal": {
+        "mean_D": 0.0002879638874825711,
+        "mean_obs_stat": 8.255210797116698,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 84,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 26,
+            "D": 0.0003007437917403877,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.315659931066282
+          },
+          {
+            "iter": 27,
+            "D": 0.0003306284488644451,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.625895507937794
+          },
+          {
+            "iter": 28,
+            "D": 0.0003258134238421917,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.241102019936556
+          },
+          {
+            "iter": 29,
+            "D": 0.00030225689988583326,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.138269917654702
+          },
+          {
+            "iter": 30,
+            "D": 0.00030282605439424515,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.202708358884325
+          },
+          {
+            "iter": 31,
+            "D": 0.0004894018638879061,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.519934925036454
+          },
+          {
+            "iter": 32,
+            "D": 0.0004782821924891323,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.822574224359085
+          },
+          {
+            "iter": 33,
+            "D": 0.00014800608914811164,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.843099705250488
+          },
+          {
+            "iter": 34,
+            "D": 0.00014388869749382138,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.505609840036366
+          },
+          {
+            "iter": 35,
+            "D": 0.00019048075773753226,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.357800273045079
+          },
+          {
+            "iter": 36,
+            "D": 0.00027569098165258765,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.588186400110886
+          },
+          {
+            "iter": 37,
+            "D": 0.00022413527767639607,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.260011016171916
+          },
+          {
+            "iter": 38,
+            "D": 0.0001721615990391001,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.188617235377263
+          },
+          {
+            "iter": 39,
+            "D": 0.00016383809270337224,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.12749062734562
+          },
+          {
+            "iter": 69,
+            "D": 0.0005767149850726128,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 10.325209298564173
+          },
+          {
+            "iter": 70,
+            "D": 0.0004187418380752206,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.76894928959432
+          },
+          {
+            "iter": 71,
+            "D": 0.00034705831785686314,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.21050731398606
+          },
+          {
+            "iter": 72,
+            "D": 0.0002660162281244993,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.733017820662186
+          },
+          {
+            "iter": 73,
+            "D": 0.00024797223159112036,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.422006707648185
+          },
+          {
+            "iter": 74,
+            "D": 0.000259209715295583,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.281691337254935
+          },
+          {
+            "iter": 75,
+            "D": 0.00036894582444801927,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.257875304094458
+          },
+          {
+            "iter": 76,
+            "D": 0.0005161719745956361,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.302676770291088
+          },
+          {
+            "iter": 77,
+            "D": 0.0003420209395699203,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.703139777406264
+          },
+          {
+            "iter": 78,
+            "D": 0.0003122792695648968,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.399380603686359
+          },
+          {
+            "iter": 79,
+            "D": 0.0003366144956089556,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 10.243945326055263
+          },
+          {
+            "iter": 80,
+            "D": 0.00025712023489177227,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 11.210796214040396
+          },
+          {
+            "iter": 81,
+            "D": 0.0001475164172006771,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.20147103194952
+          },
+          {
+            "iter": 82,
+            "D": 0.00014595974062103778,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.196858838609309
+          },
+          {
+            "iter": 83,
+            "D": 0.0001207873719977215,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.067236517729736
+          },
+          {
+            "iter": 84,
+            "D": 0.0001276328694075346,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.594601779715902
+          }
+        ]
+      },
+      "a_ice": {
+        "mean_D": 0.7065840264161428,
+        "mean_obs_stat": 7.4746827631681345,
+        "commit": 0.0,
+        "detect": 1.0,
+        "commit_via": {
+          "normal": 0.0
+        },
+        "n_routed": 30,
+        "iters": 88,
+        "n_events": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7066246867179871,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.365035788457323
+          },
+          {
+            "iter": 2,
+            "D": 0.7065969705581665,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.174864877955713
+          },
+          {
+            "iter": 3,
+            "D": 0.7066026329994202,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.91897991452747
+          },
+          {
+            "iter": 4,
+            "D": 0.7066112756729126,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.761427499523926
+          },
+          {
+            "iter": 5,
+            "D": 0.7066070437431335,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.670269909878144
+          },
+          {
+            "iter": 6,
+            "D": 0.7065881490707397,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.872256851545828
+          },
+          {
+            "iter": 7,
+            "D": 0.7065497636795044,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.2476702874233805
+          },
+          {
+            "iter": 8,
+            "D": 0.706500232219696,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.944041926538001
+          },
+          {
+            "iter": 9,
+            "D": 0.7064707279205322,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 8.078083433378781
+          },
+          {
+            "iter": 10,
+            "D": 0.7065693140029907,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 9.557511022266837
+          },
+          {
+            "iter": 11,
+            "D": 0.7065848708152771,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 10.643841559384912
+          },
+          {
+            "iter": 12,
+            "D": 0.7066046595573425,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 11.463300918025434
+          },
+          {
+            "iter": 13,
+            "D": 0.706649661064148,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 12.23060438931399
+          },
+          {
+            "iter": 14,
+            "D": 0.7066174745559692,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 13.013653834408847
+          },
+          {
+            "iter": 44,
+            "D": 0.7066190838813782,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.481322319319515
+          },
+          {
+            "iter": 45,
+            "D": 0.7066108584403992,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.73024747854383
+          },
+          {
+            "iter": 46,
+            "D": 0.7066037058830261,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.291142844873511
+          },
+          {
+            "iter": 47,
+            "D": 0.7065981030464172,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.828951714950255
+          },
+          {
+            "iter": 48,
+            "D": 0.706585168838501,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 7.298487662923882
+          },
+          {
+            "iter": 49,
+            "D": 0.7065677642822266,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 7.7698779714336155
+          },
+          {
+            "iter": 50,
+            "D": 0.7065544724464417,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 8.666856560015573
+          },
+          {
+            "iter": 51,
+            "D": 0.7065581679344177,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 9.83460302370018
+          },
+          {
+            "iter": 81,
+            "D": 0.7066232562065125,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.799093244408401
+          },
+          {
+            "iter": 82,
+            "D": 0.7065991163253784,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.372860303704438
+          },
+          {
+            "iter": 83,
+            "D": 0.7065836191177368,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.2365420343667015
+          },
+          {
+            "iter": 84,
+            "D": 0.7065306901931763,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.055846227501487
+          },
+          {
+            "iter": 85,
+            "D": 0.7065141797065735,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.178770931832182
+          },
+          {
+            "iter": 86,
+            "D": 0.7065736651420593,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.457125074666383
+          },
+          {
+            "iter": 87,
+            "D": 0.7066242098808289,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.853869347629271
+          },
+          {
+            "iter": 88,
+            "D": 0.7065972685813904,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 7.443343942546262
+          }
+        ]
+      },
+      "events_shipped": 30,
+      "numbers_shipped": 570,
+      "a_ice_adapted": {
+        "mean_D": 0.019390875178699692,
+        "mean_obs_stat": 7.3800047804201405,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "ice_learned": 0.9333333333333333,
+          "normal": 0.06666666666666667
+        },
+        "n_routed": 30,
+        "iters": 59,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.0002594232209958136,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 7.709745982483342
+          },
+          {
+            "iter": 2,
+            "D": 0.0002083421713905409,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.986439500761568
+          },
+          {
+            "iter": 3,
+            "D": 0.00016738612612243742,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.479046229367769
+          },
+          {
+            "iter": 4,
+            "D": 0.0001777061988832429,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.288021468860514
+          },
+          {
+            "iter": 5,
+            "D": 0.00020591251086443663,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.328586687760579
+          },
+          {
+            "iter": 6,
+            "D": 0.0002747148391790688,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.4456820746191
+          },
+          {
+            "iter": 7,
+            "D": 0.000214847139432095,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.433578997729046
+          },
+          {
+            "iter": 8,
+            "D": 0.0001883517106762156,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.35701088499476
+          },
+          {
+            "iter": 9,
+            "D": 0.0001590108295204118,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.29053142575078
+          },
+          {
+            "iter": 10,
+            "D": 0.00019262899877503514,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.395015928946554
+          },
+          {
+            "iter": 11,
+            "D": 0.00021350174210965633,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.673253051787725
+          },
+          {
+            "iter": 12,
+            "D": 0.00020410146680660546,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 7.288932234519443
+          },
+          {
+            "iter": 13,
+            "D": 0.00017414901230949908,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 7.805252675836934
+          },
+          {
+            "iter": 14,
+            "D": 0.00012829953629989177,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 8.44211714502637
+          },
+          {
+            "iter": 15,
+            "D": 0.00015307006833609194,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 9.324555398768586
+          },
+          {
+            "iter": 16,
+            "D": 0.00014324528456199914,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 10.130640948006974
+          },
+          {
+            "iter": 17,
+            "D": 0.00021766650024801493,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 10.745662653013198
+          },
+          {
+            "iter": 18,
+            "D": 0.00024735319311730564,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 11.195001503653312
+          },
+          {
+            "iter": 19,
+            "D": 0.0002211332757724449,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 11.481425766249583
+          },
+          {
+            "iter": 20,
+            "D": 0.00016420894826296717,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 11.734370049529646
+          },
+          {
+            "iter": 50,
+            "D": 0.15382878482341766,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.562094223060187
+          },
+          {
+            "iter": 51,
+            "D": 0.22016260027885437,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.705515723478256
+          },
+          {
+            "iter": 52,
+            "D": 0.1562630981206894,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.181069749582947
+          },
+          {
+            "iter": 53,
+            "D": 0.013174827210605145,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.889599277551054
+          },
+          {
+            "iter": 54,
+            "D": 0.02729969657957554,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.624139958111988
+          },
+          {
+            "iter": 55,
+            "D": 0.005736857187002897,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.3414407862445366
+          },
+          {
+            "iter": 56,
+            "D": 0.0007775267004035413,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.170562209473372
+          },
+          {
+            "iter": 57,
+            "D": 0.0002108262706315145,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.55086836318315
+          },
+          {
+            "iter": 58,
+            "D": 0.00015271312440745533,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.258108008459633
+          },
+          {
+            "iter": 59,
+            "D": 0.00020427229173947126,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.581874505793392
+          }
+        ]
+      },
+      "a_self_drop_pct": 97.25568729920887,
+      "adapter_transferred": true,
+      "b_cold_normal": {
+        "mean_D": 0.00019635464535288822,
+        "mean_obs_stat": 6.879365506337223,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 9.643187513574958e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.084792132351554
+          },
+          {
+            "iter": 2,
+            "D": 0.0001313913962803781,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.145876021084957
+          },
+          {
+            "iter": 3,
+            "D": 0.00016691059863660485,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.362757582779662
+          },
+          {
+            "iter": 4,
+            "D": 0.00014786205429118127,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.681972888031974
+          },
+          {
+            "iter": 5,
+            "D": 0.00010982378444168717,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.396500224248733
+          },
+          {
+            "iter": 6,
+            "D": 9.145212970906869e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.41472834742758
+          },
+          {
+            "iter": 7,
+            "D": 0.00013976584887132049,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.628622894970356
+          },
+          {
+            "iter": 8,
+            "D": 0.00018344212730880827,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.621463929273697
+          },
+          {
+            "iter": 38,
+            "D": 0.00038680978468619287,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.937432368681102
+          },
+          {
+            "iter": 39,
+            "D": 0.00030024023726582527,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.675090682583276
+          },
+          {
+            "iter": 40,
+            "D": 0.0002380473742960021,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.225960363655106
+          },
+          {
+            "iter": 41,
+            "D": 0.00030799291562289,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.175681864192723
+          },
+          {
+            "iter": 42,
+            "D": 0.00029515844653360546,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.26874331505365
+          },
+          {
+            "iter": 43,
+            "D": 0.00017141747230198234,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.620925355446782
+          },
+          {
+            "iter": 44,
+            "D": 0.0001941937516676262,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.294233055245771
+          },
+          {
+            "iter": 45,
+            "D": 0.00015665660612285137,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.029732708458528
+          },
+          {
+            "iter": 75,
+            "D": 8.188386709662154e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.717930127234634
+          },
+          {
+            "iter": 76,
+            "D": 0.00017630343791097403,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.46702006600758
+          },
+          {
+            "iter": 77,
+            "D": 0.00020751470583491027,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.297562468033032
+          },
+          {
+            "iter": 107,
+            "D": 0.00018179208564106375,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.879747802623478
+          },
+          {
+            "iter": 108,
+            "D": 0.00018728374561760575,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.453387675010245
+          },
+          {
+            "iter": 109,
+            "D": 0.00021914270473644137,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.151507516739977
+          },
+          {
+            "iter": 110,
+            "D": 0.0002820233639795333,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.9110801763891025
+          },
+          {
+            "iter": 111,
+            "D": 0.00036445437581278384,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.812565443991088
+          },
+          {
+            "iter": 112,
+            "D": 0.0003103208728134632,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.9253615301994005
+          },
+          {
+            "iter": 113,
+            "D": 0.00018165457004215568,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.297261914294329
+          },
+          {
+            "iter": 114,
+            "D": 0.00010404724889667705,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.856403704063645
+          },
+          {
+            "iter": 115,
+            "D": 0.00014421100786421448,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.441753708175419
+          },
+          {
+            "iter": 116,
+            "D": 0.00017827466945163906,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.0445034727533455
+          },
+          {
+            "iter": 117,
+            "D": 0.0001541363017167896,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.560365851115951
+          }
+        ]
+      },
+      "b_cold_ice": {
+        "mean_D": 0.706585435072581,
+        "mean_obs_stat": 5.04557880820196,
+        "commit": 0.0,
+        "detect": 1.0,
+        "commit_via": {
+          "normal": 0.0
+        },
+        "n_routed": 30,
+        "iters": 88,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7065916657447815,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.005063339319865
+          },
+          {
+            "iter": 2,
+            "D": 0.7066487073898315,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.873489031344315
+          },
+          {
+            "iter": 3,
+            "D": 0.7066168189048767,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.909179531448257
+          },
+          {
+            "iter": 4,
+            "D": 0.7065563797950745,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.236835232694779
+          },
+          {
+            "iter": 5,
+            "D": 0.7065372467041016,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.786171410284345
+          },
+          {
+            "iter": 6,
+            "D": 0.7065166234970093,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 7.456500855538073
+          },
+          {
+            "iter": 7,
+            "D": 0.7065036296844482,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 8.288813443386895
+          },
+          {
+            "iter": 8,
+            "D": 0.70649653673172,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 9.146100601753465
+          },
+          {
+            "iter": 38,
+            "D": 0.706548273563385,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.679278756741778
+          },
+          {
+            "iter": 39,
+            "D": 0.7065423130989075,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.386449960026784
+          },
+          {
+            "iter": 40,
+            "D": 0.7065668702125549,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.093015430710754
+          },
+          {
+            "iter": 41,
+            "D": 0.7066254615783691,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.688043283627945
+          },
+          {
+            "iter": 42,
+            "D": 0.706636905670166,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.301437620236838
+          },
+          {
+            "iter": 43,
+            "D": 0.7066329717636108,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.9140115110416884
+          },
+          {
+            "iter": 44,
+            "D": 0.70663982629776,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.587647524272086
+          },
+          {
+            "iter": 45,
+            "D": 0.7066444158554077,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.334407990672141
+          },
+          {
+            "iter": 46,
+            "D": 0.7066225409507751,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.179763731497351
+          },
+          {
+            "iter": 47,
+            "D": 0.706600546836853,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.1749581550888566
+          },
+          {
+            "iter": 48,
+            "D": 0.7065985202789307,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.3155436787636106
+          },
+          {
+            "iter": 49,
+            "D": 0.7065821290016174,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.654573913967537
+          },
+          {
+            "iter": 50,
+            "D": 0.706555962562561,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.204867343738054
+          },
+          {
+            "iter": 51,
+            "D": 0.706529974937439,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.901885501720188
+          },
+          {
+            "iter": 52,
+            "D": 0.7064776420593262,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.653209157965416
+          },
+          {
+            "iter": 53,
+            "D": 0.7065472602844238,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.5057005210291825
+          },
+          {
+            "iter": 54,
+            "D": 0.7065930366516113,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 7.477454781025055
+          },
+          {
+            "iter": 84,
+            "D": 0.706662118434906,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.644166940292028
+          },
+          {
+            "iter": 85,
+            "D": 0.7066471576690674,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.3731950007882405
+          },
+          {
+            "iter": 86,
+            "D": 0.7066306471824646,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.2879023520587647
+          },
+          {
+            "iter": 87,
+            "D": 0.7066202163696289,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.4694896345188138
+          },
+          {
+            "iter": 88,
+            "D": 0.7065906524658203,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.8382080105056944
+          }
+        ]
+      },
+      "b_cold_wind": {
+        "mean_D": 0.00017262670468577804,
+        "mean_obs_stat": 11.88034991310493,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.00011636644194368273,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.447163029411686
+          },
+          {
+            "iter": 2,
+            "D": 0.0001948231365531683,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.478718058734091
+          },
+          {
+            "iter": 3,
+            "D": 0.00028362698503769934,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.501599056939463
+          },
+          {
+            "iter": 4,
+            "D": 0.0002651363902259618,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.603843356876553
+          },
+          {
+            "iter": 5,
+            "D": 0.0001935321924975142,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.828815462702483
+          },
+          {
+            "iter": 6,
+            "D": 0.00014610760263167322,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.144553008674453
+          },
+          {
+            "iter": 7,
+            "D": 0.00012284793774597347,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.501261199968644
+          },
+          {
+            "iter": 37,
+            "D": 0.00010997295612469316,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.980249622663068
+          },
+          {
+            "iter": 38,
+            "D": 0.0001425315422238782,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.995650981389783
+          },
+          {
+            "iter": 39,
+            "D": 0.000210502534173429,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.908200353580316
+          },
+          {
+            "iter": 40,
+            "D": 0.0002468613092787564,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.798283488642003
+          },
+          {
+            "iter": 41,
+            "D": 0.00016409196541644633,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.877562384954421
+          },
+          {
+            "iter": 42,
+            "D": 0.00012433096708264202,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.01789482700811
+          },
+          {
+            "iter": 43,
+            "D": 0.00012631206482183188,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.189891171274056
+          },
+          {
+            "iter": 44,
+            "D": 0.00013949716230854392,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.373473040313993
+          },
+          {
+            "iter": 45,
+            "D": 0.00015546305803582072,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.56621484928987
+          },
+          {
+            "iter": 46,
+            "D": 9.435510582989082e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.725404951059504
+          },
+          {
+            "iter": 47,
+            "D": 0.0001083885581465438,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.8089952550078
+          },
+          {
+            "iter": 48,
+            "D": 8.578976849094033e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.870000237143827
+          },
+          {
+            "iter": 49,
+            "D": 8.381948282476515e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.012516517822704
+          },
+          {
+            "iter": 50,
+            "D": 8.102312858682126e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.176237327762195
+          },
+          {
+            "iter": 51,
+            "D": 9.142093767877668e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.48400304083182
+          },
+          {
+            "iter": 52,
+            "D": 0.00014644459588453174,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.816416862436867
+          },
+          {
+            "iter": 53,
+            "D": 0.0001700512075331062,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.344602365153044
+          },
+          {
+            "iter": 83,
+            "D": 0.00019171222811564803,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.872878749352118
+          },
+          {
+            "iter": 84,
+            "D": 0.00021759068476967514,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.979108910496189
+          },
+          {
+            "iter": 85,
+            "D": 0.0003340739058330655,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 16.05374230233274
+          },
+          {
+            "iter": 115,
+            "D": 0.00026920592063106596,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.484897986604595
+          },
+          {
+            "iter": 116,
+            "D": 0.0002768365084193647,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.39673580161954
+          },
+          {
+            "iter": 117,
+            "D": 0.0002860848617274314,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.171583193101905
+          }
+        ]
+      },
+      "b_fleet_normal": {
+        "mean_D": 0.00019635464535288822,
+        "mean_obs_stat": 6.879365506337223,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 9.643187513574958e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.084792132351554
+          },
+          {
+            "iter": 2,
+            "D": 0.0001313913962803781,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.145876021084957
+          },
+          {
+            "iter": 3,
+            "D": 0.00016691059863660485,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.362757582779662
+          },
+          {
+            "iter": 4,
+            "D": 0.00014786205429118127,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.681972888031974
+          },
+          {
+            "iter": 5,
+            "D": 0.00010982378444168717,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.396500224248733
+          },
+          {
+            "iter": 6,
+            "D": 9.145212970906869e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.41472834742758
+          },
+          {
+            "iter": 7,
+            "D": 0.00013976584887132049,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.628622894970356
+          },
+          {
+            "iter": 8,
+            "D": 0.00018344212730880827,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.621463929273697
+          },
+          {
+            "iter": 38,
+            "D": 0.00038680978468619287,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.937432368681102
+          },
+          {
+            "iter": 39,
+            "D": 0.00030024023726582527,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.675090682583276
+          },
+          {
+            "iter": 40,
+            "D": 0.0002380473742960021,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.225960363655106
+          },
+          {
+            "iter": 41,
+            "D": 0.00030799291562289,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.175681864192723
+          },
+          {
+            "iter": 42,
+            "D": 0.00029515844653360546,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.26874331505365
+          },
+          {
+            "iter": 43,
+            "D": 0.00017141747230198234,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.620925355446782
+          },
+          {
+            "iter": 44,
+            "D": 0.0001941937516676262,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.294233055245771
+          },
+          {
+            "iter": 45,
+            "D": 0.00015665660612285137,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.029732708458528
+          },
+          {
+            "iter": 75,
+            "D": 8.188386709662154e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.717930127234634
+          },
+          {
+            "iter": 76,
+            "D": 0.00017630343791097403,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.46702006600758
+          },
+          {
+            "iter": 77,
+            "D": 0.00020751470583491027,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.297562468033032
+          },
+          {
+            "iter": 107,
+            "D": 0.00018179208564106375,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.879747802623478
+          },
+          {
+            "iter": 108,
+            "D": 0.00018728374561760575,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.453387675010245
+          },
+          {
+            "iter": 109,
+            "D": 0.00021914270473644137,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.151507516739977
+          },
+          {
+            "iter": 110,
+            "D": 0.0002820233639795333,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.9110801763891025
+          },
+          {
+            "iter": 111,
+            "D": 0.00036445437581278384,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.812565443991088
+          },
+          {
+            "iter": 112,
+            "D": 0.0003103208728134632,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.9253615301994005
+          },
+          {
+            "iter": 113,
+            "D": 0.00018165457004215568,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.297261914294329
+          },
+          {
+            "iter": 114,
+            "D": 0.00010404724889667705,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.856403704063645
+          },
+          {
+            "iter": 115,
+            "D": 0.00014421100786421448,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.441753708175419
+          },
+          {
+            "iter": 116,
+            "D": 0.00017827466945163906,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.0445034727533455
+          },
+          {
+            "iter": 117,
+            "D": 0.0001541363017167896,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.560365851115951
+          }
+        ]
+      },
+      "b_fleet_ice": {
+        "mean_D": 0.00022679485725044893,
+        "mean_obs_stat": 5.04557880820196,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "ice_learned": 1.0
+        },
+        "n_routed": 30,
+        "iters": 88,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.00020707301155198365,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.005063339319865
+          },
+          {
+            "iter": 2,
+            "D": 0.00013185264833737165,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.873489031344315
+          },
+          {
+            "iter": 3,
+            "D": 9.313020564150065e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.909179531448257
+          },
+          {
+            "iter": 4,
+            "D": 8.01355199655518e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.236835232694779
+          },
+          {
+            "iter": 5,
+            "D": 8.650615200167522e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.786171410284345
+          },
+          {
+            "iter": 6,
+            "D": 0.00012679363135248423,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 7.456500855538073
+          },
+          {
+            "iter": 7,
+            "D": 0.0001682452711975202,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 8.288813443386895
+          },
+          {
+            "iter": 8,
+            "D": 0.00018667183758225292,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 9.146100601753465
+          },
+          {
+            "iter": 38,
+            "D": 0.00020908495935145766,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.679278756741778
+          },
+          {
+            "iter": 39,
+            "D": 0.00022464623907580972,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.386449960026784
+          },
+          {
+            "iter": 40,
+            "D": 0.0001819375902414322,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.093015430710754
+          },
+          {
+            "iter": 41,
+            "D": 0.0001445694506401196,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.688043283627945
+          },
+          {
+            "iter": 42,
+            "D": 0.00021976642892695963,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.301437620236838
+          },
+          {
+            "iter": 43,
+            "D": 0.00019789407087955624,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.9140115110416884
+          },
+          {
+            "iter": 44,
+            "D": 0.0002164113539038226,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.587647524272086
+          },
+          {
+            "iter": 45,
+            "D": 0.00020432974270079285,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.334407990672141
+          },
+          {
+            "iter": 46,
+            "D": 0.00019278931722510606,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.179763731497351
+          },
+          {
+            "iter": 47,
+            "D": 0.00022775078832637519,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.1749581550888566
+          },
+          {
+            "iter": 48,
+            "D": 0.0002390329900663346,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.3155436787636106
+          },
+          {
+            "iter": 49,
+            "D": 0.00025229729362763464,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.654573913967537
+          },
+          {
+            "iter": 50,
+            "D": 0.00028598992503248155,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.204867343738054
+          },
+          {
+            "iter": 51,
+            "D": 0.000341388484230265,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.901885501720188
+          },
+          {
+            "iter": 52,
+            "D": 0.00046442224993370473,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.653209157965416
+          },
+          {
+            "iter": 53,
+            "D": 0.0004370928800199181,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.5057005210291825
+          },
+          {
+            "iter": 54,
+            "D": 0.00045744789531454444,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 7.477454781025055
+          },
+          {
+            "iter": 84,
+            "D": 0.0002300730993738398,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.644166940292028
+          },
+          {
+            "iter": 85,
+            "D": 0.00020429695723578334,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.3731950007882405
+          },
+          {
+            "iter": 86,
+            "D": 0.00025353935780003667,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.2879023520587647
+          },
+          {
+            "iter": 87,
+            "D": 0.0002600140287540853,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.4694896345188138
+          },
+          {
+            "iter": 88,
+            "D": 0.0002786623372230679,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.8382080105056944
+          }
+        ]
+      },
+      "b_fleet_wind": {
+        "mean_D": 0.00017262670468577804,
+        "mean_obs_stat": 11.88034991310493,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.00011636644194368273,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.447163029411686
+          },
+          {
+            "iter": 2,
+            "D": 0.0001948231365531683,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.478718058734091
+          },
+          {
+            "iter": 3,
+            "D": 0.00028362698503769934,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.501599056939463
+          },
+          {
+            "iter": 4,
+            "D": 0.0002651363902259618,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.603843356876553
+          },
+          {
+            "iter": 5,
+            "D": 0.0001935321924975142,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.828815462702483
+          },
+          {
+            "iter": 6,
+            "D": 0.00014610760263167322,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.144553008674453
+          },
+          {
+            "iter": 7,
+            "D": 0.00012284793774597347,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.501261199968644
+          },
+          {
+            "iter": 37,
+            "D": 0.00010997295612469316,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.980249622663068
+          },
+          {
+            "iter": 38,
+            "D": 0.0001425315422238782,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.995650981389783
+          },
+          {
+            "iter": 39,
+            "D": 0.000210502534173429,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.908200353580316
+          },
+          {
+            "iter": 40,
+            "D": 0.0002468613092787564,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.798283488642003
+          },
+          {
+            "iter": 41,
+            "D": 0.00016409196541644633,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.877562384954421
+          },
+          {
+            "iter": 42,
+            "D": 0.00012433096708264202,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.01789482700811
+          },
+          {
+            "iter": 43,
+            "D": 0.00012631206482183188,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.189891171274056
+          },
+          {
+            "iter": 44,
+            "D": 0.00013949716230854392,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.373473040313993
+          },
+          {
+            "iter": 45,
+            "D": 0.00015546305803582072,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.56621484928987
+          },
+          {
+            "iter": 46,
+            "D": 9.435510582989082e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.725404951059504
+          },
+          {
+            "iter": 47,
+            "D": 0.0001083885581465438,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.8089952550078
+          },
+          {
+            "iter": 48,
+            "D": 8.578976849094033e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.870000237143827
+          },
+          {
+            "iter": 49,
+            "D": 8.381948282476515e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.012516517822704
+          },
+          {
+            "iter": 50,
+            "D": 8.102312858682126e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.176237327762195
+          },
+          {
+            "iter": 51,
+            "D": 9.142093767877668e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.48400304083182
+          },
+          {
+            "iter": 52,
+            "D": 0.00014644459588453174,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.816416862436867
+          },
+          {
+            "iter": 53,
+            "D": 0.0001700512075331062,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.344602365153044
+          },
+          {
+            "iter": 83,
+            "D": 0.00019171222811564803,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.872878749352118
+          },
+          {
+            "iter": 84,
+            "D": 0.00021759068476967514,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 15.979108910496189
+          },
+          {
+            "iter": 85,
+            "D": 0.0003340739058330655,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 16.05374230233274
+          },
+          {
+            "iter": 115,
+            "D": 0.00026920592063106596,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.484897986604595
+          },
+          {
+            "iter": 116,
+            "D": 0.0002768365084193647,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.39673580161954
+          },
+          {
+            "iter": 117,
+            "D": 0.0002860848617274314,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.171583193101905
+          }
+        ]
+      },
+      "transfer_drop_pct": 99.96790269852829,
+      "ice_recognised": 1.0
+    },
+    {
+      "seed": 7,
+      "a_normal": {
+        "mean_D": 0.0002058085570752155,
+        "mean_obs_stat": 5.583702744823935,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 115,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 28,
+            "D": 0.00029434819589369,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.454104556462348
+          },
+          {
+            "iter": 29,
+            "D": 0.00019253059872426093,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.131935594612903
+          },
+          {
+            "iter": 30,
+            "D": 0.00011431377060944214,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.869956342511136
+          },
+          {
+            "iter": 31,
+            "D": 0.00015318089572247118,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.7193082459671345
+          },
+          {
+            "iter": 32,
+            "D": 0.00018666070536710322,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.646497490755417
+          },
+          {
+            "iter": 33,
+            "D": 0.00013216966181062162,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.73512211674143
+          },
+          {
+            "iter": 34,
+            "D": 0.000195961823919788,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.950914578325028
+          },
+          {
+            "iter": 35,
+            "D": 0.0002862897817976773,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.194380282212875
+          },
+          {
+            "iter": 36,
+            "D": 0.00035641755675897,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.394368118039465
+          },
+          {
+            "iter": 37,
+            "D": 0.0003418518463149667,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.525263171119214
+          },
+          {
+            "iter": 38,
+            "D": 0.00026771152624860406,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.657817155804828
+          },
+          {
+            "iter": 39,
+            "D": 0.00016056543972808868,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.767725189343202
+          },
+          {
+            "iter": 40,
+            "D": 0.00014497149095404893,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.8908884120375955
+          },
+          {
+            "iter": 41,
+            "D": 0.0001261832076124847,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.051640241626898
+          },
+          {
+            "iter": 42,
+            "D": 0.00012581681949086487,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.2820043299397215
+          },
+          {
+            "iter": 43,
+            "D": 0.00014432251919060946,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.610855640285139
+          },
+          {
+            "iter": 73,
+            "D": 0.00029827727121300995,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.5300417633742125
+          },
+          {
+            "iter": 74,
+            "D": 0.00021345708228182048,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.896211865024571
+          },
+          {
+            "iter": 104,
+            "D": 0.0001470281567890197,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.30874969644887
+          },
+          {
+            "iter": 105,
+            "D": 0.00011938984971493483,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.692911630421036
+          },
+          {
+            "iter": 106,
+            "D": 0.00011942327546421438,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.051851101779209
+          },
+          {
+            "iter": 107,
+            "D": 0.00014167095650918782,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.413586645524789
+          },
+          {
+            "iter": 108,
+            "D": 0.00013243519060779363,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.838049848160423
+          },
+          {
+            "iter": 109,
+            "D": 0.00016595146735198796,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.3366823472090275
+          },
+          {
+            "iter": 110,
+            "D": 0.00020039596711285412,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.9233639765913395
+          },
+          {
+            "iter": 111,
+            "D": 0.0002422762627247721,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.593875694434499
+          },
+          {
+            "iter": 112,
+            "D": 0.0002753568405751139,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.369150352677321
+          },
+          {
+            "iter": 113,
+            "D": 0.00030079102725721896,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.22235538928259
+          },
+          {
+            "iter": 114,
+            "D": 0.0003066729404963553,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.1851360414287795
+          },
+          {
+            "iter": 115,
+            "D": 0.00028783458401449025,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.266334526577039
+          }
+        ]
+      },
+      "a_ice": {
+        "mean_D": 0.7065498292446136,
+        "mean_obs_stat": 4.59006969198157,
+        "commit": 0.0,
+        "detect": 1.0,
+        "commit_via": {
+          "normal": 0.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 30,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.7065538763999939,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.661282749652302
+          },
+          {
+            "iter": 2,
+            "D": 0.7065963745117188,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.020903611669525
+          },
+          {
+            "iter": 3,
+            "D": 0.7065963745117188,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.416329961687035
+          },
+          {
+            "iter": 4,
+            "D": 0.7065820097923279,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.9663925947554444
+          },
+          {
+            "iter": 5,
+            "D": 0.7065744996070862,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.784511751184239
+          },
+          {
+            "iter": 6,
+            "D": 0.7066099047660828,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.6671700930517765
+          },
+          {
+            "iter": 7,
+            "D": 0.7065728902816772,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.837731491308811
+          },
+          {
+            "iter": 8,
+            "D": 0.7065437436103821,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.3277460838361606
+          },
+          {
+            "iter": 38,
+            "D": 0.7065684795379639,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.36473280740459
+          },
+          {
+            "iter": 39,
+            "D": 0.7065560817718506,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.8862602800206183
+          },
+          {
+            "iter": 40,
+            "D": 0.706545352935791,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.609038201485323
+          },
+          {
+            "iter": 41,
+            "D": 0.7065452933311462,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.5320738331199704
+          },
+          {
+            "iter": 42,
+            "D": 0.7065645456314087,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.565515756984766
+          },
+          {
+            "iter": 43,
+            "D": 0.7065678834915161,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.7451165115005147
+          },
+          {
+            "iter": 44,
+            "D": 0.7065476179122925,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.0775538779702214
+          },
+          {
+            "iter": 45,
+            "D": 0.7065380811691284,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.504975434542387
+          },
+          {
+            "iter": 46,
+            "D": 0.7065327167510986,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.9884765151682595
+          },
+          {
+            "iter": 47,
+            "D": 0.7065219283103943,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.534598551682546
+          },
+          {
+            "iter": 48,
+            "D": 0.7064974308013916,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.108317616339909
+          },
+          {
+            "iter": 49,
+            "D": 0.7064814567565918,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.7299428968751505
+          },
+          {
+            "iter": 50,
+            "D": 0.706486165523529,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.334454055378421
+          },
+          {
+            "iter": 51,
+            "D": 0.7064984440803528,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.924020512405272
+          },
+          {
+            "iter": 81,
+            "D": 0.7065920829772949,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.928408796357185
+          },
+          {
+            "iter": 82,
+            "D": 0.7065494656562805,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.740172979531527
+          },
+          {
+            "iter": 83,
+            "D": 0.7065332531929016,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.609711923751314
+          },
+          {
+            "iter": 84,
+            "D": 0.7065483927726746,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.58336719522287
+          },
+          {
+            "iter": 85,
+            "D": 0.7065600156784058,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.677704393682976
+          },
+          {
+            "iter": 86,
+            "D": 0.7065577507019043,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.9007439078842605
+          },
+          {
+            "iter": 87,
+            "D": 0.7065405249595642,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.230403571348681
+          },
+          {
+            "iter": 117,
+            "D": 0.7065322399139404,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.444432803645072
+          }
+        ]
+      },
+      "events_shipped": 30,
+      "numbers_shipped": 570,
+      "a_ice_adapted": {
+        "mean_D": 0.00020715004684461745,
+        "mean_obs_stat": 4.827439439576689,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "ice_learned": 1.0
+        },
+        "n_routed": 30,
+        "iters": 146,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.0002377452328801155,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.021180960403617
+          },
+          {
+            "iter": 2,
+            "D": 0.0001511053560534492,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.6969548906619405
+          },
+          {
+            "iter": 3,
+            "D": 0.00011742419155780226,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.56102477888583
+          },
+          {
+            "iter": 4,
+            "D": 0.0001586029538884759,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.5282458297708965
+          },
+          {
+            "iter": 5,
+            "D": 0.000262762070633471,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.613747035791325
+          },
+          {
+            "iter": 6,
+            "D": 0.00020884961122646928,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.81131560694338
+          },
+          {
+            "iter": 7,
+            "D": 5.849770604982041e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.11993632063044
+          },
+          {
+            "iter": 8,
+            "D": 3.991116682300344e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.538356108993271
+          },
+          {
+            "iter": 38,
+            "D": 0.0004622234555426985,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 8.565499412110254
+          },
+          {
+            "iter": 68,
+            "D": 0.00010002883936977014,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.453728565220858
+          },
+          {
+            "iter": 69,
+            "D": 6.193107401486486e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.874482452589401
+          },
+          {
+            "iter": 70,
+            "D": 0.0001126800780184567,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.400014000262782
+          },
+          {
+            "iter": 71,
+            "D": 0.00019184454868081957,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.133961952540522
+          },
+          {
+            "iter": 72,
+            "D": 0.00031461389153264463,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.011743706776278
+          },
+          {
+            "iter": 73,
+            "D": 0.00024794231285341084,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.0883947281342445
+          },
+          {
+            "iter": 74,
+            "D": 0.00021594815189018846,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.41271175164272
+          },
+          {
+            "iter": 104,
+            "D": 0.00028217348153702915,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.035342750980052
+          },
+          {
+            "iter": 105,
+            "D": 0.00022671723854728043,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.598867310656324
+          },
+          {
+            "iter": 135,
+            "D": 0.00018126104259863496,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.720854177393075
+          },
+          {
+            "iter": 136,
+            "D": 0.00019209523452445865,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.337648808934659
+          },
+          {
+            "iter": 137,
+            "D": 0.0002575326943770051,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.958640411047011
+          },
+          {
+            "iter": 138,
+            "D": 0.0002672414411790669,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.653595623072235
+          },
+          {
+            "iter": 139,
+            "D": 0.000261363253230229,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.453619838979371
+          },
+          {
+            "iter": 140,
+            "D": 0.0002586699847597629,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.361032924025917
+          },
+          {
+            "iter": 141,
+            "D": 0.0002684150531422347,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.3424616225584325
+          },
+          {
+            "iter": 142,
+            "D": 0.000293510704068467,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.400674665799293
+          },
+          {
+            "iter": 143,
+            "D": 0.0003160607593599707,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.55683143136881
+          },
+          {
+            "iter": 144,
+            "D": 0.00021078845020383596,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.729955711594529
+          },
+          {
+            "iter": 145,
+            "D": 0.00013133966422174126,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.83350615058798
+          },
+          {
+            "iter": 146,
+            "D": 0.0001252217625733465,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.008853658945186
+          }
+        ]
+      },
+      "a_self_drop_pct": 99.9706814667175,
+      "adapter_transferred": true,
+      "b_cold_normal": {
+        "mean_D": 0.00019270369521109387,
+        "mean_obs_stat": 6.554097661976532,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 110,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 23,
+            "D": 0.00019723729928955436,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.36550825209103
+          },
+          {
+            "iter": 24,
+            "D": 0.00026679085567593575,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.4941782110940816
+          },
+          {
+            "iter": 25,
+            "D": 0.00028721566195599735,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.757375586107271
+          },
+          {
+            "iter": 26,
+            "D": 0.00025388997164554894,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.124191525772305
+          },
+          {
+            "iter": 27,
+            "D": 0.00019470663391985,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.668655502917379
+          },
+          {
+            "iter": 28,
+            "D": 0.00017987056344281882,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.37045447019193
+          },
+          {
+            "iter": 29,
+            "D": 0.00020356713503133506,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.164287562204395
+          },
+          {
+            "iter": 59,
+            "D": 0.0002207243669545278,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.490107823686711
+          },
+          {
+            "iter": 60,
+            "D": 0.0002835332998074591,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.921164343679343
+          },
+          {
+            "iter": 61,
+            "D": 0.0002729118277784437,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.43608268602611
+          },
+          {
+            "iter": 62,
+            "D": 0.00022772650117985904,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.068710878921971
+          },
+          {
+            "iter": 63,
+            "D": 0.0002308631082996726,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.8200330872882007
+          },
+          {
+            "iter": 64,
+            "D": 0.0002490821061655879,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.565302491220442
+          },
+          {
+            "iter": 65,
+            "D": 0.00017585429304745048,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.255995857495607
+          },
+          {
+            "iter": 66,
+            "D": 0.00011638072464847937,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.038531868553142
+          },
+          {
+            "iter": 67,
+            "D": 9.277868230128661e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 2.9819321370521856
+          },
+          {
+            "iter": 68,
+            "D": 0.00010719194688135758,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.1005500196360365
+          },
+          {
+            "iter": 69,
+            "D": 0.00012229247658979148,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.341945078552833
+          },
+          {
+            "iter": 70,
+            "D": 0.00011066365550504997,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.731288069740559
+          },
+          {
+            "iter": 71,
+            "D": 0.00013138902431819588,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.228936254333659
+          },
+          {
+            "iter": 72,
+            "D": 0.0001344854972558096,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.781433459858209
+          },
+          {
+            "iter": 73,
+            "D": 0.00012252491433173418,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.379159964200223
+          },
+          {
+            "iter": 103,
+            "D": 0.0002157658600481227,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.343149618711886
+          },
+          {
+            "iter": 104,
+            "D": 0.00024479208514094353,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.466437792213995
+          },
+          {
+            "iter": 105,
+            "D": 0.0002281530323671177,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.665867314174683
+          },
+          {
+            "iter": 106,
+            "D": 0.0001994626218220219,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 10.014115729033001
+          },
+          {
+            "iter": 107,
+            "D": 0.0001827699161367491,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 10.517975406140469
+          },
+          {
+            "iter": 108,
+            "D": 0.00018164569337386638,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 11.14734207438648
+          },
+          {
+            "iter": 109,
+            "D": 0.00018281924712937325,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 11.838521984676662
+          },
+          {
+            "iter": 110,
+            "D": 0.00016402185428887606,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.543694809335193
+          }
+        ]
+      },
+      "b_cold_ice": {
+        "mean_D": 0.7065818727016449,
+        "mean_obs_stat": 5.37347582139267,
+        "commit": 0.0,
+        "detect": 1.0,
+        "commit_via": {
+          "normal": 0.0
+        },
+        "n_routed": 30,
+        "iters": 146,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 30,
+            "D": 0.7065927982330322,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.564204127706136
+          },
+          {
+            "iter": 31,
+            "D": 0.7066324353218079,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.135126345617138
+          },
+          {
+            "iter": 32,
+            "D": 0.7066205143928528,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.8004173377763375
+          },
+          {
+            "iter": 33,
+            "D": 0.7066065669059753,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.6115137661424317
+          },
+          {
+            "iter": 34,
+            "D": 0.7066072821617126,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.5987200910045782
+          },
+          {
+            "iter": 35,
+            "D": 0.7065789699554443,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.7722907187346735
+          },
+          {
+            "iter": 36,
+            "D": 0.706570029258728,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.14652893632861
+          },
+          {
+            "iter": 37,
+            "D": 0.7065772414207458,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.696316477671705
+          },
+          {
+            "iter": 38,
+            "D": 0.7065865397453308,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 5.350299496358921
+          },
+          {
+            "iter": 39,
+            "D": 0.7065792083740234,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 6.035308525223372
+          },
+          {
+            "iter": 69,
+            "D": 0.706599235534668,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.563912448255014
+          },
+          {
+            "iter": 70,
+            "D": 0.706597089767456,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.0969786359423344
+          },
+          {
+            "iter": 71,
+            "D": 0.7065820693969727,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.8846155619917973
+          },
+          {
+            "iter": 72,
+            "D": 0.706577479839325,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.9826964214616876
+          },
+          {
+            "iter": 73,
+            "D": 0.7066230177879333,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.3026048755404283
+          },
+          {
+            "iter": 74,
+            "D": 0.7065764665603638,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.7582077396783475
+          },
+          {
+            "iter": 75,
+            "D": 0.7064642906188965,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.278925605032967
+          },
+          {
+            "iter": 76,
+            "D": 0.7063677310943604,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 4.878028934628538
+          },
+          {
+            "iter": 106,
+            "D": 0.7065941691398621,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.1397104911189038
+          },
+          {
+            "iter": 107,
+            "D": 0.7065647840499878,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.710810125065415
+          },
+          {
+            "iter": 108,
+            "D": 0.7065781950950623,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.58082430003337
+          },
+          {
+            "iter": 109,
+            "D": 0.7066094279289246,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 2.770042966835643
+          },
+          {
+            "iter": 110,
+            "D": 0.706587553024292,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.2561550266529653
+          },
+          {
+            "iter": 111,
+            "D": 0.7065578103065491,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 3.9286770383619705
+          },
+          {
+            "iter": 141,
+            "D": 0.7064657211303711,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 10.58832338279807
+          },
+          {
+            "iter": 142,
+            "D": 0.7065995335578918,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 10.997895217592598
+          },
+          {
+            "iter": 143,
+            "D": 0.7066624164581299,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 11.43986741185725
+          },
+          {
+            "iter": 144,
+            "D": 0.7066447138786316,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 11.88520939922564
+          },
+          {
+            "iter": 145,
+            "D": 0.7066301703453064,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 12.397729326264123
+          },
+          {
+            "iter": 146,
+            "D": 0.7066227197647095,
+            "decision": "STRUCTURAL_IMPASSE",
+            "anchor": "normal",
+            "obs_stat": 13.052333910879165
+          }
+        ]
+      },
+      "b_cold_wind": {
+        "mean_D": 0.0001793105220713187,
+        "mean_obs_stat": 6.693940036794391,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.00015919265570119023,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.7692729977338075
+          },
+          {
+            "iter": 2,
+            "D": 0.00018561683828011155,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.249006739787737
+          },
+          {
+            "iter": 3,
+            "D": 0.00017333489086013287,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.839570695031766
+          },
+          {
+            "iter": 4,
+            "D": 9.237755875801668e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.586675881713157
+          },
+          {
+            "iter": 5,
+            "D": 9.931225940817967e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.5006447790551345
+          },
+          {
+            "iter": 6,
+            "D": 0.0001306388876400888,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.606335046364053
+          },
+          {
+            "iter": 7,
+            "D": 0.0001689234923105687,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.80323084531302
+          },
+          {
+            "iter": 8,
+            "D": 0.00019609204900916666,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.016332250363656
+          },
+          {
+            "iter": 9,
+            "D": 0.00022771983640268445,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.227487924303228
+          },
+          {
+            "iter": 10,
+            "D": 0.00020774132281076163,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.418975067372917
+          },
+          {
+            "iter": 11,
+            "D": 0.0001698606793070212,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.618485185945013
+          },
+          {
+            "iter": 12,
+            "D": 0.00013429364480543882,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.785990462692851
+          },
+          {
+            "iter": 13,
+            "D": 0.0001397906307829544,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.995169613158199
+          },
+          {
+            "iter": 43,
+            "D": 0.00019870337564498186,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.380254232684463
+          },
+          {
+            "iter": 44,
+            "D": 0.00016688027244526893,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.326478358381664
+          },
+          {
+            "iter": 74,
+            "D": 0.00028467748779803514,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.386235308710435
+          },
+          {
+            "iter": 75,
+            "D": 0.00021875834499951452,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.423031239937207
+          },
+          {
+            "iter": 76,
+            "D": 0.00010962678788928315,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.551327116433657
+          },
+          {
+            "iter": 77,
+            "D": 0.00014840962830930948,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.796315635429406
+          },
+          {
+            "iter": 78,
+            "D": 0.00028262933483347297,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.138143129760309
+          },
+          {
+            "iter": 79,
+            "D": 0.0002940096310339868,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.592267299396237
+          },
+          {
+            "iter": 80,
+            "D": 0.00027060022694058716,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.1320292816793
+          },
+          {
+            "iter": 81,
+            "D": 0.00024665670935064554,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.769814286949519
+          },
+          {
+            "iter": 111,
+            "D": 0.00017011258751153946,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.214548777371947
+          },
+          {
+            "iter": 112,
+            "D": 0.00014613114763051271,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.668702573579071
+          },
+          {
+            "iter": 113,
+            "D": 0.00013340530858840793,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.104974213006739
+          },
+          {
+            "iter": 114,
+            "D": 0.00014857527276035398,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.561753130818125
+          },
+          {
+            "iter": 115,
+            "D": 0.0001473074808018282,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.1066807483479515
+          },
+          {
+            "iter": 116,
+            "D": 0.00015626972890459,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.769116665303009
+          },
+          {
+            "iter": 117,
+            "D": 0.0001716675906209275,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.479351617208131
+          }
+        ]
+      },
+      "b_fleet_normal": {
+        "mean_D": 0.00019270369521109387,
+        "mean_obs_stat": 6.554097661976532,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 110,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 23,
+            "D": 0.00019723729928955436,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.36550825209103
+          },
+          {
+            "iter": 24,
+            "D": 0.00026679085567593575,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.4941782110940816
+          },
+          {
+            "iter": 25,
+            "D": 0.00028721566195599735,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.757375586107271
+          },
+          {
+            "iter": 26,
+            "D": 0.00025388997164554894,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.124191525772305
+          },
+          {
+            "iter": 27,
+            "D": 0.00019470663391985,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.668655502917379
+          },
+          {
+            "iter": 28,
+            "D": 0.00017987056344281882,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.37045447019193
+          },
+          {
+            "iter": 29,
+            "D": 0.00020356713503133506,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.164287562204395
+          },
+          {
+            "iter": 59,
+            "D": 0.0002207243669545278,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.490107823686711
+          },
+          {
+            "iter": 60,
+            "D": 0.0002835332998074591,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.921164343679343
+          },
+          {
+            "iter": 61,
+            "D": 0.0002729118277784437,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.43608268602611
+          },
+          {
+            "iter": 62,
+            "D": 0.00022772650117985904,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.068710878921971
+          },
+          {
+            "iter": 63,
+            "D": 0.0002308631082996726,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.8200330872882007
+          },
+          {
+            "iter": 64,
+            "D": 0.0002490821061655879,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.565302491220442
+          },
+          {
+            "iter": 65,
+            "D": 0.00017585429304745048,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.255995857495607
+          },
+          {
+            "iter": 66,
+            "D": 0.00011638072464847937,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.038531868553142
+          },
+          {
+            "iter": 67,
+            "D": 9.277868230128661e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 2.9819321370521856
+          },
+          {
+            "iter": 68,
+            "D": 0.00010719194688135758,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.1005500196360365
+          },
+          {
+            "iter": 69,
+            "D": 0.00012229247658979148,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.341945078552833
+          },
+          {
+            "iter": 70,
+            "D": 0.00011066365550504997,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 3.731288069740559
+          },
+          {
+            "iter": 71,
+            "D": 0.00013138902431819588,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.228936254333659
+          },
+          {
+            "iter": 72,
+            "D": 0.0001344854972558096,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.781433459858209
+          },
+          {
+            "iter": 73,
+            "D": 0.00012252491433173418,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.379159964200223
+          },
+          {
+            "iter": 103,
+            "D": 0.0002157658600481227,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.343149618711886
+          },
+          {
+            "iter": 104,
+            "D": 0.00024479208514094353,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.466437792213995
+          },
+          {
+            "iter": 105,
+            "D": 0.0002281530323671177,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.665867314174683
+          },
+          {
+            "iter": 106,
+            "D": 0.0001994626218220219,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 10.014115729033001
+          },
+          {
+            "iter": 107,
+            "D": 0.0001827699161367491,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 10.517975406140469
+          },
+          {
+            "iter": 108,
+            "D": 0.00018164569337386638,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 11.14734207438648
+          },
+          {
+            "iter": 109,
+            "D": 0.00018281924712937325,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 11.838521984676662
+          },
+          {
+            "iter": 110,
+            "D": 0.00016402185428887606,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 12.543694809335193
+          }
+        ]
+      },
+      "b_fleet_ice": {
+        "mean_D": 0.00024986246911187966,
+        "mean_obs_stat": 5.37347582139267,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "ice_learned": 1.0
+        },
+        "n_routed": 30,
+        "iters": 146,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 30,
+            "D": 0.0002544867165852338,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.564204127706136
+          },
+          {
+            "iter": 31,
+            "D": 0.00022722352878190577,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.135126345617138
+          },
+          {
+            "iter": 32,
+            "D": 0.00021144023048691452,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.8004173377763375
+          },
+          {
+            "iter": 33,
+            "D": 0.00020940184185747057,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.6115137661424317
+          },
+          {
+            "iter": 34,
+            "D": 0.00020611080981325358,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.5987200910045782
+          },
+          {
+            "iter": 35,
+            "D": 0.00018390534387435764,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.7722907187346735
+          },
+          {
+            "iter": 36,
+            "D": 0.00015441433060914278,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.14652893632861
+          },
+          {
+            "iter": 37,
+            "D": 0.000145313490065746,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.696316477671705
+          },
+          {
+            "iter": 38,
+            "D": 0.0001441096537746489,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 5.350299496358921
+          },
+          {
+            "iter": 39,
+            "D": 0.0001439022016711533,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 6.035308525223372
+          },
+          {
+            "iter": 69,
+            "D": 0.00023401367070619017,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.563912448255014
+          },
+          {
+            "iter": 70,
+            "D": 0.00023488517035730183,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.0969786359423344
+          },
+          {
+            "iter": 71,
+            "D": 0.0002600326552055776,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 2.8846155619917973
+          },
+          {
+            "iter": 72,
+            "D": 0.00025282546994276345,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 2.9826964214616876
+          },
+          {
+            "iter": 73,
+            "D": 0.0002085346932290122,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.3026048755404283
+          },
+          {
+            "iter": 74,
+            "D": 0.0002002232795348391,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.7582077396783475
+          },
+          {
+            "iter": 75,
+            "D": 0.00026466650888323784,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.278925605032967
+          },
+          {
+            "iter": 76,
+            "D": 0.0004113289760425687,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 4.878028934628538
+          },
+          {
+            "iter": 106,
+            "D": 0.0002126792969647795,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.1397104911189038
+          },
+          {
+            "iter": 107,
+            "D": 0.00022292866196949035,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 2.710810125065415
+          },
+          {
+            "iter": 108,
+            "D": 0.00028466814546845853,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 2.58082430003337
+          },
+          {
+            "iter": 109,
+            "D": 0.00034113586298190057,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 2.770042966835643
+          },
+          {
+            "iter": 110,
+            "D": 0.0003335286455694586,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.2561550266529653
+          },
+          {
+            "iter": 111,
+            "D": 0.00031432966352440417,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 3.9286770383619705
+          },
+          {
+            "iter": 141,
+            "D": 0.0003955448046326637,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 10.58832338279807
+          },
+          {
+            "iter": 142,
+            "D": 0.00019569721189327538,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 10.997895217592598
+          },
+          {
+            "iter": 143,
+            "D": 0.0002889329625759274,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 11.43986741185725
+          },
+          {
+            "iter": 144,
+            "D": 0.0003288125153630972,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 11.88520939922564
+          },
+          {
+            "iter": 145,
+            "D": 0.00032276404090225697,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 12.397729326264123
+          },
+          {
+            "iter": 146,
+            "D": 0.0003080336900893599,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "ice_learned",
+            "obs_stat": 13.052333910879165
+          }
+        ]
+      },
+      "b_fleet_wind": {
+        "mean_D": 0.0001793105220713187,
+        "mean_obs_stat": 6.693940036794391,
+        "commit": 1.0,
+        "detect": 0.0,
+        "commit_via": {
+          "normal": 1.0
+        },
+        "n_routed": 30,
+        "iters": 117,
+        "n_events": 0,
+        "records": [
+          {
+            "iter": 1,
+            "D": 0.00015919265570119023,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.7692729977338075
+          },
+          {
+            "iter": 2,
+            "D": 0.00018561683828011155,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.249006739787737
+          },
+          {
+            "iter": 3,
+            "D": 0.00017333489086013287,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.839570695031766
+          },
+          {
+            "iter": 4,
+            "D": 9.237755875801668e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.586675881713157
+          },
+          {
+            "iter": 5,
+            "D": 9.931225940817967e-05,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.5006447790551345
+          },
+          {
+            "iter": 6,
+            "D": 0.0001306388876400888,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.606335046364053
+          },
+          {
+            "iter": 7,
+            "D": 0.0001689234923105687,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.80323084531302
+          },
+          {
+            "iter": 8,
+            "D": 0.00019609204900916666,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.016332250363656
+          },
+          {
+            "iter": 9,
+            "D": 0.00022771983640268445,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.227487924303228
+          },
+          {
+            "iter": 10,
+            "D": 0.00020774132281076163,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.418975067372917
+          },
+          {
+            "iter": 11,
+            "D": 0.0001698606793070212,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.618485185945013
+          },
+          {
+            "iter": 12,
+            "D": 0.00013429364480543882,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.785990462692851
+          },
+          {
+            "iter": 13,
+            "D": 0.0001397906307829544,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.995169613158199
+          },
+          {
+            "iter": 43,
+            "D": 0.00019870337564498186,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 13.380254232684463
+          },
+          {
+            "iter": 44,
+            "D": 0.00016688027244526893,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 14.326478358381664
+          },
+          {
+            "iter": 74,
+            "D": 0.00028467748779803514,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.386235308710435
+          },
+          {
+            "iter": 75,
+            "D": 0.00021875834499951452,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.423031239937207
+          },
+          {
+            "iter": 76,
+            "D": 0.00010962678788928315,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.551327116433657
+          },
+          {
+            "iter": 77,
+            "D": 0.00014840962830930948,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.796315635429406
+          },
+          {
+            "iter": 78,
+            "D": 0.00028262933483347297,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.138143129760309
+          },
+          {
+            "iter": 79,
+            "D": 0.0002940096310339868,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 8.592267299396237
+          },
+          {
+            "iter": 80,
+            "D": 0.00027060022694058716,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.1320292816793
+          },
+          {
+            "iter": 81,
+            "D": 0.00024665670935064554,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 9.769814286949519
+          },
+          {
+            "iter": 111,
+            "D": 0.00017011258751153946,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 7.214548777371947
+          },
+          {
+            "iter": 112,
+            "D": 0.00014613114763051271,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.668702573579071
+          },
+          {
+            "iter": 113,
+            "D": 0.00013340530858840793,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 6.104974213006739
+          },
+          {
+            "iter": 114,
+            "D": 0.00014857527276035398,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.561753130818125
+          },
+          {
+            "iter": 115,
+            "D": 0.0001473074808018282,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 5.1066807483479515
+          },
+          {
+            "iter": 116,
+            "D": 0.00015626972890459,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.769116665303009
+          },
+          {
+            "iter": 117,
+            "D": 0.0001716675906209275,
+            "decision": "COMMIT_TRAJECTORY",
+            "anchor": "normal",
+            "obs_stat": 4.479351617208131
+          }
+        ]
+      },
+      "transfer_drop_pct": 99.9646378602728,
+      "ice_recognised": 1.0
+    }
+  ],
+  "pass": {
+    "P1": true,
+    "P2": true,
+    "P3": false
+  }
+}
