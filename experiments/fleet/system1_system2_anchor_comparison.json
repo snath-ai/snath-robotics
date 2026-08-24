@@ -1,0 +1,42 @@
+{
+  "rows": [
+    {
+      "seed": 42,
+      "cosine_system1_local_vs_service": 1.0000000000000002,
+      "cosine_system1_vs_system2": 0.9915158728069338,
+      "l2_system1_vs_system2": 1.2147004436246562
+    },
+    {
+      "seed": 7,
+      "cosine_system1_local_vs_service": 1.0,
+      "cosine_system1_vs_system2": 0.995253836215964,
+      "l2_system1_vs_system2": 0.8868518039830022
+    },
+    {
+      "seed": 13,
+      "cosine_system1_local_vs_service": 0.9999999999999998,
+      "cosine_system1_vs_system2": 0.9979463567233846,
+      "l2_system1_vs_system2": 0.5989403285805186
+    },
+    {
+      "seed": 99,
+      "cosine_system1_local_vs_service": 1.0,
+      "cosine_system1_vs_system2": 0.9677701593537661,
+      "l2_system1_vs_system2": 2.286324155025754
+    },
+    {
+      "seed": 2026,
+      "cosine_system1_local_vs_service": 1.0,
+      "cosine_system1_vs_system2": 0.9832826065296609,
+      "l2_system1_vs_system2": 1.6452252416082882
+    }
+  ],
+  "cosine_range": [
+    0.9677701593537661,
+    0.9979463567233846
+  ],
+  "l2_range": [
+    0.5989403285805186,
+    2.286324155025754
+  ]
+}
