@@ -1,0 +1,1437 @@
+{
+  "protocol": {
+    "calibration_quantile": 0.05,
+    "routed_windows_per_phase": 30,
+    "seeds": [
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50
+    ],
+    "encoder": "gru_cls_multiseed_cpg.pt",
+    "note": "mechanism fingerprint = mean unit-normalised z-scored drift vector across A's real ice D-hard events; corroboration threshold = 5th pct of cosine-sim on B's own held-out real ice phase; layered on the guard-veto fix"
+  },
+  "results": [
+    {
+      "seed": 26,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.5580034379205032,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.8333333333333334,
+        "concept_alarm": 0.1,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 27,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.3517994478595451,
+      "calibration_n_sims": 88,
+      "ice": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.9666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.9,
+        "recognised": 0.0,
+        "commit_normal": 0.1,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.3333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.6666666666666666,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 28,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.9251083346372753,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.1,
+        "recognised": 0.9,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.9333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.06666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.4,
+        "recognised": 0.03333333333333333,
+        "commit_normal": 0.5333333333333333,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.7333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.26666666666666666,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 29,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.11103406128055843,
+      "calibration_n_sims": 88,
+      "ice": {
+        "novel_alarm": 0.4,
+        "recognised": 0.6,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.9666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.43333333333333335,
+        "recognised": 0.0,
+        "commit_normal": 0.5666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.3333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.6666666666666666,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.5666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.43333333333333335,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 30,
+      "events_shipped": 27,
+      "fingerprint_n_samples": 27,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.5153505553959861,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.1,
+        "recognised": 0.26666666666666666,
+        "commit_normal": 0.5,
+        "concept_alarm": 0.13333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.23333333333333334,
+        "recognised": 0.7666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 31,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.2571296600873106,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.3333333333333333,
+        "recognised": 0.1,
+        "commit_normal": 0.5,
+        "concept_alarm": 0.06666666666666667,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.9666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 32,
+      "events_shipped": 27,
+      "fingerprint_n_samples": 27,
+      "adapter_transferred": true,
+      "calibration_threshold": 0.047460370367109705,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.16666666666666666,
+        "recognised": 0.8333333333333334,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.06666666666666667,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.8333333333333334,
+        "concept_alarm": 0.1,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.36666666666666664,
+        "recognised": 0.0,
+        "commit_normal": 0.6333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.8,
+        "recognised": 0.0,
+        "commit_normal": 0.13333333333333333,
+        "concept_alarm": 0.06666666666666667,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.8666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.13333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 33,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.667092912231226,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.13333333333333333,
+        "recognised": 0.8666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.26666666666666666,
+        "recognised": 0.13333333333333333,
+        "commit_normal": 0.5666666666666667,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.8666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.13333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 34,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": 0.07458382550816733,
+      "calibration_n_sims": 61,
+      "ice": {
+        "novel_alarm": 0.43333333333333335,
+        "recognised": 0.5666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.26666666666666666,
+        "recognised": 0.0,
+        "commit_normal": 0.7333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.1,
+        "recognised": 0.0,
+        "commit_normal": 0.9,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.36666666666666664,
+        "recognised": 0.0,
+        "commit_normal": 0.6333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.9333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.06666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 35,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.5005437810073102,
+      "calibration_n_sims": 81,
+      "ice": {
+        "novel_alarm": 0.1,
+        "recognised": 0.9,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.5333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.4666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.8666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.13333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 36,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.2874268566500254,
+      "calibration_n_sims": 89,
+      "ice": {
+        "novel_alarm": 0.16666666666666666,
+        "recognised": 0.8333333333333334,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.3,
+        "recognised": 0.0,
+        "commit_normal": 0.7,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.9666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 37,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.10144006100686542,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.9333333333333333,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.9666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.03333333333333333,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.8,
+        "recognised": 0.0,
+        "commit_normal": 0.2,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.9,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.1,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 38,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.37312762805196104,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.43333333333333335,
+        "recognised": 0.5666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.0,
+        "recognised": 0.23333333333333334,
+        "commit_normal": 0.7666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.2,
+        "recognised": 0.0,
+        "commit_normal": 0.8,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 39,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.20919510756621978,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.26666666666666666,
+        "recognised": 0.7333333333333333,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.7666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.23333333333333334,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.9333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.03333333333333333,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.7,
+        "recognised": 0.0,
+        "commit_normal": 0.3,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 40,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.7212003173397156,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.6,
+        "recognised": 0.0,
+        "commit_normal": 0.4,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.5666666666666667,
+        "recognised": 0.43333333333333335,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.7666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.16666666666666666,
+        "concept_alarm": 0.06666666666666667,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 41,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.5602742227255482,
+      "calibration_n_sims": 85,
+      "ice": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.9666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.13333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.7666666666666667,
+        "concept_alarm": 0.1,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.7333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.26666666666666666,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.8666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.13333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 42,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.007511871903776446,
+      "calibration_n_sims": 87,
+      "ice": {
+        "novel_alarm": 0.43333333333333335,
+        "recognised": 0.5666666666666667,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.9666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.2,
+        "recognised": 0.0,
+        "commit_normal": 0.8,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.9333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.06666666666666667,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 43,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.4075322073654192,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.06666666666666667,
+        "commit_normal": 0.9,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.6333333333333333,
+        "recognised": 0.3,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.06666666666666667,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.7666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.23333333333333334,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 44,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.4533551690222355,
+      "calibration_n_sims": 89,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.1,
+        "recognised": 0.26666666666666666,
+        "commit_normal": 0.6,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.6333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.3333333333333333,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.7666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.23333333333333334,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 45,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.7420473227388028,
+      "calibration_n_sims": 60,
+      "ice": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.9333333333333333,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.1,
+        "recognised": 0.0,
+        "commit_normal": 0.9,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.26666666666666666,
+        "recognised": 0.03333333333333333,
+        "commit_normal": 0.6666666666666666,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.9333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.06666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.9666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 46,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.04094764559746289,
+      "calibration_n_sims": 82,
+      "ice": {
+        "novel_alarm": 0.5,
+        "recognised": 0.5,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.03333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.9666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.5,
+        "recognised": 0.06666666666666667,
+        "commit_normal": 0.43333333333333335,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.6333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.36666666666666664,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 47,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.4651556453495429,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.1,
+        "recognised": 0.9,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.3,
+        "recognised": 0.0,
+        "commit_normal": 0.7,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.9,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.1,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 48,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.18138566046131177,
+      "calibration_n_sims": 77,
+      "ice": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.9333333333333333,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.06666666666666667,
+        "recognised": 0.0,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.13333333333333333,
+        "recognised": 0.0,
+        "commit_normal": 0.8666666666666667,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.7,
+        "recognised": 0.0,
+        "commit_normal": 0.3,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 1.0,
+        "recognised": 0.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 49,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.9009066103739931,
+      "calibration_n_sims": 85,
+      "ice": {
+        "novel_alarm": 0.0,
+        "recognised": 1.0,
+        "commit_normal": 0.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.36666666666666664,
+        "recognised": 0.0,
+        "commit_normal": 0.6333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.5,
+        "recognised": 0.0,
+        "commit_normal": 0.5,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    },
+    {
+      "seed": 50,
+      "events_shipped": 30,
+      "fingerprint_n_samples": 30,
+      "adapter_transferred": true,
+      "calibration_threshold": -0.5962085642444549,
+      "calibration_n_sims": 90,
+      "ice": {
+        "novel_alarm": 0.1,
+        "recognised": 0.8666666666666667,
+        "commit_normal": 0.03333333333333333,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "normal": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind10": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind20": {
+        "novel_alarm": 0.0,
+        "recognised": 0.0,
+        "commit_normal": 1.0,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind30": {
+        "novel_alarm": 0.0,
+        "recognised": 0.03333333333333333,
+        "commit_normal": 0.9333333333333333,
+        "concept_alarm": 0.03333333333333333,
+        "n_routed": 30,
+        "calib_sims": []
+      },
+      "wind40": {
+        "novel_alarm": 0.8,
+        "recognised": 0.0,
+        "commit_normal": 0.2,
+        "concept_alarm": 0.0,
+        "n_routed": 30,
+        "calib_sims": []
+      }
+    }
+  ]
+}
