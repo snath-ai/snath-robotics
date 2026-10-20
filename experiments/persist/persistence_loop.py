@@ -363,7 +363,13 @@ class PersistenceLoop:
             delta_increment:              How much to increase delta per failed attempt.
             delta_max:                    Maximum corrective offset before escalation.
             normalisation_threshold:      Divergence below this = resolved.
-            escalation_threshold:         Divergence above this = escalate immediately.
+            escalation_threshold:         Divergence above this AT LOOP ENTRY (before
+                                           any adaptor is even tried) = escalate without
+                                           trying. Does NOT apply mid-loop to a single
+                                           attempt's result -- a bad attempt (even a
+                                           fall) only means "increment and retry," same
+                                           as any other unresolved attempt. Scope is
+                                           delta_max-or-patience, per the class docstring.
             patience:                     Max steps before escalation regardless.
             composition_residual_threshold: Residual divergence that triggers
                                            second adaptor retrieval.
@@ -531,18 +537,26 @@ class PersistenceLoop:
                     divergence_curve=divergence_curve,
                 )
 
-            # Immediate escalation threshold
-            if divergence >= self.escalation_threshold:
-                print(f"  ESCALATE — divergence {divergence:.3f} exceeded threshold")
-                return PersistResult(
-                    phase=phase_label or "escalation",
-                    success=False,
-                    steps_to_resolution=step_count,
-                    final_divergence=divergence,
-                    adaptors_used=adaptors_used,
-                    escalated=True,
-                    divergence_curve=divergence_curve,
-                )
+            # NOTE: there used to be an "immediate escalation" check here --
+            # abort as soon as any single attempt's divergence crossed
+            # escalation_threshold. That check is not part of this class's
+            # own documented contract (see the component list above: scope
+            # is delta_max-or-patience, nothing else) and it actively
+            # contradicted this loop's own stated biological principle --
+            # "a child falls, adjusts, tries again," not "a child falls
+            # once and gives up." It was also empirically wrong on real
+            # Walker2d-ice data (2026-10-20, FLEET STATUS.md): a real,
+            # verified correction that falls ~25% of the time at low delta
+            # but never falls at delta>=4x was aborted at delta~1-2x on
+            # every one of 8 seeds, because a single bad attempt (a fall,
+            # read as a large divergence) looked identical to this check
+            # as "nothing will ever work," when the only honest signal
+            # that gives is "this delta wasn't enough yet." A fall is
+            # exactly the case this loop exists to persist past, provided
+            # delta still has room to grow -- which the delta_max check a
+            # few lines below already guards, unconditionally, every
+            # attempt. Removed; scope is delta_max-or-patience only, as
+            # documented.
 
             # Composition trigger — residual divergence suggests second dimension
             if (not composed
