@@ -61,9 +61,80 @@ class CPGPolicy:
         return np.clip(a, -1.0, 1.0)
 
 
+class ReactiveCPGPolicy:
+    """
+    Same base gait as CPGPolicy, plus the one thing CPGPolicy never had:
+    a minimal feedback term that actually reads the robot's own state.
+
+    STATUS.md 2026-10-20 (VIII): CPGPolicy is fully open-loop, and a long-
+    horizon sweep showed NO additive action offset, at any magnitude, ever
+    stabilizes it -- not an ice problem, an architecture problem. A fixed
+    offset cannot fix a system with no feedback at all. This class is the
+    minimal fix to THAT, not an attempt to build a good walker: a crude
+    "hip strategy" balance reflex (if the torso is pitching, push back
+    against it) using obs[1]=torso pitch angle and obs[10]=pitch angular
+    velocity (indices confirmed directly against qpos/qvel, not assumed --
+    Walker2d-v5's obs excludes x-position, so obs[0]=z-height, obs[1]=torso
+    angle, obs[2:8]=6 joint angles, obs[8:11]=x/z/angular velocity,
+    obs[11:17]=6 joint velocities).
+
+    Found by a short, honest grid search (not assumed to work): feedback
+    on the two thigh joints only, with CPGPolicy's own base_amp=0.55,
+    reaches at best ~80 steps before falling on normal friction (better
+    than CPGPolicy's ~40, but still falls fast -- confirmed sign direction
+    first, since the opposite sign fell in under 10 steps, before tuning
+    gain). Two changes were the real lever: broadening feedback to ALL SIX
+    joints (so the correction has real torque authority, not just two
+    joints), and lowering base_amp so the open-loop oscillation fights the
+    correction less. kp=kd=0.2, base_amp=0.2 reaches 200-500+ steps on
+    normal friction across seeds -- a genuinely different, closed-loop
+    regime from CPGPolicy, though still with real seed-to-seed variance
+    and well short of a competent walker. "Weak but reactive," not "good."
+    """
+    FEEDBACK_JOINTS = (0, 1, 2, 3, 4, 5)
+
+    def __init__(self, rng: np.random.Generator, act_dim: int = 6,
+                 base_freq: float = 0.05, base_amp: float = 0.20,
+                 noise_std: float = 0.05, kp: float = 0.2, kd: float = 0.2):
+        self.rng = rng
+        self.act_dim = act_dim
+        self.base_freq = base_freq
+        self.base_amp = base_amp
+        self.noise_std = noise_std
+        self.kp = kp
+        self.kd = kd
+        self.t = 0
+        self.reset()
+
+    def reset(self):
+        self.t = 0
+        self.freq = self.base_freq * float(self.rng.uniform(0.8, 1.2))
+        self.amp = self.base_amp * float(self.rng.uniform(0.85, 1.15))
+        self.phase0 = float(self.rng.uniform(0, 2 * np.pi))
+
+    def __call__(self, obs: np.ndarray) -> np.ndarray:
+        ph = 2 * np.pi * self.freq * self.t + self.phase0
+        right = np.array([np.sin(ph), np.sin(ph), np.sin(ph + np.pi / 2)])
+        left = np.array([np.sin(ph + np.pi), np.sin(ph + np.pi),
+                         np.sin(ph + 3 * np.pi / 2)])
+        a = self.amp * np.concatenate([right, left])
+        a = a + self.rng.normal(0, self.noise_std, size=self.act_dim)
+
+        torso_angle = obs[1]
+        pitch_rate = obs[10]
+        feedback = -self.kp * torso_angle - self.kd * pitch_rate
+        for i in self.FEEDBACK_JOINTS:
+            a[i] += feedback
+
+        self.t += 1
+        return np.clip(a, -1.0, 1.0)
+
+
 def make_policy(name: str, rng: np.random.Generator) -> RandomPolicy | CPGPolicy:
     if name == "random":
         return RandomPolicy(rng)
     if name == "cpg":
         return CPGPolicy(rng)
+    if name == "reactive_cpg":
+        return ReactiveCPGPolicy(rng)
     raise ValueError(f"unknown policy: {name}")
